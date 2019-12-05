@@ -2,6 +2,10 @@ $darkFontColor: black;
 $lightFontColor: white;
 $backgroundColor: white;
 $mainBrandColor: rgba(0, 176, 240, 1);
+$mainBrandGradient: linear-gradient(
+  rgba(145, 226, 255, 1) 24%,
+  rgba(0, 176, 240, 1) 90%
+);
 
 $smallerFontSize: 0.8rem;
 $normalFontSize: 1rem;
