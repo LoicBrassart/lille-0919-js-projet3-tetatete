@@ -1,17 +1,17 @@
 @import "../../index.scss";
+@import "../../reset.scss";
 
 #article {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
   margin: 100px; //margin à redéfinir
+  justify-content: space-around;
 }
 
 .box {
-  border: $mainBrandColor solid 3px;
   border-radius: 2px;
   height: 100%;
-  width: 100%;
+  width: 300px;
 }
 
 #titre {
