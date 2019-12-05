@@ -1,0 +1,13 @@
+#article {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  height: 300px;
+}
+
+.box {
+  border: black solid 2px;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+}
