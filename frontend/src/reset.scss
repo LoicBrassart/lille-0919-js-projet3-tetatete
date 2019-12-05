@@ -1,9 +1,7 @@
-@import "./index.sccs";
-
+@import "index.scss";
 * {
   box-sizing: border-box;
 }
-
 header,
 section,
 footer,
@@ -14,7 +12,6 @@ article,
 figure {
   display: block;
 }
-
 div,
 header,
 nav,
@@ -39,11 +36,10 @@ img {
   margin: 0;
   padding: 0;
 }
-
 html,
 body {
   height: 100%;
-  background-color: $white;
+  background-color: $backgroundColor;
   border: 0 solid transparent;
   font-size: 16px;
   margin: 0;
@@ -52,7 +48,6 @@ body {
   width: 100%;
   display: block;
 }
-
 img,
 object,
 embed,
@@ -64,16 +59,18 @@ svg {
   max-width: 100%;
   height: auto;
 }
-
 img {
   display: block;
 }
-
 a {
   text-decoration: none;
-  color: $black;
+  color: $darkFontColor;
 }
-
+button {
+  background: none;
+  padding: 0;
+  border: 0;
+}
 /* ------------------------------- GLOBAL:REPETITIVES RULES ------------------------------- */
 .clear {
   display: block;
