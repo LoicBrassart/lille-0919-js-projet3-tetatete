@@ -1,0 +1,32 @@
+@import "./../../index.scss";
+
+.FilterTab {
+  background-color: $mainBrandColor;
+  padding: 8px 10px;
+  .center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      font-size: $mediumFontSize;
+      color: $lightFontColor;
+    }
+    .FiltersNav {
+      ul {
+        font-size: 0;
+        list-style-type: none;
+        display: flex;
+        li {
+          border-radius: 25px;
+          margin-left: 5px;
+          button {
+            img {
+              border-radius: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
