@@ -12,6 +12,9 @@
   border-radius: 2px;
   height: 100%;
   width: 300px;
+  padding: 20px;
+  border: 1px solid $mainBrandColor;
+  text-align: justify;
 }
 
 #titre {
@@ -23,4 +26,5 @@
 #lirePlus {
   color: $mainBrandColor;
   text-align: right;
+  padding: 10px;
 }
