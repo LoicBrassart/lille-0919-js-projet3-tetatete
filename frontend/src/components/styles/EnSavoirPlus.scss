@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
-  height: 300px;
+  margin: 100px; //margin à redéfinir
 }
 
 .box {
@@ -12,9 +12,15 @@
   border-radius: 2px;
   height: 100%;
   width: 100%;
+}
+
+#titre {
   text-align: center;
+  color: $mainBrandColor;
+  font-weight: bold;
 }
 
 #lirePlus {
+  color: $mainBrandColor;
   text-align: right;
 }
