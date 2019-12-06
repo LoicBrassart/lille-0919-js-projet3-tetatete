@@ -38,5 +38,9 @@
   .more_info img {
     width: 5%;
     margin: 10px;
+    transform: scale(0.9);
+  }
+  .more_info img:hover {
+    transform: scale(1);
   }
 }
