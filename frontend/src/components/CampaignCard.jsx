@@ -1,27 +1,27 @@
 import React from "react";
-import "./styles/CarteCampagne.scss";
+import "./styles/CampaignCard.scss";
 
-function CarteCampagne() {
+function CampaignCard() {
   return (
-    <div className="carte_campagne">
+    <div className="campaignCard">
       <img
         className="placeholder"
-        src="/img/placeholder_carte_campagne.png"
+        src="/img/placeholderCampaignCard.png"
         alt=""
       ></img>
-      <h2 className="titre_campagne">Lorem ipsum </h2>
+      <h2 className="campaignTitle">Lorem ipsum </h2>
       <p className="timer">15 jours restants</p>
-      <p className="description_campagne">
+      <p className="campaignDescription">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus
         fugit, commodi eaque quod voluptatem labore, et, sapiente nisi inventore
         qui velit laboriosam expedita quasi veniam impedit vel tenetur ipsam
         earum.
       </p>
       <a className="more_info" href="...">
-        <img src="/img/more_info.png" alt="more info"></img>
+        <img src="/img/moreInfo.png" alt="more info"></img>
       </a>
     </div>
   );
 }
 
-export default CarteCampagne;
+export default CampaignCard;

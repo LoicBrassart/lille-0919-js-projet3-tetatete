@@ -1,6 +1,6 @@
 @import "./../../index.scss";
 
-.carte_campagne {
+.campaignCard {
   width: 600px;
   border: 5px solid $mainBrandColor;
   position: relative;
@@ -25,7 +25,7 @@
     top: 230px;
   }
 
-  .description_campagne {
+  .campaignDescription {
     font-family: arial;
     text-align: right;
     margin: 10px;
