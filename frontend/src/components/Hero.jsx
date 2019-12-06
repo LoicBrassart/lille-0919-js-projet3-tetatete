@@ -3,10 +3,12 @@ import "./styles/Hero.scss";
 
 function Hero() {
   return (
-    <img
-      src="https://via.placeholder.com/2500x600?text=Insert+Image"
-      alt="image hero"
-    />
+    <div className="Hero">
+      <img
+        src="https://via.placeholder.com/2500x600?text=Insert+Image"
+        alt="image hero"
+      />
+    </div>
   );
 }
 
