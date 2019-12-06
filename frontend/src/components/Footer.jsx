@@ -3,21 +3,21 @@ import "./styles/Footer.scss";
 
 function Footer() {
   return (
-    <div id="footerContainer">
-      <div id="leftContainer">
+    <div className="Footer">
+      <div className="leftContainer">
         <img src="" alt="logo site" />
       </div>
-      <div id="midContainer">
+      <div className="midContainer">
         <p>Comment ça marche</p>
         <p>La charte étique</p>
         <p>Les mentions légales et CGU</p>
       </div>
-      <div id="rightContainer">
+      <div className="rightContainer">
         <p>Rejoigner-nous sur :</p>
-        <div id="resLogo">
-          <img src="" alt="Fcb" />
-          <img src="" alt="Twitter" />
-          <img src="" alt="Insta" />
+        <div className="resLogo">
+          <img src="img/fcb_logo.svg" alt="Fcb" />
+          <img src="img/twitter_logo.svg" alt="Twitter" />
+          <img src="img/insta_logo.svg" alt="Insta" />
         </div>
       </div>
     </div>
