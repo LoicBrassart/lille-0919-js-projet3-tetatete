@@ -1,5 +1,7 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
+
+const { siteTitle } = require("./conf.js");
 
 function App() {
   return <div className="App"></div>;
