@@ -1,73 +1,145 @@
 @import "./../../index.scss";
 
-nav {
-  background-color: $mainBrandColor;
-  height: 7vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: $lightFontColor;
-
-  .navbarContainer {
+.TopBar {
+  nav {
+    background-color: $mainBrandColor;
+    height: 7vh;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 90vw;
-    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: $lightFontColor;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
 
-    margin: auto;
-
-    .logoAndTitle {
+    .navbarContainer {
       display: flex;
       flex-direction: row;
-      align-items: center;
       justify-content: space-between;
-      width: 13vw;
-      p {
-        font-size: $h2FontSize;
-      }
-      h1 {
-        font-size: $h1FontSize;
-        margin-left: 10%;
-      }
-    }
+      width: 90vw;
+      height: 100%;
 
-    .menu {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      width: 35vw;
-      margin-right: 15vh;
-      p {
-        margin-right: 4%;
+      margin: auto;
+
+      .logoAndTitle {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 13vw;
+        p {
+          font-size: $h2FontSize;
+        }
+        h1 {
+          font-size: $h1FontSize;
+          margin-left: 10%;
+        }
+      }
+
+      .menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 35vw;
+        margin-right: 15vh;
+        p {
+          margin-right: 4%;
+        }
       }
     }
-  }
-  .mobileNavbar {
-    display: none;
+    .mobileNavbar {
+      display: none;
+      .burger {
+        background-color: $darkBackgroundAlpha;
+        border-radius: 5px;
+        position: relative;
+        width: 34px;
+        height: 32px;
+        padding-top: 14px;
+        z-index: 2;
+        span {
+          display: block;
+          height: 4px;
+          width: 26px;
+          background-color: $backgroundColor;
+          margin: 0 auto;
+          transition: all 0.3s;
+          &:before,
+          &:after {
+            content: "";
+            display: block;
+            width: 26px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: $backgroundColor;
+            transition: all 0.3s;
+          }
+          &:before {
+            position: absolute;
+            top: 5px;
+          }
+          &:after {
+            position: absolute;
+            bottom: 5px;
+          }
+        }
+        .isCrossed {
+          background-color: transparent;
+          &:before {
+            transform-origin: top left;
+            transform: rotate(45deg);
+            top: 6px;
+            margin-left: 5px;
+          }
+          &:after {
+            transform-origin: bottom left;
+            transform: rotate(-45deg);
+            bottom: 5px;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
   }
 }
 
+.menuMobile {
+  padding-top: 10px;
+  position: absolute;
+  top: 50px;
+  z-index: 0;
+  width: 100%;
+  height: 100vh;
+  transform: translateY(-100%);
+  transition: all 0.5s;
+}
+.isOpen {
+  transform: translateX(0);
+  background-color: $mainBrandColorAlpha;
+}
+
 @media only screen and (max-width: 1100px) {
-  nav {
-    .navbarContainer {
-      display: none;
-    }
-    .mobileNavbar {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-      width: 95%;
-      margin: auto;
-      p {
-        font-size: $h2FontSize;
+  .TopBar {
+    nav {
+      .navbarContainer {
+        display: none;
       }
-      img {
-        width: 40px;
-        height: 40px;
+      .mobileNavbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 95%;
+        margin: auto;
+        p {
+          font-size: $h2FontSize;
+        }
+        img {
+          width: 40px;
+          height: 40px;
+        }
       }
     }
   }
