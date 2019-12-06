@@ -1,20 +1,29 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./styles/Navbar.scss";
 
 function Navbar() {
   return (
     <nav>
       <div className="navbarContainer">
-        <div className="logoAndTitle">
+        <NavLink className="logoAndTitle" exact to="/">
           <p>tttt</p>
           <h1>TETATETE</h1>
-        </div>
+        </NavLink>
 
         <div className="menu">
-          <p>Rencontres</p>
-          <p>Ambassadeurs</p>
-          <p>Causes soutenues</p>
-          <p>Blog</p>
+          <NavLink activeClassName="active" to="/meetings">
+            Rencontres
+          </NavLink>
+          <NavLink activeClassName="active" to="/ambassadors">
+            Ambassadeurs
+          </NavLink>
+          <NavLink activeClassName="active" to="/causes">
+            Causes soutenues
+          </NavLink>
+          <NavLink activeClassName="active" to="/blog">
+            Blog
+          </NavLink>
         </div>
       </div>
 
