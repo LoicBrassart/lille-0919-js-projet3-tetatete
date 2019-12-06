@@ -21,7 +21,7 @@ function Navbar() {
       <div className="mobileNavbar">
         <p>tttt</p>
         <h1>TETATETE</h1>
-        <input className="burger" type="checkbox" />
+        <img src="./img/burger-icon.png" alt="burger-icon" />
       </div>
     </nav>
   );
