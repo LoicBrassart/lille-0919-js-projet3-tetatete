@@ -1,0 +1,30 @@
+@import "../../index.scss";
+@import "../../reset.scss";
+
+#article {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 100px;
+  justify-content: space-around;
+}
+
+.box {
+  border-radius: 2px;
+  height: 100%;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid $mainBrandColor;
+  text-align: justify;
+}
+
+#title {
+  text-align: center;
+  color: $mainBrandColor;
+  font-weight: bold;
+}
+
+#readMore {
+  color: $mainBrandColor;
+  text-align: right;
+  padding: 10px;
+}
