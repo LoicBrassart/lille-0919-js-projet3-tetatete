@@ -3,7 +3,7 @@ import "./styles/LearnMore.scss";
 
 export default function LearnMore() {
   return (
-    <div>
+    <div class="LearnMore">
       <section id="article">
         <article className="box">
           <p id="title">On parle de nous</p>
