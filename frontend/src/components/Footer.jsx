@@ -14,7 +14,7 @@ function Footer() {
       </div>
       <div className="rightContainer">
         <p>Rejoigner-nous sur :</p>
-        <div className="resLogo">
+        <div className="logoContainer">
           <img src="img/fcb_logo.svg" alt="Fcb" />
           <img src="img/twitter_logo.svg" alt="Twitter" />
           <img src="img/insta_logo.svg" alt="Insta" />
