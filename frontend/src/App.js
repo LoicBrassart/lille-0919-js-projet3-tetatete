@@ -1,10 +1,8 @@
 import React from "react";
-import "./App.css";
-import Profilecard from "./components/ProfileCard"
+import "./App.scss";
 
 function App() {
   return <div className="App">
-    <Profilecard />
   </div>;
 }
 
