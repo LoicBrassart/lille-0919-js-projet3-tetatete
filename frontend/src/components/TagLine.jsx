@@ -2,7 +2,13 @@ import React from "react";
 import "./styles/TagLine.scss";
 
 function TagLine() {
-  return <h1 className="center">Lorem ipsum dolor sit amet</h1>;
+  return (
+    <div className="TagLine">
+      <div className="center">
+        <h1>Lorem ipsum dolor sit amet</h1>
+      </div>
+    </div>
+  );
 }
 
 export default TagLine;
