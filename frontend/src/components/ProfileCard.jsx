@@ -5,15 +5,18 @@ function ProfileCard() {
   return (
     <div className="profileCard">
       <a href="...">
-        <img
-          classname="profileImage"
-          src="https://via.placeholder.com/300x300"
-          alt="..."
-        />
+        <div className="profileContainer">
+          <img
+            classname="profileImage"
+            src="https://via.placeholder.com/300x300"
+            alt="..."
+          />
 
-        <span className="gradientName" />
+          <span className="gradientName" />
 
-        <h2 className="profileName">Lorem Ipsum</h2>
+          <h2 className="profileName">Lorem Ipsum</h2>
+        </div>
+
         <div className="profileTagContainer">
           <img
             className="profileTag"
