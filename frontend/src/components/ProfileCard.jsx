@@ -4,21 +4,24 @@ import "./styles/ProfileCard.scss";
 function ProfileCard() {
   return (
     <div className="profileCard">
-      <img
-        classname="profileImage"
-        src="https://via.placeholder.com/300x300"
-        alt="..."
-      />
+      <a href="...">
+        <img
+          classname="profileImage"
+          src="https://via.placeholder.com/300x300"
+          alt="..."
+        />
 
-      <span className="gradientName" />
+        <span className="gradientName" />
 
-      <h2 className="profileName">Lorem Ipsum</h2>
-
-      <img
-        className="profileTag"
-        src="https://via.placeholder.com/50x50"
-        alt="..."
-      />
+        <h2 className="profileName">Lorem Ipsum</h2>
+        <div className="profileTagContainer">
+          <img
+            className="profileTag"
+            src="https://via.placeholder.com/50x50"
+            alt="..."
+          />
+        </div>
+      </a>
     </div>
   );
 }
