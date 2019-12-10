@@ -4,7 +4,6 @@
   color: $lightFontColor;
   nav {
     background-color: $mainBrandColor;
-    height: 7vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +24,6 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        width: 13vw;
         color: $lightFontColor;
         a {
           font-size: $h2FontSize;
@@ -41,16 +39,40 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        width: 35vw;
-        margin-right: 15vh;
         a {
+          text-align: center;
           color: $lightFontColor;
           font-size: $normalFontSize;
+          padding: 10px 20px 15px 20px;
+          position: relative;
+          &:after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 0%;
+            margin-left: -10%;
+            background-color: transparent;
+            transition: all 0.3s;
+            position: absolute;
+            bottom: 9px;
+            left: 0;
+            margin-left: 10%;
+          }
+          &.active {
+            background-color: $backgroundColor;
+            color: $mainBrandColor;
+            transition: all 0.5s;
+            &:after {
+              width: 80%;
+              background-color: $mainBrandColor;
+            }
+          }
         }
       }
     }
     .mobileNavbar {
       display: none;
+      line-height: 44px;
       .burger {
         background-color: $darkBackgroundAlpha;
         border-radius: 5px;
@@ -103,29 +125,32 @@
       }
     }
   }
-}
-
-.menuMobile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 40px;
-  position: absolute;
-  top: 45px;
-  z-index: 0;
-  width: 100%;
-  height: 100vh;
-  transform: translateY(-100%);
-  transition: all 0.5s;
-  a {
-    color: $lightFontColor;
-    font-size: $bigFontSize;
-    margin-bottom: 5vh;
+  .menuMobile {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 44px;
+    position: absolute;
+    top: 44px;
+    z-index: 0;
+    width: 100%;
+    height: calc(100vh - 44px);
+    transform: translateY(-100%);
+    transition: all 0.5s;
+    a {
+      color: $lightFontColor;
+      font-size: $bigFontSize;
+      margin-bottom: 5vh;
+      border-bottom: solid 2px transparent;
+      &.activeMobile {
+        border-bottom: solid 2px $backgroundColor;
+      }
+    }
   }
-}
-.isOpen {
-  transform: translateX(0);
-  background-color: $mainBrandColorAlpha;
+  .isOpen {
+    transform: translateX(0);
+    background-color: $mainBrandColorAlpha;
+  }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -146,6 +171,9 @@
           font-size: $h2FontSize;
         }
       }
+    }
+    .menuMobile {
+      display: flex;
     }
   }
 }
