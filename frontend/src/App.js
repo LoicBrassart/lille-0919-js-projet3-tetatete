@@ -8,6 +8,8 @@ import Blog from "./pages/Blog";
 import { Switch, Route } from "react-router-dom";
 import "./App.scss";
 
+const { siteTitle } = require("./conf.js");
+
 function App() {
   return (
     <div className="App">
