@@ -2,6 +2,8 @@
 
 * {
   box-sizing: border-box;
+  outline: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header,
@@ -72,6 +74,12 @@ img {
 a {
   text-decoration: none;
   color: $darkFontColor;
+}
+
+button {
+  background: none;
+  padding: 0;
+  border: 0;
 }
 
 /* ------------------------------- GLOBAL:REPETITIVES RULES ------------------------------- */
