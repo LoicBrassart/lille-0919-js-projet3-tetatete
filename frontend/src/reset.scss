@@ -1,7 +1,9 @@
-@import "index.scss";
+@import "./index.scss";
+
 * {
   box-sizing: border-box;
 }
+
 header,
 section,
 footer,
@@ -59,13 +61,16 @@ svg {
   max-width: 100%;
   height: auto;
 }
+
 img {
   display: block;
 }
+
 a {
   text-decoration: none;
   color: $darkFontColor;
 }
+
 button {
   background: none;
   padding: 0;
