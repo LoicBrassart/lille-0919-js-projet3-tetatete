@@ -4,7 +4,7 @@ import "./styles/Navbar.scss";
 import { siteTitle } from "../conf.js";
 
 function Navbar() {
-  const [IsMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className="TopBar">
       <nav>
@@ -36,7 +36,7 @@ function Navbar() {
           <div
             className="burger"
             onClick={() => {
-              setOpen(!isMenuOpen);
+              setIsMenuOpen(!isMenuOpen);
             }}
           >
             <span className={isMenuOpen ? "isCrossed" : ""}></span>
@@ -45,16 +45,40 @@ function Navbar() {
       </nav>
 
       <div className={isMenuOpen ? "menuMobile isOpen" : "menuMobile"}>
-        <NavLink activeClassName="active" to="/meetings">
+        <NavLink
+          activeClassName="activeMobile"
+          to="/meetings"
+          onClick={() => {
+            setIsMenuOpen(!isMenuOpen);
+          }}
+        >
           Rencontres
         </NavLink>
-        <NavLink activeClassName="active" to="/ambassadors">
+        <NavLink
+          activeClassName="activeMobile"
+          to="/ambassadors"
+          onClick={() => {
+            setIsMenuOpen(!isMenuOpen);
+          }}
+        >
           Ambassadeurs
         </NavLink>
-        <NavLink activeClassName="active" to="/causes">
+        <NavLink
+          activeClassName="activeMobile"
+          to="/causes"
+          onClick={() => {
+            setIsMenuOpen(!isMenuOpen);
+          }}
+        >
           Causes soutenues
         </NavLink>
-        <NavLink activeClassName="active" to="/blog">
+        <NavLink
+          activeClassName="activeMobile"
+          to="/blog"
+          onClick={() => {
+            setIsMenuOpen(!isMenuOpen);
+          }}
+        >
           Blog
         </NavLink>
       </div>
