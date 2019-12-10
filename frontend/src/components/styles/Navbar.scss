@@ -1,0 +1,180 @@
+@import "./../../index.scss";
+
+.TopBar {
+  color: $lightFontColor;
+  box-shadow: $boxShadow;
+  nav {
+    background-color: $mainBrandColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    width: 100%;
+    border-bottom: solid 0px rgba(0, 0, 0, 0.2);
+
+    .navbarContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 90vw;
+      height: 100%;
+      margin: auto;
+      border-bottom: 1px solid $mainBrandColor;
+
+      .logoAndTitle {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        color: $lightFontColor;
+        a {
+          font-size: $h2FontSize;
+        }
+        h1 {
+          font-size: $h1FontSize;
+          margin-left: 10%;
+        }
+      }
+
+      .menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        a {
+          text-align: center;
+          color: $lightFontColor;
+          font-size: $normalFontSize;
+          padding: 10px 20px 15px 20px;
+          position: relative;
+          &:after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 0%;
+            background-color: transparent;
+            transition: all 0.3s;
+            position: absolute;
+            bottom: 9px;
+            left: 0;
+            margin-left: 10%;
+          }
+          &.active {
+            background-color: $backgroundColor;
+            color: $mainBrandColor;
+            transition: all 0.5s;
+            &:after {
+              width: 80%;
+              background-color: $mainBrandColor;
+            }
+          }
+        }
+      }
+    }
+    .mobileNavbar {
+      display: none;
+      line-height: 44px;
+      .burger {
+        background-color: $darkBackgroundAlpha;
+        border-radius: 5px;
+        position: relative;
+        width: 34px;
+        height: 32px;
+        padding-top: 14px;
+        z-index: 2;
+        span {
+          display: block;
+          height: 4px;
+          width: 26px;
+          background-color: $backgroundColor;
+          margin: 0 auto;
+          transition: all 0.3s;
+          &:before,
+          &:after {
+            content: "";
+            display: block;
+            width: 26px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: $backgroundColor;
+            transition: all 0.3s;
+          }
+          &:before {
+            position: absolute;
+            top: 5px;
+          }
+          &:after {
+            position: absolute;
+            bottom: 5px;
+          }
+        }
+        .isCrossed {
+          background-color: transparent;
+          &:before {
+            transform-origin: top left;
+            transform: rotate(45deg);
+            top: 6px;
+            margin-left: 5px;
+          }
+          &:after {
+            transform-origin: bottom left;
+            transform: rotate(-45deg);
+            bottom: 5px;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+  .menuMobile {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 45px;
+    position: absolute;
+    top: 45px;
+    z-index: 0;
+    width: 100%;
+    height: calc(100vh - 44px);
+    transform: translateY(-100%);
+    transition: all 0.5s;
+    a {
+      color: $lightFontColor;
+      font-size: $bigFontSize;
+      margin-bottom: 5vh;
+      border-bottom: solid 2px transparent;
+      &.activeMobile {
+        border-bottom: solid 2px $backgroundColor;
+      }
+    }
+  }
+  .isOpen {
+    transform: translateX(0);
+    background-color: $mainBrandColorAlpha;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .TopBar {
+    nav {
+      .navbarContainer {
+        display: none;
+      }
+      .mobileNavbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 95%;
+        margin: auto;
+        a {
+          font-size: $h2FontSize;
+        }
+      }
+    }
+    .menuMobile {
+      display: flex;
+    }
+  }
+}
