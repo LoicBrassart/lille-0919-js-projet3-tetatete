@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles/FilterTab.scss";
-import { tsPropertySignature } from "@babel/types";
 
 function FilterTab(props) {
   return (
