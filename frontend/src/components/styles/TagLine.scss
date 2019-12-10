@@ -1,0 +1,12 @@
+@import "../../index.scss";
+
+.TagLine {
+  .center {
+    h1 {
+      text-align: center;
+      color: $mainBrandColor;
+      font-size: $h1FontSize;
+      margin: 20px;
+    }
+  }
+}
