@@ -1,0 +1,70 @@
+@import "../../index.scss";
+
+.Footer {
+  width: 100%;
+  background-color: $mainBrandColor;
+  color: $lightFontColor;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0px 0px;
+  box-shadow: $boxShadow;
+  .leftContainer {
+    width: 30%;
+    height: 40%;
+    justify-content: space-around;
+    .Logo {
+      display: inline-block;
+    }
+    p {
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    span {
+      font-size: $h2FontSize;
+      font-weight: bold;
+    }
+    ul {
+      list-style-type: none;
+      font-size: 0;
+      li {
+        display: inline-block;
+        font-size: $normalFontSize;
+        margin-right: 10px;
+        img {
+          border-radius: 20px;
+        }
+      }
+    }
+  }
+  .midContainer {
+    width: 30%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    p {
+      margin-bottom: 20px;
+    }
+  }
+  .rightContainer {
+    width: 30%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    p {
+      margin-bottom: 10px;
+    }
+
+    .logoContainer {
+      display: flex;
+      img {
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
