@@ -1,5 +1,5 @@
 .infoProfilePage {
-  width: 1300px;
+  width: 80%;
   margin: 150px;
   display: flex;
   flex-direction: row;
@@ -25,10 +25,10 @@
     }
     .profileTag {
       display: flex;
-    }
-    .profileTag img {
-      margin-left: 10px;
-      border-radius: 50px;
+      img {
+        margin-left: 10px;
+        border-radius: 50px;
+      }
     }
   }
 }
