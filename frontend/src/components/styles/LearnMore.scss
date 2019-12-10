@@ -1,0 +1,38 @@
+@import "../../index.scss";
+
+.LearnMore {
+  margin-top: 60px;
+  padding: 0 100px 60px;
+  hr {
+    margin-bottom: 50px;
+  }
+  #article {
+    display: flex;
+    //grid-template-columns: 1fr 1fr 1fr;
+    //margin: 100px;
+    justify-content: space-around;
+    .box {
+      border-radius: 2px;
+      height: 100%;
+      width: 300px;
+      padding: 20px;
+      border: 1px solid $mainBrandColor;
+      text-align: justify;
+      box-shadow: $boxShadow;
+      #title {
+        text-align: center;
+        color: $mainBrandColor;
+        font-weight: bold;
+      }
+      hr {
+        margin-bottom: 20px;
+      }
+      #readMore {
+        color: $mainBrandColor;
+        text-align: right;
+        padding: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}
