@@ -99,3 +99,23 @@ button {
   width: 960px;
   margin: 0 auto;
 }
+
+.primaryButton {
+  padding: 20px 40px;
+  background-color: $mainBrandColor;
+  font-weight: 600;
+  min-width: 60px;
+  border: 1px solid white;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.secondaryButton {
+  padding: 20px 40px;
+  background-color: $mainBrandColor;
+  font-weight: 600;
+  min-width: 60px;
+  border: 1px solid white;
+  font-size: 25px;
+  cursor: pointer;
+}
