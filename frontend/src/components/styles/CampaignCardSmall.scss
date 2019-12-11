@@ -1,0 +1,57 @@
+@import "./../../index.scss";
+
+.bottomCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.campaignCard {
+  width: 30%;
+  border: 3px solid $mainBrandColor;
+  position: relative;
+  margin: 20px 10px;
+  box-shadow: $boxShadow;
+  .placeholder {
+    height: 300p;
+  }
+
+  h2 {
+    font-family: arial;
+    font-size: 42px;
+    text-align: right;
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 150px;
+  }
+
+  .timer {
+    color: white;
+    font-family: arial;
+    font-size: 36px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 230px;
+  }
+
+  .campaignDescription {
+    font-family: arial;
+    text-align: right;
+    margin: 10px;
+  }
+  .more_info {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .more_info img {
+    width: 5%;
+    margin: 10px;
+    transform: scale3d(1, 1, 1);
+    transition: all 0.3s;
+  }
+  .more_info img:hover {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+}

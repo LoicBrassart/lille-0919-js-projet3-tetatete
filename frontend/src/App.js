@@ -7,6 +7,7 @@ import Causes from "./pages/Causes";
 import Blog from "./pages/Blog";
 import CausePage from "./pages/CausePage";
 import Footer from "./components/Footer";
+import AmbassadorPage from "./pages/AmbassadorPage";
 import { Switch, Route } from "react-router-dom";
 import "./App.scss";
 
