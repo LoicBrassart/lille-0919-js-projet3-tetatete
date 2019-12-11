@@ -5,7 +5,10 @@ import Meetings from "./pages/Meetings";
 import Ambassadors from "./pages/Ambassadors.jsx";
 import Causes from "./pages/Causes";
 import Blog from "./pages/Blog";
+import CausePage from "./pages/CausePage";
 import Footer from "./components/Footer";
+import Campaign from './pages/Campaign';
+import AmbassadorPage from "./pages/AmbassadorPage";
 import { Switch, Route } from "react-router-dom";
 import "./App.scss";
 
@@ -23,6 +26,8 @@ function App() {
         <Route path="/ambassadors" component={Ambassadors} />
         <Route path="/causes" component={Causes} />
         <Route path="/blog" component={Blog} />
+        <Route path="/campaign/:id" component={Campaign} />
+        <Route path="/causepage" component={CausePage} />
       </Switch>
       <Footer />
     </div>
