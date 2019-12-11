@@ -1,0 +1,35 @@
+@import "../../index.scss";
+
+.causepage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 50px auto;
+  .elementscontainer {
+    margin: 0 0 0 50px;
+    button {
+      background-color: #d4d4d4;
+      font-size: $h3FontSize;
+      margin: 20px 0 0 0;
+      padding: 10px;
+    }
+    .titleandlogo {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      ul {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+
+        .profileTag {
+          margin: 10px;
+          border-radius: 50px;
+        }
+      }
+    }
+  }
+}

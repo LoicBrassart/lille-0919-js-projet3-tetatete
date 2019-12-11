@@ -5,6 +5,7 @@ import Meetings from "./pages/Meetings";
 import Ambassadors from "./pages/Ambassadors.jsx";
 import Causes from "./pages/Causes";
 import Blog from "./pages/Blog";
+import CausePage from "./pages/CausePage";
 import Footer from "./components/Footer";
 import AmbassadorPage from "./pages/AmbassadorPage";
 import { Switch, Route } from "react-router-dom";
@@ -24,7 +25,7 @@ function App() {
         <Route path="/ambassadors" component={Ambassadors} />
         <Route path="/causes" component={Causes} />
         <Route path="/blog" component={Blog} />
-        <Route path="/ambassadorpage" component={AmbassadorPage} />
+        <Route path="/causepage" component={CausePage} />
       </Switch>
       <Footer />
     </div>
