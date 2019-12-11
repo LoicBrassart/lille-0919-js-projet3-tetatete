@@ -2,4 +2,8 @@
 
 .CausesContainer {
   min-height: calc(100vh - 300px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
