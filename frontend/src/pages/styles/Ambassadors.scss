@@ -2,4 +2,16 @@
 
 .AmbassadorsContainer {
   min-height: calc(100vh - 300px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+// ---------------- MEDIA QUERIES 960px --------------
+@media screen and (max-width: 960px) {
+  .center {
+    width: 100%;
+    margin: 0;
+  }
 }
