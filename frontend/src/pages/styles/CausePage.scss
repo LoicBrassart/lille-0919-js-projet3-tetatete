@@ -1,0 +1,21 @@
+.causepage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 50px auto;
+  .titleandlogo {
+    display: flex;
+    flex-direction: row;
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style-type: none;
+
+      .profileTag {
+        margin: 10px;
+        border-radius: 50px;
+      }
+    }
+  }
+}
