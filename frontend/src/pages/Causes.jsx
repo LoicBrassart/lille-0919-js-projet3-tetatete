@@ -7,7 +7,7 @@ function Causes() {
   return (
     <div className="Causes">
       <FilterTab filterType="Causes" />
-      <div className="CausesContainer">
+      <div className="CausesContainer center">
         <ProfileCard />
         <ProfileCard />
         <ProfileCard />
