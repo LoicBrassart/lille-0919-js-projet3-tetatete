@@ -12,9 +12,7 @@ function CampaignCardSmall() {
       <h2 className="campaignTitle">Lorem ipsum </h2>
       <p className="campaignDescription">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-        fugit, commodi eaque quod voluptatem labore, et, sapiente nisi inventore
-        qui velit laboriosam expedita quasi veniam impedit vel tenetur ipsam
-        earum.
+        fugit, commodi eaque quod voluptatem labore
       </p>
       <a className="more_info" href="...">
         <img src="/img/moreInfo.png" alt="more info"></img>
