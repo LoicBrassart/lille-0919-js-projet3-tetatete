@@ -23,6 +23,7 @@ function App() {
         <Route path="/ambassadors" component={Ambassadors} />
         <Route path="/causes" component={Causes} />
         <Route path="/blog" component={Blog} />
+        <Route path="/campaign/:id" component={campaign} />
       </Switch>
       <Footer />
     </div>
