@@ -7,13 +7,14 @@ function Ambassadors() {
   return (
     <div className="Ambassadors">
       <FilterTab filterType="Ambassadeurs" />
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
-      <div className="AmbassadorsContainer"></div>
+      <div className="AmbassadorsContainer">
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+      </div>
     </div>
   );
 }

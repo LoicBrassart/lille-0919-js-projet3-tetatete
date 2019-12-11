@@ -7,13 +7,14 @@ function Causes() {
   return (
     <div className="Causes">
       <FilterTab filterType="Causes" />
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
-      <div className="CausesContainer"></div>
+      <div className="CausesContainer">
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+      </div>
     </div>
   );
 }
