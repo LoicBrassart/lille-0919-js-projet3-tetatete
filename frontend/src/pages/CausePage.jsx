@@ -6,7 +6,7 @@ function CausePage() {
   return (
     <div className="causepage">
       <ProfileCardBig />
-      <div>
+      <div className="elementscontainer">
         <div className="titleandlogo">
           <h3>Association #01</h3>
           <ul>
@@ -40,7 +40,7 @@ function CausePage() {
           inventore qui velit laboriosam expedita quasi veniam impedit vel
           tenetur ipsam earum.
         </p>
-        <button>Site Web</button>
+        <button>site web</button>
       </div>
     </div>
   );
