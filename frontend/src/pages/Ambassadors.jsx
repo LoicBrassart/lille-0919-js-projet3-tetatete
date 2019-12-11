@@ -7,7 +7,8 @@ function Ambassadors() {
   return (
     <div className="Ambassadors">
       <FilterTab filterType="Ambassadeurs" />
-      <div className="AmbassadorsContainer">
+      <div className="AmbassadorsContainer center">
+        <ProfileCard />
         <ProfileCard />
         <ProfileCard />
         <ProfileCard />
