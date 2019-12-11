@@ -5,7 +5,7 @@ function ProfileCardBig() {
     <div>
       <img
         classname="profileImage"
-        src="https://via.placeholder.com/500x500"
+        src="https://via.placeholder.com/600x600"
         alt="..."
       />
     </div>
