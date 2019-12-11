@@ -11,11 +11,13 @@
     //grid-template-columns: 1fr 1fr 1fr;
     //margin: 100px;
     justify-content: space-around;
+
     .box {
       border-radius: 2px;
       height: 100%;
       width: 300px;
       padding: 20px;
+      margin: 0 10px;
       border: 1px solid $mainBrandColor;
       text-align: justify;
       box-shadow: $boxShadow;

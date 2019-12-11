@@ -8,12 +8,14 @@
   justify-content: space-around;
   padding: 20px 0px 0px;
   box-shadow: $boxShadow;
+  position: relative;
   .leftContainer {
     width: 30%;
     height: 40%;
     justify-content: space-around;
     .Logo {
       display: inline-block;
+      margin-right: 10px;
     }
     p {
       margin-bottom: 6px;
@@ -32,6 +34,7 @@
         margin-right: 10px;
         img {
           border-radius: 20px;
+          cursor: pointer;
         }
       }
     }
@@ -45,6 +48,7 @@
     align-items: center;
     p {
       margin-bottom: 20px;
+      cursor: pointer;
     }
   }
   .rightContainer {

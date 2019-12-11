@@ -43,9 +43,10 @@
   .more_info img {
     width: 5%;
     margin: 10px;
-    transform: scale(0.9);
+    transform: scale3d(1, 1, 1);
+    transition: all 0.3s;
   }
   .more_info img:hover {
-    transform: scale(1);
+    transform: scale3d(1.1, 1.1, 1.1);
   }
 }

@@ -11,7 +11,7 @@ function Navbar() {
         <div className="navbarContainer">
           <NavLink className="logoAndTitle" exact to="/">
             <p>tttt</p>
-            <h1>{siteTitle}</h1>
+            <p>{siteTitle}</p>
           </NavLink>
 
           <div className="menu">
@@ -31,8 +31,12 @@ function Navbar() {
         </div>
 
         <div className="mobileNavbar">
-          <p>tttt</p>
-          <h1>{siteTitle}</h1>
+          <NavLink exact to="/">
+            tttt
+          </NavLink>
+          <NavLink exact to="/">
+            {siteTitle}
+          </NavLink>
           <div
             className="burger"
             onClick={() => {
