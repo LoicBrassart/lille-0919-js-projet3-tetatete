@@ -1,9 +1,9 @@
 import React from "react";
 import CampaignCardSmall from "../components/CampaignCardSmall";
 
-function PageAmbassador() {
+function AmbassadorPage() {
   return (
-    <div>
+    <div className="AmbassadorPage">
       <div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -22,4 +22,4 @@ function PageAmbassador() {
   );
 }
 
-export default PageAmbassador;
+export default AmbassadorPage;
