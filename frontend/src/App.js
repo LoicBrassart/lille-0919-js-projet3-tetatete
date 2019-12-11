@@ -28,6 +28,7 @@ function App() {
         <Route path="/blog" component={Blog} />
         <Route path="/campaign/:id" component={Campaign} />
         <Route path="/causepage" component={CausePage} />
+        <Route path="/ambassadorpage" component={AmbassadorPage} />
       </Switch>
       <Footer />
     </div>
