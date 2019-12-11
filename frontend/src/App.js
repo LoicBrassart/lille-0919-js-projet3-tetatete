@@ -26,6 +26,7 @@ function App() {
         <Route path="/causes" component={Causes} />
         <Route path="/blog" component={Blog} />
         <Route path="/causepage" component={CausePage} />
+        <Route path="/ambassadorpage" component={AmbassadorPage} />
       </Switch>
       <Footer />
     </div>
