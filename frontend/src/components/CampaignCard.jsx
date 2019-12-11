@@ -5,7 +5,7 @@ import "./styles/CampaignCard.scss";
 function CampaignCard() {
   return (
     <div className="campaignCard">
-      <Link to={`/campaign/nom%20de%20la%20campagne`}>
+      <Link to={`/campaign/nom-de-la-campagne`}>
         <img
           className="placeholder"
           src="/img/placeholderCampaignCard.png"
