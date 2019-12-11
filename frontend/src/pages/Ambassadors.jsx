@@ -9,15 +9,30 @@ function Ambassadors() {
   return (
     <div className="Ambassadors">
       <FilterTab filterType="Ambassadeurs" />
-      <div className="AmbassadorsContainer">
+      <div className="AmbassadorsContainer center">
         <Link to="/ambassadorpage">
           <ProfileCard />
         </Link>
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
+
+        <Link to="/ambassadorpage">
+          <ProfileCard />
+        </Link>
+
+        <Link to="/ambassadorpage">
+          <ProfileCard />
+        </Link>
+
+        <Link to="/ambassadorpage">
+          <ProfileCard />
+        </Link>
+
+        <Link to="/ambassadorpage">
+          <ProfileCard />
+        </Link>
+
+        <Link to="/ambassadorpage">
+          <ProfileCard />
+        </Link>
       </div>
     </div>
   );
