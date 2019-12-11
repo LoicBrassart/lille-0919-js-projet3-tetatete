@@ -1,14 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import FilterTab from "../components/FilterTab";
-import "./styles/Ambassadors.scss";
 import ProfileCard from "../components/ProfileCard";
+
+import "./styles/Ambassadors.scss";
 
 function Ambassadors() {
   return (
     <div className="Ambassadors">
       <FilterTab filterType="Ambassadeurs" />
       <div className="AmbassadorsContainer">
-        <ProfileCard />
+        <Link to="/ambassadorpage">
+          <ProfileCard />
+        </Link>
         <ProfileCard />
         <ProfileCard />
         <ProfileCard />
