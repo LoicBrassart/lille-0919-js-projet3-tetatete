@@ -8,7 +8,7 @@ function Footer() {
     <div className="Footer">
       <div className="leftContainer">
         {/*<img src="" alt="logo site" />*/}
-        <p className="Logo">tttt</p>
+        <p className="Logo">ttt</p>
         <span>{siteTitle}</span>
         <p>Presse :</p>
         <ul>
@@ -24,9 +24,9 @@ function Footer() {
         </ul>
       </div>
       <div className="midContainer">
-        <p>Comment ça marche</p>
-        <p>La charte étique</p>
-        <p>Les mentions légales et CGU</p>
+        <p>Comment ça marche ?</p>
+        <p>La charte éthique.</p>
+        <p>Les mentions légales et CGU.</p>
       </div>
       <div className="rightContainer">
         <p>Rejoignez-nous sur :</p>

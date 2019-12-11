@@ -15,6 +15,8 @@ function Home() {
         <CampaignCard />
         <CampaignCard />
         <CampaignCard />
+        <CampaignCard />
+        <CampaignCard />
       </div>
       <LearnMore />
     </div>

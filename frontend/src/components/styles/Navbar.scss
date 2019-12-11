@@ -11,7 +11,7 @@
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 99;
     width: 100%;
     border-bottom: solid 0px rgba(0, 0, 0, 0.2);
 
@@ -94,7 +94,7 @@
         width: 34px;
         height: 32px;
         padding-top: 14px;
-        z-index: 2;
+        z-index: 100;
         span {
           display: block;
           height: 4px;
@@ -143,12 +143,12 @@
     display: none;
     flex-direction: column;
     align-items: center;
-    padding-top: 45px;
-    position: absolute;
-    top: 44px;
-    z-index: 0;
+    padding-top: 90px;
+    position: fixed;
+    top: 0px;
+    z-index: 98;
     width: 100%;
-    height: calc(100vh - 44px);
+    height: 100vh;
     transform: translateY(-100%);
     transition: all 0.5s;
     a {

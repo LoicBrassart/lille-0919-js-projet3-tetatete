@@ -10,7 +10,7 @@ function Navbar() {
       <nav>
         <div className="navbarContainer">
           <NavLink className="logoAndTitle" exact to="/">
-            <p>tttt</p>
+            <p>ttt</p>
             <p>{siteTitle}</p>
           </NavLink>
 
@@ -32,7 +32,7 @@ function Navbar() {
 
         <div className="mobileNavbar">
           <NavLink exact to="/">
-            tttt
+            ttt
           </NavLink>
           <NavLink exact to="/">
             {siteTitle}

@@ -2,9 +2,10 @@
 
 .profileCard {
   display: inline-block;
-  border: 5px solid $mainBrandColor;
-  margin-bottom: 10px;
+  border: 3px solid $mainBrandColor;
+  margin-bottom: 20px;
   position: relative;
+  box-shadow: $boxShadow;
 
   .profileContainer .profileImage {
     width: 300px;

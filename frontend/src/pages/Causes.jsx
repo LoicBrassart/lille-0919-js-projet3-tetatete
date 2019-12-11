@@ -8,17 +8,32 @@ function Causes() {
   return (
     <div className="Causes">
       <FilterTab filterType="Causes" />
-      <Link to="/causepage">
-        <ProfileCard />
-      </Link>
 
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
-      <ProfileCard />
+      <div className="CausesContainer center">
+        <Link to="/causepage">
+          <ProfileCard />
+        </Link>
 
-      <div className="CausesContainer"></div>
+        <Link to="/causepage">
+          <ProfileCard />
+        </Link>
+
+        <Link to="/causepage">
+          <ProfileCard />
+        </Link>
+
+        <Link to="/causepage">
+          <ProfileCard />
+        </Link>
+
+        <Link to="/causepage">
+          <ProfileCard />
+        </Link>
+
+        <Link to="/causepage">
+          <ProfileCard />
+        </Link>
+      </div>
     </div>
   );
 }
