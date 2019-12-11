@@ -2,10 +2,10 @@ import React from "react";
 
 function ProfileCardBig() {
   return (
-    <div>
+    <div className="ProfileCardBig">
       <img
         classname="profileImage"
-        src="https://via.placeholder.com/600x600"
+        src="https://via.placeholder.com/620x620"
         alt="..."
       />
     </div>
