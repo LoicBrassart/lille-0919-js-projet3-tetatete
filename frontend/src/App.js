@@ -6,9 +6,7 @@ const { siteTitle } = require("./conf.js");
 
 function App() {
   return (
-    <div className="App">
-      <FilterTab />
-    </div>
+    <div className="App"></div>
   );
 }
 
