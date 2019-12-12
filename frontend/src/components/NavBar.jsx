@@ -3,108 +3,101 @@ import { scaleRotate as BurgerMenu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
 import "./styles/NavBar.scss";
 
-class NavBar extends React.Component {
-  showSettings(event) {
-    event.preventDefault();
-  }
+function NavBar() {
+  return (
+    <header className="NavBar">
+      <nav className="desktopNav">
+        <NavLink className="logo" activeClassName="active" exact to="/">
+          TooTasty
+          <img src="" alt="" />
+        </NavLink>
 
-  render() {
-    // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
-    return (
-      <header className="NavBar">
-        <nav className="desktopNav">
-          <NavLink className="logo" activeClassName="active" exact to="/">
-            TooTasty
-            <img src="" alt="" />
-          </NavLink>
+        <ul className="desktopMenu">
+          <li>
+            <NavLink
+              id="meetings"
+              className="menu-item"
+              activeClassName="active"
+              to="/meetings"
+            >
+              Rencontres
+            </NavLink>
+          </li>
 
-          <ul className="desktopMenu">
-            <li>
-              <NavLink
-                id="meetings"
-                className="menu-item"
-                activeClassName="active"
-                to="/meetings"
-              >
-                Rencontres
-              </NavLink>
-            </li>
+          <li>
+            <NavLink
+              id="meetings"
+              className="menu-item"
+              activeClassName="active"
+              to="/ambassadors"
+            >
+              Ambassadors
+            </NavLink>
+          </li>
 
-            <li>
-              <NavLink
-                id="meetings"
-                className="menu-item"
-                activeClassName="active"
-                to="/ambassadors"
-              >
-                Ambassadors
-              </NavLink>
-            </li>
+          <li>
+            <NavLink
+              id="meetings"
+              className="menu-item"
+              activeClassName="active"
+              to="/causes"
+            >
+              Causes soutenues
+            </NavLink>
+          </li>
 
-            <li>
-              <NavLink
-                id="meetings"
-                className="menu-item"
-                activeClassName="active"
-                to="/causes"
-              >
-                Causes soutenues
-              </NavLink>
-            </li>
+          <li>
+            <NavLink
+              id="meetings"
+              className="menu-item"
+              activeClassName="active"
+              to="/blog"
+            >
+              Blog
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
 
-            <li>
-              <NavLink
-                id="meetings"
-                className="menu-item"
-                activeClassName="active"
-                to="/blog"
-              >
-                Blog
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+      <BurgerMenu width={320}>
+        <NavLink
+          id="meetings"
+          className="menu-item"
+          activeClassName="bm-active"
+          to="/meetings"
+        >
+          Rencontres
+        </NavLink>
 
-        <BurgerMenu width={320}>
-          <NavLink
-            id="meetings"
-            className="menu-item"
-            activeClassName="bm-active"
-            to="/meetings"
-          >
-            Rencontres
-          </NavLink>
+        <NavLink
+          id="meetings"
+          className="menu-item"
+          activeClassName="bm-active"
+          to="/ambassadors"
+        >
+          Ambassadors
+        </NavLink>
 
-          <NavLink
-            id="meetings"
-            className="menu-item"
-            activeClassName="bm-active"
-            to="/ambassadors"
-          >
-            Ambassadors
-          </NavLink>
+        <NavLink
+          id="meetings"
+          className="menu-item"
+          activeClassName="bm-active"
+          to="/causes"
+        >
+          Causes soutenues
+        </NavLink>
 
-          <NavLink
-            id="meetings"
-            className="menu-item"
-            activeClassName="bm-active"
-            to="/causes"
-          >
-            Causes soutenues
-          </NavLink>
-
-          <NavLink
-            id="meetings"
-            className="menu-item"
-            activeClassName="bm-active"
-            to="/blog"
-          >
-            Blog
-          </NavLink>
-        </BurgerMenu>
-      </header>
-    );
-  }
+        <NavLink
+          id="meetings"
+          className="menu-item"
+          activeClassName="bm-active"
+          to="/blog"
+        >
+          Blog
+        </NavLink>
+      </BurgerMenu>
+    </header>
+  );
 }
 
 export default NavBar;
