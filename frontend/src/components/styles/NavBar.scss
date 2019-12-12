@@ -1,1 +1,195 @@
 @import "./../../index.scss";
+
+/* ---------- DESKTOP MENU ---------- */
+
+.NavBar {
+  background-color: $mainBrandColor;
+  //border-bottom: solid 1px $mainBrandColor;
+  position: sticky;
+  top: 0;
+  .desktopNav {
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      color: $lightFontColor;
+      padding: 13px 20px;
+    }
+
+    .desktopMenu {
+      font-size: 0;
+      li {
+        font-size: $normalFontSize;
+        display: inline-block;
+        a {
+          display: block;
+          padding: 13px 20px;
+          position: relative;
+          color: $lightFontColor;
+          font-size: $normalFontSize;
+          transition: all 0.4s;
+
+          &.active {
+            color: $mainBrandColor;
+            background-color: $backgroundColor;
+            &:after {
+              width: 80%;
+            }
+          }
+
+          &:after {
+            content: "";
+            display: block;
+            width: 0%;
+            height: 2px;
+            background-color: $mainBrandColor;
+            position: absolute;
+            left: 10%;
+            bottom: 5px;
+            transition: all 0.4s;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ---------- BURGER MENU ---------- */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  right: 20px;
+  top: 7px;
+  display: none;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: $backgroundColor;
+  transition: all 0.3s;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: $mainBrandColor;
+}
+
+/*
+  Sidebar wrapper styles
+  Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+  */
+.bm-menu-wrap {
+  display: none;
+  position: fixed;
+  top: 45px;
+  height: 100%;
+  width: 320px;
+  &:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: $mainBrandColor;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: $backgroundColor;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  position: relative;
+}
+
+/* Morph shape necessary with bubble or elastic */
+/*.bm-morph-shape {
+  fill: #373a47;
+}*/
+
+/* Wrapper for item list */
+.bm-item-list {
+  padding: 0.8em;
+}
+
+/* Individual item */
+/*.bm-item {
+  margin-bottom: 20px;
+  display: inline-block;
+  color: $mainBrandColor;
+  border-bottom: solid 2px transparent;
+}*/
+
+.bm-item {
+  display: block;
+  padding: 13px 20px;
+  position: relative;
+  color: $mainBrandColor;
+  font-size: $normalFontSize;
+  transition: all 0.4s;
+
+  &.bm-active {
+    color: $mainBrandColor;
+    background-color: $backgroundColor;
+    &:after {
+      width: 150px;
+    }
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: $mainBrandColor;
+    position: absolute;
+    bottom: 5px;
+    transition: all 0.4s;
+  }
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Active item style for burger */
+/*.bm-active {
+  border-bottom: solid 2px $mainBrandColor;
+}*/
+
+@media screen and (max-width: 960px) {
+  .center {
+    width: 100%;
+    margin: 0;
+  }
+  .NavBar {
+    .desktopMenu {
+      display: none;
+    }
+  }
+  .bm-burger-button {
+    display: block;
+  }
+  .bm-menu-wrap {
+    display: block;
+  }
+}
