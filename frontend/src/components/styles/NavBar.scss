@@ -4,7 +4,6 @@
 
 .NavBar {
   background-color: $mainBrandColor;
-  //border-bottom: solid 1px $mainBrandColor;
   position: sticky;
   top: 0;
   .desktopNav {
@@ -75,10 +74,6 @@
   transition: all 0.3s;
 }
 
-/* Color/shape of burger icon bars on hover*/
-.bm-burger-bars-hover {
-}
-
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
   height: 24px;
@@ -120,24 +115,12 @@
   position: relative;
 }
 
-/* Morph shape necessary with bubble or elastic */
-/*.bm-morph-shape {
-  fill: #373a47;
-}*/
-
 /* Wrapper for item list */
 .bm-item-list {
   padding: 0.8em;
 }
 
 /* Individual item */
-/*.bm-item {
-  margin-bottom: 20px;
-  display: inline-block;
-  color: $mainBrandColor;
-  border-bottom: solid 2px transparent;
-}*/
-
 .bm-item {
   display: block;
   padding: 13px 20px;
@@ -170,11 +153,6 @@
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
-
-/* Active item style for burger */
-/*.bm-active {
-  border-bottom: solid 2px $mainBrandColor;
-}*/
 
 @media screen and (max-width: 960px) {
   .center {
