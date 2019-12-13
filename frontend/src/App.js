@@ -1,11 +1,28 @@
 import React from "react";
+import NavBar from "./components/NavBar";
+import { Switch, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Meetings from "./pages/Meetings";
+import Ambassadors from "./pages/Ambassadors";
+import Causes from "./pages/Causes";
+import Blog from "./pages/Blog";
 import "./App.scss";
 
 const { siteTitle } = require("./conf.js");
 
 function App() {
-  return <div className="App">
-  </div>;
+  return (
+    <div className="App">
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={Home}></Route>
+        <Route exact path="/meetings" component={Meetings}></Route>
+        <Route exact path="/ambassadors" component={Ambassadors}></Route>
+        <Route exact path="/causes" component={Causes}></Route>
+        <Route exact path="/blog" component={Blog}></Route>
+      </Switch>
+    </div>
+  );
 }
 
 export default App;
