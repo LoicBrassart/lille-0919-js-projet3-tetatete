@@ -7,9 +7,15 @@ function Footer() {
       <ul className="footerContainer">
         <li className="footerInfos">
           <ul>
-            <li>Comment ça marche ?</li>
-            <li>La charte étique</li>
-            <li>Les mentions légales et CGU</li>
+            <li>
+              <a href="">Comment ça marche ?</a>
+            </li>
+            <li>
+              <a href="">La charte étique</a>
+            </li>
+            <li>
+              <a href="">Les mentions légales et CGU</a>
+            </li>
           </ul>
         </li>
         <li className="footerLogo">
@@ -24,17 +30,17 @@ function Footer() {
           <p>Rejoigner-nous sur :</p>
           <ul>
             <li>
-              <a>
+              <a href="#">
                 <img src="img/fcb_logo.svg" alt="Facebook" />
               </a>
             </li>
             <li>
-              <a>
+              <a href="#">
                 <img src="img/twitter_logo.svg" alt="Twitter" />
               </a>
             </li>
             <li>
-              <a>
+              <a href="#">
                 <img src="img/insta_logo.svg" alt="Instagram" />
               </a>
             </li>
