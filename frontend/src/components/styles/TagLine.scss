@@ -1,0 +1,10 @@
+@import "../../index.scss";
+
+.TagLine {
+  .center {
+    h1 {
+      text-align: center;
+      font-size: $h1FontSize;
+    }
+  }
+}
