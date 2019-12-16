@@ -7,7 +7,6 @@ import Ambassadors from "./pages/Ambassadors";
 import Causes from "./pages/Causes";
 import Blog from "./pages/Blog";
 import "./App.scss";
-
 const { siteTitle } = require("./conf.js");
 
 function App() {
