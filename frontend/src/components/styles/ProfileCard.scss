@@ -1,0 +1,41 @@
+@import "./../../index.scss";
+
+.profileCard {
+  display: inline-block;
+  border: 5px solid $mainBrandColor;
+  position: relative;
+
+  .profileContainer .profileImage {
+    width: 300px;
+    height: 300px;
+  }
+
+  .gradientName {
+    position: absolute;
+    top: 250px;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    margin: 0;
+    background-image: linear-gradient(to bottom, #00b0f000, $mainBrandColor);
+  }
+
+  .profileName {
+    position: absolute;
+    top: 245px;
+    left: 75px;
+    color: white;
+    text-align: center;
+  }
+
+  .profileTagContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+  }
+
+  .profileTag {
+    margin: 10px;
+    border-radius: 50px;
+  }
+}

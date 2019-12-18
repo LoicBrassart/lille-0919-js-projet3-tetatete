@@ -81,6 +81,15 @@ button {
   border: 0;
 }
 
+ul,
+ol {
+  font-size: 0;
+  list-style-type: none;
+}
+
+li {
+  font-size: $normalFontSize;
+}
 /* ------------------------------- GLOBAL:REPETITIVES RULES ------------------------------- */
 .clear {
   display: block;
