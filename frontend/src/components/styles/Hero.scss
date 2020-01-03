@@ -1,6 +1,25 @@
 .Hero {
-  img {
+  .mobileHero {
+    display: none;
+  }
+
+  .desktopHero {
     width: 100%;
     object-fit: cover;
+  }
+}
+
+// Media queries ------------------------
+@media screen and (max-width: 719px) {
+  .Hero {
+    .mobileHero {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .desktopHero {
+      display: none;
+    }
   }
 }
