@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 //Get all campaigns
-router.get("/all", (req, res) => {
+router.get("/", (req, res) => {
     connection.query("SELECT * FROM campaign", (err, results) => {
         if (err) {
             res.status(500).send("Error !");
