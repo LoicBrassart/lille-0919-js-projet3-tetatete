@@ -5,13 +5,13 @@ const cors = require("cors");
 const { port } = require('./conf');
 
 app.use(cors());
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.listen(port, err => {
     if (err) {
-        throw new Error(`Error !`)
+        throw new Error(`Error !`);
     } else {
-        console.log(`Server is listening to ${port}`)
+        console.log(`Server is listening to ${port}`);
     }
 });
