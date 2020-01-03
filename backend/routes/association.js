@@ -2,7 +2,7 @@ const { connection } = require("../conf");
 const express = require("express");
 const router = express.Router();
 
-//Get all the associations
+//Get all associations
 router.get("/all", (req, res) => {
     connection.query("SELECT * FROM association", (err, results) => {
         if (err) {

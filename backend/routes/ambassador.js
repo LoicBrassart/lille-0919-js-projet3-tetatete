@@ -2,7 +2,7 @@ const { connection } = require("../conf");
 const express = require("express");
 const router = express.Router();
 
-//Get all the ambassadors
+//Get all ambassadors
 router.get("/all", (req, res) => {
     connection.query("SELECT * FROM ambassador", (err, results) => {
         if (err) {
