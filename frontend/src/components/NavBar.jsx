@@ -31,7 +31,7 @@ function NavBar() {
               activeClassName="active"
               to="/ambassadors"
             >
-              Ambassadors
+              Ambassadeurs
             </NavLink>
           </li>
 
@@ -75,7 +75,7 @@ function NavBar() {
           activeClassName="bm-active"
           to="/ambassadors"
         >
-          Ambassadors
+          Ambassadeurs
         </NavLink>
 
         <NavLink
