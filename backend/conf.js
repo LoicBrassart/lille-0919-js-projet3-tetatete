@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mysql = require("mysql");
-const port = process.env.DB_PORT;
+const port = process.env.BACKEND_PORT;
 
 const connection = mysql.createPool({
     connectionLimit: 10,
