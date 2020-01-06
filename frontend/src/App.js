@@ -6,11 +6,11 @@ import Meetings from "./pages/Meetings";
 import Ambassadors from "./pages/Ambassadors";
 import Causes from "./pages/Causes";
 import Blog from "./pages/Blog";
+import Footer from "./components/Footer";
 import "./App.scss";
 const { siteTitle } = require("./conf.js");
 
 function App() {
-
   document.title = siteTitle;
 
   return (
@@ -23,6 +23,7 @@ function App() {
         <Route exact path="/causes" component={Causes}></Route>
         <Route exact path="/blog" component={Blog}></Route>
       </Switch>
+      <Footer />
     </div>
   );
 }
