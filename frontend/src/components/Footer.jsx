@@ -11,7 +11,7 @@ function Footer() {
               <a href="">Comment ça marche ?</a>
             </li>
             <li>
-              <a href="">La charte étique</a>
+              <a href="">La charte éthique</a>
             </li>
             <li>
               <a href="">Les mentions légales et CGU</a>
@@ -27,7 +27,7 @@ function Footer() {
           </a>
         </li>
         <li className="footerSocial">
-          <p>Rejoigner-nous sur :</p>
+          <p>Rejoignez-nous sur :</p>
           <ul>
             <li>
               <a href="#">
