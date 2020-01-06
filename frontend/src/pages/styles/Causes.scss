@@ -1,0 +1,12 @@
+@import "../../index.scss";
+
+.Causes {
+  .containerCauses {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+  }
+}
