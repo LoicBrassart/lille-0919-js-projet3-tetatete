@@ -87,7 +87,7 @@
 
 /*
   Sidebar wrapper styles
-  Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+ Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
   */
 .bm-menu-wrap {
   display: none;
@@ -154,11 +154,9 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-@media screen and (max-width: 960px) {
-  .center {
-    width: 100%;
-    margin: 0;
-  }
+/* ---------- MEDIA QUERIES ---------- */
+
+@media screen and (max-width: 1800px) {
   .NavBar {
     .desktopMenu {
       display: none;
