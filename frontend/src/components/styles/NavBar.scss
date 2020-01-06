@@ -6,6 +6,7 @@
   background-color: $mainBrandColor;
   position: sticky;
   top: 0;
+  z-index: 1;
   .desktopNav {
     padding: 0 20px;
     display: flex;
@@ -152,6 +153,7 @@
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+  top: 45px;
 }
 
 /* ---------- MEDIA QUERIES ---------- */
