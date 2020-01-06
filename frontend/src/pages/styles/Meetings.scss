@@ -1,0 +1,91 @@
+@import "./../../index.scss";
+
+.Meetings {
+  .toggler {
+    padding: 40px 10px;
+    display: flex;
+    .desc {
+      margin-left: 30px;
+      width: 50%;
+      strong {
+        font-size: $bigFontSize;
+      }
+    }
+    .toggle {
+      margin-left: -15px;
+      position: relative;
+      .currentFilter {
+        margin-left: 60px;
+        margin-top: -41px;
+        p {
+          margin-bottom: 10px;
+        }
+      }
+      .switch {
+        transform: rotate(90deg);
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $lightGray;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: $backgroundColor;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .slider.round {
+        border-radius: 36px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: $mainBrandColor;
+      }
+
+      input:focus + .slider {
+        box-shadow: -1px 0px -1px $mainBrandColor;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+    }
+  }
+
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
