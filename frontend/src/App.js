@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Meetings from "./pages/Meetings";
 import Ambassadors from "./pages/Ambassadors";
 import Causes from "./pages/Causes";
+import CauseInfos from "./pages/CauseInfos";
 import Blog from "./pages/Blog";
 import Footer from "./components/Footer";
 import "./App.scss";
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/meetings" component={Meetings}></Route>
         <Route exact path="/ambassadors" component={Ambassadors}></Route>
         <Route exact path="/causes" component={Causes}></Route>
+        <Route exact path="/causes/:id" component={CauseInfos}></Route>
         <Route exact path="/blog" component={Blog}></Route>
       </Switch>
       <Footer />
