@@ -1,20 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles/ProfileCard.scss";
 
-function ProfileCard() {
+function ProfileCard(props) {
   return (
     <div className="profileCard">
-      <a href="...">
+      <Link to={`/${props.url}/${props.id}`}>
         <div className="profileContainer">
-          <img
-            classname="profileImage"
-            src="https://via.placeholder.com/300x300"
-            alt="..."
-          />
+          <img className="profileImage" src={props.img} alt="..." />
 
           <span className="gradientName" />
 
-          <h2 className="profileName">Lorem Ipsum</h2>
+          <h2 className="profileName">{props.name}</h2>
         </div>
 
         <div className="profileTagContainer">
@@ -24,7 +21,7 @@ function ProfileCard() {
             alt="..."
           />
         </div>
-      </a>
+      </Link>
     </div>
   );
 }
