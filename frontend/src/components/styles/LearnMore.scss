@@ -1,35 +1,32 @@
 @import "../../index.scss";
+.LearnMore {
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style-type: none;
+    grid-gap: 5%;
+    li {
+      img {
+        width: 100%;
+        vertical-align: top;
+      }
+    }
+  }
+  .__react_component_tooltip.type-info {
+    background-color: $mainBrandColor;
+    width: 20%;
+    height: auto;
+  }
 
-#article {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
+  .__react_component_tooltip.type-info.place-left:after {
+    border-left-color: $mainBrandColor;
+  }
 
-figure {
-  width: 300px;
+  .__react_component_tooltip.type-info.place-bottom:after {
+    border-bottom-color: $mainBrandColor;
+  }
 
-  position: relative;
-}
-
-img {
-  width: 100%;
-  vertical-align: top;
-}
-
-figcaption {
-  transition: all 1s;
-  opacity: 0;
-  background-color: AntiqueWhite;
-  text-align: center;
-  position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
-  border: 3px ridge $mainBrandColor;
-}
-
-figure:hover figcaption {
-  opacity: 1;
-  transform: scale(1.2, 1.2);
-  z-index: 1;
+  .__react_component_tooltip.type-info.place-right:after {
+    border-right-color: $mainBrandColor;
+  }
 }
