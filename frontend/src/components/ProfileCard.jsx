@@ -5,7 +5,7 @@ import "./styles/ProfileCard.scss";
 function ProfileCard(props) {
   return (
     <div className="profileCard">
-      <Link to={`/causes/${props.id}`}>
+      <Link to={`/${props.url}/${props.id}`}>
         <div className="profileContainer">
           <img className="profileImage" src={props.img} alt="..." />
 

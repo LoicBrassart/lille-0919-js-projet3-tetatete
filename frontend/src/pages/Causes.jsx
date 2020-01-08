@@ -26,6 +26,7 @@ function Causes() {
             <ProfileCard
               id={association.id}
               key={association.id}
+              url="causes"
               img={association.img}
               name={association.name}
             />
