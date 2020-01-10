@@ -2,7 +2,7 @@
 
 .CauseInfos {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   padding: 30px 20px;
   .photo {
     width: 50%;
@@ -16,9 +16,14 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 30px;
+      h3 {
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
       ul {
         li {
           display: inline-block;
+          margin-right: 5px;
           img {
             width: 50px;
             border-radius: 25px;
@@ -41,7 +46,6 @@
 
 @media screen and (max-width: 768px) {
   .CauseInfos {
-    flex-wrap: wrap;
     .photo {
       margin-bottom: 20px;
       padding: 0 15%;
