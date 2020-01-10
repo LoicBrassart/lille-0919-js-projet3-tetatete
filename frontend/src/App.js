@@ -20,15 +20,11 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home}></Route>
-        <Route exact path="/meetings" component={Meetings}></Route>
-        <Route exact path="/ambassadors" component={Ambassadors}></Route>
-        <Route
-          exact
-          path="/ambassadors/:id"
-          component={AmbassadorInfos}
-        ></Route>
-        <Route exact path="/causes" component={Causes}></Route>
-        <Route exact path="/blog" component={Blog}></Route>
+        <Route path="/meetings" component={Meetings}></Route>
+        <Route path="/ambassadors/:id" component={AmbassadorInfos}></Route>
+        <Route path="/ambassadors" component={Ambassadors}></Route>
+        <Route path="/causes" component={Causes}></Route>
+        <Route path="/blog" component={Blog}></Route>
         <Route path="/campaign/:id" component={CampaignPage}></Route>
       </Switch>
       <Footer />
