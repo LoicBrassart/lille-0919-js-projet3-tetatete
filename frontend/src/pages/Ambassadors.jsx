@@ -3,20 +3,15 @@ import "./styles/Ambassadors.scss";
 import FilterTab from "../components/FilterTab";
 import ProfileCard from "../components/ProfileCard";
 import axios from "axios";
+const { apiCall } = require("../conf");
 
 function Ambassadors() {
   const [ambassadors, setAmbassadors] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:4000/ambassador`)
-      .then(res => {
-        setAmbassadors(res.data);
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    axios.get(`${apiCall}/ambassador`).then(res => {
+      setAmbassadors(res.data);
+    });
   }, [setAmbassadors]);
 
   return (

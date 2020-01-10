@@ -5,6 +5,7 @@ import CampaignCard from "../components/CampaignCard";
 import LearnMore from "../components/LearnMore";
 import axios from "axios";
 import "./styles/Home.scss";
+const { apiCall } = require("../conf");
 
 function Home() {
   const [campaignInfo, setCampaignInfo] = useState([]);
@@ -15,7 +16,7 @@ function Home() {
 
   const getCampaignInfo = () => {
     axios
-      .get("http://localhost:4000/campaign/")
+      .get(`${apiCall}/campaign/`)
       .then(res => setCampaignInfo(res.data))
       .catch(err => console.log(err));
   };

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles/AmbassadorInfos.scss";
+const { apiCall } = require("../conf");
 
 function AmbassadorInfos(props) {
   const [ambassador, setAmbassador] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:4000/ambassador/${props.match.params.id}`)
-      .then(res => {
-        setAmbassador(res.data[0]);
-      });
+    axios.get(`${apiCall}/ambassador/${props.match.params.id}`).then(res => {
+      setAmbassador(res.data[0]);
+    });
   }, [setAmbassador]);
 
   return (
