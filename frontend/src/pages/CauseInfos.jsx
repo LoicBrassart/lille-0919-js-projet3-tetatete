@@ -46,7 +46,7 @@ function CauseInfos(props) {
         </div>
 
         <p>{association.resume}</p>
-        <a target="_blank" href={association.website}>
+        <a target="_blank" href={association.website} rel="noopener noreferrer">
           Site Web
         </a>
       </div>
