@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DonationButton from "../components/DonationButton";
 import "./styles/CampaignPage.scss";
+const { apiCall } = require("./conf.js");
 
 export default function CampaignPage(props) {
   const [campaignInfo, setCampaignInfo] = useState([]);
@@ -12,7 +13,7 @@ export default function CampaignPage(props) {
 
   const getCampaignById = () => {
     axios
-      .get(`http://localhost:4000/campaign/${props.match.params.id}`)
+      .get(`${apiCall}/campaign/${props.match.params.id}`)
       .then(res => {
         setCampaignInfo(res.data[0]);
       })

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles/CauseInfos.scss";
+const { apiCall } = require("./conf.js");
 
 function CauseInfos(props) {
   const [association, setAssociation] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/association/${props.match.params.id}`)
+      .get(`${apiCall}/association/${props.match.params.id}`)
       .then(res => {
         setAssociation(res.data[0]);
         console.log(res.data);

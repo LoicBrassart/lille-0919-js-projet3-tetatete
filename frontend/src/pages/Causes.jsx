@@ -3,13 +3,14 @@ import "./styles/Causes.scss";
 import FilterTab from "../components/FilterTab";
 import ProfileCard from "../components/ProfileCard";
 import axios from "axios";
+const { apiCall } = require("./conf.js");
 
 function Causes() {
   const [associations, setAssociations] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/association`)
+      .get(`${apiCall}/association`)
       .then(res => {
         setAssociations(res.data);
       })
