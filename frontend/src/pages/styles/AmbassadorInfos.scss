@@ -16,10 +16,15 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 30px;
+      h3 {
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
       ul {
         li {
           display: inline-block;
           img {
+            margin-left: 5px;
             width: 50px;
             border-radius: 25px;
           }
