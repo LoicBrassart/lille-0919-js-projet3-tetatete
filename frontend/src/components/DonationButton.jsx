@@ -3,7 +3,6 @@ import "./styles/DonationButton.scss";
 
 export default function DonationButton(props) {
   return (
-    /* .map THIS COMPONENT TO GENERATE DONATION TO GENERATE DONATION POSSIBILITIES*/
     <article className="DonationCard">
       <p>
         <span>
