@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles/CauseInfos.scss";
-const { apiCall } = require("./conf.js");
+const { apiCall } = require("../conf");
 
 function CauseInfos(props) {
   const [association, setAssociation] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${apiCall}/association/${props.match.params.id}`)
-      .then(res => {
-        setAssociation(res.data[0]);
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, [setAssociation]);
+    axios.get(`${apiCall}/association/${props.match.params.id}`).then(res => {
+      setAssociation(res.data[0]);
+    });
+  }, [setAssociation, props.match.params.id]);
 
   return (
     <div className="CauseInfos center">
@@ -52,8 +46,8 @@ function CauseInfos(props) {
         </div>
 
         <p>{association.resume}</p>
-        <a href={association.website} target="blank">
-          SITE WEB
+        <a target="_blank" href={association.website}>
+          Site Web
         </a>
       </div>
     </div>

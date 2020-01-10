@@ -5,7 +5,7 @@ import CampaignCard from "../components/CampaignCard";
 import LearnMore from "../components/LearnMore";
 import axios from "axios";
 import "./styles/Home.scss";
-const { apiCall } = require("./conf.js");
+const { apiCall } = require("../conf");
 
 function Home() {
   const [campaignInfo, setCampaignInfo] = useState([]);

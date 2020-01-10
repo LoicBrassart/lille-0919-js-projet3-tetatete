@@ -3,20 +3,15 @@ import "./styles/Causes.scss";
 import FilterTab from "../components/FilterTab";
 import ProfileCard from "../components/ProfileCard";
 import axios from "axios";
-const { apiCall } = require("./conf.js");
+const { apiCall } = require("../conf");
 
 function Causes() {
   const [associations, setAssociations] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${apiCall}/association`)
-      .then(res => {
-        setAssociations(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    axios.get(`${apiCall}/association`).then(res => {
+      setAssociations(res.data);
+    });
   }, [setAssociations]);
   return (
     <section className="Causes">
