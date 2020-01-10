@@ -1,0 +1,55 @@
+.campaignPage {
+  margin-top: 60px;
+}
+
+.infoProfilePage {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+
+  .profileImage {
+    width: 50%;
+  }
+
+  .resumeInfoPage {
+    font-family: arial;
+    font-size: 24px;
+    text-align: justify;
+  }
+}
+.infoContainer {
+  margin: 0 30px;
+  max-width: 35%;
+  .firstContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    h2 {
+      font-family: arial;
+      font-size: 30px;
+    }
+    .profileTag {
+      display: flex;
+      img {
+        margin-left: 10px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.donationButton {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  article:nth-child(4) {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .infoProfilePage {
+    flex-direction: column;
+  }
+}
