@@ -1,22 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import TagLine from "../components/TagLine";
 import CampaignCard from "../components/CampaignCard";
 import LearnMore from "../components/LearnMore";
+import axios from "axios";
 import "./styles/Home.scss";
 
 function Home() {
+  const [campaignInfo, setCampaignInfo] = useState([]);
+
+  useEffect(() => {
+    getCampaignInfo();
+  }, []);
+
+  const getCampaignInfo = () => {
+    axios
+      .get("http://localhost:4000/campaign/")
+      .then(res => setCampaignInfo(res.data))
+      .catch(err => console.log(err));
+  };
+
   return (
     <section className="Home">
       <Hero />
       <TagLine />
       <div className="cardContainer">
-        <CampaignCard />
-        <CampaignCard />
-        <CampaignCard />
-        <CampaignCard />
-        <CampaignCard />
-        <CampaignCard />
+        {campaignInfo.map(campaign => {
+          return <CampaignCard campaignInfo={campaign} />;
+        })}
       </div>
       <LearnMore />
     </section>
