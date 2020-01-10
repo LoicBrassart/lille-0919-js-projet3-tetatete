@@ -10,10 +10,6 @@ function AmbassadorInfos(props) {
       .get(`http://localhost:4000/ambassador/${props.match.params.id}`)
       .then(res => {
         setAmbassador(res.data[0]);
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
       });
   }, [setAmbassador]);
 
