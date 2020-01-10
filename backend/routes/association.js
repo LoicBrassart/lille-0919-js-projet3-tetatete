@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
   });
 });
 
+//Get specific association
 router.get("/:id", (req, res) => {
   const id = req.params.id;
   connection.query(
