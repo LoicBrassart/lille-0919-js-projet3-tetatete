@@ -2,15 +2,31 @@ const { connection } = require("../conf");
 const express = require("express");
 const router = express.Router();
 
-//Get all campaigns
+//Get all campaigns in progress order by their starting times
+//Or all campaigns done order by their ending times
+//Or all campaigns order by the most imminent campaign to finish,
+//You can define a limit too
 router.get("/", (req, res) => {
-    connection.query("SELECT * FROM campaign", (err, results) => {
-        if (err) {
-            res.status(500).send("Error !");
-        } else {
-            res.status(200).json(results);
-        }
+    let sql = "SELECT * FROM campaign";
+    let query = [];
+    if (req.query.inProgress) {
+        sql += " WHERE NOW() < time_end ORDER BY time_start DESC";
+    }
+    if (req.query.done) {
+        sql += " WHERE NOW() > time_end ORDER BY time_end DESC";
+    }
+    if (req.query.finishing) {
+        sql += " WHERE NOW() < time_end ORDER BY timediff(time_end,time_start) ASC"
+    }
+    if (req.query.limit) {
+        sql += " LIMIT ?";
+        query.push(Number(req.query.limit));
+    }
+    connection.query(sql, [query], (err, results) => {
+        if (err) return res.status(500).send("Error !");
+        return res.status(200).json(results);
     })
+
 });
 
 //Get campaign by id
@@ -24,5 +40,14 @@ router.get("/:id", (req, res) => {
         }
     })
 });
+
+//Post a new campaign
+router.post("/new", (req, res) => {
+    const data = req.body;
+    connection.query("INSERT INTO campaign SET ?", [data], (err, results) => {
+        if (err) return res.status(500).send("Error !");
+        return res.sendStatus(200);
+    })
+})
 
 module.exports = router;
