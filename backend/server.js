@@ -4,17 +4,22 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 const { port } = require('./conf');
 
+//Routes
 const ambassador = require('./routes/ambassador');
 const association = require('./routes/association');
 const campaign = require('./routes/campaign');
+const auth = require('./routes/auth');
 
+//Config
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//Router
 app.use('/ambassador', ambassador);
 app.use('/association', association);
 app.use('/campaign', campaign);
+app.use('/auth', auth);
 
 app.listen(port, err => {
     if (err) {
