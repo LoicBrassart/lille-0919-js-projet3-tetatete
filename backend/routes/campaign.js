@@ -23,7 +23,8 @@ router.get("/", (req, res) => {
         query.push(Number(req.query.limit));
     }
     connection.query(sql, [query], (err, results) => {
-        if (err) return res.status(500).send("Error !");
+        if (err) return res.status(500).send("Error in obtaining campaigns's infos !");
+        if (results.length === 0) return res.status(500).send("There is no info corresponding to your research.");
         return res.status(200).json(results);
     })
 
@@ -33,11 +34,9 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
     const id = req.params.id;
     connection.query("SELECT * FROM campaign WHERE id =?", [id], (err, results) => {
-        if (err) {
-            res.status(500).send("Error !");
-        } else {
-            res.status(200).json(results);
-        }
+        if (err) return res.status(500).send("Error in obtaining campaign's info !");
+        if (results.length === 0) return res.status(500).send("There is no info corresponding to your research.");
+        return res.status(200).json(results);
     })
 });
 
@@ -45,7 +44,7 @@ router.get("/:id", (req, res) => {
 router.post("/new", (req, res) => {
     const data = req.body;
     connection.query("INSERT INTO campaign SET ?", [data], (err, results) => {
-        if (err) return res.status(500).send("Error !");
+        if (err) return res.status(500).send("Error has occured during the creation of the new campaign !");
         return res.sendStatus(200);
     })
 })
