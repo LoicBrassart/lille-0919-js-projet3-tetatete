@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
     }
     connection.query(sql, [filter], (err, results) => {
         if (err) return res.status(500).send("Error in obtaining ambassadors's infos !");
-        if (results.length === 0) return res.status(500).send("There is no info corresponding to your research.");
+        if (results.length === 0) return res.status(204).send("There is no info corresponding to your research.");
         return res.status(200).json(results);
     })
 });
@@ -25,7 +25,7 @@ router.get("/:id", (req, res) => {
     const id = req.params.id;
     connection.query("SELECT * FROM ambassador WHERE id = ?", [id], (err, results) => {
         if (err) return res.status(500).send("Error in obtaining ambassador's info !");
-        if (results.length === 0) return res.status(500).send("There is no info corresponding to your research.");
+        if (results.length === 0) return res.status(204).send("There is no info corresponding to your research.");
         return res.status(200).json(results);
     })
 });
