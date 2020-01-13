@@ -63,6 +63,16 @@ router.post("/new", (req, res) => {
     })
 });
 
+//Modify a campaign
+router.patch("/modify/:id", (req, res) => {
+    const id = Number(req.params.id);
+    const data = req.body;
+    connection.query("UPDATE campaign SET ? WHERE id = ?", [data, id], (err, results) => {
+        if (err) return res.status(500).send("Error in modifying the campaign.");
+        return res.sendStatus(200);
+    })
+});
+
 //Delete a campaign by id
 router.delete("/delete/:id", (req, res) => {
     const id = Number(req.params.id);

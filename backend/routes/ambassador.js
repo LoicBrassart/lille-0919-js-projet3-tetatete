@@ -39,6 +39,16 @@ router.post("/new", (req, res) => {
     })
 });
 
+//Modify a ambassador
+router.patch("/modify/:id", (req, res) => {
+    const id = Number(req.params.id);
+    const data = req.body;
+    connection.query("UPDATE ambassador SET ? WHERE id = ?", [data, id], (err, results) => {
+        if (err) return res.status(500).send("Error in modifying the ambassador.");
+        return res.sendStatus(200);
+    })
+});
+
 //Delete a ambassador by id
 router.delete("/delete/:id", (req, res) => {
     const id = Number(req.params.id);
