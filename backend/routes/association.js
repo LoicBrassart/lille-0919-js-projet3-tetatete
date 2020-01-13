@@ -62,7 +62,7 @@ router.delete("/delete/:id", (req, res) => {
     const id = Number(req.params.id);
     connection.query("DELETE FROM association WHERE id = ?", [id], (err, results) => {
         if (err) return res.status(500).send("Error in deleting the association.");
-        return res.status(204).send("Association succesfully deleted.");
+        return res.status(200);
     })
 })
 

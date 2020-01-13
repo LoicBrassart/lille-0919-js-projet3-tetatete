@@ -78,7 +78,7 @@ router.delete("/delete/:id", (req, res) => {
     const id = Number(req.params.id);
     connection.query("DELETE FROM campaign WHERE id = ?", [id], (err, results) => {
         if (err) return res.status(500).send("Error in deleting the campaign.");
-        return res.status(204).send("Campaign succesfully deleted.");
+        return res.status(200);
     })
 })
 
