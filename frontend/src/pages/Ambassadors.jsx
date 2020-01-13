@@ -1,4 +1,4 @@
-import React, { Profiler } from "react";
+import React from "react";
 import "./styles/Ambassadors.scss";
 import FilterTab from "../components/FilterTab";
 import ProfileCard from "../components/ProfileCard";
