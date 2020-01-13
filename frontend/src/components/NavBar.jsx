@@ -18,9 +18,9 @@ function NavBar() {
               id="meetings"
               className="menu-item"
               activeClassName="active"
-              to="/meetings"
+              to="/campaigns"
             >
-              Rencontres
+              Campagnes
             </NavLink>
           </li>
 
@@ -45,17 +45,6 @@ function NavBar() {
               Causes soutenues
             </NavLink>
           </li>
-
-          <li>
-            <NavLink
-              id="meetings"
-              className="menu-item"
-              activeClassName="active"
-              to="/blog"
-            >
-              Blog
-            </NavLink>
-          </li>
         </ul>
       </nav>
 
@@ -64,9 +53,9 @@ function NavBar() {
           id="meetings"
           className="menu-item"
           activeClassName="bm-active"
-          to="/meetings"
+          to="/campaigns"
         >
-          Rencontres
+          Campagnes
         </NavLink>
 
         <NavLink
@@ -85,15 +74,6 @@ function NavBar() {
           to="/causes"
         >
           Causes soutenues
-        </NavLink>
-
-        <NavLink
-          id="meetings"
-          className="menu-item"
-          activeClassName="bm-active"
-          to="/blog"
-        >
-          Blog
         </NavLink>
       </BurgerMenu>
     </header>
