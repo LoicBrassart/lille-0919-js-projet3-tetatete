@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
                 JOIN ambassador_has_tag ON ambassador.id = ambassador_has_tag.id_ambassador
                 WHERE id_tag = ?
                 ORDER BY firstname ASC`;
-        filter.push(req.query.filter);
+        filter.push(Number(req.query.filter));
     }
     connection.query(sql, [filter], (err, results) => {
         if (err) return res.status(500).send("Error in obtaining ambassadors's infos !");
@@ -35,7 +35,7 @@ router.post("/new", (req, res) => {
     const data = req.body;
     connection.query("INSERT INTO ambassador SET ?", [data], (err, results) => {
         if (err) return res.status(500).send("Error has occured during the creation of the new ambassador !");
-        return res.sendStatus(200);
+        return res.sendStatus(201);
     })
 })
 

@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
                 JOIN association_has_tag ON association.id = association_has_tag.id_association
                 WHERE id_tag = ?
                 ORDER BY name ASC`;
-        filter.push(req.query.filter);
+        filter.push(Number(req.query.filter));
     }
     connection.query(sql, [filter], (err, results) => {
         if (err) return res.status(500).send("Error in obtaining associations's infos !");
@@ -35,7 +35,7 @@ router.post("/new", (req, res) => {
     const data = req.body;
     connection.query("INSERT INTO association SET ?", [data], (err, results) => {
         if (err) return res.status(500).send("Error has occured during the creation of the new association !");
-        return res.sendStatus(200);
+        return res.sendStatus(201);
     })
 })
 

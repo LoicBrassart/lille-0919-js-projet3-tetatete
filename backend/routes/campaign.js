@@ -4,7 +4,7 @@ const router = express.Router();
 
 //Get all campaigns in progress order by their starting times
 //Or all campaigns done order by their ending times
-//Or all campaigns order by the most imminent campaign to finish,
+//Or all campaigns order by the most imminent campaign to finish
 //You can define a limit too
 router.get("/", (req, res) => {
     let sql = "SELECT * FROM campaign";
@@ -45,7 +45,7 @@ router.post("/new", (req, res) => {
     const data = req.body;
     connection.query("INSERT INTO campaign SET ?", [data], (err, results) => {
         if (err) return res.status(500).send("Error has occured during the creation of the new campaign !");
-        return res.sendStatus(200);
+        return res.sendStatus(201);
     })
 })
 
