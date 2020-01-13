@@ -7,7 +7,6 @@ function Hero() {
 
   return (
     <div className="Hero">
-      {/*use ternary operator for showVideo*/}
       {showVideo ? (
         <div className="desktopHero">
           <video width="400" height="222" controls="controls">
