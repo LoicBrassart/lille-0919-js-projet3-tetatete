@@ -10,11 +10,15 @@ export default function LearnMore() {
       <section>
         <article className="learnCard" onClick={() => setShowMeex(!showMeex)}>
           <span className={showMeex ? "shown" : ""}>
+            <big>meeX,</big>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ea
-              perspiciatis excepturi velit, quaerat soluta accusamus enim fuga
-              molestiae aperiam nostrum voluptatibus aspernatur, assumenda nobis
-              facere, voluptatem iure totam nesciunt.
+              c'est aider les <big>organisations à but non lucratif.</big>
+            </p>
+            <p>Grace à sa</p>
+            <big>méthode innovante,</big>
+            <p>
+              impactez <big>plus fort</big> et <big>plus largement</big> le don
+              caritatif.
             </p>
           </span>
           <figure>
@@ -24,21 +28,30 @@ export default function LearnMore() {
             <div className="titleBorder"></div>
             <div className="titleLayout">
               <h3>MEEX ?</h3>
+              <p>
+                En savoir plus <img src="img/moreInfos-1.svg" alt="" />
+              </p>
             </div>
           </div>
         </article>
 
         <article className="learnCard" onClick={() => setShowChart(!showChart)}>
           <span className={showChart ? "shown" : ""}>
+            <p>Notre mission ?</p>
+            <big>Aider les plus démunis! </big>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ea
-              perspiciatis excepturi velit, quaerat soluta accusamus enim fuga
-              molestiae aperiam nostrum voluptatibus aspernatur, assumenda nobis
-              facere, voluptatem iure totam nesciunt.
+              Nous n'allons pas révolutionner le monde,
+              <br />
+              mais aporter un <big>soutien financer</big> est primordial pour
+              les <big>associations caritatives.</big>
+            </p>
+            <p>
+              En tant que donnateur, vivez une expérience{" "}
+              <big>exeptionelle</big> et <big>unique !</big>
             </p>
           </span>
           <figure>
-            <img src="img/learn-chart.jpg" alt="learn-meex" />
+            <img src="img/learn-chart.jpg" alt="learn-chart" />
           </figure>
           <div className="content">
             <div className="titleBorder"></div>
@@ -48,6 +61,9 @@ export default function LearnMore() {
                 <br />
                 éthique
               </h3>
+              <p>
+                En savoir plus <img src="img/moreInfos-2.svg" alt="" />
+              </p>
             </div>
           </div>
         </article>
@@ -67,7 +83,7 @@ export default function LearnMore() {
             <small>associations soutenues</small>
           </span>
           <figure>
-            <img src="img/learn-founds.jpg" alt="learn-meex" />
+            <img src="img/learn-founds.jpg" alt="learn-founds" />
           </figure>
           <div className="content">
             <div className="titleBorder"></div>
@@ -77,6 +93,9 @@ export default function LearnMore() {
                 <br />
                 Collectés
               </h3>
+              <p>
+                En savoir plus <img src="img/moreInfos-3.svg" alt="" />
+              </p>
             </div>
           </div>
         </article>

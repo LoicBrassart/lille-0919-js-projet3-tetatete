@@ -12,7 +12,7 @@
     .learnCard {
       position: relative;
       width: calc(320px - 20px);
-      height: 320px;
+      height: 360px;
       margin: 0 10px 10px 10px;
       box-shadow: $boxShadow;
       overflow: hidden;
@@ -26,6 +26,16 @@
       }
       &:nth-child(1) span {
         border: solid 4px #04b4d3;
+        padding: 20px;
+        p {
+          color: $darkFontColor;
+          margin: 10px 0;
+        }
+        big {
+          margin-bottom: 10px;
+          font-size: 1.4rem;
+          color: #04b4d3;
+        }
       }
 
       &:nth-child(2) .content .titleBorder {
@@ -36,6 +46,15 @@
       }
       &:nth-child(2) span {
         border: solid 4px #ff5b56;
+        padding: 20px;
+        big {
+          font-size: 1.4rem;
+          color: #ff5b56;
+        }
+        p {
+          color: $darkFontColor;
+          margin: 0 0 20px 0;
+        }
       }
 
       &:nth-child(3) .content .titleBorder {
@@ -47,6 +66,14 @@
       &:nth-child(3) span {
         border: solid 4px #01a177;
         color: #01a177;
+        padding: 20px;
+        p,
+        small,
+        big {
+          display: block;
+          width: 100%;
+          text-align: center;
+        }
         p {
           font-size: 2rem;
           margin-bottom: 20px;
@@ -60,21 +87,13 @@
       }
 
       span {
-        padding: 20px;
         transition: all 0.3s;
         position: absolute;
         z-index: 2;
         top: -100%;
         width: 100%;
-        height: 320px;
+        height: 360px;
         background-color: $backgroundColor;
-        p,
-        small,
-        big {
-          display: block;
-          width: 100%;
-          text-align: center;
-        }
         &.shown {
           top: 0;
         }
@@ -94,7 +113,6 @@
           margin-top: -215px;
           height: 220px;
           clip-path: polygon(50% 55px, 100% 0, 100% 100%, 0 100%, 0 0);
-
           h3 {
             display: flex;
             align-items: center;
@@ -103,6 +121,19 @@
             color: $lightFontColor;
             font-size: $bigFontSize;
             text-transform: uppercase;
+          }
+          p {
+            color: $lightFontColor;
+            display: block;
+            position: relative;
+            bottom: 35px;
+            right: 10px;
+            text-align: right;
+            img {
+              display: inline-block;
+              vertical-align: middle;
+              width: 25px;
+            }
           }
         }
       }
