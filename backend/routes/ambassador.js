@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
     })
 });
 
-//Get ambassador by id
+//Get an ambassador by id
 router.get("/:id", (req, res) => {
     const id = req.params.id;
     connection.query("SELECT * FROM ambassador WHERE id = ?", [id], (err, results) => {
@@ -39,7 +39,7 @@ router.post("/new", (req, res) => {
     })
 });
 
-//Modify a ambassador
+//Modify an ambassador by id
 router.patch("/modify/:id", (req, res) => {
     const id = Number(req.params.id);
     const data = req.body;
@@ -49,7 +49,7 @@ router.patch("/modify/:id", (req, res) => {
     })
 });
 
-//Delete a ambassador by id
+//Delete an ambassador by id
 router.delete("/delete/:id", (req, res) => {
     const id = Number(req.params.id);
     connection.query("DELETE FROM ambassador WHERE id = ?", [id], (err, results) => {

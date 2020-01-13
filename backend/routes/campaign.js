@@ -63,7 +63,7 @@ router.post("/new", (req, res) => {
     })
 });
 
-//Modify a campaign
+//Modify a campaign by id
 router.patch("/modify/:id", (req, res) => {
     const id = Number(req.params.id);
     const data = req.body;

@@ -28,7 +28,7 @@ router.get("/total", (req, res) => {
     })
 });
 
-//Get association by id
+//Get an association by id
 router.get("/:id", (req, res) => {
     const id = req.params.id;
     connection.query("SELECT * FROM association WHERE id = ?", [id], (err, results) => {
@@ -47,7 +47,7 @@ router.post("/new", (req, res) => {
     })
 });
 
-//Modify a association
+//Modify an association by id
 router.patch("/modify/:id", (req, res) => {
     const id = Number(req.params.id);
     const data = req.body;
@@ -57,7 +57,7 @@ router.patch("/modify/:id", (req, res) => {
     })
 });
 
-//Delete a association by id
+//Delete an association by id
 router.delete("/delete/:id", (req, res) => {
     const id = Number(req.params.id);
     connection.query("DELETE FROM association WHERE id = ?", [id], (err, results) => {
