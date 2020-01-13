@@ -37,6 +37,6 @@ router.post("/new", (req, res) => {
         if (err) return res.status(500).send("Error has occured during the creation of the new ambassador !");
         return res.sendStatus(201);
     })
-})
+});
 
 module.exports = router;

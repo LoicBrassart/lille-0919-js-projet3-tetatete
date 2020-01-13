@@ -18,7 +18,15 @@ router.get("/", (req, res) => {
         if (results.length === 0) return res.status(204).send("There is no info corresponding to your research.");
         return res.status(200).json(results);
     })
-})
+});
+
+//Get total number of the associations
+router.get("/total", (req, res) => {
+    connection.query("SELECT COUNT(*) AS total FROM association", (err, results) => {
+        if (err) return res.status(500).send("Error in obtaining total association's number !");
+        return res.status(200).json(results);
+    })
+});
 
 //Get association by id
 router.get("/:id", (req, res) => {
@@ -37,6 +45,6 @@ router.post("/new", (req, res) => {
         if (err) return res.status(500).send("Error has occured during the creation of the new association !");
         return res.sendStatus(201);
     })
-})
+});
 
 module.exports = router;

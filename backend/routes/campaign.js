@@ -27,7 +27,21 @@ router.get("/", (req, res) => {
         if (results.length === 0) return res.status(204).send("There is no info corresponding to your research.");
         return res.status(200).json(results);
     })
+});
 
+//Get number of in progress and complete campaign
+router.get("/total", (req, res) => {
+    let sql = "SELECT COUNT(*) AS total FROM campaign";
+    if (req.query.inProgress) {
+        sql += " WHERE NOW() < time_end"
+    }
+    if (req.query.done) {
+        sql += " WHERE NOW() > time_end"
+    }
+    connection.query(sql, (err, results) => {
+        if (err) return res.status(500).send("Error in obtaining total campaign's number !");
+        return res.status(200).json(results);
+    })
 });
 
 //Get campaign by id
@@ -47,6 +61,6 @@ router.post("/new", (req, res) => {
         if (err) return res.status(500).send("Error has occured during the creation of the new campaign !");
         return res.sendStatus(201);
     })
-})
+});
 
 module.exports = router;
