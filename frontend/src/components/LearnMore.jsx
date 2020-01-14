@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./styles/LearnMore.scss";
+const { apiCall } = require("../conf");
 
 export default function LearnMore() {
   const [showMeex, setShowMeex] = useState(false);
   const [showChart, setShowChart] = useState(false);
   const [showFounds, setShowFounds] = useState(false);
+  const [totals, setTotals] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${apiCall}/misc/total`).then(res => {
+      setTotals(res.data);
+    });
+  }, []);
+
   return (
     <div className="LearnMore">
       <section>
@@ -75,11 +85,11 @@ export default function LearnMore() {
           <span className={showFounds ? "shown" : ""}>
             <p>meeX, c'est :</p>
             <div className="stats">
-              <big>2 €</big>
+              <big>{totals.totalDonation} €</big>
               <small>collectés généreusement</small>
             </div>
 
-            <big>99</big>
+            <big>{totals.nb_asso}</big>
             <small>associations soutenues</small>
           </span>
           <figure>
