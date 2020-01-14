@@ -1,51 +1,91 @@
 @import "./../../index.scss";
 
 .campaignCard {
-  width: 600px;
-  border: 5px solid $mainBrandColor;
+  box-sizing: border-box;
   position: relative;
+  width: 600px;
+  border-width: 6px;
+  border-style: solid;
+  border-image: $cardBlueBorder;
+  background: $cardBlueBg;
   margin-bottom: 20px;
 
-  img {
-    display: block;
-  }
-
-  h2 {
-    font-family: arial;
-    font-size: 42px;
-    text-align: right;
-    color: white;
-    position: absolute;
-    right: 10px;
-    top: 150px;
-  }
-
-  .timer {
-    color: white;
-    font-family: arial;
-    font-size: 36px;
-    font-weight: bold;
-    position: absolute;
-    right: 10px;
-    top: 230px;
-  }
-
-  .campaignDescription {
-    font-family: arial;
-    text-align: right;
-    margin: 10px;
-  }
-  .more_info {
+  .firstContainer {
     display: flex;
-    justify-content: flex-end;
-  }
+    flex-direction: row;
+    height: 300px;
 
-  .more_info img {
-    width: 5%;
-    margin: 10px;
-    transform: scale(0.9);
+    .whiteLine {
+      background-color: white;
+      height: 300px;
+      width: 5px;
+      position: absolute;
+      left: 300px;
+      transform: skew(-15deg);
+    }
+
+    .campaignImg {
+      width: 400px;
+      height: 300px;
+      clip-path: polygon(0 0, 85% 0%, 65% 100%, 0% 100%);
+    }
+
+    .timer {
+      color: white;
+      font-family: arial;
+      font-size: 36px;
+      font-weight: bold;
+      position: absolute;
+      right: 10px;
+      top: 230px;
+      z-index: 1;
+    }
   }
-  .more_info img:hover {
-    transform: scale(1);
+  .secondContainer {
+    background: white;
+    height: 150px;
+    padding-top: 10px;
+
+    .campaignTitle {
+      font-family: arial;
+      font-weight: bold;
+      font-size: 36px;
+      text-align: left;
+      margin: 10px;
+      margin-top: 0;
+      color: $cardTitleFontColor;
+    }
+
+    .fondationName {
+      font-family: Arial;
+      font-size: 24px;
+      color: $fondationFontColor;
+      margin-left: 10px;
+    }
+
+    .more_info {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+
+      .moreInfoText {
+        font-family: arial;
+        font-size: 24px;
+        color: $moreInfoFontColor;
+      }
+
+      img {
+        width: 5%;
+        height: auto;
+        margin: 10px;
+        transform: scale(0.9);
+      }
+      .more_info img:hover {
+        transform: scale(1);
+      }
+    }
   }
 }
