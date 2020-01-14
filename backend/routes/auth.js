@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const { connection, JWTSecret } = require("../conf");
+const { connection, JWTSecret, saltRound } = require("../conf");
 const passport = require("passport");
+const bcrypt = require("bcrypt");
 require("../strategyPassport");
 
 router.post("/", (req, res) => {
   const formData = req.body;
+  const hashedPassword = bcrypt.hashSync(formData.password, saltRound);
+  formData.password = hashedPassword;
   connection.query(
     "SELECT email FROM user WHERE email = ?",
     [formData.email],
