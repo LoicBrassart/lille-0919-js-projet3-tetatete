@@ -30,7 +30,6 @@ function Home() {
           return <CampaignCard key={key} campaignInfo={campaign} />;
         })}
       </div>
-      <LearnMore />
     </section>
   );
 }
