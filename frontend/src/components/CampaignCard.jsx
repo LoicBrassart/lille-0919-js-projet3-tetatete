@@ -1,17 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import "./styles/CampaignCard.scss";
 import "moment/locale/fr";
 
 function CampaignCard({ campaignInfo }) {
-  let campaignEnd = campaignInfo.time_end;
-  const date = new Date();
-  let dateOfTheDay = date.getDate();
+  //stocker class campaignCard
+  const [cardStyle, setCardStyle] = useState("blue");
+
+  console.log("---");
+
+  //stocker la date de fin
+  const campaignEnd = campaignInfo.time_end;
+  console.log(campaignEnd);
+
+  // -48h
+  const twoDaysBefore = moment(campaignInfo.time_end)
+    .subtract(2, "days")
+    .format("DD-MM-YYYY");
+  console.log(twoDaysBefore);
+
+  //stocker la date du jour format DD/MM/YYYY
+  let getDate = Date.now();
+  let dateOfTheDay = moment(getDate).format("DD-MM-YYYY");
   console.log(dateOfTheDay);
 
+  function checkDate() {
+    if (dateOfTheDay > twoDaysBefore) {
+    }
+  }
+
   return (
-    <div className="campaignCard">
+    <div className="campaignCard {blueCard}">
       <Link to={`/campaign/${campaignInfo.id}`}>
         <div className="firstContainer">
           <img
@@ -20,7 +40,7 @@ function CampaignCard({ campaignInfo }) {
             alt={campaignInfo.name}
           ></img>
 
-          <p className="timer"> {moment(campaignEnd).fromNow()}</p>
+          <p className="timer">{moment(campaignEnd).fromNow()}</p>
 
           <div className="whiteLine"></div>
         </div>
