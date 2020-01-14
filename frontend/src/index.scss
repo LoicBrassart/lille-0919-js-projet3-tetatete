@@ -8,6 +8,13 @@ $mainBrandGradient: linear-gradient(
   rgba(0, 176, 240, 1) 90%
 );
 
+//variable for campaign cards
+$cardBlueBorder: linear-gradient(235.76deg, #00bd88 11.06%, #009bbd 99.77%) 1;
+$cardBlueBg: linear-gradient(235.76deg, #00bd88 11.06%, #009bbd 99.77%);
+$cardTitleFontColor: #384955;
+$fondationFontColor: #00e0ff;
+$moreInfoFontColor: #00b0f0;
+
 $normalFontSize: 1rem;
 $mediumFontSize: 1.2rem;
 $bigFontSize: 1.4rem;
