@@ -26,8 +26,8 @@ function Home() {
       <Hero />
       <TagLine />
       <div className="cardContainer">
-        {campaignInfo.map(campaign => {
-          return <CampaignCard campaignInfo={campaign} />;
+        {campaignInfo.map((campaign, key) => {
+          return <CampaignCard key={key} campaignInfo={campaign} />;
         })}
       </div>
       <LearnMore />
