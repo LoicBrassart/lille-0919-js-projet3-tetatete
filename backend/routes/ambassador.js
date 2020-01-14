@@ -73,9 +73,7 @@ router.post("/", (req, res) => {
           if (err)
             return res
               .status(500)
-              .send(
-                "Error has occured during the creation of the attribution of the tag !"
-              );
+              .send("Error has occured during the attribution of the tag !");
           return res.status(201).send("Ambassador created.");
         }
       );

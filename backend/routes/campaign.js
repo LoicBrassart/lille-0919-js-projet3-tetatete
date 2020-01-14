@@ -11,11 +11,9 @@ router.get("/", (req, res) => {
   let query = [];
   if (req.query.inProgress) {
     sql += " WHERE NOW() < time_end ORDER BY time_start DESC";
-  }
-  if (req.query.done) {
+  } else if (req.query.done) {
     sql += " WHERE NOW() > time_end ORDER BY time_end DESC";
-  }
-  if (req.query.finishing) {
+  } else if (req.query.finishing) {
     sql += " WHERE NOW() < time_end ORDER BY timediff(time_end,time_start) ASC";
   }
   if (req.query.limit) {
