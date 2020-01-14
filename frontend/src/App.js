@@ -9,6 +9,7 @@ import Blog from "./pages/Blog";
 import Footer from "./components/Footer";
 import "./App.scss";
 import CampaignPage from "./pages/CampaignPage";
+import FormAdmin from "./pages/FormAdmin";
 const { siteTitle } = require("./conf.js");
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/causes" component={Causes}></Route>
         <Route path="/blog" component={Blog}></Route>
         <Route path="/campaign/:id" component={CampaignPage}></Route>
+        <Route path="/admin" component={FormAdmin}></Route>
       </Switch>
       <Footer />
     </div>
