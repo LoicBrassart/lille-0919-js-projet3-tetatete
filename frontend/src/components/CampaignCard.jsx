@@ -1,37 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import "./styles/CampaignCard.scss";
 import "moment/locale/fr";
 
 function CampaignCard({ campaignInfo }) {
+  useEffect(() => {
+    checkDate();
+  });
   //stocker class campaignCard
-  const [cardStyle, setCardStyle] = useState("blue");
+  const [cardStyle, setCardStyle] = useState("campaignCard redCard");
 
-  console.log("---");
+  console.log("---------");
 
   //stocker la date de fin
-  const campaignEnd = campaignInfo.time_end;
-  console.log(campaignEnd);
+  let campaignEnd = moment(campaignInfo.time_end).format("X");
+  let campaignEndLabel = moment(campaignInfo.time_end).fromNow();
 
-  // -48h
-  const twoDaysBefore = moment(campaignInfo.time_end)
+  console.log("---CMPEND---");
+  console.log(campaignEnd);
+  console.log(campaignEndLabel);
+
+  //stocker le rendu de la balise <p>
+  const [cardStatus, setCardstatus] = useState("campagne terminée");
+
+  // date de fin -48h
+  let twoDaysBefore = moment(campaignInfo.time_end)
     .subtract(2, "days")
-    .format("DD-MM-YYYY");
+    .format("X");
+  console.log("---2D---");
   console.log(twoDaysBefore);
 
   //stocker la date du jour format DD/MM/YYYY
   let getDate = Date.now();
-  let dateOfTheDay = moment(getDate).format("DD-MM-YYYY");
+  let dateOfTheDay = moment(getDate).format("X");
+  console.log("---DD---");
   console.log(dateOfTheDay);
 
+  // checker les diff de dates-------------------------
   function checkDate() {
-    if (dateOfTheDay > twoDaysBefore) {
+    if (dateOfTheDay < twoDaysBefore) {
+      setCardStyle("campaignCard blueCard");
+      setCardstatus("se termine " + campaignEndLabel);
     }
   }
 
   return (
-    <div className="campaignCard {blueCard}">
+    <div className={cardStyle}>
       <Link to={`/campaign/${campaignInfo.id}`}>
         <div className="firstContainer">
           <img
@@ -40,7 +55,7 @@ function CampaignCard({ campaignInfo }) {
             alt={campaignInfo.name}
           ></img>
 
-          <p className="timer">{moment(campaignEnd).fromNow()}</p>
+          <p className="timer">{cardStatus}</p>
 
           <div className="whiteLine"></div>
         </div>

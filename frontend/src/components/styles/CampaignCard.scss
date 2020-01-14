@@ -6,8 +6,6 @@
   width: 600px;
   border-width: 6px;
   border-style: solid;
-  border-image: $cardBlueBorder;
-  background: $cardBlueBg;
   margin-bottom: 20px;
 
   .firstContainer {
@@ -31,13 +29,15 @@
     }
 
     .timer {
+      width: 250px;
       color: white;
       font-family: arial;
       font-size: 36px;
       font-weight: bold;
+      text-align: right;
       position: absolute;
       right: 10px;
-      top: 230px;
+      top: 150px;
       z-index: 1;
     }
   }
@@ -88,4 +88,13 @@
       }
     }
   }
+}
+
+.blueCard {
+  border-image: $cardBlueBorder;
+  background: $cardBlueGradient;
+}
+.redCard {
+  border-image: $cardRedBorder;
+  background: $cardRedGradient;
 }
