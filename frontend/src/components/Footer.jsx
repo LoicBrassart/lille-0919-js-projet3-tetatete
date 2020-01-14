@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles/Footer.scss";
 
 function Footer() {
@@ -8,39 +9,39 @@ function Footer() {
         <li className="footerInfos">
           <ul>
             <li>
-              <a href="">Comment ça marche ?</a>
+              <button>Comment ça marche ?</button>
             </li>
             <li>
-              <a href="">La charte éthique</a>
+              <button>La charte éthique</button>
             </li>
             <li>
-              <a href="">Les mentions légales et CGU</a>
+              <button>Les mentions légales et CGU</button>
             </li>
           </ul>
         </li>
         <li className="footerLogo">
-          <a href="https://www.facebook.com/">
+          <Link to="/">
             <img
               src="https://via.placeholder.com/300x100?text=Logo+and+name+of+site"
               alt="site icon"
             />
-          </a>
+          </Link>
         </li>
         <li className="footerSocial">
           <p>Rejoignez-nous sur :</p>
           <ul>
             <li>
-              <a href="#">
+              <a href="https://fr-fr.facebook.com/">
                 <img src="img/fcb_logo.svg" alt="Facebook" />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://twitter.com/?lang=fr">
                 <img src="img/twitter_logo.svg" alt="Twitter" />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://www.instagram.com/">
                 <img src="img/insta_logo.svg" alt="Instagram" />
               </a>
             </li>
