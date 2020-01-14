@@ -19,13 +19,13 @@
       cursor: pointer;
 
       &:nth-child(1) .content .titleBorder {
-        background-color: #04b4d3;
+        background-color: $meexColor;
       }
       &:nth-child(1) .content .titleLayout {
-        background: linear-gradient(180deg, #00e0ee 20%, #02adcf 100%);
+        background: $meexGradient;
       }
       &:nth-child(1) span {
-        border: solid 4px #04b4d3;
+        border: solid 4px $meexColor;
         padding: 20px;
         p {
           color: $darkFontColor;
@@ -34,22 +34,22 @@
         big {
           margin-bottom: 10px;
           font-size: 1.4rem;
-          color: #04b4d3;
+          color: $meexColor;
         }
       }
 
       &:nth-child(2) .content .titleBorder {
-        background-color: #ff5b56;
+        background-color: $chartColor;
       }
       &:nth-child(2) .content .titleLayout {
-        background: linear-gradient(180deg, #ff8e75 20%, #ff534d 100%);
+        background: $chartGradient;
       }
       &:nth-child(2) span {
-        border: solid 4px #ff5b56;
+        border: solid 4px $chartColor;
         padding: 20px;
         big {
           font-size: 1.4rem;
-          color: #ff5b56;
+          color: $chartColor;
         }
         p {
           color: $darkFontColor;
@@ -58,14 +58,14 @@
       }
 
       &:nth-child(3) .content .titleBorder {
-        background-color: #01a177;
+        background-color: $foundsColor;
       }
       &:nth-child(3) .content .titleLayout {
-        background: linear-gradient(180deg, #00bd88 20%, #00bdb2 100%);
+        background: $foundsGradient;
       }
       &:nth-child(3) span {
-        border: solid 4px #01a177;
-        color: #01a177;
+        border: solid 4px $foundsColor;
+        color: $foundsColor;
         padding: 20px;
         p,
         small,
