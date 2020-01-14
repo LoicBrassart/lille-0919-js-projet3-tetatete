@@ -5,7 +5,7 @@ import "./styles/CampaignPage.scss";
 const { apiCall } = require("../conf");
 
 export default function CampaignPage(props) {
-  const [campaignInfo, setCampaignInfo] = useState([]);
+  const [campaignInfos, setCampaignInfo] = useState([]);
 
   useEffect(() => {
     getCampaignById();
@@ -25,33 +25,33 @@ export default function CampaignPage(props) {
       <div className="infoProfilePage center">
         <img
           className="profileImage"
-          src={campaignInfo.img}
-          alt={campaignInfo.name}
+          src={campaignInfos.img}
+          alt={campaignInfos.name}
         />
         ​
         <div className="infoContainer">
           <div className="firstContainer">
-            <h2>{campaignInfo.name}</h2>
+            <h2>{campaignInfos.name}</h2>
             <div className="profileTag">
               <img src="https://via.placeholder.com/50x50" alt="Tag" />
               <img src="https://via.placeholder.com/50x50" alt="Tag" />
               <img src="https://via.placeholder.com/50x50" alt="Tag" />
             </div>
           </div>
-          ​<p className="resumeInfoPage">{campaignInfo.resume}</p>
+          ​<p className="resumeInfoPage">{campaignInfos.resume}</p>
         </div>
       </div>
       <div className="donationButton">
         <DonationButton
-          value={campaignInfo.value1 + " €"}
+          value={campaignInfos.value1 + " €"}
           action={"Je donne !"}
         />
         <DonationButton
-          value={campaignInfo.value2 + " €"}
+          value={campaignInfos.value2 + " €"}
           action={"Je donne !"}
         />
         <DonationButton
-          value={campaignInfo.value3 + " €"}
+          value={campaignInfos.value3 + " €"}
           action={"Je donne !"}
         />
         <DonationButton

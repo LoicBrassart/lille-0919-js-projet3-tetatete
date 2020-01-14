@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./styles/Ambassadors.scss";
 import FilterTab from "../components/FilterTab";
 import ProfileCard from "../components/ProfileCard";
@@ -6,19 +7,27 @@ import axios from "axios";
 const { apiCall } = require("../conf");
 
 function Ambassadors() {
-  const [ambassadors, setAmbassadors] = useState([]);
+  //const [ambassadors, setAmbassadors] = useState([]);
+  const ambassadorsInfos = useSelector(state => state.ambassadorsInfos);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
+  /*useEffect(() => {
     axios.get(`${apiCall}/ambassador`).then(res => {
       setAmbassadors(res.data);
     });
-  }, [setAmbassadors]);
+  }, [setAmbassadors]);*/
+
+  useEffect(() => {
+    axios.get(`${apiCall}/ambassador`).then(res => {
+      dispatch({ type: "GET_AMBASADORS", data: res.data });
+    });
+  }, [dispatch]);
 
   return (
     <section className="Ambassadors">
       <FilterTab />
       <div className="center containerProfile">
-        {ambassadors.map(ambassador => {
+        {ambassadorsInfos.map(ambassador => {
           return (
             <ProfileCard
               key={ambassador.id}
