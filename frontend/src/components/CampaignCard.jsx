@@ -11,15 +11,9 @@ function CampaignCard({ campaignInfo }) {
   //stocker class campaignCard
   const [cardStyle, setCardStyle] = useState("campaignCard redCard");
 
-  console.log("---------");
-
   //stocker la date de fin
   let campaignEnd = moment(campaignInfo.time_end).format("X");
   let campaignEndLabel = moment(campaignInfo.time_end).fromNow();
-
-  console.log("---CMPEND---");
-  console.log(campaignEnd);
-  console.log(campaignEndLabel);
 
   //stocker le rendu de la balise <p>
   const [cardStatus, setCardstatus] = useState("campagne terminée");
@@ -28,14 +22,10 @@ function CampaignCard({ campaignInfo }) {
   let twoDaysBefore = moment(campaignInfo.time_end)
     .subtract(2, "days")
     .format("X");
-  console.log("---2D---");
-  console.log(twoDaysBefore);
 
-  //stocker la date du jour format DD/MM/YYYY
+  //stocker la date du jour format "X" timestamp
   let getDate = Date.now();
   let dateOfTheDay = moment(getDate).format("X");
-  console.log("---DD---");
-  console.log(dateOfTheDay);
 
   // checker les diff de dates-------------------------
   function checkDate() {
