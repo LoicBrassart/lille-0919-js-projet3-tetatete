@@ -10,7 +10,7 @@ function AmbassadorInfos(props) {
     axios.get(`${apiCall}/ambassador/${props.match.params.id}`).then(res => {
       setAmbassador(res.data[0]);
     });
-  }, [setAmbassador, props.match.params.id]);
+  }, [props.match.params.id]);
 
   return (
     <div className="AmbassadorInfos center">
