@@ -7,18 +7,15 @@ const { apiCall } = require("../conf");
 export default function CampaignPage(props) {
   const [campaignInfo, setCampaignInfo] = useState([]);
 
+  const getCampaignById = React.useCallback(() => {
+    axios.get(`${apiCall}/campaign/${props.match.params.id}`).then(res => {
+      setCampaignInfo(res.data[0]);
+    });
+  }, [props.match.params.id]);
+
   useEffect(() => {
     getCampaignById();
-  }, []);
-
-  const getCampaignById = () => {
-    axios
-      .get(`${apiCall}/campaign/${props.match.params.id}`)
-      .then(res => {
-        setCampaignInfo(res.data[0]);
-      })
-      .catch(err => console.log(err));
-  };
+  }, [getCampaignById]);
 
   return (
     <div className="campaignPage">
