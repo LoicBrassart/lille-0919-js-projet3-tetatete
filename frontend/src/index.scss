@@ -8,9 +8,13 @@ $mainBrandGradient: linear-gradient(
   rgba(0, 176, 240, 1) 90%
 );
 
-//variable for campaign cards
-$cardBlueBorder: linear-gradient(235.76deg, #00bd88 11.06%, #009bbd 99.77%) 1;
-$cardBlueBg: linear-gradient(235.76deg, #00bd88 11.06%, #009bbd 99.77%);
+//variables for blue campaign cards
+$cardBlueBorder: linear-gradient(235.76deg, #00bd88 10%, #009bbd 100%) 1;
+$cardBlueGradient: linear-gradient(235.76deg, #00bd88 10%, #009bbd 100%);
+// variables for red campaign cards
+$cardRedBorder: linear-gradient(235.76deg, #ff7975 10%, #ff75af 100%) 1;
+$cardRedGradient: linear-gradient(235.76deg, #ff7975 10%, #ff75af 100%);
+
 $cardTitleFontColor: #384955;
 $fondationFontColor: #00e0ff;
 $moreInfoFontColor: #00b0f0;
