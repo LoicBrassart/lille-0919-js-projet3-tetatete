@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 import "./styles/CampaignCard.scss";
 
 function CampaignCard({ campaignInfo }) {
@@ -12,7 +13,7 @@ function CampaignCard({ campaignInfo }) {
           alt={campaignInfo.name}
         ></img>
         <h2 className="campaignTitle">{campaignInfo.name} </h2>
-        <p className="timer">{campaignInfo.time_end}</p>
+        <p className="timer">{moment(`${campaignInfo.time_end}`).fromNow()}</p>
         <p className="campaignDescription">{campaignInfo.resume}</p>
         <a className="more_info" href="Button">
           <img src="/img/moreInfo.png" alt="more info"></img>

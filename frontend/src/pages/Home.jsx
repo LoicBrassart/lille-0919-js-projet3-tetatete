@@ -4,6 +4,7 @@ import TagLine from "../components/TagLine";
 import CampaignCard from "../components/CampaignCard";
 import LearnMore from "../components/LearnMore";
 import axios from "axios";
+import moment from "moment";
 import "./styles/Home.scss";
 const { apiCall } = require("../conf");
 
