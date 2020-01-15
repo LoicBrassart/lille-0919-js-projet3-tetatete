@@ -33,8 +33,6 @@
           transition: all 0.4s;
 
           &.active {
-            color: $mainBrandColor;
-            background-color: $backgroundColor;
             &:after {
               width: 80%;
             }
@@ -45,10 +43,10 @@
             display: block;
             width: 0%;
             height: 2px;
-            background-color: $mainBrandColor;
+            background-color: $backgroundColor;
             position: absolute;
             left: 10%;
-            bottom: 5px;
+            bottom: 10px;
             transition: all 0.4s;
           }
         }

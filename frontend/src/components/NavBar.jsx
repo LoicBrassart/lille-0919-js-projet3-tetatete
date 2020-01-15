@@ -15,6 +15,17 @@ function NavBar() {
         <ul className="desktopMenu">
           <li>
             <NavLink
+              id="meetings"
+              className="menu-item"
+              activeClassName="active"
+              to="/campaigns"
+            >
+              Campagnes
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
               id="ambassadors"
               className="menu-item"
               activeClassName="active"
@@ -34,21 +45,19 @@ function NavBar() {
               Causes soutenues
             </NavLink>
           </li>
-
-          <li>
-            <NavLink
-              id="blog"
-              className="menu-item"
-              activeClassName="active"
-              to="/blog"
-            >
-              Blog
-            </NavLink>
-          </li>
         </ul>
       </nav>
 
       <BurgerMenu width={320}>
+        <NavLink
+          id="meetings"
+          className="menu-item"
+          activeClassName="bm-active"
+          to="/campaigns"
+        >
+          Campagnes
+        </NavLink>
+
         <NavLink
           id="ambassadors"
           className="menu-item"
@@ -65,15 +74,6 @@ function NavBar() {
           to="/causes"
         >
           Causes soutenues
-        </NavLink>
-
-        <NavLink
-          id="blog"
-          className="menu-item"
-          activeClassName="bm-active"
-          to="/blog"
-        >
-          Blog
         </NavLink>
       </BurgerMenu>
     </header>
