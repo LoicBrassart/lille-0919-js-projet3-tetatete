@@ -2,8 +2,8 @@ import React from "react";
 import NavBar from "./components/NavBar";
 import { Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Meetings from "./pages/Meetings";
 import Ambassadors from "./pages/Ambassadors";
+import AmbassadorInfos from "./pages/AmbassadorInfos";
 import Causes from "./pages/Causes";
 import CauseInfos from "./pages/CauseInfos";
 import Blog from "./pages/Blog";
@@ -20,12 +20,12 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home}></Route>
-        <Route path="/meetings" component={Meetings}></Route>
+        <Route path="/campaign/:id" component={CampaignPage}></Route>
+        <Route path="/campaigns" component={Meetings}></Route>
+        <Route path="/ambassadors/:id" component={AmbassadorInfos}></Route>
         <Route path="/ambassadors" component={Ambassadors}></Route>
         <Route path="/causes/:id" component={CauseInfos}></Route>
         <Route path="/causes" component={Causes}></Route>
-        <Route path="/blog" component={Blog}></Route>
-        <Route path="/campaign/:id" component={CampaignPage}></Route>
       </Switch>
       <Footer />
     </div>

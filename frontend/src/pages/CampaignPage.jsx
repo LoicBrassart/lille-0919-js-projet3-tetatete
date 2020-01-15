@@ -8,17 +8,10 @@ export default function CampaignPage(props) {
   const [campaignInfo, setCampaignInfo] = useState([]);
 
   useEffect(() => {
-    getCampaignById();
-  }, []);
-
-  const getCampaignById = () => {
-    axios
-      .get(`${apiCall}/campaign/${props.match.params.id}`)
-      .then(res => {
-        setCampaignInfo(res.data[0]);
-      })
-      .catch(err => console.log(err));
-  };
+    axios.get(`${apiCall}/campaign/${props.match.params.id}`).then(res => {
+      setCampaignInfo(res.data[0]);
+    });
+  }, [props.match.params.id]);
 
   return (
     <div className="campaignPage">
