@@ -55,7 +55,7 @@ function CampaignCard({ campaignInfo }) {
 
           <p className="fondationName">Nom de la fondation</p>
 
-          <a className="more_info" href="Button">
+          <a className="moreInfo" href="Button">
             <p className="moreInfoText">en savoir plus</p>
             <img src="/img/moreInfo.png" alt="more info"></img>
           </a>
@@ -66,3 +66,6 @@ function CampaignCard({ campaignInfo }) {
 }
 
 export default CampaignCard;
+
+/* TODO => faire un datediff en back à récuperer pour le comparer 
+à la date de fin de campagne et récupèrer le nb de jours et le nb d'heures restants*/
