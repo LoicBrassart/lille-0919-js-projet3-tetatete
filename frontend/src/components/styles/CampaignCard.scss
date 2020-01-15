@@ -29,18 +29,25 @@
     }
 
     .timer {
-      width: 250px;
       color: white;
       font-family: arial;
-      font-size: 36px;
       font-weight: bold;
       text-align: right;
       position: absolute;
-      right: 10px;
-      top: 150px;
+      right: 25px;
+      top: 50px;
       z-index: 1;
+
+      .timeValue {
+        font-size: 120px;
+        height: 120px;
+      }
+      .cardStatus {
+        font-size: 24px;
+      }
     }
   }
+
   .secondContainer {
     background: white;
     height: 150px;
@@ -92,4 +99,11 @@
 .redCard {
   border-image: $cardRedBorder;
   background: $cardRedGradient;
+  .timeValue {
+    display: none;
+  }
+  .timer .cardStatus {
+    font-size: 48px;
+    width: 270px;
+  }
 }
