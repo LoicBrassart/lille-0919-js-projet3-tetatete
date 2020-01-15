@@ -4,13 +4,28 @@ const router = express.Router();
 
 //Get all ambassadors
 router.get("/", (req, res) => {
-    connection.query("SELECT * FROM ambassador", (err, results) => {
-        if (err) {
-            res.status(500).send("Error !");
-        } else {
-            res.status(200).json(results);
-        }
-    })
+  connection.query("SELECT * FROM ambassador", (err, results) => {
+    if (err) {
+      res.status(500).send("Error !");
+    } else {
+      res.status(200).json(results);
+    }
+  });
+});
+
+router.get("/:id", (req, res) => {
+  const id = req.params.id;
+  connection.query(
+    "SELECT * FROM ambassador WHERE id = ?",
+    [id],
+    (err, results) => {
+      if (err) {
+        res.status(500).send("Error !");
+      } else {
+        res.status(200).json(results);
+      }
+    }
+  );
 });
 
 module.exports = router;
