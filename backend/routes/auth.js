@@ -17,14 +17,14 @@ router.post("/", (req, res) => {
       if (err)
         return res
           .status(500)
-          .send("Error har occured during the user creation !");
+          .send("Error has occured during the user creation !");
       if (results.length)
         return res.status(409).send("Email address already taken !");
       connection.query("INSERT INTO user SET ?", [formData], (err, results) => {
         if (err)
           return res
             .status(500)
-            .send("Error har occured during the user creation !");
+            .send("Error has occured during the user creation !");
         return res.sendStatus(200);
       });
     }
