@@ -2,38 +2,141 @@
 
 .LearnMore {
   padding: 20px;
-}
+  background-color: $lightGray;
 
-#article {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 
-figure {
-  width: 300px;
+    .learnCard {
+      position: relative;
+      width: calc(320px - 20px);
+      height: 360px;
+      margin: 0 10px 10px 10px;
+      box-shadow: $boxShadow;
+      overflow: hidden;
+      cursor: pointer;
 
-  position: relative;
-}
+      &:nth-child(1) .content .titleBorder {
+        background-color: $meexColor;
+      }
+      &:nth-child(1) .content .titleLayout {
+        background: $meexGradient;
+      }
+      &:nth-child(1) span {
+        border: solid 4px $meexColor;
+        padding: 20px;
+        p {
+          color: $darkFontColor;
+          margin: 10px 0;
+        }
+        big {
+          margin-bottom: 10px;
+          font-size: 1.4rem;
+          color: $meexColor;
+        }
+      }
 
-img {
-  width: 100%;
-  vertical-align: top;
-}
+      &:nth-child(2) .content .titleBorder {
+        background-color: $chartColor;
+      }
+      &:nth-child(2) .content .titleLayout {
+        background: $chartGradient;
+      }
+      &:nth-child(2) span {
+        border: solid 4px $chartColor;
+        padding: 20px;
+        big {
+          font-size: 1.4rem;
+          color: $chartColor;
+        }
+        p {
+          color: $darkFontColor;
+          margin: 0 0 20px 0;
+        }
+      }
 
-figcaption {
-  transition: all 1s;
-  opacity: 0;
-  background-color: AntiqueWhite;
-  text-align: center;
-  position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
-  border: 3px ridge $mainBrandColor;
-}
+      &:nth-child(3) .content .titleBorder {
+        background-color: $foundsColor;
+      }
+      &:nth-child(3) .content .titleLayout {
+        background: $foundsGradient;
+      }
+      &:nth-child(3) span {
+        border: solid 4px $foundsColor;
+        color: $foundsColor;
+        padding: 20px;
+        p,
+        small,
+        big {
+          display: block;
+          width: 100%;
+          text-align: center;
+        }
+        p {
+          font-size: 2rem;
+          margin-bottom: 20px;
+        }
+        big {
+          font-size: 3rem;
+        }
+        .stats {
+          margin-bottom: 30px;
+        }
+      }
 
-figure:hover figcaption {
-  opacity: 1;
-  transform: scale(1.2, 1.2);
-  z-index: 1;
+      span {
+        transition: all 0.3s;
+        position: absolute;
+        z-index: 2;
+        top: -100%;
+        width: 100%;
+        height: 360px;
+        background-color: $backgroundColor;
+        &.shown {
+          top: 0;
+        }
+      }
+
+      .content {
+        margin-top: -60px;
+
+        .titleBorder {
+          display: block;
+          height: 220px;
+          z-index: 1;
+          clip-path: polygon(50% 55px, 100% 0, 100% 100%, 0 100%, 0 0);
+        }
+
+        .titleLayout {
+          margin-top: -215px;
+          height: 220px;
+          clip-path: polygon(50% 55px, 100% 0, 100% 100%, 0 100%, 0 0);
+          h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: $lightFontColor;
+            font-size: $bigFontSize;
+            text-transform: uppercase;
+          }
+          p {
+            color: $lightFontColor;
+            display: block;
+            position: relative;
+            bottom: 35px;
+            right: 10px;
+            text-align: right;
+            img {
+              display: inline-block;
+              vertical-align: middle;
+              width: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
