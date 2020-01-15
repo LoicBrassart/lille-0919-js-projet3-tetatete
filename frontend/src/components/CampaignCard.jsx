@@ -70,6 +70,3 @@ function CampaignCard({ campaignInfo }) {
 }
 
 export default CampaignCard;
-
-/* TODO => faire un datediff en back à récuperer pour le comparer 
-à la date de fin de campagne et récupèrer le nb de jours et le nb d'heures restants*/
