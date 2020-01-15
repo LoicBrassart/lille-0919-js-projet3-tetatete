@@ -14,9 +14,9 @@ function CampaignCard({ campaignInfo }) {
         <h2 className="campaignTitle">{campaignInfo.name} </h2>
         <p className="timer">{campaignInfo.time_end}</p>
         <p className="campaignDescription">{campaignInfo.resume}</p>
-        <a className="more_info" href="Button">
+        <span className="more_info">
           <img src="/img/moreInfo.png" alt="more info"></img>
-        </a>
+        </span>
       </Link>
     </div>
   );
