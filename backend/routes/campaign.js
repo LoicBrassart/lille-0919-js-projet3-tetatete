@@ -7,8 +7,22 @@ const router = express.Router();
 //Or all campaigns order by the most imminent campaign to finish
 //You can define a limit too
 router.get("/", (req, res) => {
-  let sql = `SELECT *, campaign.name AS campaignName, timediff(time_end,NOW()) AS timeDiff, datediff(time_end,NOW()) AS dateDiff, association.name 
-    AS associationName
+  let sql = `SELECT 
+  campaign.name AS name, 
+  campaign.img, 
+  campaign.resume, 
+  campaign.time_start, 
+  campaign.time_end, 
+  campaign.date_event, 
+  campaign.value1, 
+  campaign.value2, 
+  campaign.value3, 
+  campaign.id_user, 
+  campaign.id_ambassador, 
+  campaign.id_association, 
+  timediff(time_end,NOW()) AS timeDiff, 
+  datediff(time_end,NOW()) AS dateDiff, 
+  association.name AS associationName
     FROM campaign 
     JOIN association ON campaign.id_association=association.id`;
   let query = [];
