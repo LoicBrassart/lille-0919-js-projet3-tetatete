@@ -62,7 +62,7 @@
       color: $fondationFontColor;
       margin-left: 10px;
     }
-    git check .moreInfo {
+    .moreInfo {
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -76,14 +76,10 @@
         color: $moreInfoFontColor;
       }
 
-      img {
+      .moreInfoButton {
         width: 5%;
         height: auto;
         margin: 10px;
-        transform: scale(0.9);
-      }
-      .moreInfo img:hover {
-        transform: scale(1);
       }
     }
   }

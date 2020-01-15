@@ -57,7 +57,11 @@ function CampaignCard({ campaignInfo }) {
 
           <a className="moreInfo" href="Button">
             <p className="moreInfoText">en savoir plus</p>
-            <img src="/img/moreInfo.png" alt="more info"></img>
+            <img
+              className="moreInfoButton"
+              src="/img/moreInfo.png"
+              alt="more info"
+            ></img>
           </a>
         </div>
       </Link>
