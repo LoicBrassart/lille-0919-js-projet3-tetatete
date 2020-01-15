@@ -28,4 +28,16 @@ router.get("/total", (req, res) => {
   );
 });
 
+//Post a donation from a user
+router.post("/", (req, res) => {
+  const donation = req.body;
+  connection.query("INSERT INTO donation SET ?", [donation], (err, results) => {
+    if (err)
+      return res
+        .status(500)
+        .send("Error has occured during the creation of the donation !");
+    return res.status(201).send("Donation posted successfully");
+  });
+});
+
 module.exports = router;
