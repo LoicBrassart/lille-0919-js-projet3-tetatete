@@ -7,14 +7,15 @@ const router = express.Router();
 //Or all campaigns order by the most imminent campaign to finish
 //You can define a limit too
 router.get("/", (req, res) => {
-  let sql = "SELECT * FROM campaign";
+  let sql =
+    "SELECT *, timediff(time_end,NOW()) AS timeDiff, datediff(time_end,NOW()) AS dateDiff FROM campaign";
   let query = [];
   if (req.query.inProgress) {
     sql += " WHERE NOW() < time_end ORDER BY time_start DESC";
   } else if (req.query.done) {
     sql += " WHERE NOW() > time_end ORDER BY time_end DESC";
   } else if (req.query.finishing) {
-    sql += " WHERE NOW() < time_end ORDER BY timediff(time_end,time_start) ASC";
+    sql += " WHERE NOW() < time_end ORDER BY timediff(time_end,NOW()) ASC";
   }
   if (req.query.limit) {
     sql += " LIMIT ?";
