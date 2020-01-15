@@ -1,6 +1,8 @@
 require("dotenv").config();
 const mysql = require("mysql");
 const port = process.env.BACKEND_PORT;
+const JWTSecret = process.env.JWTSECRET;
+const saltRound = parseInt(process.env.SALTROUND);
 
 const connection = mysql.createPool({
   connectionLimit: 10,
@@ -10,4 +12,4 @@ const connection = mysql.createPool({
   database: process.env.DB_DATABASE
 });
 
-module.exports = { connection, port };
+module.exports = { connection, port, JWTSecret, saltRound };

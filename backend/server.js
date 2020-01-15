@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { port } = require("./conf");
+const passport = require("passport");
 
 //Routes imported
 const ambassador = require("./routes/ambassador");
@@ -15,6 +16,7 @@ const misc = require("./routes/misc");
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
 
 //Router
 app.use("/ambassador", ambassador);
