@@ -26,7 +26,7 @@ function NavBar() {
 
           <li>
             <NavLink
-              id="meetings"
+              id="ambassadors"
               className="menu-item"
               activeClassName="active"
               to="/ambassadors"
@@ -37,7 +37,7 @@ function NavBar() {
 
           <li>
             <NavLink
-              id="meetings"
+              id="causes"
               className="menu-item"
               activeClassName="active"
               to="/causes"
@@ -59,7 +59,7 @@ function NavBar() {
         </NavLink>
 
         <NavLink
-          id="meetings"
+          id="ambassadors"
           className="menu-item"
           activeClassName="bm-active"
           to="/ambassadors"
@@ -68,7 +68,7 @@ function NavBar() {
         </NavLink>
 
         <NavLink
-          id="meetings"
+          id="causes"
           className="menu-item"
           activeClassName="bm-active"
           to="/causes"
