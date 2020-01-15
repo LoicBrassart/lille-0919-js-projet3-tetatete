@@ -15,18 +15,7 @@ function NavBar() {
         <ul className="desktopMenu">
           <li>
             <NavLink
-              id="meetings"
-              className="menu-item"
-              activeClassName="active"
-              to="/meetings"
-            >
-              Rencontres
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              id="meetings"
+              id="ambassadors"
               className="menu-item"
               activeClassName="active"
               to="/ambassadors"
@@ -37,7 +26,7 @@ function NavBar() {
 
           <li>
             <NavLink
-              id="meetings"
+              id="causes"
               className="menu-item"
               activeClassName="active"
               to="/causes"
@@ -48,7 +37,7 @@ function NavBar() {
 
           <li>
             <NavLink
-              id="meetings"
+              id="blog"
               className="menu-item"
               activeClassName="active"
               to="/blog"
@@ -61,16 +50,7 @@ function NavBar() {
 
       <BurgerMenu width={320}>
         <NavLink
-          id="meetings"
-          className="menu-item"
-          activeClassName="bm-active"
-          to="/meetings"
-        >
-          Rencontres
-        </NavLink>
-
-        <NavLink
-          id="meetings"
+          id="ambassadors"
           className="menu-item"
           activeClassName="bm-active"
           to="/ambassadors"
@@ -79,7 +59,7 @@ function NavBar() {
         </NavLink>
 
         <NavLink
-          id="meetings"
+          id="causes"
           className="menu-item"
           activeClassName="bm-active"
           to="/causes"
@@ -88,7 +68,7 @@ function NavBar() {
         </NavLink>
 
         <NavLink
-          id="meetings"
+          id="blog"
           className="menu-item"
           activeClassName="bm-active"
           to="/blog"

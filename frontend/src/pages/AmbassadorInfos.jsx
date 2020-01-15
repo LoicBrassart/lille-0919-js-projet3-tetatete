@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./styles/CauseInfos.scss";
+import "./styles/AmbassadorInfos.scss";
 const { apiCall } = require("../conf");
 
-function CauseInfos(props) {
-  const [association, setAssociation] = useState([]);
+function AmbassadorInfos(props) {
+  const [ambassador, setAmbassador] = useState([]);
 
   useEffect(() => {
-    axios.get(`${apiCall}/association/${props.match.params.id}`).then(res => {
-      setAssociation(res.data[0]);
+    axios.get(`${apiCall}/ambassador/${props.match.params.id}`).then(res => {
+      setAmbassador(res.data[0]);
     });
   }, [props.match.params.id]);
 
   return (
-    <div className="CauseInfos center">
+    <div className="AmbassadorInfos center">
       <div className="photo">
-        <img src={association.img} alt="" className="associationPhoto" />
+        <img src={ambassador.img} alt="" className="ambassadorPhoto" />
       </div>
       <div className="content">
         <div className="titleAndTags">
-          <h3>{association.name}</h3>
+          <h3>
+            {ambassador.firstname} {ambassador.lastname}
+          </h3>
           <ul>
             <li>
               <img
@@ -45,13 +47,10 @@ function CauseInfos(props) {
           </ul>
         </div>
 
-        <p>{association.resume}</p>
-        <a target="_blank" href={association.website} rel="noopener noreferrer">
-          Site Web
-        </a>
+        <p>{ambassador.resume}</p>
       </div>
     </div>
   );
 }
 
-export default CauseInfos;
+export default AmbassadorInfos;
