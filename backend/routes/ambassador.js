@@ -4,24 +4,14 @@ const router = express.Router();
 
 //Get all ambassadors order by name and with filter
 router.get("/", (req, res) => {
-  let sql = "SELECT * FROM ambassador ORDER BY firstname ASC";
-  let filter = [];
-  if (req.query.filter) {
-    sql = `SELECT * FROM ambassador 
-                JOIN ambassador_has_tag ON ambassador.id = ambassador_has_tag.id_ambassador
-                WHERE id_tag = ?
-                ORDER BY firstname ASC`;
-    filter.push(Number(req.query.filter));
-  }
-  connection.query(sql, [filter], (err, results) => {
-    if (err)
-      return res.status(500).send("Error in obtaining ambassadors's infos !");
-    if (results.length === 0)
-      return res
-        .status(204)
-        .send("There is no info corresponding to your research.");
-    return res.status(200).json(results);
-  });
+  connection.query(
+    "SELECT * FROM ambassador ORDER BY firstname ASC",
+    (err, results) => {
+      if (err)
+        return res.status(500).send("Error in obtaining ambassadors's infos !");
+      return res.status(200).json(results);
+    }
+  );
 });
 
 //Get an ambassador by id

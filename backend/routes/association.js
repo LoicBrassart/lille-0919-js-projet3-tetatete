@@ -4,24 +4,16 @@ const router = express.Router();
 
 //Get all associations order by name and with filter
 router.get("/", (req, res) => {
-  let sql = "SELECT * FROM association ORDER BY name ASC";
-  let filter = [];
-  if (req.query.filter) {
-    sql = `SELECT * FROM association 
-                JOIN association_has_tag ON association.id = association_has_tag.id_association
-                WHERE id_tag = ?
-                ORDER BY name ASC`;
-    filter.push(Number(req.query.filter));
-  }
-  connection.query(sql, [filter], (err, results) => {
-    if (err)
-      return res.status(500).send("Error in obtaining associations's infos !");
-    if (results.length === 0)
-      return res
-        .status(204)
-        .send("There is no info corresponding to your research.");
-    return res.status(200).json(results);
-  });
+  connection.query(
+    "SELECT * FROM association ORDER BY name ASC",
+    (err, results) => {
+      if (err)
+        return res
+          .status(500)
+          .send("Error in obtaining associations's infos !");
+      return res.status(200).json(results);
+    }
+  );
 });
 
 //Get an association by id
