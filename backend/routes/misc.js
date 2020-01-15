@@ -13,7 +13,7 @@ router.get("/total", (req, res) => {
           .send("Error in obtaining summary of all campaign's donation !");
       const { totalDonation } = results[0];
       connection.query(
-        "SELECT count(association.id) AS nb_asso from association",
+        "SELECT count(association.id) AS nbAssociation from association",
         (err, results) => {
           if (err)
             return res
