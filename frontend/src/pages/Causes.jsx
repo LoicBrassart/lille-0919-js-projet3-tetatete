@@ -12,7 +12,8 @@ function Causes() {
     axios.get(`${apiCall}/association`).then(res => {
       setAssociations(res.data);
     });
-  }, [setAssociations]);
+  }, []);
+
   return (
     <section className="Causes">
       <FilterTab />

@@ -10,7 +10,7 @@ function CauseInfos(props) {
     axios.get(`${apiCall}/association/${props.match.params.id}`).then(res => {
       setAssociation(res.data[0]);
     });
-  }, [setAssociation, props.match.params.id]);
+  }, [props.match.params.id]);
 
   return (
     <div className="CauseInfos center">
