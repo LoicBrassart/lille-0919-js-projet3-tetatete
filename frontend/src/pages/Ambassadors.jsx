@@ -12,7 +12,7 @@ function Ambassadors() {
     axios.get(`${apiCall}/ambassador`).then(res => {
       setAmbassadors(res.data);
     });
-  }, [setAmbassadors]);
+  }, []);
 
   return (
     <section className="Ambassadors">
