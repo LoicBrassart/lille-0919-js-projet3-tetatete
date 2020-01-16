@@ -10,6 +10,13 @@
   border-style: solid;
   border-image: $cardBlueBorder;
   background: $cardBlueGradient;
+  transform: scale(0.95);
+  transition: ease 0.2s;
+
+  &:hover {
+    box-shadow: $boxShadow;
+    transform: scale(1);
+  }
 
   .firstContainer {
     display: flex;
@@ -105,6 +112,13 @@
   border-style: solid;
   border-image: $cardRedBorder;
   background: $cardRedGradient;
+  transform: scale(0.95);
+  transition: ease 0.2s;
+
+  &:hover {
+    box-shadow: $boxShadow;
+    transform: scale(1);
+  }
 
   .firstContainer {
     display: flex;
@@ -199,6 +213,13 @@
   border-style: solid;
   border-image: $cardVioletBorder;
   background: $cardVioletGradient;
+  transform: scale(0.95);
+  transition: ease 0.2s;
+
+  &:hover {
+    box-shadow: $boxShadow;
+    transform: scale(1);
+  }
 
   .firstContainer {
     display: flex;

@@ -8,8 +8,7 @@ function NavBar() {
     <header className="NavBar">
       <nav className="desktopNav">
         <NavLink className="logo" activeClassName="active" exact to="/">
-          TooTasty
-          <img src="" alt="" />
+          <img className="meexLogo" src="./img/meexLogo.png" alt="" />
         </NavLink>
 
         <ul className="desktopMenu">

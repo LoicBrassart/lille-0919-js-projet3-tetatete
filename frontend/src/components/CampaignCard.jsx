@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./styles/CampaignCard.scss";
-import "moment/locale/fr";
 
 function CampaignCard({ campaignInfo }) {
   useEffect(() => {
-    setInterval(checkDate(), 1000);
+    checkDate();
   });
 
   //stocker datediff, timediff & minuteRemaining
   let getDateDiff = campaignInfo.dateDiff;
   let getTimeDiff = parseInt(campaignInfo.timeDiff);
+  console.log(getTimeDiff);
   let minuteRemaining = campaignInfo.minuteRemaining;
-
+  console.log(minuteRemaining);
   //stocker le rendu de la balise <p>
   const [timeValue, setTimeValue] = useState(getDateDiff);
   const [cardStatus, setCardstatus] = useState("jours restants");
@@ -29,7 +29,7 @@ function CampaignCard({ campaignInfo }) {
       setTimeValue(getTimeDiff);
       setCardstatus("heures restantes");
     } else if (getTimeDiff <= 1 && getTimeDiff > 0) {
-      setTimeValue(minuteRemaining);
+      setTimeValue(Math.round(minuteRemaining));
       setCardstatus("minutes restantes");
       setCardStyle("campaignCardVioletCard");
     } else if (getTimeDiff <= 0) {
