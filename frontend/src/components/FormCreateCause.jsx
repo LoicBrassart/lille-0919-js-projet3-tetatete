@@ -28,7 +28,7 @@ export default function FormCreateCause() {
   };
 
   return (
-    <div className="CampaignFormBO">
+    <div className="FormCreateCause">
       <h1>Create new asso</h1>
       <form
         onSubmit={e => {
