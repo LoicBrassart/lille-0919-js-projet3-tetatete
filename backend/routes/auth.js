@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const { connection, JWTSecret, saltRound } = require("../conf");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
+const Cookies = require("cookies");
 require("../strategyPassport");
 
 router.post("/", (req, res) => {
@@ -37,6 +38,10 @@ router.post("/login", (req, res) => {
       return res.status(500).send("Error has occured during the connection !");
     if (!user) return res.status(401).send(info);
     const token = jwt.sign(JSON.parse(JSON.stringify(user[0])), JWTSecret);
+    new Cookies(req, res).set("access_token", token, {
+      httpOnly: true,
+      secure: true
+    });
     return res.status(200).json({ user, token });
   })(req, res);
 });
