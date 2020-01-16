@@ -10,7 +10,9 @@ function Home() {
   const [campaignInfo, setCampaignInfo] = useState([]);
 
   useEffect(() => {
-    axios.get(`${apiCall}/campaign/`).then(res => setCampaignInfo(res.data));
+    axios
+      .get(`${apiCall}/campaign?finishing=true&limit=6`)
+      .then(res => setCampaignInfo(res.data));
   }, []);
 
   return (
