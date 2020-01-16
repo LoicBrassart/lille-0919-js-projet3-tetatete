@@ -35,58 +35,89 @@ router.post("/", (req, res) => {
     phone_number: phone_number,
     email: email
   };
+  //Check if there is already someone who donate with these infos
   connection.query(
-    "SELECT phone_number FROM user WHERE phone_number = ?",
-    [phone_number],
+    `SELECT user.phone_number, user.email FROM user 
+      JOIN donation ON user.id=donation.user_id
+      WHERE phone_number = ? AND email = ? AND donation.campaign_id = ?`,
+    [phone_number, email, campaign_id],
     (err, results) => {
       if (err)
         return res
           .status(500)
           .send("Error has occured during the creation of the new user !");
       if (results.length)
-        return res.status(409).send("Phone number already taken !");
+        return res
+          .status(409)
+          .send("Somebody has already donate using these informations !");
+      //Check if this user already donate to an another campaign
       connection.query(
-        "SELECT email FROM user WHERE email = ?",
-        [email],
+        "SELECT id, phone_number, email FROM user WHERE phone_number = ? AND email = ?",
+        [phone_number, email],
         (err, results) => {
           if (err)
             return res
               .status(500)
               .send("Error has occured during the creation of the new user !");
-          if (results.length)
-            return res.status(409).send("Email address already taken !");
-          connection.query(
-            "INSERT INTO user SET ?",
-            [newUser],
-            (err, results) => {
-              if (err)
-                return res
-                  .status(500)
-                  .send(
-                    "Error has occured during the creation of the new user !"
-                  );
-              const { insertId } = results;
-              const newDonation = {
-                campaign_id: campaign_id,
-                user_id: insertId,
-                donation_value: donation_value,
-                date: date
-              };
-              connection.query(
-                "INSERT INTO donation SET ?",
-                [newDonation],
-                (err, results) => {
-                  if (err)
+          //If no, create a new user and a new donation
+          if (!results.length) {
+            connection.query(
+              "INSERT INTO user SET ?",
+              [newUser],
+              (err, results) => {
+                if (err)
+                  return res
+                    .status(500)
+                    .send(
+                      "Error has occured during the creation of the new user !"
+                    );
+                const { insertId } = results;
+                const newDonation = {
+                  campaign_id: campaign_id,
+                  user_id: insertId,
+                  donation_value: donation_value,
+                  date: date
+                };
+                connection.query(
+                  "INSERT INTO donation SET ?",
+                  [newDonation],
+                  (err, results) => {
+                    if (err)
+                      return res
+                        .status(500)
+                        .send(
+                          "Error has occured during the post of the new donation !"
+                        );
                     return res
-                      .status(500)
-                      .send(
-                        "Error has occured during the post of the new donation !"
-                      );
-                  return res.status(201).send("Donation posted successfully !");
-                }
-              );
-            }
-          );
+                      .status(201)
+                      .send("Donation posted successfully !");
+                  }
+                );
+              }
+            );
+            //if yes, there is no need to create a new user
+          } else {
+            const { id } = results[0];
+            const newDonation = {
+              campaign_id: campaign_id,
+              user_id: id,
+              donation_value: donation_value,
+              date: date
+            };
+            connection.query(
+              "INSERT INTO donation SET ?",
+              [newDonation],
+              (err, results) => {
+                if (err)
+                  return res
+                    .status(500)
+                    .send(
+                      "Error has occured during the post of the new donation !"
+                    );
+                return res.status(201).send("Donation posted successfully !");
+              }
+            );
+          }
         }
       );
     }
