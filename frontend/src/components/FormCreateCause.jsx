@@ -36,9 +36,10 @@ export default function FormCreateCause() {
         }}
       >
         <div className="container">
-          <label>Name of asso :</label>
+          <label for="name">Name of asso :</label>
           <input
             type="tel"
+            id="name"
             value={asso.name}
             onChange={event => {
               setAsso({
@@ -51,9 +52,10 @@ export default function FormCreateCause() {
         </div>
 
         <div className="container">
-          <label>Picture :</label>
+          <label for="img">Picture :</label>
           <input
             type="file"
+            id="img"
             value={asso.img}
             onChange={event => {
               setAsso({
@@ -65,9 +67,10 @@ export default function FormCreateCause() {
         </div>
 
         <div className="container">
-          <label>Resume :</label>
+          <label for="resume">Resume :</label>
           <textarea
             type="textarea"
+            id="resume"
             value={asso.resume}
             onChange={event => {
               setAsso({
@@ -79,9 +82,10 @@ export default function FormCreateCause() {
         </div>
 
         <div className="container">
-          <label>Website :</label>
+          <label for="site">Website :</label>
           <input
             type="url"
+            id="site"
             value={asso.website}
             onChange={event => {
               setAsso({
@@ -93,7 +97,7 @@ export default function FormCreateCause() {
         </div>
 
         <div className="container">
-          <label>Select tags of campaign :</label>
+          <p>Select tags of campaign :</p>
           <div id="allCheckbox">
             <input
               type="checkbox"
