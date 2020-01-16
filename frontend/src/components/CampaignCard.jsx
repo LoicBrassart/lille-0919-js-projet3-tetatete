@@ -1,37 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import moment from "moment";
 import "./styles/CampaignCard.scss";
-import "moment/locale/fr";
 
 function CampaignCard({ campaignInfo }) {
   useEffect(() => {
     checkDate();
   });
-  //stocker class campaignCard
-  const [cardStyle, setCardStyle] = useState("campaignCard redCard");
 
-  //stocker la date de fin
-  let campaignEnd = moment(campaignInfo.time_end).format("X");
-  let campaignEndLabel = moment(campaignInfo.time_end).fromNow();
+  //stocker datediff, timediff & minuteRemaining
+  let getDateDiff = campaignInfo.dateDiff;
+  let getTimeDiff = parseInt(campaignInfo.timeDiff);
+
+  let minuteRemaining = campaignInfo.minuteRemaining;
 
   //stocker le rendu de la balise <p>
-  const [cardStatus, setCardstatus] = useState("campagne terminée");
+  const [timeValue, setTimeValue] = useState(getDateDiff);
+  const [cardStatus, setCardstatus] = useState("jours restants");
 
-  // date de fin -48h
-  let twoDaysBefore = moment(campaignInfo.time_end)
-    .subtract(2, "days")
-    .format("X");
+  //stocker classe campaignCard
+  const [cardStyle, setCardStyle] = useState("campaignCardBlueCard");
 
-  //stocker la date du jour format "X" timestamp
-  let getDate = Date.now();
-  let dateOfTheDay = moment(getDate).format("X");
-
-  // checker les diff de dates-------------------------
+  //checker les diffs de dates
   function checkDate() {
-    if (dateOfTheDay < twoDaysBefore) {
-      setCardStyle("campaignCard blueCard");
-      setCardstatus("se termine " + campaignEndLabel);
+    if (getTimeDiff >= 720) {
+      setTimeValue(Math.ceil(getDateDiff / 30));
+      setCardstatus("mois restants");
+    } else if (getTimeDiff <= 48 && getTimeDiff > 1) {
+      setTimeValue(getTimeDiff);
+      setCardstatus("heures restantes");
+    } else if (getTimeDiff <= 1 && getTimeDiff > 0) {
+      setTimeValue(Math.round(minuteRemaining));
+      setCardstatus("minutes restantes");
+      setCardStyle("campaignCardVioletCard");
+    } else if (getTimeDiff <= 0) {
+      setCardStyle("campaignCardRedCard");
+      setCardstatus("campagne terminée");
     }
   }
 
@@ -44,8 +47,10 @@ function CampaignCard({ campaignInfo }) {
             src={campaignInfo.img}
             alt={campaignInfo.name}
           ></img>
-
-          <p className="timer">{cardStatus}</p>
+          <div className="timer">
+            <p className="timeValue">{timeValue}</p>
+            <p className="cardStatus">{cardStatus}</p>
+          </div>
 
           <div className="whiteLine"></div>
         </div>
@@ -53,16 +58,16 @@ function CampaignCard({ campaignInfo }) {
         <div className="secondContainer">
           <h2 className="campaignTitle">{campaignInfo.name} </h2>
 
-          <p className="fondationName">Nom de la fondation</p>
+          <p className="fondationName">{campaignInfo.associationName}</p>
 
-          <a className="moreInfo" href="Button">
+          <div className="moreInfo">
             <p className="moreInfoText">en savoir plus</p>
             <img
               className="moreInfoButton"
               src="/img/moreInfo.png"
               alt="more info"
             ></img>
-          </a>
+          </div>
         </div>
       </Link>
     </div>

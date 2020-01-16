@@ -9,40 +9,40 @@ function Footer() {
         <li className="footerInfos">
           <ul>
             <li>
-              <button>Comment ça marche ?</button>
+              <a>Comment ça marche ?</a>
             </li>
             <li>
-              <button>La charte éthique</button>
+              <a>La charte éthique</a>
             </li>
             <li>
-              <button>Les mentions légales et CGU</button>
+              <a>Les mentions légales et CGU</a>
+            </li>
+            <li>
+              <Link to="/admin">Admin</Link>
             </li>
           </ul>
         </li>
         <li className="footerLogo">
           <Link to="/">
-            <img
-              src="https://via.placeholder.com/300x100?text=Logo+and+name+of+site"
-              alt="site icon"
-            />
+            <img src="./img/meexLogo.png" alt="site icon" />
           </Link>
         </li>
-        <li className="footerSocial">
+        <li className="socialMed">
           <p>Rejoignez-nous sur :</p>
           <ul>
             <li>
               <a href="https://fr-fr.facebook.com/">
-                <img src="img/fcb_logo.svg" alt="Facebook" />
+                <img src="img/fcbLogo.svg" alt="Fcb" />
               </a>
             </li>
             <li>
               <a href="https://twitter.com/?lang=fr">
-                <img src="img/twitter_logo.svg" alt="Twitter" />
+                <img src="img/twitterLogo.svg" alt="Twit" />
               </a>
             </li>
             <li>
               <a href="https://www.instagram.com/">
-                <img src="img/insta_logo.svg" alt="Instagram" />
+                <img src="img/instaLogo.svg" alt="Instg" />
               </a>
             </li>
           </ul>

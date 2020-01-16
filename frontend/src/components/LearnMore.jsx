@@ -18,7 +18,10 @@ export default function LearnMore() {
   return (
     <div className="LearnMore">
       <section>
-        <article className="learnCard" onClick={() => setShowMeex(!showMeex)}>
+        <article
+          className="learnCard"
+          onMouseEnter={() => setShowMeex(!showMeex)}
+        >
           <span className={showMeex ? "shown" : ""}>
             <big>meeX,</big>
             <p>
@@ -45,7 +48,10 @@ export default function LearnMore() {
           </div>
         </article>
 
-        <article className="learnCard" onClick={() => setShowChart(!showChart)}>
+        <article
+          className="learnCard"
+          onMouseEnter={() => setShowChart(!showChart)}
+        >
           <span className={showChart ? "shown" : ""}>
             <p>Notre mission ?</p>
             <big>Aider les plus démunis! </big>
@@ -80,7 +86,7 @@ export default function LearnMore() {
 
         <article
           className="learnCard"
-          onClick={() => setShowFounds(!showFounds)}
+          onMouseEnter={() => setShowFounds(!showFounds)}
         >
           <span className={showFounds ? "shown" : ""}>
             <p>meeX, c'est :</p>

@@ -5,7 +5,7 @@ function TagLine() {
   return (
     <div className="TagLine">
       <div className="center">
-        <h1>Participez aux campagne en vogue dès à présent !</h1>
+        <h1>Fais toi plaisir pour la bonne cause !</h1>
       </div>
     </div>
   );
