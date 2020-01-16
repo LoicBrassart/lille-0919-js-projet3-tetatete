@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
   association.name AS associationName,
   (time_to_sec(timediff(time_end, NOW())))/60 AS minuteRemaining
     FROM campaign 
-    JOIN association ON campaign.id_association=association.id;`;
+    JOIN association ON campaign.id_association=association.id`;
   let query = [];
   if (req.query.inProgress) {
     sql += " WHERE NOW() < time_end ORDER BY time_start DESC";
