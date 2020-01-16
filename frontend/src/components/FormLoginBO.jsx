@@ -33,13 +33,14 @@ export default function FormLoginBO() {
       >
         {!credentialsState && (
           <p className="warning">
-            Veuillez réessayer, l'email ou le mot de passe ne sont incorrect
+            Veuillez réessayer, l'email ou le mot de passe sont incorrects
           </p>
         )}
         <div className="container">
-          <label>Email :</label>
+          <label for="email">Email :</label>
           <input
             type="email"
+            id="email"
             value={user.email}
             onChange={event => {
               updateCredentialsState(true);
@@ -54,9 +55,10 @@ export default function FormLoginBO() {
         </div>
 
         <div className="container">
-          <label>Password :</label>
+          <label for="password">Password :</label>
           <input
             type="password"
+            id="password"
             value={user.password}
             onChange={event => {
               updateCredentialsState(true);
