@@ -5,30 +5,35 @@ import "moment/locale/fr";
 
 function CampaignCard({ campaignInfo }) {
   useEffect(() => {
-    checkDate();
+    setInterval(checkDate(), 1000);
   });
 
-  console.log("--------------------------");
-
-  //stocker datediff et timediff
+  //stocker datediff, timediff & minuteRemaining
   let getDateDiff = campaignInfo.dateDiff;
-
   let getTimeDiff = parseInt(campaignInfo.timeDiff);
+  let minuteRemaining = campaignInfo.minuteRemaining;
 
   //stocker le rendu de la balise <p>
   const [timeValue, setTimeValue] = useState(getDateDiff);
   const [cardStatus, setCardstatus] = useState("jours restants");
 
   //stocker classe campaignCard
-  const [cardStyle, setCardStyle] = useState("campaignCard blueCard");
+  const [cardStyle, setCardStyle] = useState("campaignCardBlueCard");
 
   //checker les diffs de dates
   function checkDate() {
-    if (getTimeDiff <= 48 && getTimeDiff > 0) {
+    if (getTimeDiff >= 720) {
+      setTimeValue(Math.ceil(getDateDiff / 30));
+      setCardstatus("mois restants");
+    } else if (getTimeDiff <= 48 && getTimeDiff > 1) {
       setTimeValue(getTimeDiff);
       setCardstatus("heures restantes");
+    } else if (getTimeDiff <= 1 && getTimeDiff > 0) {
+      setTimeValue(minuteRemaining);
+      setCardstatus("minutes restantes");
+      setCardStyle("campaignCardVioletCard");
     } else if (getTimeDiff <= 0) {
-      setCardStyle("campaignCard redCard");
+      setCardStyle("campaignCardRedCard");
       setCardstatus("campagne terminée");
     }
   }
