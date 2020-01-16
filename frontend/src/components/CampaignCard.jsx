@@ -10,9 +10,9 @@ function CampaignCard({ campaignInfo }) {
   //stocker datediff, timediff & minuteRemaining
   let getDateDiff = campaignInfo.dateDiff;
   let getTimeDiff = parseInt(campaignInfo.timeDiff);
-  console.log(getTimeDiff);
+
   let minuteRemaining = campaignInfo.minuteRemaining;
-  console.log(minuteRemaining);
+
   //stocker le rendu de la balise <p>
   const [timeValue, setTimeValue] = useState(getDateDiff);
   const [cardStatus, setCardstatus] = useState("jours restants");
