@@ -11,8 +11,8 @@ router.get("/", (req, res) => {
   campaign.name AS name, 
   campaign.img, 
   campaign.resume, 
-  campaign.time_start, 
-  campaign.time_end, 
+  DATE_ADD(campaign.time_start, INTERVAL 1 HOUR) AS time_start, 
+  DATE_ADD(campaign.time_end, INTERVAL 1 HOUR) AS time_end,
   campaign.date_event, 
   campaign.value1, 
   campaign.value2, 
@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
   association.name AS associationName,
   (time_to_sec(timediff(time_end, NOW())))/60 AS minuteRemaining
     FROM campaign 
-    JOIN association ON campaign.id_association=association.id`;
+    JOIN association ON campaign.id_association=association.id;`;
   let query = [];
   if (req.query.inProgress) {
     sql += " WHERE NOW() < time_end ORDER BY time_start DESC";
