@@ -4,20 +4,6 @@ import axios from "axios";
 const { apiCall } = require("../conf");
 
 export default function CampaingFormBO() {
-  const [resetForm] = useState({
-    name: "",
-    img: null,
-    resume: "",
-    time_start: "",
-    time_end: "",
-    date_event: "",
-    value1: 10,
-    value2: 20,
-    value3: 30,
-    id_user: null,
-    id_ambassador: null,
-    id_association: null
-  });
   const [newCampaign, setNewCampaign] = useState({
     name: "",
     img: null,
@@ -35,15 +21,14 @@ export default function CampaingFormBO() {
 
   const handleSubmit = () => {
     const data = newCampaign;
-    console.log(data);
+
     axios
       .post(`${apiCall}/campaign`, data)
       .then(res => {
-        alert(`Booyah! New campaign create`);
-        console(res.data);
+        alert(res.data);
       })
       .catch(err => {
-        console.log(`Nay ! New campaign not create`);
+        alert(err);
       });
   };
 
@@ -61,7 +46,6 @@ export default function CampaingFormBO() {
           <input
             type="text"
             value={newCampaign.name}
-            defaultValue={resetForm.name}
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -77,7 +61,6 @@ export default function CampaingFormBO() {
           <input
             type="file"
             value={newCampaign.img}
-            defaultValue={resetForm.img}
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -93,7 +76,6 @@ export default function CampaingFormBO() {
           <textarea
             type="textarea"
             value={newCampaign.resume}
-            defaultValue={resetForm.resume}
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -112,7 +94,6 @@ export default function CampaingFormBO() {
             type="datetime"
             placeholder="YYYY-MM-DD 00:00:00"
             value={newCampaign.time_start}
-            defaultValue={resetForm.time_start}
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -131,7 +112,6 @@ export default function CampaingFormBO() {
             type="datetime"
             placeholder="YYYY-MM-DD 00:00:00"
             value={newCampaign.time_end}
-            defaultValue={resetForm.time_end}
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -147,7 +127,6 @@ export default function CampaingFormBO() {
           <input
             type="date"
             value={newCampaign.date_event}
-            defaultValue={resetForm.date_event}
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -163,7 +142,6 @@ export default function CampaingFormBO() {
           <input
             type="number"
             value={newCampaign.value1}
-            defaultValue={resetForm.value1}
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -179,7 +157,6 @@ export default function CampaingFormBO() {
           <input
             type="number"
             value={newCampaign.value2}
-            defaultValue={resetForm.value2}
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -195,7 +172,6 @@ export default function CampaingFormBO() {
           <input
             type="number"
             value={newCampaign.value3}
-            defaultValue={resetForm.value3}
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -211,7 +187,6 @@ export default function CampaingFormBO() {
           <input
             type="number"
             value={newCampaign.id_user}
-            defaultValue={resetForm.id_user}
             maxLength="2"
             onChange={event => {
               setNewCampaign({
@@ -227,7 +202,6 @@ export default function CampaingFormBO() {
           <input
             type="number"
             value={newCampaign.id_ambassador}
-            defaultValue={resetForm.id_ambassador}
             maxLength="2"
             onChange={event => {
               setNewCampaign({
@@ -244,7 +218,6 @@ export default function CampaingFormBO() {
           <input
             type="number"
             value={newCampaign.id_association}
-            defaultValue={resetForm.id_association}
             maxLength="2"
             onChange={event => {
               setNewCampaign({
