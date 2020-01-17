@@ -14,7 +14,7 @@ function NavBar() {
         <ul className="desktopMenu">
           <li>
             <NavLink
-              id="meetings"
+              id="campaigns"
               className="menu-item"
               activeClassName="active"
               to="/campaigns"
