@@ -36,6 +36,7 @@ export default function CampaingFormBO() {
     <div className="CampaignFormBO">
       <h1>Create new campaign</h1>
       <form
+        enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
         }}
