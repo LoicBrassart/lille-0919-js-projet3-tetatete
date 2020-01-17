@@ -100,3 +100,19 @@ router.delete("/:id", (req, res) => {
 });
 
 module.exports = router;
+
+// const sendMail = require("sendmail")({ silent: true });
+
+// sendMail(
+//   {
+//     from: "theo@meex.com",
+//     to: "boschetti.theo@gmail.com",
+//     replyTo: "jason@yourdomain.com",
+//     subject: "Thank you for your donation !",
+//     html: `Thank you ${results[0].firstname} ${results[0].lastname}, you'he done right !`
+//   },
+//   function(err, reply) {
+//     console.log("Error : " + err);
+//     console.dir("Dir : " + reply);
+//   }
+// );
