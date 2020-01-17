@@ -93,7 +93,7 @@ router.post("/", (req, res) => {
                     sendMail({
                       from: "Team.Meex@meex.com",
                       to: email,
-                      replyTo: "team@meex.com",
+                      replyTo: "Team.Meex@meex.com",
                       subject: "Thank you for your donation !",
                       html: `Thank you! You just donated ${donation_value}€ and by doing this you participated to have a better world !`
                     });
@@ -124,7 +124,7 @@ router.post("/", (req, res) => {
                 sendMail({
                   from: "Team.Meex@meex.com",
                   to: email,
-                  replyTo: "team@meex.com",
+                  replyTo: "Team.Meex@meex.com",
                   subject: "Thank you for your donation !",
                   html: `Thank you! You just donated ${donation_value}€ and by doing this you participated to have a better world !`
                 });
