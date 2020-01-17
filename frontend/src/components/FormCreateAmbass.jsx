@@ -5,19 +5,19 @@ import CheckboxList from "../CheckboxList";
 const { apiCall } = require("../conf");
 
 export default function FormCreateCause() {
-  const [asso, setAsso] = useState({
-    name: "",
-    img: null,
+  const [ambass, setAmbass] = useState({
+    firstname: "",
+    lastname: "",
     resume: "",
-    website: "",
+    img: null,
     id_tag: []
   });
 
-  const data = asso;
+  const data = ambass;
 
   const handleSubmit = () => {
     axios
-      .post(`${apiCall}/association`, data)
+      .post(`${apiCall}/ambassador`, data)
       .then(res => {
         alert(res.data);
       })
@@ -28,7 +28,7 @@ export default function FormCreateCause() {
 
   return (
     <div className="FormCreateAmbass">
-      <h1>Create new asso</h1>
+      <h1>Create new ambass</h1>
       <form
         enctype="multipart/form-data"
         onSubmit={e => {
@@ -36,15 +36,15 @@ export default function FormCreateCause() {
         }}
       >
         <div className="container">
-          <label htmlFor="name">Name of asso :</label>
+          <label htmlFor="firstname">Firstname :</label>
           <input
             type="text"
-            name="name"
-            value={asso.name}
+            id="firstname"
+            value={ambass.firstname}
             onChange={event => {
-              setAsso({
-                ...asso,
-                name: event.target.value
+              setAmbass({
+                ...ambass,
+                firstname: event.target.value
               });
             }}
             required
@@ -52,17 +52,18 @@ export default function FormCreateCause() {
         </div>
 
         <div className="container">
-          <label htmlFor="img">Picture :</label>
+          <label htmlFor="lastname">Lastname :</label>
           <input
-            type="file"
-            name="img"
-            value={asso.img}
+            type="text"
+            id="lastname"
+            value={ambass.lastname}
             onChange={event => {
-              setAsso({
-                ...asso,
-                img: event.target.value
+              setAmbass({
+                ...ambass,
+                lastname: event.target.value
               });
             }}
+            required
           />
         </div>
 
@@ -71,10 +72,10 @@ export default function FormCreateCause() {
           <textarea
             type="textarea"
             name="resume"
-            value={asso.resume}
+            value={ambass.resume}
             onChange={event => {
-              setAsso({
-                ...asso,
+              setAmbass({
+                ...ambass,
                 resume: event.target.value
               });
             }}
@@ -82,15 +83,15 @@ export default function FormCreateCause() {
         </div>
 
         <div className="container">
-          <label htmlFor="site">Website :</label>
+          <label htmlFor="img">Picture :</label>
           <input
-            type="url"
-            name="site"
-            value={asso.website}
+            type="file"
+            name="img"
+            value={ambass.img}
             onChange={event => {
-              setAsso({
-                ...asso,
-                website: event.target.value
+              setAmbass({
+                ...ambass,
+                img: event.target.value
               });
             }}
           />
@@ -109,7 +110,7 @@ export default function FormCreateCause() {
                     value={value}
                     onChange={event => {
                       const tvalue = event.target.value;
-                      const boxArr = [...asso.id_tag];
+                      const boxArr = [...ambass.id_tag];
 
                       if (event.target.checked) boxArr.push(parseInt(tvalue));
                       else {
@@ -118,7 +119,7 @@ export default function FormCreateCause() {
                           boxArr.splice(index, 1);
                         }
                       }
-                      setAsso({ ...asso, id_tag: boxArr });
+                      setAmbass({ ...ambass, id_tag: boxArr });
                     }}
                   />
                   <label htmlFor={id}>{label}</label>
