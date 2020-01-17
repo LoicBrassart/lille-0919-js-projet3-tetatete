@@ -1,6 +1,8 @@
-const { connection } = require("../conf");
+const { connection, cloudinary } = require("../conf");
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const upload = multer({ dest: "/tmp/" });
 
 //Get all ambassadors order by name and with filter
 router.get("/", (req, res) => {
@@ -33,38 +35,50 @@ router.get("/:id", (req, res) => {
 });
 
 //Post a new ambassador
-router.post("/", (req, res) => {
-  const { firstname, lastname, resume, img } = req.body;
-  const formData = {
-    firstname: firstname,
-    lastname: lastname,
-    resume: resume,
-    img: img
-  };
-  connection.query(
-    "INSERT INTO ambassador SET ?",
-    [formData],
-    (err, results) => {
+router.post("/", upload.single("img"), (req, res) => {
+  cloudinary.v2.uploader.upload(
+    req.file.path,
+    { transformation: { width: 350, height: 350, crop: "fill" } },
+    (err, result) => {
       if (err)
         return res
           .status(500)
-          .send(
-            "Error has occured during the creation of the new ambassador !"
-          );
-      const { insertId } = results;
-      const { id_tag } = req.body;
-      const tagData = id_tag.map(tag => {
-        return [insertId, tag];
-      });
+          .send("Error has occured during the upload of the image !");
+      const { firstname, lastname, resume } = req.body;
+      const formData = {
+        firstname: firstname,
+        lastname: lastname,
+        resume: resume,
+        img: result.url
+      };
       connection.query(
-        "INSERT INTO ambassador_has_tag (id_ambassador, id_tag) VALUES ?",
-        [tagData],
+        "INSERT INTO ambassador SET ?",
+        [formData],
         (err, results) => {
           if (err)
             return res
               .status(500)
-              .send("Error has occured during the attribution of the tag !");
-          return res.status(201).send("Ambassador created.");
+              .send(
+                "Error has occured during the creation of the new ambassador !"
+              );
+          const { insertId } = results;
+          const { id_tag } = req.body;
+          const tagData = id_tag.map(tag => {
+            return [insertId, tag];
+          });
+          connection.query(
+            "INSERT INTO ambassador_has_tag (id_ambassador, id_tag) VALUES ?",
+            [tagData],
+            (err, results) => {
+              if (err)
+                return res
+                  .status(500)
+                  .send(
+                    "Error has occured during the attribution of the tag !"
+                  );
+              return res.status(201).send("Ambassador created.");
+            }
+          );
         }
       );
     }

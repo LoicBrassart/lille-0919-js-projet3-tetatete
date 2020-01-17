@@ -2,3 +2,5 @@
 .env
 contrat.json
 superAdminRoute.js
+/ambassadorImage
+/uploads
