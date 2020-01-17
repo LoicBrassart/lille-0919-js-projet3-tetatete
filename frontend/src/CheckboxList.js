@@ -2,32 +2,32 @@ const CheckboxList = [
   {
     id: "boxSante",
     label: "Santé",
-    value: "1"
+    value: 1
   },
   {
     id: "boxHumanitaire",
     label: "Humanitaire",
-    value: "1"
+    value: 2
   },
   {
     id: "boxCulture",
     label: "Culture",
-    value: "1"
+    value: 3
   },
   {
     id: "boxSport",
     label: "Sport",
-    value: "1"
+    value: 4
   },
   {
     id: "boxEcologie",
     label: "Écologie",
-    value: "1"
+    value: 5
   },
   {
     id: "boxEducation",
     label: "Éducation",
-    value: "1"
+    value: 6
   }
 ];
 
