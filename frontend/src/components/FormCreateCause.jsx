@@ -16,14 +16,13 @@ export default function FormCreateCause() {
   const data = asso;
 
   const handleSubmit = () => {
-    console.log(data);
     axios
-      .post(`${apiCall}/test`, data)
+      .post(`${apiCall}/association`, data)
       .then(res => {
-        console.log(`Booyah! ${res.data}`);
+        alert(res.data);
       })
       .catch(err => {
-        console.log(`Nay! ${err}`);
+        alert(err);
       });
   };
 
@@ -39,7 +38,7 @@ export default function FormCreateCause() {
         <div className="container">
           <label htmlFor="name">Name of asso :</label>
           <input
-            type="tel"
+            type="text"
             name="name"
             value={asso.name}
             onChange={event => {
@@ -112,9 +111,9 @@ export default function FormCreateCause() {
                       const tvalue = event.target.value;
                       const boxArr = [...asso.id_tag];
 
-                      if (event.target.checked) boxArr.push(tvalue);
+                      if (event.target.checked) boxArr.push(parseInt(tvalue));
                       else {
-                        const index = boxArr.indexOf(tvalue);
+                        const index = boxArr.indexOf(parseInt(tvalue));
                         if (index !== -1) {
                           boxArr.splice(index, 1);
                         }
@@ -132,21 +131,4 @@ export default function FormCreateCause() {
       </form>
     </div>
   );
-}
-
-{
-  /* const boxArr = [...asso.id_tag];
-                  const value = event.target.value;
-                  const index = boxArr.findIndex(
-                    checkbox => checkbox === value
-                  );
-                  if (index > -1) {
-                    boxArr = [
-                      ...boxArr.slice(0, index),
-                      ...boxArr.slice(index + 1)
-                    ];
-                  } else {
-                    boxArr.push(value);
-                  }
-                  setAsso({ id_tag: boxArr }); */
 }
