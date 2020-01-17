@@ -1,6 +1,7 @@
 const { connection } = require("../conf");
 const express = require("express");
 const router = express.Router();
+const sendMail = require("sendmail")({ silent: true });
 
 //Get total of donation of all campaign and total of all association
 router.get("/total", (req, res) => {
@@ -88,16 +89,21 @@ router.post("/", (req, res) => {
                         .send(
                           "Error has occured during the post of the new donation !"
                         );
-                    return res
-                      .status(201)
-                      .send("Donation posted successfully !");
+                    res.status(201).send("Donation posted successfully !");
+                    sendMail({
+                      from: "Team.Meex@meex.com",
+                      to: email,
+                      replyTo: "team@meex.com",
+                      subject: "Thank you for your donation !",
+                      html: `Thank you! You just donated ${donation_value}€ and by doing this you participated to have a better world !`
+                    });
                   }
                 );
               }
             );
             //if yes, there is no need to create a new user
           } else {
-            const { id } = results[0];
+            const { id, email } = results[0];
             const newDonation = {
               campaign_id: campaign_id,
               user_id: id,
@@ -114,7 +120,14 @@ router.post("/", (req, res) => {
                     .send(
                       "Error has occured during the post of the new donation !"
                     );
-                return res.status(201).send("Donation posted successfully !");
+                res.status(201).send("Donation posted successfully !");
+                sendMail({
+                  from: "Team.Meex@meex.com",
+                  to: email,
+                  replyTo: "team@meex.com",
+                  subject: "Thank you for your donation !",
+                  html: `Thank you! You just donated ${donation_value}€ and by doing this you participated to have a better world !`
+                });
               }
             );
           }
