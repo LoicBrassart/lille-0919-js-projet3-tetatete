@@ -11,11 +11,9 @@ router.get("/", (req, res) => {
     "SELECT *, timediff(time_end,NOW()) AS timeDiff, datediff(time_end,NOW()) AS dateDiff FROM campaign";
   let query = [];
   if (req.query.inProgress) {
-    sql += " WHERE NOW() < time_end ORDER BY time_start DESC";
+    sql += " WHERE NOW() < time_end ORDER BY timediff(time_end,NOW()) ASC";
   } else if (req.query.done) {
     sql += " WHERE NOW() > time_end ORDER BY time_end DESC";
-  } else if (req.query.finishing) {
-    sql += " WHERE NOW() < time_end ORDER BY timediff(time_end,NOW()) ASC";
   }
   if (req.query.limit) {
     sql += " LIMIT ?";
