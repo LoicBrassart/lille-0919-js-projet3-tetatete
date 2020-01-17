@@ -1,0 +1,53 @@
+@import "./../../index.scss";
+
+.campaignsPage {
+  .campaignHero {
+    position: relative;
+
+    .campaignHerotagline {
+      width: 100%;
+      text-align: center;
+      font-family: $heroFont;
+      text-transform: uppercase;
+      font-weight: 100;
+      font-size: 100px;
+      color: $lightFontColor;
+      position: absolute;
+      bottom: 30px;
+    }
+  }
+
+  .topContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 85px;
+
+    label {
+      font-family: $roundedFont;
+    }
+
+    .totalCampaign {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+
+      .totalCamp {
+        height: 120px;
+        font-size: 130px;
+        font-family: $heroFont;
+      }
+      .campaignStatus {
+        font-size: 64px;
+        line-height: 50px;
+      }
+    }
+  }
+
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}

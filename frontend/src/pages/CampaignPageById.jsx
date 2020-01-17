@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DonationButton from "../components/DonationButton";
-import "./styles/CampaignPage.scss";
+import "./styles/CampaignPageById.scss";
 const { apiCall } = require("../conf");
 
-export default function CampaignPage(props) {
+export default function CampaignPageById(props) {
   const [campaignInfo, setCampaignInfo] = useState([]);
 
   useEffect(() => {
