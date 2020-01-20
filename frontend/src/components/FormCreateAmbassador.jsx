@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./styles/FormCreateAmbass.scss";
+import "./styles/FormCreateAmbassador.scss";
 import axios from "axios";
 import CheckboxList from "../CheckboxList";
 const { apiCall } = require("../conf");
 
-export default function FormCreateCause() {
+export default function FormCreateAmbassador() {
   const [ambass, setAmbass] = useState({
     firstname: "",
     lastname: "",
@@ -27,7 +27,7 @@ export default function FormCreateCause() {
   };
 
   return (
-    <div className="FormCreateAmbass">
+    <div className="FormCreateAmbassador">
       <h1>Create new ambass</h1>
       <form
         enctype="multipart/form-data"
