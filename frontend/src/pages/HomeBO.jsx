@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import NavBarBO from "../components/NavBarBO";
 import CampaignsPageBO from "./CampaignsPageBO";
 import AmbassadorsPageBO from "./AmbassadorsPageBO";
 import CausesPageBO from "./CausesPageBO";
