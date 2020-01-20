@@ -1,70 +1,67 @@
 @import "../../index.scss";
 
-.AmbassadorInfos {
-  display: flex;
-  flex-wrap: nowrap;
-  padding: 30px 20px;
-  .photo {
-    width: 50%;
-  }
-  .content {
-    width: 50%;
-    padding: 0 20px;
-    .titleAndTags {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 30px;
-      h3 {
-        margin-right: 5px;
-        margin-bottom: 5px;
-      }
-      ul {
-        li {
-          display: inline-block;
-          img {
-            margin-left: 5px;
-            width: 50px;
-            border-radius: 25px;
+.AmbassadorsWrapper {
+  .AmbassadorInfos {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 100px 0;
+    .photo {
+      width: 50%;
+      text-align: center;
+    }
+    .content {
+      width: 50%;
+      padding: 0 0 20px 0;
+      .tags {
+        background: $cardBlueGradient;
+        margin-bottom: 30px;
+        padding: 10px;
+        ul {
+          li {
+            display: inline-block;
+            img {
+              margin-left: 5px;
+              width: 50px;
+              border-radius: 25px;
+            }
           }
         }
       }
+      p {
+        margin-bottom: 20px;
+        padding-left: 20px;
+        width: 80%;
+      }
     }
-    p {
-      margin-bottom: 20px;
-    }
-    a {
-      color: $lightFontColor;
-      background-color: $mainBrandColor;
-      padding: 5px 15px;
-      font-weight: 700;
-      border-radius: 5px;
-    }
+  }
+  .relatedTitle {
+    font-size: $bigFontSize;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .AmbassadorsRelated {
+    width: 100%;
+    background: $cardBlueGradient;
+    margin-bottom: 60px;
+    padding: 20px 0;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .AmbassadorInfos {
-    flex-wrap: wrap;
-    .photo {
-      margin-bottom: 20px;
-      padding: 0 15%;
-    }
-    .photo,
-    .content {
-      width: 100%;
-    }
-  }
-}
-
-@media screen and (max-width: 476px) {
-  .AmbassadorInfos {
-    .content {
-      .titleAndTags {
-        h3 {
+  .AmbassadorsWrapper {
+    .AmbassadorInfos {
+      padding: 40px 0;
+      flex-wrap: wrap;
+      .photo {
+        margin-bottom: 20px;
+      }
+      .photo,
+      .content {
+        width: 100%;
+        p {
           width: 100%;
-          margin-bottom: 10px;
+          padding: 0 20px;
         }
       }
     }
