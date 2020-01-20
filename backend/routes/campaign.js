@@ -24,9 +24,12 @@ router.get("/", (req, res) => {
   timediff(time_end,NOW()) AS timeDiff, 
   datediff(time_end,NOW()) AS dateDiff, 
   association.name AS associationName,
-  (time_to_sec(timediff(time_end, NOW())))/60 AS minuteRemaining
-    FROM campaign 
-    JOIN association ON campaign.id_association=association.id`;
+  (time_to_sec(timediff(time_end, NOW())))/60 AS minuteRemaining,
+  SUM(donation.donation_value) AS totalDonation
+    FROM campaign
+    JOIN association ON campaign.id_association=association.id
+    LEFT JOIN donation ON campaign.id=donation.campaign_id
+    GROUP BY campaign.id`;
   let query = [];
   if (req.query.inProgress) {
     sql += " WHERE NOW() < time_end ORDER BY timediff(time_end,NOW()) ASC";
