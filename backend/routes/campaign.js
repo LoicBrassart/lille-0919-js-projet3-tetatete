@@ -1,8 +1,10 @@
 const { connection, cloudinary } = require("../conf");
 const express = require("express");
 const router = express.Router();
+const app = express();
 const multer = require("multer");
 const upload = multer({ dest: "/tmp/" });
+const passport = require("passport");
 
 //Get all campaigns in progress order by their starting times
 //Or all campaigns done order by their ending times
@@ -85,6 +87,16 @@ router.get("/:id", (req, res) => {
       return res.status(200).json(results);
     }
   );
+});
+
+//-----------------------------------------------------------------------------Private routes
+
+router.use((req, res, next) => {
+  passport.authenticate("jwt", { session: false }, (err, user) => {
+    if (err) return res.status(500).send(err, info);
+    if (!user) return res.status(401).send("Unauthorized !");
+    next();
+  })(req, res);
 });
 
 //Post a new campaign
