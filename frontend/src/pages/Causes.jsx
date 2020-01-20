@@ -16,7 +16,10 @@ function Causes() {
 
   return (
     <section className="Causes">
-      <FilterTab />
+      <div className="causesHero">
+        <img src="img/monthCause.jpg" alt="month cause" />
+      </div>
+      <FilterTab filterType="causes" />
       <div className="center containerCauses">
         {associations.map(association => {
           return (
