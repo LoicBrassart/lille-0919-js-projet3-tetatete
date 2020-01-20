@@ -21,7 +21,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home}></Route>
         <Route path="/campaign/:id" component={CampaignPage}></Route>
-        <Route path="/campaigns" component={Meetings}></Route>
+        {/*<Route path="/campaigns" component={Meetings}></Route>*/}
         <Route path="/ambassadors/:id" component={AmbassadorInfos}></Route>
         <Route path="/ambassadors" component={Ambassadors}></Route>
         <Route path="/causes/:id" component={CauseInfos}></Route>
