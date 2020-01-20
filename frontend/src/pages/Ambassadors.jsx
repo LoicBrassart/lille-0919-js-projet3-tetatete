@@ -25,6 +25,8 @@ function Ambassadors() {
               id={ambassador.id}
               img={ambassador.img}
               url="ambassadors"
+              style="blueContent"
+              mainStyle="ProfileCardBlue"
               name={`${ambassador.firstname} ${ambassador.lastname}`}
             />
           );
