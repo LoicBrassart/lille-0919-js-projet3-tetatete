@@ -30,6 +30,7 @@ export default function FormCreateUser() {
       <form
         onSubmit={e => {
           e.preventDefault();
+          e.handleSubmit();
         }}
       >
         <div className="container">
@@ -105,7 +106,7 @@ export default function FormCreateUser() {
           />
         </div>
 
-        <input type="submit" onClick={handleSubmit} />
+        <input type="submit" />
       </form>
     </div>
   );
