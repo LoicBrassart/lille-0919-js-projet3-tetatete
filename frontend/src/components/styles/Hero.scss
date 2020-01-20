@@ -4,7 +4,9 @@
   .desktopHero {
     position: relative;
     width: 100%;
-    object-fit: cover;
+    img {
+      width: 100%;
+    }
     h2 {
       width: 100%;
       text-transform: uppercase;
