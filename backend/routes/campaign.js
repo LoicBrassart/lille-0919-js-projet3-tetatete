@@ -28,13 +28,16 @@ router.get("/", (req, res) => {
   SUM(donation.donation_value) AS totalDonation
     FROM campaign
     JOIN association ON campaign.id_association=association.id
-    LEFT JOIN donation ON campaign.id=donation.campaign_id
-    GROUP BY campaign.id`;
+    LEFT JOIN donation ON campaign.id=donation.campaign_id`;
   let query = [];
   if (req.query.inProgress) {
-    sql += " WHERE NOW() < time_end ORDER BY timediff(time_end,NOW()) ASC";
+    sql +=
+      " WHERE NOW() < time_end GROUP BY campaign.id ORDER BY timediff(time_end,NOW()) ASC";
   } else if (req.query.done) {
-    sql += " WHERE NOW() > time_end ORDER BY time_end DESC";
+    sql +=
+      " WHERE NOW() > time_end GROUP BY campaign.id ORDER BY time_end DESC";
+  } else {
+    sql += " GROUP BY campaign.id";
   }
   if (req.query.limit) {
     sql += " LIMIT ?";
@@ -42,7 +45,9 @@ router.get("/", (req, res) => {
   }
   connection.query(sql, [query], (err, results) => {
     if (err)
-      return res.status(500).send("Error in obtaining campaign's infos !");
+      return res
+        .status(500)
+        .send("Error in obtaining campaign's infos !" + err);
     if (results.length === 0)
       return res
         .status(204)
