@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles/AmbassadorInfos.scss";
+import ProfileCard from "../components/ProfileCard";
 const { apiCall } = require("../conf");
 
 function AmbassadorInfos(props) {
@@ -13,42 +14,51 @@ function AmbassadorInfos(props) {
   }, [props.match.params.id]);
 
   return (
-    <div className="AmbassadorInfos center">
-      <div className="photo">
-        <img src={ambassador.img} alt="" className="ambassadorPhoto" />
-      </div>
-      <div className="content">
-        <div className="titleAndTags">
-          <h3>
-            {ambassador.firstname} {ambassador.lastname}
-          </h3>
-          <ul>
-            <li>
-              <img
-                className="profileTag"
-                src="https://via.placeholder.com/50x50"
-                alt="..."
-              />
-            </li>
-            <li>
-              <img
-                className="profileTag"
-                src="https://via.placeholder.com/50x50"
-                alt="..."
-              />
-            </li>
-            <li>
-              <img
-                className="profileTag"
-                src="https://via.placeholder.com/50x50"
-                alt="..."
-              />
-            </li>
-          </ul>
+    <div className="AmbassadorsWrapper">
+      <div className="AmbassadorInfos">
+        <div className="photo">
+          <ProfileCard
+            id={ambassador.id}
+            url="ambassadors"
+            img={ambassador.img}
+            name={`${ambassador.firstname} ${ambassador.lastname}`}
+          />
         </div>
 
-        <p>{ambassador.resume}</p>
+        <div className="content">
+          <div className="tags">
+            <ul>
+              <li>
+                <img
+                  className="profileTag"
+                  src="https://via.placeholder.com/50x50"
+                  alt="..."
+                />
+              </li>
+              <li>
+                <img
+                  className="profileTag"
+                  src="https://via.placeholder.com/50x50"
+                  alt="..."
+                />
+              </li>
+              <li>
+                <img
+                  className="profileTag"
+                  src="https://via.placeholder.com/50x50"
+                  alt="..."
+                />
+              </li>
+            </ul>
+          </div>
+
+          <p>{ambassador.resume}</p>
+        </div>
       </div>
+      <p className="relatedTitle">
+        Campagnes de {ambassador.firstname} {ambassador.lastname} :
+      </p>
+      <div className="AmbassadorsRelated"></div>
     </div>
   );
 }
