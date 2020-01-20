@@ -16,8 +16,11 @@ $mainBrandGradient: linear-gradient(
 $cardBlueBorder: linear-gradient(235deg, #00bd88 10%, #009bbd 100%) 1;
 $cardBlueGradient: linear-gradient(235deg, #00bd88 10%, #009bbd 100%);
 // variables for red campaign cards
-$cardRedBorder: linear-gradient(235deg, #ff7975 10%, #ff75af 100%) 1;
-$cardRedGradient: linear-gradient(235deg, #ff7975 10%, #ff75af 100%);
+$cardRedBorder: linear-gradient(235.76deg, #ff7975 10%, #ff75af 100%) 1;
+$cardRedGradient: linear-gradient(235.76deg, #ff7975 10%, #ff75af 100%);
+//variables for yellow associations cards
+$cardYellowBorder: linear-gradient(252.93deg, #ea9a28 0%, #ea5728 100%) 1;
+$cardYellowGradient: linear-gradient(252.93deg, #ea9a28 0%, #ea5728 100%);
 // variables for violet campaign cards
 $cardVioletBorder: linear-gradient(235deg, #3970cb 10%, #ab2572 100%) 1;
 $cardVioletGradient: linear-gradient(235deg, #3970cb 10%, #ab2572 100%);
