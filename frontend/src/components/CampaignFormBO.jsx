@@ -39,6 +39,7 @@ export default function CampaingFormBO() {
         enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
+          e.handleSubmit();
         }}
         id="form"
       >
@@ -230,7 +231,7 @@ export default function CampaingFormBO() {
           />
         </div>
 
-        <input type="submit" onClick={handleSubmit} />
+        <input type="submit" />
       </form>
     </div>
   );
