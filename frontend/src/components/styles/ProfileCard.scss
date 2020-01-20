@@ -4,6 +4,7 @@
 .ProfileCardYellow {
   border: solid 4px $darkFontColor;
   border-image: $cardBlueBorder;
+  background: $cardBlueGradient;
   position: relative;
   width: calc(320px - 20px);
   box-shadow: $boxShadow;
@@ -44,4 +45,5 @@
 }
 .ProfileCardYellow {
   border-image: $cardYellowBorder;
+  background: $cardYellowGradient;
 }
