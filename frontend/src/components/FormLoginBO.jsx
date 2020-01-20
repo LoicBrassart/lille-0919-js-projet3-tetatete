@@ -29,6 +29,7 @@ export default function FormLoginBO() {
       <form
         onSubmit={e => {
           e.preventDefault();
+          e.handleSubmit();
         }}
       >
         {!credentialsState && (
@@ -71,7 +72,7 @@ export default function FormLoginBO() {
             required
           />
         </div>
-        <input type="submit" onClick={handleSubmit} />
+        <input type="submit" />
       </form>
     </div>
   );
