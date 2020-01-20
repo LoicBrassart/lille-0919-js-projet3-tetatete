@@ -28,6 +28,7 @@ router.get("/", (req, res) => {
   SUM(donation.donation_value) AS totalDonation
     FROM campaign
     JOIN association ON campaign.id_association=association.id
+    JOIN ambassador ON campaign.id_ambassador=ambassador.id
     LEFT JOIN donation ON campaign.id=donation.campaign_id`;
   let query = [];
   if (req.query.inProgress) {
@@ -36,6 +37,12 @@ router.get("/", (req, res) => {
   } else if (req.query.done) {
     sql +=
       " WHERE NOW() > time_end GROUP BY campaign.id ORDER BY time_end DESC";
+  } else if (req.query.ambassadorId) {
+    sql += " WHERE id_ambassador = ? GROUP BY campaign.id";
+    query.push(Number(req.query.ambassadorId));
+  } else if (req.query.associationId) {
+    sql += " WHERE id_association = ? GROUP BY campaign.id";
+    query.push(Number(req.query.associationId));
   } else {
     sql += " GROUP BY campaign.id";
   }
@@ -43,7 +50,7 @@ router.get("/", (req, res) => {
     sql += " LIMIT ?";
     query.push(Number(req.query.limit));
   }
-  connection.query(sql, [query], (err, results) => {
+  connection.query(sql, query, (err, results) => {
     if (err)
       return res
         .status(500)
