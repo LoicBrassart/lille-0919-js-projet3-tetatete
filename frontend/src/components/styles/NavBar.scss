@@ -174,3 +174,32 @@
     display: block;
   }
 }
+
+// For Navbar Admin
+
+// NavBar Destop
+.NavBarBO {
+  background-color: $mainBrandColorBO;
+}
+
+// NavBar Admin Mobile, BurgerMenu
+.BurgerMenuBO {
+  .bm-crossBO {
+    background: $mainBrandColorBO;
+  }
+
+  .bm-menu-wrap {
+    background-color: $mainBrandColorBO;
+  }
+
+  .bm-item {
+    color: $mainBrandColorBO;
+    &.bm-active {
+      color: $mainBrandColorBO;
+    }
+
+    &:after {
+      background-color: $mainBrandColorBO;
+    }
+  }
+}
