@@ -2,9 +2,9 @@ const { connection } = require("../conf");
 const express = require("express");
 const router = express.Router();
 
-//Get all campaigns in progress order by their starting times
+//Get all campaigns in progress order by the most imminent campaign to finish
 //Or all campaigns done order by their ending times
-//Or all campaigns order by the most imminent campaign to finish
+//Or all campaigns where an ambassador or an association has participed
 //You can define a limit too
 router.get("/", (req, res) => {
   let sql = `SELECT 
