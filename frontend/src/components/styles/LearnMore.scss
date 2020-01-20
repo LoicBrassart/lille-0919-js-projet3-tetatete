@@ -1,7 +1,7 @@
 @import "../../index.scss";
 
 .LearnMore {
-  padding: 20px;
+  padding: 70px 0;
   background-color: $lightGray;
 
   section {
@@ -17,6 +17,12 @@
       box-shadow: $boxShadow;
       overflow: hidden;
       cursor: pointer;
+      transform: scale(0.95);
+      transition: ease 0.2s;
+
+      &:hover {
+        transform: scale(1);
+      }
 
       &:nth-child(1) .content .titleBorder {
         background-color: $meexColor;

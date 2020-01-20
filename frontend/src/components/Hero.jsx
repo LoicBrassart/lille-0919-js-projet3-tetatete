@@ -17,7 +17,9 @@ function Hero() {
       ) : (
         <div className="desktopHero">
           <img src="img/hero.jpg" alt="Hero desktop" className="overlay" />
-          <h2 className="heroTitle">Fais toi plaisir pour la bonne cause !</h2>
+          <h2 className="heroTitle">
+            Fais toi plaisir <br /> pour la bonne cause !
+          </h2>
         </div>
       )}
     </div>

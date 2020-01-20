@@ -19,8 +19,8 @@ router.get("/total", (req, res) => {
             return res
               .status(500)
               .send("Error in obtaining summary of all campaign's donation !");
-          const { nb_asso } = results[0];
-          const finalResult = { totalDonation, nb_asso };
+          const { nbAssociation } = results[0];
+          const finalResult = { totalDonation, nbAssociation };
           return res.status(200).json(finalResult);
         }
       );

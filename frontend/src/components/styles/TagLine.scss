@@ -4,11 +4,11 @@
   background-color: $lightGray;
   .center {
     h1 {
-      padding: 20px;
+      padding: 65px 0;
       color: $mainBrandColor;
       text-align: center;
       text-transform: uppercase;
-      font-size: $h1FontSize;
+      font-size: $biggestFontSize;
       &:after {
         content: "";
         display: block;
