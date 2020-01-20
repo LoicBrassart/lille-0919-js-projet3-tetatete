@@ -91,11 +91,13 @@ router.post("/", (req, res) => {
                         );
                     res.status(201).send("Donation posted successfully !");
                     sendMail({
-                      from: "Team.Meex@meex.com",
+                      from: "NoReply@meex.com",
                       to: email,
-                      replyTo: "Team.Meex@meex.com",
                       subject: "Thank you for your donation !",
-                      html: `Thank you! You just donated ${donation_value}€ and by doing this you participated to have a better world !`
+                      html:
+                        donation_value > 0
+                          ? `Thank you! You just donated ${donation_value}€ and by doing this you participated to have a better world !  Meex Team`
+                          : `Thank you for your participation ! Meex Team`
                     });
                   }
                 );
@@ -122,11 +124,13 @@ router.post("/", (req, res) => {
                     );
                 res.status(201).send("Donation posted successfully !");
                 sendMail({
-                  from: "Team.Meex@meex.com",
+                  from: "NoReply@meex.com",
                   to: email,
-                  replyTo: "Team.Meex@meex.com",
                   subject: "Thank you for your donation !",
-                  html: `Thank you! You just donated ${donation_value}€ and by doing this you participated to have a better world !`
+                  html:
+                    donation_value > 0
+                      ? `Thank you! You just donated ${donation_value}€ and by doing this you participated to have a better world !  Meex Team`
+                      : `Thank you for your participation ! Meex Team`
                 });
               }
             );
