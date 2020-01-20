@@ -33,6 +33,7 @@ export default function FormCreateCause() {
         enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
+          e.handleSubmit();
         }}
       >
         <div className="container">
@@ -128,7 +129,7 @@ export default function FormCreateCause() {
             })}
           </div>
         </div>
-        <input type="submit" onClick={handleSubmit} />
+        <input type="submit" />
       </form>
     </div>
   );
