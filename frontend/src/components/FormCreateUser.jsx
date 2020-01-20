@@ -12,28 +12,15 @@ export default function FormCreateUser() {
     canCreateContent: false
   });
 
-  const resetForm = () => {
-    setUser({
-      phone_number: "",
-      password: "",
-      email: "",
-      canAdmin: false,
-      canCreateContent: false
-    });
-  };
-
   const handleSubmit = () => {
     const data = user;
-    console.log(apiCall);
     axios
       .post(`${apiCall}/auth`, data)
       .then(res => {
-        console.log(res.data);
-        console.log("Booyah!");
-        resetForm();
+        alert(res.data);
       })
       .catch(err => {
-        console.log(err);
+        alert(err);
       });
   };
 
