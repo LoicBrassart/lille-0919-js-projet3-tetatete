@@ -17,7 +17,7 @@ function NavBar() {
               id="meetings"
               className="menu-item"
               activeClassName="active"
-              to="/campaignsBO"
+              to="/admin/campaigns"
             >
               Campagnes
             </NavLink>
@@ -28,7 +28,7 @@ function NavBar() {
               id="ambassadors"
               className="menu-item"
               activeClassName="active"
-              to="/ambassadorsBO"
+              to="/admin/ambassadors"
             >
               Ambassadeurs
             </NavLink>
@@ -39,7 +39,7 @@ function NavBar() {
               id="causes"
               className="menu-item"
               activeClassName="active"
-              to="/causesBO"
+              to="/admin/causes"
             >
               Causes soutenues
             </NavLink>
@@ -52,7 +52,7 @@ function NavBar() {
           id="meetings"
           className="menu-item"
           activeClassName="bm-active"
-          to="/campaignsBO"
+          to="/campaigns"
         >
           Campagnes
         </NavLink>
@@ -61,7 +61,7 @@ function NavBar() {
           id="ambassadors"
           className="menu-item"
           activeClassName="bm-active"
-          to="/ambassadorsBO"
+          to="/ambassadors"
         >
           Ambassadeurs
         </NavLink>
@@ -70,7 +70,7 @@ function NavBar() {
           id="causes"
           className="menu-item"
           activeClassName="bm-active"
-          to="/causesBO"
+          to="/causes"
         >
           Causes soutenues
         </NavLink>
