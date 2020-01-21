@@ -9,6 +9,9 @@ import CauseInfos from "./pages/CauseInfos";
 import Footer from "./components/Footer";
 import HomeBO from "./pages/HomeBO";
 import "./App.scss";
+import CampaignsPageBO from "./pages/CampaignsPageBO";
+import AmbassadorsPageBO from "./pages/AmbassadorsPageBO";
+import CausesPageBO from "./pages/CausesPageBO";
 import CampaignPage from "./pages/CampaignPage";
 import NavBarBO from "./components/NavBarBO";
 
@@ -20,14 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      {location.pathname === "/admin" ||
-      location.pathname === "/campaignsBO" ||
-      location.pathname === "/ambassadorsBO" ||
-      location.pathname === "/causesBO" ? (
-        <NavBarBO />
-      ) : (
-        <NavBar />
-      )}
+      {location.pathname.includes("admin") ? <NavBarBO /> : <NavBar />}
       <Switch>
         <Route exact path="/" component={Home}></Route>
         <Route path="/campaign/:id" component={CampaignPage}></Route>
@@ -36,15 +32,11 @@ function App() {
         <Route path="/causes/:id" component={CauseInfos}></Route>
         <Route path="/causes" component={Causes}></Route>
         <Route path="/admin" component={HomeBO}></Route>
+        <Route path="/admin/campaigns" component={CampaignsPageBO}></Route>
+        <Route path="/admin/ambassadors" component={AmbassadorsPageBO}></Route>
+        <Route path="/admin/causes" component={CausesPageBO}></Route>
       </Switch>
-      {location.pathname === "/admin" ||
-      location.pathname === "/campaignsBO" ||
-      location.pathname === "/ambassadorsBO" ||
-      location.pathname === "/causesBO" ? (
-        ""
-      ) : (
-        <Footer />
-      )}
+      {location.pathname.includes("admin") ? "" : <Footer />}
     </div>
   );
 }
