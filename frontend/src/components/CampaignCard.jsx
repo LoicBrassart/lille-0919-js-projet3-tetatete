@@ -39,7 +39,7 @@ function CampaignCard({ campaignInfo }) {
   }
 
   return (
-    <div className={cardStyle}>
+    <div className={`${cardStyle} related`}>
       <Link to={`/campaign/${campaignInfo.id}`}>
         <div className="firstContainer">
           <img
@@ -61,7 +61,7 @@ function CampaignCard({ campaignInfo }) {
           <p className="fondationName">{campaignInfo.associationName}</p>
 
           <div className="moreInfo">
-            <p className="moreInfoText">en savoir plus</p>
+            <p className="moreInfoText">En savoir plus</p>
             <img
               className="moreInfoButton"
               src="/img/moreInfo.png"
