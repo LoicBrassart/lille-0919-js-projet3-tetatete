@@ -6,7 +6,9 @@
   background-color: $mainBrandColor;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 3;
+  font-family: $basicFont;
+
   .desktopNav {
     padding: 0 20px;
     display: flex;
@@ -15,26 +17,27 @@
     align-items: center;
 
     .logo {
-      color: $lightFontColor;
       padding: 13px 20px;
+
+      .meexLogo {
+        height: 60px;
+      }
     }
 
     .desktopMenu {
       font-size: 0;
       li {
-        font-size: $normalFontSize;
+        font-size: $mediumFontSize;
         display: inline-block;
         a {
           display: block;
           padding: 13px 20px;
           position: relative;
           color: $lightFontColor;
-          font-size: $normalFontSize;
+          font-size: $bigFontSize;
           transition: all 0.4s;
 
           &.active {
-            color: $mainBrandColor;
-            background-color: $backgroundColor;
             &:after {
               width: 80%;
             }
@@ -45,10 +48,10 @@
             display: block;
             width: 0%;
             height: 2px;
-            background-color: $mainBrandColor;
+            background-color: $backgroundColor;
             position: absolute;
             left: 10%;
-            bottom: 5px;
+            bottom: 10px;
             transition: all 0.4s;
           }
         }

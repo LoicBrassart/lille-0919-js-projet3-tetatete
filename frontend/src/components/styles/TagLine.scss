@@ -1,11 +1,23 @@
 @import "../../index.scss";
 
 .TagLine {
+  background-color: $lightGray;
   .center {
     h1 {
-      padding: 20px;
+      padding: 65px 0;
+      color: $mainBrandColor;
       text-align: center;
-      font-size: $h1FontSize;
+      text-transform: uppercase;
+      font-size: $biggestFontSize;
+      &:after {
+        content: "";
+        display: block;
+        background-color: $mainBrandColor;
+        margin: 10px auto 0;
+        width: 70%;
+        height: 4px;
+        border-radius: 2px;
+      }
     }
   }
 }

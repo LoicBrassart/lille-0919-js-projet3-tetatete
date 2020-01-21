@@ -8,8 +8,7 @@ function NavBar() {
     <header className="NavBar">
       <nav className="desktopNav">
         <NavLink className="logo" activeClassName="active" exact to="/">
-          TooTasty
-          <img src="" alt="" />
+          <img className="meexLogo" src="./img/meexLogo.png" alt="" />
         </NavLink>
 
         <ul className="desktopMenu">
@@ -18,15 +17,15 @@ function NavBar() {
               id="meetings"
               className="menu-item"
               activeClassName="active"
-              to="/meetings"
+              to="/campaigns"
             >
-              Rencontres
+              Campagnes
             </NavLink>
           </li>
 
           <li>
             <NavLink
-              id="meetings"
+              id="ambassadors"
               className="menu-item"
               activeClassName="active"
               to="/ambassadors"
@@ -37,23 +36,12 @@ function NavBar() {
 
           <li>
             <NavLink
-              id="meetings"
+              id="causes"
               className="menu-item"
               activeClassName="active"
               to="/causes"
             >
               Causes soutenues
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              id="meetings"
-              className="menu-item"
-              activeClassName="active"
-              to="/blog"
-            >
-              Blog
             </NavLink>
           </li>
         </ul>
@@ -64,13 +52,13 @@ function NavBar() {
           id="meetings"
           className="menu-item"
           activeClassName="bm-active"
-          to="/meetings"
+          to="/campaigns"
         >
-          Rencontres
+          Campagnes
         </NavLink>
 
         <NavLink
-          id="meetings"
+          id="ambassadors"
           className="menu-item"
           activeClassName="bm-active"
           to="/ambassadors"
@@ -79,21 +67,12 @@ function NavBar() {
         </NavLink>
 
         <NavLink
-          id="meetings"
+          id="causes"
           className="menu-item"
           activeClassName="bm-active"
           to="/causes"
         >
           Causes soutenues
-        </NavLink>
-
-        <NavLink
-          id="meetings"
-          className="menu-item"
-          activeClassName="bm-active"
-          to="/blog"
-        >
-          Blog
         </NavLink>
       </BurgerMenu>
     </header>

@@ -4,7 +4,7 @@ import "./styles/DonationButton.scss";
 export default function DonationButton(props) {
   return (
     <article className="DonationCard">
-      <p>
+      <div className="toolTip">
         <span>
           ?
           <p>
@@ -14,7 +14,7 @@ export default function DonationButton(props) {
           </p>
         </span>
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
+      </div>
       <div className="clear"></div>
       <strong className="DonationValue">{props.value}</strong>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>

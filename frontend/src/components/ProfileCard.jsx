@@ -1,31 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles/ProfileCard.scss";
 
-function ProfileCard() {
+function ProfileCard(props) {
   return (
-    <div className="profileCard">
-      <a href="...">
-        <div className="profileContainer">
-          <img
-            classname="profileImage"
-            src="https://via.placeholder.com/300x300"
-            alt="..."
-          />
-
-          <span className="gradientName" />
-
-          <h2 className="profileName">Lorem Ipsum</h2>
+    <article className={props.mainStyle}>
+      <Link to={`/${props.url}/${props.id}`}>
+        <figure>
+          <img src={props.img} alt={props.name} />
+        </figure>
+        <div className={props.style}>
+          <div className="titleBorder"></div>
+          <div className="titleLayout">
+            <h3>{props.name}</h3>
+          </div>
         </div>
-
-        <div className="profileTagContainer">
-          <img
-            className="profileTag"
-            src="https://via.placeholder.com/50x50"
-            alt="..."
-          />
-        </div>
-      </a>
-    </div>
+      </Link>
+    </article>
   );
 }
 

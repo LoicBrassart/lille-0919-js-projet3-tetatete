@@ -5,7 +5,7 @@ function FilterTab(props) {
   return (
     <div className="FilterTab">
       <div className="center">
-        <p>Filtrer parmis les {props.filterType}</p>
+        <p>Filtrer parmis les {props.filterType} :</p>
         <nav className="FiltersNav">
           <ul>
             <li>

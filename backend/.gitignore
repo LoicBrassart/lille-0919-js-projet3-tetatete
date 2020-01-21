@@ -1,2 +1,6 @@
 /node_modules
 .env
+contrat.json
+superAdminRoute.js
+/ambassadorImage
+/uploads

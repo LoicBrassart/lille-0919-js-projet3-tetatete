@@ -6,7 +6,6 @@
     height: auto;
     padding: 30px 10px;
     background-color: $mainBrandColor;
-    color: $lightFontColor;
     display: flex;
     justify-content: space-around;
 
@@ -28,12 +27,13 @@
 
           a {
             color: $lightFontColor;
+            font-family: $basicFont;
           }
         }
       }
     }
     .footerLogo {
-      width: 30%;
+      width: 20%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -43,12 +43,14 @@
         justify-content: center;
       }
     }
-    .footerSocial {
+    .socialMed {
       width: 30%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      color: $lightFontColor;
+      font-family: $basicFont;
 
       ul {
         display: flex;

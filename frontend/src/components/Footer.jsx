@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles/Footer.scss";
 
 function Footer() {
@@ -8,40 +9,40 @@ function Footer() {
         <li className="footerInfos">
           <ul>
             <li>
-              <a href="">Comment ça marche ?</a>
+              <a>Comment ça marche ?</a>
             </li>
             <li>
-              <a href="">La charte éthique</a>
+              <a>La charte éthique</a>
             </li>
             <li>
-              <a href="">Les mentions légales et CGU</a>
+              <a>Les mentions légales et CGU</a>
+            </li>
+            <li>
+              <Link to="/admin">Admin</Link>
             </li>
           </ul>
         </li>
         <li className="footerLogo">
-          <a href="https://www.facebook.com/">
-            <img
-              src="https://via.placeholder.com/300x100?text=Logo+and+name+of+site"
-              alt="site icon"
-            />
-          </a>
+          <Link to="/">
+            <img src="./img/meexLogo.png" alt="site icon" />
+          </Link>
         </li>
-        <li className="footerSocial">
+        <li className="socialMed">
           <p>Rejoignez-nous sur :</p>
           <ul>
             <li>
-              <a href="#">
-                <img src="img/fcb_logo.svg" alt="Facebook" />
+              <a href="https://fr-fr.facebook.com/">
+                <img src="img/fcbLogo.svg" alt="Fcb" />
               </a>
             </li>
             <li>
-              <a href="#">
-                <img src="img/twitter_logo.svg" alt="Twitter" />
+              <a href="https://twitter.com/?lang=fr">
+                <img src="img/twitterLogo.svg" alt="Twit" />
               </a>
             </li>
             <li>
-              <a href="#">
-                <img src="img/insta_logo.svg" alt="Instagram" />
+              <a href="https://www.instagram.com/">
+                <img src="img/instaLogo.svg" alt="Instg" />
               </a>
             </li>
           </ul>

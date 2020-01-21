@@ -1,19 +1,39 @@
-import React, { Profiler } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/Ambassadors.scss";
 import FilterTab from "../components/FilterTab";
 import ProfileCard from "../components/ProfileCard";
+import axios from "axios";
+const { apiCall } = require("../conf");
 
 function Ambassadors() {
+  const [ambassadors, setAmbassadors] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${apiCall}/ambassador`).then(res => {
+      setAmbassadors(res.data);
+    });
+  }, []);
+
   return (
     <section className="Ambassadors">
-      <FilterTab />
+      <div className="ambassadorsHero">
+        <img src="img/monthAmbassador.jpg" alt="month ambassador" />
+      </div>
+      <FilterTab filterType="ambassadeurs" />
       <div className="center containerProfile">
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
+        {ambassadors.map(ambassador => {
+          return (
+            <ProfileCard
+              key={ambassador.id}
+              id={ambassador.id}
+              img={ambassador.img}
+              url="ambassadors"
+              style="blueContent"
+              mainStyle="ProfileCardBlue"
+              name={`${ambassador.firstname} ${ambassador.lastname}`}
+            />
+          );
+        })}
       </div>
     </section>
   );

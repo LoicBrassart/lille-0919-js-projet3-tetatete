@@ -7,27 +7,21 @@ function Hero() {
 
   return (
     <div className="Hero">
-      <div className="desktopHero">
-        {/*use ternary operator for showVideo*/}
-        {showVideo ? (
+      {showVideo ? (
+        <div className="desktopHero">
           <video width="400" height="222" controls="controls">
             <source src="video.mp4" type="video/mp4" />
             <source src="video.webm" type="video/webm" />
           </video>
-        ) : (
-          <img
-            src="https://via.placeholder.com/1712x749?text=Insert+Image"
-            alt="Hero desktop"
-          />
-        )}
-      </div>
-      {/* picture for mobile and small tablet */}
-      <img
-        className="mobileHero"
-        src="https://via.placeholder.com/719x719?text=Insert+Image"
-        alt="Hero
-        Mobile"
-      />
+        </div>
+      ) : (
+        <div className="desktopHero">
+          <img src="img/hero.jpg" alt="Hero desktop" className="overlay" />
+          <h2 className="heroTitle">
+            Fais toi plaisir <br /> pour la bonne cause !
+          </h2>
+        </div>
+      )}
     </div>
   );
 }

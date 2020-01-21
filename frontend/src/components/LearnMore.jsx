@@ -1,62 +1,120 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./styles/LearnMore.scss";
+const { apiCall } = require("../conf");
 
 export default function LearnMore() {
-  return (
-    <div className="LearnMore center">
-      <section id="article">
-        <figure className="img">
-          <img src="https://via.placeholder.com/300x350" alt="..."></img>
-          <figcaption>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Vestibulum facilisis auctor urna. Aliquam in lorem sit amet leo
-            accumsan lacinia. Integer rutrum, orci vestibulum ullamcorper
-            ultricies, lacus quam ultricies odio, vitae placerat pede sem sit
-            amet enim. Phasellus et lorem id felis nonummy placerat. Fusce dui
-            leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Aenean vel
-            massa quis mauris vehicula lacinia. Quisque tincidunt scelerisque
-            libero. Maecenas libero.Etiam dictum tincidunt diam. Donec ipsum
-            massa, ullamcorper in, auctor et, scelerisque sed, est. Suspendisse
-            nisl. Sed convallis magna eu sem. Cras pede libero, dapibus nec,
-            pretium sit amet, tempor quis, urna.
-          </figcaption>
-        </figure>
+  const [showMeex, setShowMeex] = useState(false);
+  const [showChart, setShowChart] = useState(false);
+  const [showFounds, setShowFounds] = useState(false);
+  const [totals, setTotals] = useState([]);
 
-        <figure className="img">
-          <img src="https://via.placeholder.com/300x350" alt="..."></img>
-          <figcaption>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Vestibulum facilisis auctor urna. Aliquam in lorem sit amet leo
-            accumsan lacinia. Integer rutrum, orci vestibulum ullamcorper
-            ultricies, lacus quam ultricies odio, vitae placerat pede sem sit
-            amet enim. Phasellus et lorem id felis nonummy placerat. Fusce dui
-            leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Aenean vel
-            massa quis mauris vehicula lacinia. Quisque tincidunt scelerisque
-            libero. Maecenas libero.Etiam dictum tincidunt diam. Donec ipsum
-            massa, ullamcorper in, auctor et, scelerisque sed, est. Suspendisse
-            nisl. Sed convallis magna eu sem. Cras pede libero, dapibus nec,
-            pretium sit amet, tempor quis, urna.
-          </figcaption>
-        </figure>
-        <figure className="img">
-          <img src="https://via.placeholder.com/300x350" alt="..."></img>
-          <figcaption>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Vestibulum facilisis auctor urna. Aliquam in lorem sit amet leo
-            accumsan lacinia. Integer rutrum, orci vestibulum ullamcorper
-            ultricies, lacus quam ultricies odio, vitae placerat pede sem sit
-            amet enim. Phasellus et lorem id felis nonummy placerat. Fusce dui
-            leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Aenean vel
-            massa quis mauris vehicula lacinia. Quisque tincidunt scelerisque
-            libero. Maecenas libero.Etiam dictum tincidunt diam. Donec ipsum
-            massa, ullamcorper in, auctor et, scelerisque sed, est. Suspendisse
-            nisl. Sed convallis magna eu sem. Cras pede libero, dapibus nec,
-            pretium sit amet, tempor quis, urna.
-          </figcaption>
-        </figure>
+  useEffect(() => {
+    axios.get(`${apiCall}/misc/total`).then(res => {
+      setTotals(res.data);
+    });
+  }, []);
+
+  return (
+    <div className="LearnMore">
+      <section>
+        <article
+          className="learnCard"
+          onMouseEnter={() => setShowMeex(!showMeex)}
+        >
+          <span className={showMeex ? "shown" : ""}>
+            <big>meeX,</big>
+            <p>
+              c'est aider les <big>organisations à but non lucratif.</big>
+            </p>
+            <p>Grace à sa</p>
+            <big>méthode innovante,</big>
+            <p>
+              impactez <big>plus fort</big> et <big>plus largement</big> le don
+              caritatif.
+            </p>
+          </span>
+          <figure>
+            <img src="img/learn-meex.jpg" alt="learn-meex" />
+          </figure>
+          <div className="content">
+            <div className="titleBorder"></div>
+            <div className="titleLayout">
+              <h3>MEEX ?</h3>
+              <p>
+                En savoir plus <img src="img/moreInfos-1.svg" alt="" />
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article
+          className="learnCard"
+          onMouseEnter={() => setShowChart(!showChart)}
+        >
+          <span className={showChart ? "shown" : ""}>
+            <p>Notre mission ?</p>
+            <big>Aider les plus démunis! </big>
+            <p>
+              Nous n'allons pas révolutionner le monde,
+              <br />
+              mais aporter un <big>soutien financer</big> est primordial pour
+              les <big>associations caritatives.</big>
+            </p>
+            <p>
+              En tant que donnateur, vivez une expérience{" "}
+              <big>exeptionelle</big> et <big>unique !</big>
+            </p>
+          </span>
+          <figure>
+            <img src="img/learn-chart.jpg" alt="learn-chart" />
+          </figure>
+          <div className="content">
+            <div className="titleBorder"></div>
+            <div className="titleLayout">
+              <h3>
+                Charte
+                <br />
+                éthique
+              </h3>
+              <p>
+                En savoir plus <img src="img/moreInfos-2.svg" alt="" />
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article
+          className="learnCard"
+          onMouseEnter={() => setShowFounds(!showFounds)}
+        >
+          <span className={showFounds ? "shown" : ""}>
+            <p>meeX, c'est :</p>
+            <div className="stats">
+              <big>{totals.totalDonation} €</big>
+              <small>collectés généreusement</small>
+            </div>
+
+            <big>{totals.nbAssociation}</big>
+            <small>associations soutenues</small>
+          </span>
+          <figure>
+            <img src="img/learn-founds.jpg" alt="learn-founds" />
+          </figure>
+          <div className="content">
+            <div className="titleBorder"></div>
+            <div className="titleLayout">
+              <h3>
+                Montants
+                <br />
+                Collectés
+              </h3>
+              <p>
+                En savoir plus <img src="img/moreInfos-3.svg" alt="" />
+              </p>
+            </div>
+          </div>
+        </article>
       </section>
     </div>
   );
