@@ -25,7 +25,7 @@ function Ambassadors() {
             if (filter === null) {
               return ambassadors;
             } else {
-              return ambassadors.tagList === filter;
+              return ambassadors.tagList.includes(filter);
             }
           })
           .map(ambassador => {
