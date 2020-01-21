@@ -2,15 +2,30 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles/AmbassadorInfos.scss";
 import ProfileCard from "../components/ProfileCard";
+import CampaignCard from "../components/CampaignCard";
 const { apiCall } = require("../conf");
 
 function AmbassadorInfos(props) {
   const [ambassador, setAmbassador] = useState([]);
+  const [relatedCampaigns, setRelatedCampaigns] = useState([]);
+  const [relatedDatas, setRelatedDatas] = useState(true);
 
   useEffect(() => {
+    // get all ambassador infos
     axios.get(`${apiCall}/ambassador/${props.match.params.id}`).then(res => {
       setAmbassador(res.data[0]);
     });
+    // get all campaigns related to this ambassador
+    axios
+      .get(`${apiCall}/campaign?ambassadorId=${props.match.params.id}`)
+      .then(res => {
+        if (res.data != []) {
+          setRelatedCampaigns(res.data);
+          setRelatedDatas(true);
+        } else {
+          setRelatedDatas(false);
+        }
+      });
   }, [props.match.params.id]);
 
   return (
@@ -55,10 +70,31 @@ function AmbassadorInfos(props) {
           <p>{ambassador.resume}</p>
         </div>
       </div>
-      <p className="relatedTitle">
-        Campagnes de {ambassador.firstname} {ambassador.lastname} :
-      </p>
-      <div className="AmbassadorsRelated"></div>
+      {relatedDatas ? (
+        <p className="relatedTitle">
+          Campagnes de {ambassador.firstname} {ambassador.lastname} :
+        </p>
+      ) : (
+        <p className="relatedTitle">
+          Pas de campagnes associées à {ambassador.firstname}{" "}
+          {ambassador.lastname}.
+        </p>
+      )}
+
+      <div className="AmbassadorsRelated">
+        <ul>
+          {relatedCampaigns.map(relatedCampaign => {
+            return (
+              <li>
+                <CampaignCard
+                  key={relatedCampaign.id}
+                  campaignInfo={relatedCampaign}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }

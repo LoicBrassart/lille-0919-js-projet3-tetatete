@@ -1,16 +1,30 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProfileCard from "../components/ProfileCard";
+import CampaignCard from "../components/CampaignCard";
 import "./styles/CauseInfos.scss";
 const { apiCall } = require("../conf");
 
 function CauseInfos(props) {
   const [association, setAssociation] = useState([]);
+  const [relatedCampaigns, setRelatedCampaigns] = useState([]);
+  const [relatedDatas, setRelatedDatas] = useState(true);
 
   useEffect(() => {
     axios.get(`${apiCall}/association/${props.match.params.id}`).then(res => {
       setAssociation(res.data[0]);
     });
+    // get all campaigns related to this cause
+    axios
+      .get(`${apiCall}/campaign?associationId=${props.match.params.id}`)
+      .then(res => {
+        if (res.data != []) {
+          setRelatedCampaigns(res.data);
+          setRelatedDatas(true);
+        } else {
+          setRelatedDatas(false);
+        }
+      });
   }, [props.match.params.id]);
 
   return (
@@ -63,8 +77,27 @@ function CauseInfos(props) {
           </a>
         </div>
       </div>
-      <p className="relatedTitle">Campagnes de {association.name} :</p>
-      <div className="CausesRelated"></div>
+      {relatedDatas ? (
+        <p className="relatedTitle">Campagnes de {association.name} :</p>
+      ) : (
+        <p className="relatedTitle">
+          Pas de campagnes associées à {association.name}.
+        </p>
+      )}
+      <div className="CausesRelated">
+        <ul>
+          {relatedCampaigns.map(relatedCampaign => {
+            return (
+              <li>
+                <CampaignCard
+                  key={relatedCampaign.id}
+                  campaignInfo={relatedCampaign}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
