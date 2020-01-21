@@ -4,16 +4,39 @@ const router = express.Router();
 const multer = require("multer");
 const upload = multer({ dest: "/tmp/" });
 
-//Get all associations order by name and with filter
+//Get all associations order by name
 router.get("/", (req, res) => {
   connection.query(
-    "SELECT * FROM association ORDER BY name ASC",
-    (err, results) => {
+    `SELECT * FROM association ORDER BY name ASC`,
+    (err, associationResults) => {
       if (err)
-        return res
-          .status(500)
-          .send("Error in obtaining associations's infos !");
-      return res.status(200).json(results);
+        return res.status(500).send("Error in obtaining association's infos !");
+      connection.query(
+        "SELECT * FROM association_has_tag",
+        (err, tagResults) => {
+          if (err)
+            return res
+              .status(500)
+              .send("Error in obtaining ambassadors's infos !");
+          const newAssociationResults = JSON.parse(
+            JSON.stringify(associationResults)
+          );
+          const newTagResults = JSON.parse(JSON.stringify(tagResults));
+          newAssociationResults.map(association => {
+            const tagList = newTagResults.filter(tag => {
+              return tag.id_association == association.id;
+            });
+            const arrayTag = [];
+            tagList.map(tag => {
+              delete tag.id_association;
+              const tempArrayTag = Object.values(tag);
+              arrayTag.push(parseInt(tempArrayTag));
+            });
+            association.tagList = arrayTag;
+          });
+          return res.status(200).json(newAssociationResults);
+        }
+      );
     }
   );
 });
