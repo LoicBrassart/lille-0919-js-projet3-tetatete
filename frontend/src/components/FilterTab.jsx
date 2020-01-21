@@ -49,6 +49,15 @@ function FilterTab() {
                 />
               </button>
             </li>
+            <li>
+              <button onClick={() => dispatch({ type: "ALL" })}>
+                <img
+                  src="/img/corbeille.png"
+                  alt="close"
+                  title="Supprimer filtre"
+                />
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
