@@ -1,50 +1,52 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
 import DonationButton from "../components/DonationButton";
 import "./styles/CampaignPageById.scss";
 const { apiCall } = require("../conf");
 
 export default function CampaignPageById(props) {
-  const [campaignInfo, setCampaignInfo] = useState([]);
+  const campaignInfoById = useSelector(state => state.campaignInfoById);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     axios.get(`${apiCall}/campaign/${props.match.params.id}`).then(res => {
-      setCampaignInfo(res.data[0]);
+      dispatch({ type: "GET_CAMPAIGN_BY_ID", data: res.data[0] });
     });
-  }, [props.match.params.id]);
+  }, [props.match.params.id, dispatch]);
 
   return (
     <div className="campaignPage">
       <div className="infoProfilePage center">
         <img
           className="profileImage"
-          src={campaignInfo.img}
-          alt={campaignInfo.name}
+          src={campaignInfoById.img}
+          alt={campaignInfoById.name}
         />
         ​
         <div className="infoContainer">
           <div className="firstContainer">
-            <h2>{campaignInfo.name}</h2>
+            <h2>{campaignInfoById.name}</h2>
             <div className="profileTag">
               <img src="https://via.placeholder.com/50x50" alt="Tag" />
               <img src="https://via.placeholder.com/50x50" alt="Tag" />
               <img src="https://via.placeholder.com/50x50" alt="Tag" />
             </div>
           </div>
-          ​<p className="resumeInfoPage">{campaignInfo.resume}</p>
+          ​<p className="resumeInfoPage">{campaignInfoById.resume}</p>
         </div>
       </div>
       <div className="donationButton">
         <DonationButton
-          value={campaignInfo.value1 + " €"}
+          value={campaignInfoById.value1 + " €"}
           action={"Je donne !"}
         />
         <DonationButton
-          value={campaignInfo.value2 + " €"}
+          value={campaignInfoById.value2 + " €"}
           action={"Je donne !"}
         />
         <DonationButton
-          value={campaignInfo.value3 + " €"}
+          value={campaignInfoById.value3 + " €"}
           action={"Je donne !"}
         />
         <DonationButton
