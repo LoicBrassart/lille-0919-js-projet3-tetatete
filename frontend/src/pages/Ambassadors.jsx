@@ -18,7 +18,10 @@ function Ambassadors() {
 
   return (
     <section className="Ambassadors">
-      <FilterTab />
+      <div className="ambassadorsHero">
+        <img src="img/monthAmbassador.jpg" alt="month ambassador" />
+      </div>
+      <FilterTab filterType="ambassadeurs" />
       <div className="center containerProfile">
         {ambassadors
           .filter(ambassadors => {
