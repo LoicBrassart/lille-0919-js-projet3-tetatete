@@ -7,8 +7,13 @@
   src: url("./fonts/BebasNeue-Regular.ttf");
 }
 
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+
 $roundedFont: "Varela Round", sans-serif;
 $heroFont: "BebasNeue";
+
+$mainFont: "Roboto";
+
 $darkFontColor: black;
 $lightFontColor: white;
 $backgroundColor: white;
