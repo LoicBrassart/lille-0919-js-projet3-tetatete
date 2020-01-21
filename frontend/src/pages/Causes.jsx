@@ -3,10 +3,12 @@ import "./styles/Causes.scss";
 import FilterTab from "../components/FilterTab";
 import ProfileCard from "../components/ProfileCard";
 import axios from "axios";
+import { useSelector } from "react-redux";
 const { apiCall } = require("../conf");
 
 function Causes() {
   const [associations, setAssociations] = useState([]);
+  const filter = useSelector(state => state.filter);
 
   useEffect(() => {
     axios.get(`${apiCall}/association`).then(res => {
@@ -21,19 +23,27 @@ function Causes() {
       </div>
       <FilterTab filterType="causes" />
       <div className="center containerCauses">
-        {associations.map(association => {
-          return (
-            <ProfileCard
-              id={association.id}
-              key={association.id}
-              url="causes"
-              img={association.img}
-              name={association.name}
-              style="yellowContent"
-              mainStyle="ProfileCardYellow"
-            />
-          );
-        })}
+        {associations
+          .filter(ambassadors => {
+            if (filter === null) {
+              return ambassadors;
+            } else {
+              return ambassadors.tagList.includes(filter);
+            }
+          })
+          .map(association => {
+            return (
+              <ProfileCard
+                id={association.id}
+                key={association.id}
+                url="causes"
+                img={association.img}
+                name={association.name}
+                style="yellowContent"
+                mainStyle="ProfileCardYellow"
+              />
+            );
+          })}
       </div>
     </section>
   );
