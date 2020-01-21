@@ -85,7 +85,31 @@ router.get("/total", (req, res) => {
 router.get("/:id", (req, res) => {
   const id = req.params.id;
   connection.query(
-    "SELECT * FROM campaign WHERE id =?",
+    `SELECT 
+  campaign.id,
+  campaign.name AS name, 
+  campaign.img, 
+  campaign.resume, 
+  DATE_ADD(campaign.time_start, INTERVAL 1 HOUR) AS time_start, 
+  DATE_ADD(campaign.time_end, INTERVAL 1 HOUR) AS time_end,
+  campaign.date_event, 
+  campaign.value1, 
+  campaign.value2, 
+  campaign.value3, 
+  campaign.id_user, 
+  campaign.id_ambassador, 
+  campaign.id_association, 
+  timediff(time_end,NOW()) AS timeDiff, 
+  datediff(time_end,NOW()) AS dateDiff, 
+  association.name AS associationName,
+  (time_to_sec(timediff(time_end, NOW())))/60 AS minuteRemaining,
+  SUM(donation.donation_value) AS totalDonation
+    FROM campaign
+    JOIN association ON campaign.id_association=association.id
+    JOIN ambassador ON campaign.id_ambassador=ambassador.id
+    LEFT JOIN donation ON campaign.id=donation.campaign_id
+    WHERE campaign.id = ?
+    GROUP BY campaign.id`,
     [id],
     (err, results) => {
       if (err)
