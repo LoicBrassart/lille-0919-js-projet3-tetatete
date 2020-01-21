@@ -17,6 +17,8 @@ function reducer(state = initialState, action) {
       return { filter: 5 };
     case "EDUCATION":
       return { filter: 6 };
+    case "ALL":
+      return { filter: null };
     default:
       return newState;
   }
