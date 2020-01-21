@@ -4,14 +4,39 @@ const router = express.Router();
 const multer = require("multer");
 const upload = multer({ dest: "/tmp/" });
 
-//Get all ambassadors order by name and with filter
+//Get all ambassadors order by name
 router.get("/", (req, res) => {
   connection.query(
-    "SELECT * FROM ambassador ORDER BY firstname ASC",
-    (err, results) => {
+    `SELECT * FROM ambassador ORDER BY firstname ASC`,
+    (err, ambassadorResults) => {
       if (err)
         return res.status(500).send("Error in obtaining ambassadors's infos !");
-      return res.status(200).json(results);
+      connection.query(
+        "SELECT * FROM ambassador_has_tag",
+        (err, tagResults) => {
+          if (err)
+            return res
+              .status(500)
+              .send("Error in obtaining ambassadors's infos !");
+          const newAmbassadorResults = JSON.parse(
+            JSON.stringify(ambassadorResults)
+          );
+          const newTagResults = JSON.parse(JSON.stringify(tagResults));
+          newAmbassadorResults.map(ambassador => {
+            const tagList = newTagResults.filter(tag => {
+              return tag.id_ambassador == ambassador.id;
+            });
+            const arrayTag = [];
+            tagList.map(tag => {
+              delete tag.id_ambassador;
+              const tempArrayTag = Object.values(tag);
+              arrayTag.push(parseInt(tempArrayTag));
+            });
+            ambassador.tagList = arrayTag;
+          });
+          return res.status(200).json(newAmbassadorResults);
+        }
+      );
     }
   );
 });
