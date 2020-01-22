@@ -36,7 +36,7 @@ export default function CampaignInfos(props) {
             <button>{campaignInfo.value1}</button>
           </li>
           <li>
-            <button>{campaignInfo.value3}</button>
+            <button>{campaignInfo.value2}</button>
           </li>
           <li>
             <button>{campaignInfo.value3}</button>
