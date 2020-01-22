@@ -143,7 +143,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
     (err, results) => {
       if (err)
         return res.status(500).send("Error in modifying the ambassador.");
-      if (req.body.id_tag) {
+      if (id_tag) {
         connection.query(
           "DELETE FROM ambassador_has_tag WHERE id_ambassador = ?",
           [id],

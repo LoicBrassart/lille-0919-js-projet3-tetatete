@@ -143,7 +143,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
     (err, results) => {
       if (err)
         return res.status(500).send("Error in modifying the association.");
-      if (req.body.id_tag) {
+      if (id_tag) {
         connection.query(
           "DELETE FROM association_has_tag WHERE id_association = ?",
           [id],
