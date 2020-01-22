@@ -16,6 +16,7 @@
         background: $cardBlueGradient;
         margin-bottom: 30px;
         padding: 10px;
+        height: 70px;
         ul {
           li {
             display: inline-block;
@@ -27,7 +28,7 @@
           }
         }
       }
-      p {
+      .resume {
         margin-bottom: 20px;
         padding-left: 20px;
         width: 80%;
