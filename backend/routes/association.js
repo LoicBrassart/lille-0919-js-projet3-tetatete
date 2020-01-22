@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const upload = multer({ dest: "/tmp/" });
+const passport = require("passport");
 
 //Get all associations order by name
 router.get("/", (req, res) => {
@@ -121,16 +122,71 @@ router.post("/", upload.single("img"), (req, res) => {
 });
 
 //Modify an association by id
-router.patch("/:id", (req, res) => {
+router.patch("/:id", upload.single("img"), async (req, res) => {
+  let img = "";
+  if (req.file) {
+    await cloudinary.v2.uploader.upload(
+      req.file.path,
+      { transformation: { width: 350, height: 350, crop: "fill" } },
+      (err, result) => {
+        if (err)
+          return res
+            .status(500)
+            .send("Error has occured during the upload of the image !");
+        img = result.url;
+      }
+    );
+  }
   const id = Number(req.params.id);
-  const data = req.body;
+  const { name, resume, website } = req.body;
+  const formData = {
+    name: name,
+    img: img,
+    resume: resume,
+    website: website
+  };
+  if (!req.file) delete formData.img;
+  if (!req.body.name) delete formData.name;
+  if (!req.body.resume) delete formData.resume;
+  if (!req.body.website) delete formData.website;
   connection.query(
     "UPDATE association SET ? WHERE id = ?",
-    [data, id],
+    [formData, id],
     (err, results) => {
       if (err)
         return res.status(500).send("Error in modifying the association.");
-      return res.sendStatus(200);
+      if (req.body.id_tag) {
+        connection.query(
+          "DELETE FROM association_has_tag WHERE id_association = ?",
+          [id],
+          (err, results) => {
+            if (err)
+              return res
+                .status(500)
+                .send("Error in modifying the association.");
+            const { id_tag } = req.body;
+            const tagData = id_tag.map(tag => {
+              return [id, tag];
+            });
+            connection.query(
+              "INSERT INTO association_has_tag (id_association, id_tag) VALUES ?",
+              [tagData],
+              (err, results) => {
+                if (err)
+                  return res
+                    .status(500)
+                    .send(
+                      "Error has occured during the attribution of the tag !" +
+                        err
+                    );
+                return res.sendStatus(200);
+              }
+            );
+          }
+        );
+      } else {
+        return res.sendStatus(200);
+      }
     }
   );
 });
@@ -139,14 +195,21 @@ router.patch("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   const id = Number(req.params.id);
   connection.query(
-    "DELETE FROM association WHERE id = ?",
+    "DELETE FROM association_has_tag WHERE id_association = ?",
     [id],
     (err, results) => {
       if (err)
         return res.status(500).send("Error in deleting the association.");
-      return res.status(200);
+      connection.query(
+        "DELETE FROM association WHERE id = ?",
+        [id],
+        (err, results) => {
+          if (err)
+            return res.status(500).send("Error in deleting the association.");
+          return res.sendStatus(200);
+        }
+      );
     }
   );
 });
-
 module.exports = router;

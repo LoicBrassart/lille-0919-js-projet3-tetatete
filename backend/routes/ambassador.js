@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const upload = multer({ dest: "/tmp/" });
+const passport = require("passport");
 
 //Get all ambassadors order by name
 router.get("/", (req, res) => {
@@ -121,16 +122,69 @@ router.post("/", upload.single("img"), (req, res) => {
 });
 
 //Modify an ambassador by id
-router.patch("/:id", (req, res) => {
+router.patch("/:id", upload.single("img"), async (req, res) => {
+  let img = "";
+  if (req.file) {
+    await cloudinary.v2.uploader.upload(
+      req.file.path,
+      { transformation: { width: 350, height: 350, crop: "fill" } },
+      (err, result) => {
+        if (err)
+          return res
+            .status(500)
+            .send("Error has occured during the upload of the image !");
+        img = result.url;
+      }
+    );
+  }
   const id = Number(req.params.id);
-  const data = req.body;
+  const { firstname, lastname, resume } = req.body;
+  const formData = {
+    firstname: firstname,
+    lastname: lastname,
+    resume: resume,
+    img: img
+  };
+  if (!req.file) delete formData.img;
+  if (!req.body.firstname) delete formData.firstname;
+  if (!req.body.resume) delete formData.resume;
+  if (!req.body.lastname) delete formData.lastname;
   connection.query(
     "UPDATE ambassador SET ? WHERE id = ?",
-    [data, id],
+    [formData, id],
     (err, results) => {
       if (err)
         return res.status(500).send("Error in modifying the ambassador.");
-      return res.sendStatus(200);
+      if (req.body.id_tag) {
+        connection.query(
+          "DELETE FROM ambassador_has_tag WHERE id_ambassador = ?",
+          [id],
+          (err, results) => {
+            if (err)
+              return res.status(500).send("Error in modifying the ambassador.");
+            const { id_tag } = req.body;
+            const tagData = id_tag.map(tag => {
+              return [id, tag];
+            });
+            connection.query(
+              "INSERT INTO ambassador_has_tag (id_ambassador, id_tag) VALUES ?",
+              [tagData],
+              (err, results) => {
+                if (err)
+                  return res
+                    .status(500)
+                    .send(
+                      "Error has occured during the attribution of the tag !" +
+                        err
+                    );
+                return res.sendStatus(200);
+              }
+            );
+          }
+        );
+      } else {
+        return res.sendStatus(200);
+      }
     }
   );
 });
@@ -139,11 +193,19 @@ router.patch("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   const id = Number(req.params.id);
   connection.query(
-    "DELETE FROM ambassador WHERE id = ?",
+    "DELETE FROM ambassador_has_tag WHERE id_ambassador = ?",
     [id],
     (err, results) => {
       if (err) return res.status(500).send("Error in deleting the ambassador.");
-      return res.status(200);
+      connection.query(
+        "DELETE FROM ambassador WHERE id = ?",
+        [id],
+        (err, results) => {
+          if (err)
+            return res.status(500).send("Error in deleting the ambassador.");
+          return res.sendStatus(200);
+        }
+      );
     }
   );
 });
