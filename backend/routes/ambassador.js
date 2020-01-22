@@ -59,6 +59,16 @@ router.get("/:id", (req, res) => {
   );
 });
 
+//-----------------------------------------------------------------------------Private routes
+
+router.use((req, res, next) => {
+  passport.authenticate("jwt", { session: false }, (err, user) => {
+    if (err) return res.status(500).send(err, info);
+    if (!user) return res.status(401).send("Unauthorized !");
+    next();
+  })(req, res);
+});
+
 //Post a new ambassador
 router.post("/", upload.single("img"), (req, res) => {
   cloudinary.v2.uploader.upload(
