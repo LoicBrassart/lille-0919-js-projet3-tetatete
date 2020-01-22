@@ -80,16 +80,12 @@ router.post("/", upload.single("img"), (req, res) => {
         return res
           .status(500)
           .send("Error has occured during the upload of the image !");
-      const { firstname, lastname, resume } = req.body;
-      const formData = {
-        firstname: firstname,
-        lastname: lastname,
-        resume: resume,
-        img: result.url
-      };
+      req.body.img = result.url;
+      const id_tag = req.body.id_tag;
+      delete req.body.id_tag;
       connection.query(
         "INSERT INTO ambassador SET ?",
-        [formData],
+        [req.body],
         (err, results) => {
           if (err)
             return res
@@ -98,7 +94,6 @@ router.post("/", upload.single("img"), (req, res) => {
                 "Error has occured during the creation of the new ambassador !"
               );
           const { insertId } = results;
-          const { id_tag } = req.body;
           const tagData = id_tag.map(tag => {
             return [insertId, tag];
           });
@@ -123,7 +118,6 @@ router.post("/", upload.single("img"), (req, res) => {
 
 //Modify an ambassador by id
 router.patch("/:id", upload.single("img"), async (req, res) => {
-  let img = "";
   if (req.file) {
     await cloudinary.v2.uploader.upload(
       req.file.path,
@@ -133,25 +127,19 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
           return res
             .status(500)
             .send("Error has occured during the upload of the image !");
-        img = result.url;
+        req.body.img = result.url;
       }
     );
   }
   const id = Number(req.params.id);
-  const { firstname, lastname, resume } = req.body;
-  const formData = {
-    firstname: firstname,
-    lastname: lastname,
-    resume: resume,
-    img: img
-  };
-  if (!req.file) delete formData.img;
-  if (!req.body.firstname) delete formData.firstname;
-  if (!req.body.resume) delete formData.resume;
-  if (!req.body.lastname) delete formData.lastname;
+  let id_tag = [];
+  if (req.body.id_tag) {
+    id_tag = req.body.id_tag;
+    delete req.body.id_tag;
+  }
   connection.query(
     "UPDATE ambassador SET ? WHERE id = ?",
-    [formData, id],
+    [req.body, id],
     (err, results) => {
       if (err)
         return res.status(500).send("Error in modifying the ambassador.");
@@ -162,7 +150,6 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
           (err, results) => {
             if (err)
               return res.status(500).send("Error in modifying the ambassador.");
-            const { id_tag } = req.body;
             const tagData = id_tag.map(tag => {
               return [id, tag];
             });

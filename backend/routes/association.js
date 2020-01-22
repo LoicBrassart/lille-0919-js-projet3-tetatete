@@ -80,16 +80,12 @@ router.post("/", upload.single("img"), (req, res) => {
         return res
           .status(500)
           .send("Error has occured during the upload of the image !");
-      const { name, resume, website } = req.body;
-      const formData = {
-        name: name,
-        img: result.url,
-        resume: resume,
-        website: website
-      };
+      req.body.img = result.url;
+      const id_tag = req.body.id_tag;
+      delete req.body.id_tag;
       connection.query(
         "INSERT INTO association SET ?",
-        [formData],
+        [req.body],
         (err, results) => {
           if (err)
             return res
@@ -98,7 +94,6 @@ router.post("/", upload.single("img"), (req, res) => {
                 "Error has occured during the creation of the new association !"
               );
           const { insertId } = results;
-          const { id_tag } = req.body;
           const tagData = id_tag.map(tag => {
             return [insertId, tag];
           });
@@ -123,7 +118,6 @@ router.post("/", upload.single("img"), (req, res) => {
 
 //Modify an association by id
 router.patch("/:id", upload.single("img"), async (req, res) => {
-  let img = "";
   if (req.file) {
     await cloudinary.v2.uploader.upload(
       req.file.path,
@@ -133,25 +127,19 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
           return res
             .status(500)
             .send("Error has occured during the upload of the image !");
-        img = result.url;
+        req.body.img = result.url;
       }
     );
   }
   const id = Number(req.params.id);
-  const { name, resume, website } = req.body;
-  const formData = {
-    name: name,
-    img: img,
-    resume: resume,
-    website: website
-  };
-  if (!req.file) delete formData.img;
-  if (!req.body.name) delete formData.name;
-  if (!req.body.resume) delete formData.resume;
-  if (!req.body.website) delete formData.website;
+  let id_tag = [];
+  if (req.body.id_tag) {
+    id_tag = req.body.id_tag;
+    delete req.body.id_tag;
+  }
   connection.query(
     "UPDATE association SET ? WHERE id = ?",
-    [formData, id],
+    [req.body, id],
     (err, results) => {
       if (err)
         return res.status(500).send("Error in modifying the association.");
@@ -164,7 +152,6 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
               return res
                 .status(500)
                 .send("Error in modifying the association.");
-            const { id_tag } = req.body;
             const tagData = id_tag.map(tag => {
               return [id, tag];
             });

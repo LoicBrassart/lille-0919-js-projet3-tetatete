@@ -167,7 +167,6 @@ router.post("/", upload.single("img"), (req, res) => {
 
 //Modify a campaign by id
 router.patch("/:id", upload.single("img"), async (req, res) => {
-  let img = "";
   if (req.file) {
     await cloudinary.v2.uploader.upload(
       req.file.path,
@@ -177,24 +176,11 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
           return res
             .status(500)
             .send("Error has occured during the upload of the image !");
-        img = result.url;
+        req.body.img = result.url;
       }
     );
   }
   const id = Number(req.params.id);
-  req.body.img = img;
-  if (!req.file) delete req.body.img;
-  if (!req.body.name) delete req.body.name;
-  if (!req.body.resume) delete req.body.resume;
-  if (!req.body.time_start) delete req.body.time_start;
-  if (!req.body.time_end) delete req.body.time_end;
-  if (!req.body.date_event) delete req.body.date_event;
-  if (!req.body.value1) delete req.body.value1;
-  if (!req.body.value2) delete req.body.value2;
-  if (!req.body.value3) delete req.body.value3;
-  if (!req.body.id_user) delete req.body.id_user;
-  if (!req.body.id_ambassador) delete req.body.id_ambassador;
-  if (!req.body.id_association) delete req.body.id_association;
   connection.query(
     "UPDATE campaign SET ? WHERE id = ?",
     [req.body, id],
