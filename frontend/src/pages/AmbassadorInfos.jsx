@@ -7,6 +7,7 @@ const { apiCall } = require("../conf");
 
 function AmbassadorInfos(props) {
   const [ambassador, setAmbassador] = useState([]);
+  const [tags, setTags] = useState([]);
   const [relatedCampaigns, setRelatedCampaigns] = useState([]);
   const [relatedDatas, setRelatedDatas] = useState(true);
 
@@ -14,6 +15,7 @@ function AmbassadorInfos(props) {
     // get all ambassador infos
     axios.get(`${apiCall}/ambassador/${props.match.params.id}`).then(res => {
       setAmbassador(res.data[0]);
+      setTags(res.data[0].tagList);
     });
     // get all campaigns related to this ambassador
     axios
@@ -43,31 +45,23 @@ function AmbassadorInfos(props) {
         <div className="content">
           <div className="tags">
             <ul>
-              <li>
-                <img
-                  className="profileTag"
-                  src="https://via.placeholder.com/50x50"
-                  alt="..."
-                />
-              </li>
-              <li>
-                <img
-                  className="profileTag"
-                  src="https://via.placeholder.com/50x50"
-                  alt="..."
-                />
-              </li>
-              <li>
-                <img
-                  className="profileTag"
-                  src="https://via.placeholder.com/50x50"
-                  alt="..."
-                />
-              </li>
+              {tags.length === 0 ? (
+                <li>
+                  <p className="emptyTag">Pas de tags associés.</p>
+                </li>
+              ) : (
+                tags.map(tag => {
+                  return (
+                    <li>
+                      <img src={`/img/${tag}.png`} alt="" />
+                    </li>
+                  );
+                })
+              )}
             </ul>
           </div>
 
-          <p>{ambassador.resume}</p>
+          <p className="resume">{ambassador.resume}</p>
         </div>
       </div>
       {relatedDatas ? (

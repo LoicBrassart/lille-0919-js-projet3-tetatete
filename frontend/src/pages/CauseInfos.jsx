@@ -7,12 +7,15 @@ const { apiCall } = require("../conf");
 
 function CauseInfos(props) {
   const [association, setAssociation] = useState([]);
+  const [tags, setTags] = useState([]);
   const [relatedCampaigns, setRelatedCampaigns] = useState([]);
   const [relatedDatas, setRelatedDatas] = useState(true);
 
   useEffect(() => {
+    // get all associations/causes
     axios.get(`${apiCall}/association/${props.match.params.id}`).then(res => {
       setAssociation(res.data[0]);
+      setTags(res.data[0].tagList);
     });
     // get all campaigns related to this cause
     axios
@@ -43,31 +46,23 @@ function CauseInfos(props) {
         <div className="content">
           <div className="tags">
             <ul>
-              <li>
-                <img
-                  className="profileTag"
-                  src="https://via.placeholder.com/50x50"
-                  alt="..."
-                />
-              </li>
-              <li>
-                <img
-                  className="profileTag"
-                  src="https://via.placeholder.com/50x50"
-                  alt="..."
-                />
-              </li>
-              <li>
-                <img
-                  className="profileTag"
-                  src="https://via.placeholder.com/50x50"
-                  alt="..."
-                />
-              </li>
+              {tags.length === 0 ? (
+                <li>
+                  <p className="emptyTag">Pas de tags associés.</p>
+                </li>
+              ) : (
+                tags.map(tag => {
+                  return (
+                    <li>
+                      <img src={`/img/${tag}.png`} alt="" />
+                    </li>
+                  );
+                })
+              )}
             </ul>
           </div>
 
-          <p>{association.resume}</p>
+          <p className="resume">{association.resume}</p>
           <a
             target="_blank"
             href={association.website}
