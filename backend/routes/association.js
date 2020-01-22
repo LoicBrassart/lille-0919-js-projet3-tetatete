@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
           if (err)
             return res
               .status(500)
-              .send("Error in obtaining ambassadors's infos !");
+              .send("Error in obtaining association's infos !");
           const newAssociationResults = JSON.parse(
             JSON.stringify(associationResults)
           );
@@ -47,14 +47,35 @@ router.get("/:id", (req, res) => {
   connection.query(
     "SELECT * FROM association WHERE id = ?",
     [id],
-    (err, results) => {
+    (err, associationResults) => {
       if (err)
         return res.status(500).send("Error in obtaining association's info !");
-      if (results.length === 0)
+      if (associationResults.length === 0)
         return res
           .status(204)
           .send("There is no info corresponding to your research.");
-      return res.status(200).json(results);
+      connection.query(
+        "SELECT * FROM association_has_tag WHERE id_association = ?",
+        [associationResults[0].id],
+        (err, tagResults) => {
+          if (err)
+            return res
+              .status(500)
+              .send("Error in obtaining association's infos !");
+          const newAssociationResults = JSON.parse(
+            JSON.stringify(associationResults)
+          );
+          const newTagResults = JSON.parse(JSON.stringify(tagResults));
+          const arrayTag = [];
+          newTagResults.map(tag => {
+            delete tag.id_association;
+            const tempArrayTag = Object.values(tag);
+            arrayTag.push(parseInt(tempArrayTag));
+          });
+          newAssociationResults[0].tagList = arrayTag;
+          return res.status(200).json(newAssociationResults);
+        }
+      );
     }
   );
 });
