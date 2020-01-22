@@ -16,7 +16,10 @@ function Ambassadors() {
 
   return (
     <section className="Ambassadors">
-      <FilterTab />
+      <div className="ambassadorsHero">
+        <img src="img/monthAmbassador.jpg" alt="month ambassador" />
+      </div>
+      <FilterTab filterType="ambassadeurs" />
       <div className="center containerProfile">
         {ambassadors.map(ambassador => {
           return (
@@ -25,6 +28,8 @@ function Ambassadors() {
               id={ambassador.id}
               img={ambassador.img}
               url="ambassadors"
+              style="blueContent"
+              mainStyle="ProfileCardBlue"
               name={`${ambassador.firstname} ${ambassador.lastname}`}
             />
           );

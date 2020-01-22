@@ -1,17 +1,42 @@
-const { connection } = require("../conf");
+const { connection, cloudinary } = require("../conf");
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const upload = multer({ dest: "/tmp/" });
 
-//Get all associations order by name and with filter
+//Get all associations order by name
 router.get("/", (req, res) => {
   connection.query(
-    "SELECT * FROM association ORDER BY name ASC",
-    (err, results) => {
+    `SELECT * FROM association ORDER BY name ASC`,
+    (err, associationResults) => {
       if (err)
-        return res
-          .status(500)
-          .send("Error in obtaining associations's infos !");
-      return res.status(200).json(results);
+        return res.status(500).send("Error in obtaining association's infos !");
+      connection.query(
+        "SELECT * FROM association_has_tag",
+        (err, tagResults) => {
+          if (err)
+            return res
+              .status(500)
+              .send("Error in obtaining ambassadors's infos !");
+          const newAssociationResults = JSON.parse(
+            JSON.stringify(associationResults)
+          );
+          const newTagResults = JSON.parse(JSON.stringify(tagResults));
+          newAssociationResults.map(association => {
+            const tagList = newTagResults.filter(tag => {
+              return tag.id_association == association.id;
+            });
+            const arrayTag = [];
+            tagList.map(tag => {
+              delete tag.id_association;
+              const tempArrayTag = Object.values(tag);
+              arrayTag.push(parseInt(tempArrayTag));
+            });
+            association.tagList = arrayTag;
+          });
+          return res.status(200).json(newAssociationResults);
+        }
+      );
     }
   );
 });
@@ -35,38 +60,50 @@ router.get("/:id", (req, res) => {
 });
 
 //Post a new association
-router.post("/", (req, res) => {
-  const { name, img, resume, website } = req.body;
-  const formData = {
-    name: name,
-    img: img,
-    resume: resume,
-    website: website
-  };
-  connection.query(
-    "INSERT INTO association SET ?",
-    [formData],
-    (err, results) => {
+router.post("/", upload.single("img"), (req, res) => {
+  cloudinary.v2.uploader.upload(
+    req.file.path,
+    { transformation: { width: 350, height: 350, crop: "fill" } },
+    (err, result) => {
       if (err)
         return res
           .status(500)
-          .send(
-            "Error has occured during the creation of the new association !"
-          );
-      const { insertId } = results;
-      const { id_tag } = req.body;
-      const associationData = id_tag.map(tag => {
-        return [insertId, tag];
-      });
+          .send("Error has occured during the upload of the image !");
+      const { name, resume, website } = req.body;
+      const formData = {
+        name: name,
+        img: result.url,
+        resume: resume,
+        website: website
+      };
       connection.query(
-        "INSERT INTO association_has_tag (id_association, id_tag) VALUES ?",
-        [associationData],
+        "INSERT INTO association SET ?",
+        [formData],
         (err, results) => {
           if (err)
             return res
               .status(500)
-              .send("Error has occured during the attribution of the tag !");
-          return res.status(201).send("Association created.");
+              .send(
+                "Error has occured during the creation of the new association !"
+              );
+          const { insertId } = results;
+          const { id_tag } = req.body;
+          const tagData = id_tag.map(tag => {
+            return [insertId, tag];
+          });
+          connection.query(
+            "INSERT INTO association_has_tag (id_association, id_tag) VALUES ?",
+            [tagData],
+            (err, results) => {
+              if (err)
+                return res
+                  .status(500)
+                  .send(
+                    "Error has occured during the attribution of the tag !"
+                  );
+              return res.status(201).send("Association created.");
+            }
+          );
         }
       );
     }

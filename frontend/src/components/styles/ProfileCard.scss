@@ -1,46 +1,47 @@
 @import "./../../index.scss";
 
-.profileCard {
-  display: inline-block;
-  border: 5px solid $mainBrandColor;
+.ProfileCardBlue,
+.ProfileCardYellow {
+  border: solid 4px $darkFontColor;
+  border-image: $cardBlueBorder;
   position: relative;
+  width: calc(320px - 20px);
+  box-shadow: $boxShadow;
   margin-bottom: 20px;
+  .blueContent,
+  .yellowContent {
+    margin-top: -60px;
+    .titleBorder {
+      height: 40px;
+      background: $cardBlueBorder;
+      display: block;
+      z-index: 1;
+      clip-path: polygon(50% 20px, 100% 0, 100% 100%, 0 100%, 0 0);
+    }
+    .titleLayout {
+      margin-top: -25px;
+      height: 60px;
+      background: $cardBlueGradient;
+      display: block;
+      z-index: 1;
+      clip-path: polygon(50% 20px, 100% 0, 100% 100%, 0 100%, 0 0);
 
-  .profileContainer .profileImage {
-    width: 300px;
-    height: 300px;
-  }
-
-  .gradientName {
-    position: absolute;
-    top: 250px;
-    left: 0;
-    height: 50px;
-    width: 100%;
-    margin: 0;
-    background-image: linear-gradient(to bottom, #00b0f000, $mainBrandColor);
-  }
-
-  .profileName {
-    position: absolute;
-    top: 245px;
-    left: 75px;
-    color: white;
-    text-align: center;
-  }
-
-  .profileTagContainer {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-end;
-    img {
-      width: 50px;
-      height: 50px;
+      h3 {
+        padding-top: 25px;
+        text-align: center;
+        color: $lightFontColor;
+      }
     }
   }
-
-  .profileTag {
-    margin: 10px;
-    border-radius: 50px;
+  .yellowContent {
+    .titleBorder {
+      background: $cardYellowBorder;
+    }
+    .titleLayout {
+      background: $cardYellowGradient;
+    }
   }
+}
+.ProfileCardYellow {
+  border-image: $cardYellowBorder;
 }
