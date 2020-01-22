@@ -9,7 +9,7 @@ import CauseInfos from "./pages/CauseInfos";
 import Footer from "./components/Footer";
 import "./App.scss";
 import CampaignPage from "./pages/CampaignPage";
-const { siteTitle } = require("./conf");
+const { siteTitle } = require("./conf.js");
 
 function App() {
   document.title = siteTitle;

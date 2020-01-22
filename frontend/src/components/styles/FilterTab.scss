@@ -15,18 +15,20 @@
     p {
       font-size: $mediumFontSize;
       color: $lightFontColor;
+      width: 30%;
     }
     .FiltersNav {
+      width: 70%;
       ul {
         font-size: 0;
         list-style-type: none;
         display: flex;
         li {
-          border-radius: 25px;
           margin-left: 5px;
           button {
+            width: 50%;
+            cursor: pointer;
             img {
-              border-radius: 25px;
             }
           }
         }
