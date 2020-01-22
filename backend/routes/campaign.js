@@ -1,6 +1,10 @@
-const { connection } = require("../conf");
+const { connection, cloudinary } = require("../conf");
 const express = require("express");
 const router = express.Router();
+const app = express();
+const multer = require("multer");
+const upload = multer({ dest: "/tmp/" });
+const passport = require("passport");
 
 //Get all campaigns in progress order by the most imminent campaign to finish
 //Or all campaigns done order by their ending times
@@ -123,16 +127,65 @@ router.get("/:id", (req, res) => {
   );
 });
 
+//-----------------------------------------------------------------------------Private routes
+
+router.use((req, res, next) => {
+  passport.authenticate("jwt", { session: false }, (err, user) => {
+    if (err) return res.status(500).send(err, info);
+    if (!user) return res.status(401).send("Unauthorized !");
+    next();
+  })(req, res);
+});
+
 //Post a new campaign
-router.post("/", (req, res) => {
-  const data = req.body;
-  connection.query("INSERT INTO campaign SET ?", [data], (err, results) => {
-    if (err)
-      return res
-        .status(500)
-        .send("Error has occured during the creation of the new campaign !");
-    return res.sendStatus(201);
-  });
+router.post("/", upload.single("img"), (req, res) => {
+  cloudinary.v2.uploader.upload(
+    req.file.path,
+    { transformation: { width: 400, height: 300, crop: "fill" } },
+    (err, result) => {
+      if (err)
+        return res
+          .status(500)
+          .send("Error has occured during the upload of the image !");
+      const {
+        name,
+        resume,
+        time_start,
+        time_end,
+        date_event,
+        value1,
+        value2,
+        value3,
+        id_user,
+        id_ambassador,
+        id_association
+      } = req.body;
+      const data = {
+        name: name,
+        img: result.url,
+        resume: resume,
+        time_start: time_start,
+        time_end: time_end,
+        date_event: date_event,
+        value1: value1,
+        value2: value2,
+        value3: value3,
+        id_user: id_user,
+        id_ambassador: id_ambassador,
+        id_association: id_association
+      };
+      connection.query("INSERT INTO campaign SET ?", [data], (err, results) => {
+        if (err)
+          return res
+            .status(500)
+            .send(
+              "Error has occured during the creation of the new campaign !" +
+                err
+            );
+        return res.sendStatus(201);
+      });
+    }
+  );
 });
 
 //Modify a campaign by id

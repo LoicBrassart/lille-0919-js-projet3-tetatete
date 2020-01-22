@@ -2,14 +2,15 @@ import React from "react";
 import NavBar from "./components/NavBar";
 import { Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import CampaignInfos from "./pages/CampaignInfos";
 import Ambassadors from "./pages/Ambassadors";
 import AmbassadorInfos from "./pages/AmbassadorInfos";
 import Causes from "./pages/Causes";
 import CauseInfos from "./pages/CauseInfos";
 import Footer from "./components/Footer";
 import "./App.scss";
-import CampaignInfos from "./pages/CampaignInfos";
 const { siteTitle } = require("./conf");
+
 
 function App() {
   document.title = siteTitle;

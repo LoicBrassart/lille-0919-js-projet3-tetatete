@@ -1,15 +1,42 @@
-const { connection } = require("../conf");
+const { connection, cloudinary } = require("../conf");
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const upload = multer({ dest: "/tmp/" });
 
-//Get all ambassadors order by name and with filter
+//Get all ambassadors order by name
 router.get("/", (req, res) => {
   connection.query(
-    "SELECT * FROM ambassador ORDER BY firstname ASC",
-    (err, results) => {
+    `SELECT * FROM ambassador ORDER BY firstname ASC`,
+    (err, ambassadorResults) => {
       if (err)
         return res.status(500).send("Error in obtaining ambassadors's infos !");
-      return res.status(200).json(results);
+      connection.query(
+        "SELECT * FROM ambassador_has_tag",
+        (err, tagResults) => {
+          if (err)
+            return res
+              .status(500)
+              .send("Error in obtaining ambassadors's infos !");
+          const newAmbassadorResults = JSON.parse(
+            JSON.stringify(ambassadorResults)
+          );
+          const newTagResults = JSON.parse(JSON.stringify(tagResults));
+          newAmbassadorResults.map(ambassador => {
+            const tagList = newTagResults.filter(tag => {
+              return tag.id_ambassador == ambassador.id;
+            });
+            const arrayTag = [];
+            tagList.map(tag => {
+              delete tag.id_ambassador;
+              const tempArrayTag = Object.values(tag);
+              arrayTag.push(parseInt(tempArrayTag));
+            });
+            ambassador.tagList = arrayTag;
+          });
+          return res.status(200).json(newAmbassadorResults);
+        }
+      );
     }
   );
 });
@@ -32,39 +59,61 @@ router.get("/:id", (req, res) => {
   );
 });
 
+//-----------------------------------------------------------------------------Private routes
+
+router.use((req, res, next) => {
+  passport.authenticate("jwt", { session: false }, (err, user) => {
+    if (err) return res.status(500).send(err, info);
+    if (!user) return res.status(401).send("Unauthorized !");
+    next();
+  })(req, res);
+});
+
 //Post a new ambassador
-router.post("/", (req, res) => {
-  const { firstname, lastname, resume, img } = req.body;
-  const formData = {
-    firstname: firstname,
-    lastname: lastname,
-    resume: resume,
-    img: img
-  };
-  connection.query(
-    "INSERT INTO ambassador SET ?",
-    [formData],
-    (err, results) => {
+router.post("/", upload.single("img"), (req, res) => {
+  cloudinary.v2.uploader.upload(
+    req.file.path,
+    { transformation: { width: 350, height: 350, crop: "fill" } },
+    (err, result) => {
       if (err)
         return res
           .status(500)
-          .send(
-            "Error has occured during the creation of the new ambassador !"
-          );
-      const { insertId } = results;
-      const { id_tag } = req.body;
-      const tagData = id_tag.map(tag => {
-        return [insertId, tag];
-      });
+          .send("Error has occured during the upload of the image !");
+      const { firstname, lastname, resume } = req.body;
+      const formData = {
+        firstname: firstname,
+        lastname: lastname,
+        resume: resume,
+        img: result.url
+      };
       connection.query(
-        "INSERT INTO ambassador_has_tag (id_ambassador, id_tag) VALUES ?",
-        [tagData],
+        "INSERT INTO ambassador SET ?",
+        [formData],
         (err, results) => {
           if (err)
             return res
               .status(500)
-              .send("Error has occured during the attribution of the tag !");
-          return res.status(201).send("Ambassador created.");
+              .send(
+                "Error has occured during the creation of the new ambassador !"
+              );
+          const { insertId } = results;
+          const { id_tag } = req.body;
+          const tagData = id_tag.map(tag => {
+            return [insertId, tag];
+          });
+          connection.query(
+            "INSERT INTO ambassador_has_tag (id_ambassador, id_tag) VALUES ?",
+            [tagData],
+            (err, results) => {
+              if (err)
+                return res
+                  .status(500)
+                  .send(
+                    "Error has occured during the attribution of the tag !"
+                  );
+              return res.status(201).send("Ambassador created.");
+            }
+          );
         }
       );
     }
