@@ -47,14 +47,35 @@ router.get("/:id", (req, res) => {
   connection.query(
     "SELECT * FROM ambassador WHERE id = ?",
     [id],
-    (err, results) => {
+    (err, ambassadorResults) => {
       if (err)
         return res.status(500).send("Error in obtaining ambassador's info !");
-      if (results.length === 0)
+      if (ambassadorResults.length === 0)
         return res
           .status(204)
           .send("There is no info corresponding to your research.");
-      return res.status(200).json(results);
+      connection.query(
+        "SELECT * FROM ambassador_has_tag WHERE id_ambassador = ?",
+        [ambassadorResults[0].id],
+        (err, tagResults) => {
+          if (err)
+            return res
+              .status(500)
+              .send("Error in obtaining ambassador's infos !");
+          const newAmbassadorResults = JSON.parse(
+            JSON.stringify(ambassadorResults)
+          );
+          const newTagResults = JSON.parse(JSON.stringify(tagResults));
+          const arrayTag = [];
+          newTagResults.map(tag => {
+            delete tag.id_ambassador;
+            const tempArrayTag = Object.values(tag);
+            arrayTag.push(parseInt(tempArrayTag));
+          });
+          newAmbassadorResults[0].tagList = arrayTag;
+          return res.status(200).json(newAmbassadorResults);
+        }
+      );
     }
   );
 });
