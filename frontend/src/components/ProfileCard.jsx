@@ -4,25 +4,19 @@ import "./styles/ProfileCard.scss";
 
 function ProfileCard(props) {
   return (
-    <div className="profileCard">
+    <article className={props.mainStyle}>
       <Link to={`/${props.url}/${props.id}`}>
-        <div className="profileContainer">
-          <img className="profileImage" src={props.img} alt="..." />
-
-          <span className="gradientName" />
-
-          <h2 className="profileName">{props.name}</h2>
-        </div>
-
-        <div className="profileTagContainer">
-          <img
-            className="profileTag"
-            src="https://via.placeholder.com/50x50"
-            alt="..."
-          />
+        <figure>
+          <img src={props.img} alt={props.name} />
+        </figure>
+        <div className={props.style}>
+          <div className="titleBorder"></div>
+          <div className="titleLayout">
+            <h3>{props.name}</h3>
+          </div>
         </div>
       </Link>
-    </div>
+    </article>
   );
 }
 
