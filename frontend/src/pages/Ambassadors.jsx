@@ -8,7 +8,7 @@ const { apiCall } = require("../conf");
 
 function Ambassadors() {
   const [ambassadors, setAmbassadors] = useState([]);
-  const filter = useSelector(state => state.filter);
+  const filterAmbassadors = useSelector(state => state.filterAmbassadors);
 
   useEffect(() => {
     axios.get(`${apiCall}/ambassador`).then(res => {
@@ -21,14 +21,14 @@ function Ambassadors() {
       <div className="ambassadorsHero">
         <img src="img/monthAmbassador.jpg" alt="month ambassador" />
       </div>
-      <FilterTab filterType="ambassadeurs" />
+      <FilterTab type="AMB_" />
       <div className="center containerProfile">
         {ambassadors
-          .filter(ambassadors => {
-            if (filter === null) {
-              return ambassadors;
+          .filter(ambassador => {
+            if (filterAmbassadors === null) {
+              return ambassador;
             } else {
-              return ambassadors.tagList.includes(filter);
+              return ambassador.tagList.includes(filterAmbassadors);
             }
           })
           .map(ambassador => {
