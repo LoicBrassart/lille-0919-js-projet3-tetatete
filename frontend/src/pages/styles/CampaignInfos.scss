@@ -74,3 +74,35 @@
     }
   }
 }
+
+.modali-body {
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    p {
+      width: 70%;
+      margin-bottom: 30px;
+      span {
+        font-weight: bold;
+      }
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      width: 30%;
+      .container {
+        margin: 0 0;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+      }
+      button {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
