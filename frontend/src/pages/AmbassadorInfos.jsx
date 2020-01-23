@@ -3,6 +3,9 @@ import axios from "axios";
 import "./styles/AmbassadorInfos.scss";
 import ProfileCard from "../components/ProfileCard";
 import CampaignCard from "../components/CampaignCard";
+import Carousel from "@brainhubeu/react-carousel";
+import "@brainhubeu/react-carousel/lib/style.css";
+
 const { apiCall } = require("../conf");
 
 function AmbassadorInfos(props) {
@@ -76,7 +79,37 @@ function AmbassadorInfos(props) {
       )}
 
       <div className="AmbassadorsRelated">
-        <ul>
+        {relatedCampaigns.length === 0 ? (
+          <p className="emptyCards">Pas de liens dispobiles.</p>
+        ) : relatedCampaigns.length <= 3 && relatedCampaigns.length != 0 ? (
+          <Carousel itemWidth={400}>
+            {relatedCampaigns.map(relatedCampaign => {
+              return (
+                <div>
+                  <CampaignCard
+                    key={relatedCampaign.id}
+                    campaignInfo={relatedCampaign}
+                  />
+                </div>
+              );
+            })}
+          </Carousel>
+        ) : (
+          <Carousel arrows itemWidth={400}>
+            {relatedCampaigns.map(relatedCampaign => {
+              return (
+                <div>
+                  <CampaignCard
+                    key={relatedCampaign.id}
+                    campaignInfo={relatedCampaign}
+                  />
+                </div>
+              );
+            })}
+          </Carousel>
+        )}
+
+        {/* <ul>
           {relatedCampaigns.map(relatedCampaign => {
             return (
               <li>
@@ -87,7 +120,7 @@ function AmbassadorInfos(props) {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );
