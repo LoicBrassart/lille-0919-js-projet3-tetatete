@@ -9,7 +9,8 @@ const { apiCall } = require("../conf");
 export default function CampaignInfos(props) {
   const [campaignInfo, setCampaignInfo] = useState([]);
   const [modalDonation, toggleModalDonation] = useModali({
-    animated: true
+    animated: true,
+    title: "Merci d'entrer vos informations (toutes requises)"
   });
 
   const [donor, setDonor] = useState({
@@ -95,7 +96,8 @@ export default function CampaignInfos(props) {
             <div>
               <p>
                 Veuillez remplir tout les champs ci-dessous afin de confirmer
-                votre participation à la campagne "{campaignInfo.name}" !
+                votre participation à la campagne{" "}
+                <span>"{campaignInfo.name}"</span> !
               </p>
               <form
                 onSubmit={e => {
