@@ -1,23 +1,24 @@
 import React from "react";
 import "./styles/FilterTab.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
-function FilterTab() {
-  const filter = useSelector(state => state.filter);
+function FilterTab(props) {
   const dispatch = useDispatch();
   return (
     <div className="FilterTab">
       <div className="center">
-        <p>Filtrer parmis les tags</p>
+        <p>Filtrer parmis les tags :</p>
         <nav className="FiltersNav">
           <ul>
             <li>
-              <button onClick={() => dispatch({ type: "SANTE" })}>
+              <button onClick={() => dispatch({ type: `${props.type}SANTE` })}>
                 <img src="/img/sante.png" alt="Santé" title="Santé" />
               </button>
             </li>
             <li>
-              <button onClick={() => dispatch({ type: "HUMANITAIRE" })}>
+              <button
+                onClick={() => dispatch({ type: `${props.type}HUMANITAIRE` })}
+              >
                 <img
                   src="/img/humanitaire.png"
                   alt="Humanitaire"
@@ -26,22 +27,28 @@ function FilterTab() {
               </button>
             </li>
             <li>
-              <button onClick={() => dispatch({ type: "CULTURE" })}>
+              <button
+                onClick={() => dispatch({ type: `${props.type}CULTURE` })}
+              >
                 <img src="/img/culture.png" alt="Culture" title="Culture" />
               </button>
             </li>
             <li>
-              <button onClick={() => dispatch({ type: "SPORT" })}>
+              <button onClick={() => dispatch({ type: `${props.type}SPORT` })}>
                 <img src="/img/sport.png" alt="Sport" title="Sport" />
               </button>
             </li>
             <li>
-              <button onClick={() => dispatch({ type: "ECOLOGIE" })}>
+              <button
+                onClick={() => dispatch({ type: `${props.type}ECOLOGIE` })}
+              >
                 <img src="/img/ecologie.png" alt="Écologie" title="Écologie" />
               </button>
             </li>
             <li>
-              <button onClick={() => dispatch({ type: "EDUCATION" })}>
+              <button
+                onClick={() => dispatch({ type: `${props.type}EDUCATION` })}
+              >
                 <img
                   src="/img/education.png"
                   alt="Éducation"
@@ -50,7 +57,7 @@ function FilterTab() {
               </button>
             </li>
             <li>
-              <button onClick={() => dispatch({ type: "ALL" })}>
+              <button onClick={() => dispatch({ type: `${props.type}ALL` })}>
                 <img
                   src="/img/corbeille.png"
                   alt="close"
