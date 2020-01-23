@@ -99,6 +99,7 @@
         top: -100%;
         width: 100%;
         height: 360px;
+        font-family: $mainFont;
         background-color: $backgroundColor;
         &.shown {
           top: 0;
@@ -125,11 +126,13 @@
             justify-content: center;
             height: 100%;
             color: $lightFontColor;
+            font-family: $mainFont;
             font-size: $bigFontSize;
             text-transform: uppercase;
           }
           p {
             color: $lightFontColor;
+            font-family: $mainFont;
             display: block;
             position: relative;
             bottom: 35px;
