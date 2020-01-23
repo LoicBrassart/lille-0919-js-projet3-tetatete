@@ -61,7 +61,7 @@ function CampaignCard({ campaignInfo }) {
           <p className="fondationName">{campaignInfo.associationName}</p>
 
           <div className="moreInfo">
-            <p className="moreInfoText">en savoir plus</p>
+            <p className="moreInfoText">En savoir plus</p>
             <img
               className="moreInfoButton"
               src="/img/moreInfo.png"
