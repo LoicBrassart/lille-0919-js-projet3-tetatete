@@ -80,7 +80,7 @@ function AmbassadorInfos(props) {
 
       <div className="AmbassadorsRelated">
         {relatedCampaigns.length === 0 ? (
-          <p className="emptyCards">Pas de liens dispobiles.</p>
+          <p className="emptyCards">Pas de liens disponibles.</p>
         ) : relatedCampaigns.length <= 3 && relatedCampaigns.length != 0 ? (
           <Carousel itemWidth={400}>
             {relatedCampaigns.map(relatedCampaign => {
@@ -108,19 +108,6 @@ function AmbassadorInfos(props) {
             })}
           </Carousel>
         )}
-
-        {/* <ul>
-          {relatedCampaigns.map(relatedCampaign => {
-            return (
-              <li>
-                <CampaignCard
-                  key={relatedCampaign.id}
-                  campaignInfo={relatedCampaign}
-                />
-              </li>
-            );
-          })}
-        </ul> */}
       </div>
     </div>
   );
