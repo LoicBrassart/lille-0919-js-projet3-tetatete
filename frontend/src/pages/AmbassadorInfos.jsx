@@ -39,6 +39,8 @@ function AmbassadorInfos(props) {
             url="ambassadors"
             img={ambassador.img}
             name={`${ambassador.firstname} ${ambassador.lastname}`}
+            style="blueContent"
+            mainStyle="ProfileCardBlue"
           />
         </div>
 
