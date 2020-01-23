@@ -21,33 +21,101 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
     padding: 85px;
 
-    label {
-      font-family: $roundedFont;
-    }
-
-    .totalCampaign {
+    .selectContent {
+      width: 100%;
       display: flex;
-      flex-direction: row;
-      align-items: flex-end;
+      flex-direction: column;
+      justify-content: space-around;
+      font-size: 32px;
+      font-family: $mainFont;
 
-      .totalCamp {
-        height: 120px;
-        font-size: 130px;
-        font-family: $heroFont;
+      .inProgressStatus {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #00bd88;
+        cursor: pointer;
+
+        #inProgressStatus {
+          width: 30px;
+          height: 30px;
+          margin-right: 20px;
+          border-radius: 30px;
+          background-color: #00bd88;
+          box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+        }
       }
-      .campaignStatus {
-        font-size: 64px;
-        line-height: 50px;
+      .doneStatus {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #ff7975;
+        cursor: pointer;
+        #doneStatus {
+          width: 30px;
+          height: 30px;
+          margin-right: 20px;
+          border-radius: 30px;
+          background-color: #ff7975;
+          box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
+        }
       }
     }
   }
 
-  .cardContainer {
+  .totalInprogressCampaign {
+    margin: auto;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: row;
+    align-items: flex-end;
+    color: #00bd88;
+    font-family: $mainFont;
+    font-weight: bold;
+  }
+
+  .totalDoneCampaign {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    color: #ff7975;
+    font-family: $mainFont;
+    font-weight: bold;
+  }
+
+  .totalCamp {
+    height: 120px;
+    margin-right: 50px;
+    font-size: 130px;
+    font-family: $mainFont;
+    letter-spacing: -20px;
+  }
+  .campaignStatus {
+    height: 120px;
+    font-size: 64px;
+    line-height: 70px;
+  }
+}
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.unselected {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: rgba(56, 73, 85, 0.4);
+  cursor: pointer;
+  transition: ease 0.1s;
+  &:hover {
+    transform: scale(1.05);
   }
 }
