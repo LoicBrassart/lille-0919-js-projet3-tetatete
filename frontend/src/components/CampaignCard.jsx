@@ -50,8 +50,8 @@ export default function CampaignCard({
   }, [timeDiff, dateDiff]);
 
   return (
-    <div className={cardStyle}>
-      <Link to={`/campaign/${id}`}>
+    <div className={`${cardStyle} related self`}>
+      <Link to={`/campaign/${campaignInfo.id}`}>
         <div className="firstContainer">
           <img className="campaignImg" src={img} alt={name}></img>
           <div className="timer">
