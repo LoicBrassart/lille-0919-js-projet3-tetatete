@@ -89,7 +89,7 @@ export default function LearnMore() {
               <small>collectés généreusement</small>
             </div>
 
-            <big>{totals.nb_asso}</big>
+            <big>{totals.nbAssociation}</big>
             <small>associations soutenues</small>
           </span>
           <figure>
