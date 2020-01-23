@@ -22,8 +22,8 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home}></Route>
-        <Route path="/campaigns" component={CampaignsPage}></Route>
         <Route path="/campaigns/:id" component={CampaignInfos}></Route>
+        <Route path="/campaigns" component={CampaignsPage}></Route>
         <Route path="/ambassadors/:id" component={AmbassadorInfos}></Route>
         <Route path="/ambassadors" component={Ambassadors}></Route>
         <Route path="/causes/:id" component={CauseInfos}></Route>
