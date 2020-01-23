@@ -1,7 +1,6 @@
 const { connection, cloudinary } = require("../conf");
 const express = require("express");
 const router = express.Router();
-const app = express();
 const multer = require("multer");
 const upload = multer({ dest: "/tmp/" });
 const passport = require("passport");
@@ -147,54 +146,44 @@ router.post("/", upload.single("img"), (req, res) => {
         return res
           .status(500)
           .send("Error has occured during the upload of the image !");
-      const {
-        name,
-        resume,
-        time_start,
-        time_end,
-        date_event,
-        value1,
-        value2,
-        value3,
-        id_user,
-        id_ambassador,
-        id_association
-      } = req.body;
-      const data = {
-        name: name,
-        img: result.url,
-        resume: resume,
-        time_start: time_start,
-        time_end: time_end,
-        date_event: date_event,
-        value1: value1,
-        value2: value2,
-        value3: value3,
-        id_user: id_user,
-        id_ambassador: id_ambassador,
-        id_association: id_association
-      };
-      connection.query("INSERT INTO campaign SET ?", [data], (err, results) => {
-        if (err)
-          return res
-            .status(500)
-            .send(
-              "Error has occured during the creation of the new campaign !" +
-                err
-            );
-        return res.sendStatus(201);
-      });
+      req.body.img = result.url;
+      connection.query(
+        "INSERT INTO campaign SET ?",
+        [req.body],
+        (err, results) => {
+          if (err)
+            return res
+              .status(500)
+              .send(
+                "Error has occured during the creation of the new campaign !" +
+                  err
+              );
+          return res.sendStatus(201);
+        }
+      );
     }
   );
 });
 
 //Modify a campaign by id
-router.patch("/:id", (req, res) => {
+router.patch("/:id", upload.single("img"), async (req, res) => {
+  if (req.file) {
+    await cloudinary.v2.uploader.upload(
+      req.file.path,
+      { transformation: { width: 350, height: 350, crop: "fill" } },
+      (err, result) => {
+        if (err)
+          return res
+            .status(500)
+            .send("Error has occured during the upload of the image !");
+        req.body.img = result.url;
+      }
+    );
+  }
   const id = Number(req.params.id);
-  const data = req.body;
   connection.query(
     "UPDATE campaign SET ? WHERE id = ?",
-    [data, id],
+    [req.body, id],
     (err, results) => {
       if (err) return res.status(500).send("Error in modifying the campaign.");
       return res.sendStatus(200);
