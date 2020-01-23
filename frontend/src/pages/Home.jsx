@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Hero from "../components/Hero";
 import CampaignCard from "../components/CampaignCard";
 import axios from "axios";
@@ -23,7 +23,7 @@ export default function Home(props) {
       <Hero />
       <div className="cardContainer">
         {campaignsInfo.map((campaign, key) => {
-          return <CampaignCard key={key} campaignsInfo={campaign} />;
+          return <CampaignCard key={key} {...campaign} />;
         })}
       </div>
       <LearnMore />
