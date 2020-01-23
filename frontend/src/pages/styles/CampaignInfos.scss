@@ -1,0 +1,76 @@
+@import "../../index.scss";
+
+.CampaignInfos {
+  .campaignPresentation {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    padding: 40px 20px;
+    .campaignCard {
+      width: 50%;
+      .self {
+        margin: 0 auto;
+        transform: scale(1);
+        &:hover {
+          box-shadow: none;
+        }
+        a {
+          pointer-events: none;
+          .secondContainer {
+            display: none;
+          }
+        }
+      }
+    }
+    .campaignInfos {
+      width: 50%;
+      h3 {
+        font-size: $biggestFontSize;
+      }
+      p {
+        margin-bottom: 40px;
+        strong {
+          color: $mainBrandColor;
+        }
+      }
+
+      p {
+        padding: 0 4% 0 0;
+      }
+    }
+  }
+  .campaignSlides {
+    width: 100%;
+    padding: 20px 10px;
+    background: $cardBlueGradient;
+    margin-bottom: 60px;
+  }
+  .campaignDonation {
+    background: $cardBlueGradient;
+    padding: 40px 20px;
+    margin-bottom: 80px;
+    p {
+      font-size: 3rem;
+      text-align: center;
+      color: $lightFontColor;
+      margin-bottom: 40px;
+    }
+    ul {
+      margin: 0 auto;
+      width: 450px;
+      font-size: 0;
+      display: flex;
+      justify-content: space-around;
+      li {
+        display: inline-block;
+        button {
+          padding: 15px 20px;
+          background-color: $donationButtonColor;
+          color: $lightFontColor;
+          font-size: 16px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

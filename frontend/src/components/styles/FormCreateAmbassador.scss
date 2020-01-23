@@ -1,0 +1,16 @@
+.FormCreateAmbass {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 50%;
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+    }
+  }
+}
