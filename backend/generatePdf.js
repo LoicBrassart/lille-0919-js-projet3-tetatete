@@ -111,7 +111,7 @@ function generatePdf(userInfo) {
   userInfo.donation_value > 0
     ? sendMail({
         from: "NoReply@meex.com",
-        to: "boschetti.theo@gmail.com",
+        to: userInfo.email,
         subject: "Thank you for your donation !",
         html: `Thank you! You just donated ${userInfo.donation_value}€ and by doing this you participated to have a better world !  Meex Team`,
         attachments: [
@@ -123,7 +123,7 @@ function generatePdf(userInfo) {
       })
     : sendMail({
         from: "NoReply@meex.com",
-        to: "boschetti.theo@gmail.com",
+        to: userInfo.email,
         subject: "Thank you for your donation !",
         html: "Thank you for your participation ! Meex Team"
       });
