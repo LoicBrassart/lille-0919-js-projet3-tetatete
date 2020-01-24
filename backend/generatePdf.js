@@ -2,16 +2,9 @@ var PdfPrinter = require("pdfmake");
 const moment = require("moment");
 const sendMail = require("sendmail")({ silent: true });
 
-userInfo = {
-  email: "jean.pierre@hotmail.fr",
-  phone_number: "0610101010",
-  donation_value: 20,
-  date: "2020-01-17T12:00:00.000Z"
-};
-
-function generatePdf(userInfo) {
+const generatePdf = userInfo => {
   var fonts = {
-    Roboto: {
+    TimesNewRoman: {
       normal: "fonts/TimesNewRoman.ttf",
       bold: "fonts/TimesNewRomanGras.ttf"
     }
@@ -77,6 +70,11 @@ function generatePdf(userInfo) {
         margin: [0, 2]
       },
       {
+        text: `Nom de l'association : ${userInfo.associationName}`,
+        alignment: "left",
+        margin: [0, 2]
+      },
+      {
         text: `Date du don : ${moment(userInfo.date).format("L")} ${moment(
           userInfo.date
         ).format("LTS")}`,
@@ -130,4 +128,6 @@ function generatePdf(userInfo) {
         html: "Thank you for your participation ! Meex Team"
       });
   pdfDoc.end();
-}
+};
+
+module.exports = generatePdf();
