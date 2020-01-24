@@ -10,7 +10,7 @@ export default function CampaignInfos(props) {
   const [campaignInfo, setCampaignInfo] = useState([]);
   const [modalDonation, toggleModalDonation] = useModali({
     animated: true,
-    title: "Merci d'entrer vos informations (toutes requises)"
+    title: "Merci d'entrer vos informations (toutes sont requises)"
   });
 
   const [donor, setDonor] = useState({
@@ -18,7 +18,8 @@ export default function CampaignInfos(props) {
     phone_number: "",
     date: null,
     donation_value: 0,
-    campaign_id: null
+    campaign_id: null,
+    associationName: ""
   });
 
   const handleSubmit = () => {
@@ -30,7 +31,6 @@ export default function CampaignInfos(props) {
       .catch(err => {
         alert(err);
       });
-    console.log(donor);
   };
 
   useEffect(() => {
@@ -41,6 +41,7 @@ export default function CampaignInfos(props) {
       });
   }, [props.match.params.id, donor.donation_value]);
 
+  const nameAssociation = campaignInfo.associationName;
   const idCampaign = campaignInfo.id;
   const value1 = campaignInfo.value1;
   const value2 = campaignInfo.value2;
@@ -71,15 +72,14 @@ export default function CampaignInfos(props) {
               <li>
                 <button
                   onClick={() => {
-                    console.log(value);
                     setDonor({
                       ...donor,
-
                       date: moment()
                         .format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS)
                         .replace("T", " "),
                       donation_value: value,
-                      campaign_id: idCampaign
+                      campaign_id: idCampaign,
+                      associationName: nameAssociation
                     });
                     toggleModalDonation();
                   }}
