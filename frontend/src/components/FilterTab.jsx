@@ -1,9 +1,15 @@
 import React from "react";
 import "./styles/FilterTab.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function FilterTab(props) {
+  const filterType = useSelector(
+    props.type === "AMB_"
+      ? state => state.filterAmbassadors
+      : state => state.filterCauses
+  );
   const dispatch = useDispatch();
+  console.log(filterType);
   return (
     <div className="FilterTab">
       <div className="center">
@@ -11,12 +17,16 @@ function FilterTab(props) {
         <nav className="FiltersNav">
           <ul>
             <li>
-              <button onClick={() => dispatch({ type: `${props.type}SANTE` })}>
+              <span
+                className={filterType === 1 ? "isActive" : ""}
+                onClick={() => dispatch({ type: `${props.type}SANTE` })}
+              >
                 <img src="/img/sante.png" alt="Santé" title="Santé" />
-              </button>
+              </span>
             </li>
             <li>
-              <button
+              <span
+                className={filterType === 2 ? "isActive" : ""}
                 onClick={() => dispatch({ type: `${props.type}HUMANITAIRE` })}
               >
                 <img
@@ -24,29 +34,35 @@ function FilterTab(props) {
                   alt="Humanitaire"
                   title="Humanitaire"
                 />
-              </button>
+              </span>
             </li>
             <li>
-              <button
+              <span
+                className={filterType === 3 ? "isActive" : ""}
                 onClick={() => dispatch({ type: `${props.type}CULTURE` })}
               >
                 <img src="/img/culture.png" alt="Culture" title="Culture" />
-              </button>
+              </span>
             </li>
             <li>
-              <button onClick={() => dispatch({ type: `${props.type}SPORT` })}>
+              <span
+                className={filterType === 4 ? "isActive" : ""}
+                onClick={() => dispatch({ type: `${props.type}SPORT` })}
+              >
                 <img src="/img/sport.png" alt="Sport" title="Sport" />
-              </button>
+              </span>
             </li>
             <li>
-              <button
+              <span
+                className={filterType === 5 ? "isActive" : ""}
                 onClick={() => dispatch({ type: `${props.type}ECOLOGIE` })}
               >
                 <img src="/img/ecologie.png" alt="Écologie" title="Écologie" />
-              </button>
+              </span>
             </li>
             <li>
-              <button
+              <span
+                className={filterType === 6 ? "isActive" : ""}
                 onClick={() => dispatch({ type: `${props.type}EDUCATION` })}
               >
                 <img
@@ -54,16 +70,19 @@ function FilterTab(props) {
                   alt="Éducation"
                   title="Éducation"
                 />
-              </button>
+              </span>
             </li>
             <li>
-              <button onClick={() => dispatch({ type: `${props.type}ALL` })}>
+              <span
+                className={filterType === null ? "isActive" : ""}
+                onClick={() => dispatch({ type: `${props.type}ALL` })}
+              >
                 <img
                   src="/img/corbeille.png"
                   alt="close"
                   title="Supprimer filtre"
                 />
-              </button>
+              </span>
             </li>
           </ul>
         </nav>
