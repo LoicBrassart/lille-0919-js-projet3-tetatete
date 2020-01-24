@@ -1,6 +1,11 @@
 @import "../../index.scss";
 
 .Ambassadors {
+  .ambassadorsHero {
+    img {
+      width: 100%;
+    }
+  }
   .containerProfile {
     display: flex;
     flex-direction: row;
