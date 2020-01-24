@@ -1,6 +1,11 @@
 @import "../../index.scss";
 
 .Causes {
+  .causesHero {
+    img {
+      width: 100%;
+    }
+  }
   .containerCauses {
     display: flex;
     flex-direction: row;

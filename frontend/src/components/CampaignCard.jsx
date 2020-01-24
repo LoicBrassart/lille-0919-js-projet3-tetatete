@@ -39,8 +39,8 @@ function CampaignCard({ campaignInfo }) {
   }
 
   return (
-    <div className={`${cardStyle} related`}>
-      <Link to={`/campaigns/${campaignInfo.id}`}>
+    <div className={`${cardStyle} related self`}>
+      <Link to={`/campaign/${campaignInfo.id}`}>
         <div className="firstContainer">
           <img
             className="campaignImg"

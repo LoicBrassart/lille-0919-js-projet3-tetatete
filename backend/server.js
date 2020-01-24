@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { port } = require("./conf");
+const { port, filePath } = require("./conf");
 const passport = require("passport");
 
 //Routes imported
