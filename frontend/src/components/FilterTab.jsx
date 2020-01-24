@@ -9,7 +9,7 @@ function FilterTab(props) {
       : state => state.filterCauses
   );
   const dispatch = useDispatch();
-  console.log(filterType);
+
   return (
     <div className="FilterTab">
       <div className="center">
