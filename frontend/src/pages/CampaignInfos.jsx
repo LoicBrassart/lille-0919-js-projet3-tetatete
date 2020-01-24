@@ -10,7 +10,7 @@ export default function CampaignInfos(props) {
   const [campaignInfo, setCampaignInfo] = useState([]);
   const [modalDonation, toggleModalDonation] = useModali({
     animated: true,
-    title: "Merci d'entrer vos informations (toutes sont requises)"
+    title: "Merci d'entrer vos informations :"
   });
 
   const [donor, setDonor] = useState({
@@ -106,39 +106,41 @@ export default function CampaignInfos(props) {
                 }}
               >
                 <div className="container">
-                  <label htmlFor="email">Email :</label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={donor.email}
-                    onChange={event => {
-                      setDonor({
-                        ...donor,
-                        email: event.target.value
-                      });
-                    }}
-                    placeholder="exemple@test.net"
-                    required
-                  />
+                  <label htmlFor="email">
+                    <input
+                      type="email"
+                      id="email"
+                      value={donor.email}
+                      onChange={event => {
+                        setDonor({
+                          ...donor,
+                          email: event.target.value
+                        });
+                      }}
+                      placeholder="E-Mail."
+                      required
+                    />
+                  </label>
                 </div>
                 <div className="container">
-                  <label htmlFor="tel">Phone :</label>
-                  <input
-                    type="tel"
-                    id="tel"
-                    value={donor.tel}
-                    onChange={event => {
-                      setDonor({
-                        ...donor,
-                        phone_number: event.target.value
-                      });
-                    }}
-                    placeholder="0568451203"
-                    pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}"
-                    required
-                  />
+                  <label htmlFor="tel">
+                    <input
+                      type="tel"
+                      id="tel"
+                      value={donor.tel}
+                      onChange={event => {
+                        setDonor({
+                          ...donor,
+                          phone_number: event.target.value
+                        });
+                      }}
+                      placeholder="Ex : 0634875634"
+                      pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}"
+                      required
+                    />
+                  </label>
                 </div>
-                <input type="submit" />
+                <input type="submit" value="Partciper !" />
               </form>
             </div>
           </Modali.Modal>
