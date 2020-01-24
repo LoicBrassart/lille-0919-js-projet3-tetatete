@@ -39,7 +39,7 @@ function CauseInfos(props) {
             url="causes"
             img={association.img}
             name={association.name}
-            style="yellowContent"
+            contentStyle="yellowContent"
             mainStyle="ProfileCardYellow"
           />
         </div>
