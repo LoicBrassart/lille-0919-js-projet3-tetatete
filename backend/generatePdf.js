@@ -2,9 +2,9 @@ var PdfPrinter = require("pdfmake");
 const moment = require("moment");
 const sendMail = require("sendmail")({ silent: true });
 
-const generatePdf = userInfo => {
+function generatePdf(userInfo) {
   var fonts = {
-    TimesNewRoman: {
+    Roboto: {
       normal: "fonts/TimesNewRoman.ttf",
       bold: "fonts/TimesNewRomanGras.ttf"
     }
@@ -75,7 +75,7 @@ const generatePdf = userInfo => {
         margin: [0, 2]
       },
       {
-        text: `Date du don : ${moment(userInfo.date).format("L")} ${moment(
+        text: `Date du don : ${moment(userInfo.date).format("L")}  ${moment(
           userInfo.date
         ).format("LTS")}`,
         alignment: "left",
@@ -128,6 +128,9 @@ const generatePdf = userInfo => {
         html: "Thank you for your participation ! Meex Team"
       });
   pdfDoc.end();
-};
+  return;
+}
 
-module.exports = generatePdf();
+module.exports = {
+  generatePdf: generatePdf
+};
