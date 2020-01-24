@@ -1,9 +1,9 @@
-var PdfPrinter = require("pdfmake");
+const PdfPrinter = require("pdfmake");
 const moment = require("moment");
 const sendMail = require("sendmail")({ silent: true });
 
 function generatePdf(userInfo) {
-  var fonts = {
+  const fonts = {
     Roboto: {
       normal: "fonts/TimesNewRoman.ttf",
       bold: "fonts/TimesNewRomanGras.ttf"
