@@ -4,12 +4,15 @@
   .desktopHero {
     position: relative;
     width: 100%;
-    object-fit: cover;
+    img {
+      width: 100%;
+    }
     h2 {
       width: 100%;
+      font-family: $heroFont;
       text-transform: uppercase;
       font-weight: 100;
-      font-size: $biggestFontSize;
+      font-size: 90px;
       color: $lightFontColor;
       position: absolute;
       padding: 0 5%;

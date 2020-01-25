@@ -1,5 +1,4 @@
 require("dotenv").config();
-const multer = require("multer");
 const mysql = require("mysql");
 const cloudinary = require("cloudinary");
 const port = process.env.BACKEND_PORT;

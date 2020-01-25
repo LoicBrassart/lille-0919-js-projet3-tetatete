@@ -17,7 +17,7 @@
       box-shadow: $boxShadow;
       overflow: hidden;
       cursor: pointer;
-      transform: scale(0.95);
+      transform: scale(0.98);
       transition: ease 0.2s;
 
       &:hover {
@@ -28,7 +28,7 @@
         background-color: $meexColor;
       }
       &:nth-child(1) .content .titleLayout {
-        background: $meexGradient;
+        background: $meexBg;
       }
       &:nth-child(1) span {
         border: solid 4px $meexColor;
@@ -48,7 +48,7 @@
         background-color: $chartColor;
       }
       &:nth-child(2) .content .titleLayout {
-        background: $chartGradient;
+        background: $chartBg;
       }
       &:nth-child(2) span {
         border: solid 4px $chartColor;
@@ -67,7 +67,7 @@
         background-color: $foundsColor;
       }
       &:nth-child(3) .content .titleLayout {
-        background: $foundsGradient;
+        background: $foundsBg;
       }
       &:nth-child(3) span {
         border: solid 4px $foundsColor;
@@ -99,6 +99,7 @@
         top: -100%;
         width: 100%;
         height: 360px;
+        font-family: $mainFont;
         background-color: $backgroundColor;
         &.shown {
           top: 0;
@@ -125,11 +126,13 @@
             justify-content: center;
             height: 100%;
             color: $lightFontColor;
+            font-family: $mainFont;
             font-size: $bigFontSize;
             text-transform: uppercase;
           }
           p {
             color: $lightFontColor;
+            font-family: $mainFont;
             display: block;
             position: relative;
             bottom: 35px;

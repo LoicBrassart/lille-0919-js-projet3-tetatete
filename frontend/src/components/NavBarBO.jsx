@@ -5,19 +5,19 @@ import "./styles/NavBar.scss";
 
 function NavBar() {
   return (
-    <header className="NavBar">
+    <header className="NavBar NavBarBO">
       <nav className="desktopNav">
-        <NavLink className="logo" activeClassName="active" exact to="/">
-          <img className="meexLogo" src="./img/meexLogo.png" alt="" />
+        <NavLink className="logo" activeClassName="active" exact to="/admin">
+          <img className="meexLogo" src="./img/meexAdminLogo.png" alt="" />
         </NavLink>
 
         <ul className="desktopMenu">
           <li>
             <NavLink
-              id="campaigns"
+              id="meetings"
               className="menu-item"
               activeClassName="active"
-              to="/campaigns"
+              to="/admin/campaigns"
             >
               Campagnes
             </NavLink>
@@ -28,7 +28,7 @@ function NavBar() {
               id="ambassadors"
               className="menu-item"
               activeClassName="active"
-              to="/ambassadors"
+              to="/admin/ambassadors"
             >
               Ambassadeurs
             </NavLink>
@@ -39,7 +39,7 @@ function NavBar() {
               id="causes"
               className="menu-item"
               activeClassName="active"
-              to="/causes"
+              to="/admin/causes"
             >
               Causes soutenues
             </NavLink>
@@ -47,7 +47,7 @@ function NavBar() {
         </ul>
       </nav>
 
-      <BurgerMenu width={320}>
+      <BurgerMenu width={320} className="BurgerMenuBO">
         <NavLink
           id="meetings"
           className="menu-item"

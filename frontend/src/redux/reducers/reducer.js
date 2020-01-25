@@ -1,11 +1,23 @@
 const initialState = {
-  filter: null
+   campaignsInfo: [],
+   campaignInfoById: [],
+  filter: null,
 };
 
-function reducer(state = initialState, action) {
-  const newState = { ...state };
-  switch (action.type) {
-    case "SANTE":
+const reducer = (state = initialState, action) => {
+   const newState = JSON.parse(JSON.stringify(state));
+   switch (action.type) {
+      case "GET_CAMPAIGNS_INFO":
+         return {
+            ...newState,
+            campaignsInfo: action.data
+         }
+      case "GET_CAMPAIGN_BY_ID":
+         return {
+            ...newState,
+            campaignInfoById: action.data
+         }
+       case "SANTE":
       return { filter: 1 };
     case "HUMANITAIRE":
       return { filter: 2 };
@@ -19,8 +31,10 @@ function reducer(state = initialState, action) {
       return { filter: 6 };
     case "ALL":
       return { filter: null };
-    default:
-      return newState;
-  }
+
+      default:
+         return newState;
+   }
 }
+
 export default reducer;
