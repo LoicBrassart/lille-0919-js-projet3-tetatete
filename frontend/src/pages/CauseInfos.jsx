@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./styles/CauseInfos.scss";
 import ProfileCard from "../components/ProfileCard";
 import CampaignCard from "../components/CampaignCard";
-import "./styles/CauseInfos.scss";
+import Carousel from "@brainhubeu/react-carousel";
+import "@brainhubeu/react-carousel/lib/style.css";
+
 const { apiCall } = require("../conf");
 
 function CauseInfos(props) {
@@ -80,18 +83,35 @@ function CauseInfos(props) {
         </p>
       )}
       <div className="CausesRelated">
-        <ul>
-          {relatedCampaigns.map(relatedCampaign => {
-            return (
-              <li>
-                <CampaignCard
-                  key={relatedCampaign.id}
-                  campaignInfo={relatedCampaign}
-                />
-              </li>
-            );
-          })}
-        </ul>
+        {relatedCampaigns.length === 0 ? (
+          <p className="emptyCards">Pas de liens disponibles.</p>
+        ) : relatedCampaigns.length <= 3 && relatedCampaigns.length != 0 ? (
+          <Carousel itemWidth={400}>
+            {relatedCampaigns.map(relatedCampaign => {
+              return (
+                <div>
+                  <CampaignCard
+                    key={relatedCampaign.id}
+                    campaignInfo={relatedCampaign}
+                  />
+                </div>
+              );
+            })}
+          </Carousel>
+        ) : (
+          <Carousel arrows itemWidth={400}>
+            {relatedCampaigns.map(relatedCampaign => {
+              return (
+                <div>
+                  <CampaignCard
+                    key={relatedCampaign.id}
+                    campaignInfo={relatedCampaign}
+                  />
+                </div>
+              );
+            })}
+          </Carousel>
+        )}
       </div>
     </div>
   );
