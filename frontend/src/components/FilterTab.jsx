@@ -1,62 +1,80 @@
 import React from "react";
 import "./styles/FilterTab.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-function FilterTab() {
-  const filter = useSelector(state => state.filter);
+function FilterTab(props) {
+  const filterType = useSelector(
+    props.type === "AMB_"
+      ? state => state.filterAmbassadors
+      : state => state.filterCauses
+  );
   const dispatch = useDispatch();
+
   return (
     <div className="FilterTab">
       <div className="center">
-        <p>Filtrer parmis les tags</p>
+        <p>Filtrer parmis les tags :</p>
         <nav className="FiltersNav">
           <ul>
             <li>
-              <button onClick={() => dispatch({ type: "SANTE" })}>
-                <img src="/img/sante.png" alt="Santé" title="Santé" />
-              </button>
+              <span
+                className={filterType === 1 ? "isActive" : ""}
+                onClick={() => dispatch({ type: `${props.type}SANTE` })}
+              >
+                <img src="/img/1.png" alt="Santé" title="Santé" />
+              </span>
             </li>
             <li>
-              <button onClick={() => dispatch({ type: "HUMANITAIRE" })}>
+              <span
+                className={filterType === 2 ? "isActive" : ""}
+                onClick={() => dispatch({ type: `${props.type}HUMANITAIRE` })}
+              >
+                <img src="/img/2.png" alt="Humanitaire" title="Humanitaire" />
+              </span>
+            </li>
+            <li>
+              <span
+                className={filterType === 3 ? "isActive" : ""}
+                onClick={() => dispatch({ type: `${props.type}CULTURE` })}
+              >
+                <img src="/img/3.png" alt="Culture" title="Culture" />
+              </span>
+            </li>
+            <li>
+              <span
+                className={filterType === 4 ? "isActive" : ""}
+                onClick={() => dispatch({ type: `${props.type}SPORT` })}
+              >
+                <img src="/img/4.png" alt="Sport" title="Sport" />
+              </span>
+            </li>
+            <li>
+              <span
+                className={filterType === 5 ? "isActive" : ""}
+                onClick={() => dispatch({ type: `${props.type}ECOLOGIE` })}
+              >
+                <img src="/img/5.png" alt="Écologie" title="Écologie" />
+              </span>
+            </li>
+            <li>
+              <span
+                className={filterType === 6 ? "isActive" : ""}
+                onClick={() => dispatch({ type: `${props.type}EDUCATION` })}
+              >
+                <img src="/img/6.png" alt="Éducation" title="Éducation" />
+              </span>
+            </li>
+            <li>
+              <span
+                className={filterType === null ? "isActive" : ""}
+                onClick={() => dispatch({ type: `${props.type}ALL` })}
+              >
                 <img
-                  src="/img/humanitaire.png"
-                  alt="Humanitaire"
-                  title="Humanitaire"
+                  src="/img/filterReset.png"
+                  alt="Reset"
+                  title="Reset filtres"
                 />
-              </button>
-            </li>
-            <li>
-              <button onClick={() => dispatch({ type: "CULTURE" })}>
-                <img src="/img/culture.png" alt="Culture" title="Culture" />
-              </button>
-            </li>
-            <li>
-              <button onClick={() => dispatch({ type: "SPORT" })}>
-                <img src="/img/sport.png" alt="Sport" title="Sport" />
-              </button>
-            </li>
-            <li>
-              <button onClick={() => dispatch({ type: "ECOLOGIE" })}>
-                <img src="/img/ecologie.png" alt="Écologie" title="Écologie" />
-              </button>
-            </li>
-            <li>
-              <button onClick={() => dispatch({ type: "EDUCATION" })}>
-                <img
-                  src="/img/education.png"
-                  alt="Éducation"
-                  title="Éducation"
-                />
-              </button>
-            </li>
-            <li>
-              <button onClick={() => dispatch({ type: "ALL" })}>
-                <img
-                  src="/img/corbeille.png"
-                  alt="close"
-                  title="Supprimer filtre"
-                />
-              </button>
+              </span>
             </li>
           </ul>
         </nav>
