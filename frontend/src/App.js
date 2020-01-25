@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "./components/NavBar";
 import { Switch, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
+import CampaignsPage from "./pages/CampaignsPage"
 import CampaignInfos from "./pages/CampaignInfos";
 import Ambassadors from "./pages/Ambassadors";
 import AmbassadorInfos from "./pages/AmbassadorInfos";
@@ -29,6 +30,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home}></Route>
         <Route path="/campaigns/:id" component={CampaignInfos}></Route>
+        <Route path="/campaigns" component={CampaignsPage}></Route>
         <Route path="/ambassadors/:id" component={AmbassadorInfos}></Route>
         <Route path="/ambassadors" component={Ambassadors}></Route>
         <Route path="/causes/:id" component={CauseInfos}></Route>
