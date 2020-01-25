@@ -2,19 +2,19 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./styles/CampaignCard.scss";
 
-function CampaignCard({ campaignInfo }) {
-  useEffect(() => {
-    checkDate();
-  });
-
+export default function CampaignCard({
+  dateDiff,
+  timeDiff,
+  minuteRemaining,
+  id,
+  img,
+  name,
+  associationName
+}) {
   //stocker datediff, timediff & minuteRemaining
-  let getDateDiff = campaignInfo.dateDiff;
-  let getTimeDiff = parseInt(campaignInfo.timeDiff);
-
-  let minuteRemaining = campaignInfo.minuteRemaining;
 
   //stocker le rendu de la balise <p>
-  const [timeValue, setTimeValue] = useState(getDateDiff);
+  const [timeValue, setTimeValue] = useState(dateDiff);
   const [cardStatus, setCardstatus] = useState("jours restants");
 
   //stocker classe campaignCard
@@ -22,31 +22,38 @@ function CampaignCard({ campaignInfo }) {
 
   //checker les diffs de dates
   function checkDate() {
-    if (getTimeDiff >= 720) {
-      setTimeValue(Math.ceil(getDateDiff / 30));
+    const timeLeft = parseInt(timeDiff);
+    if (timeLeft >= 720) {
+      setCardStyle("campaignCardBlueCard");
+      setTimeValue(Math.ceil(dateDiff / 30));
       setCardstatus("mois restants");
-    } else if (getTimeDiff <= 48 && getTimeDiff > 1) {
-      setTimeValue(getTimeDiff);
+    } else if (timeLeft <= 720 && timeLeft > 48) {
+      setCardStyle("campaignCardBlueCard");
+      setTimeValue(dateDiff);
+      setCardstatus("jours restants");
+    } else if (timeLeft <= 48 && timeLeft > 1) {
+      setCardStyle("campaignCardBlueCard");
+      setTimeValue(timeLeft);
       setCardstatus("heures restantes");
-    } else if (getTimeDiff <= 1 && getTimeDiff > 0) {
+    } else if (timeLeft <= 1 && timeLeft > 0) {
       setTimeValue(Math.round(minuteRemaining));
       setCardstatus("minutes restantes");
       setCardStyle("campaignCardVioletCard");
-    } else if (getTimeDiff <= 0) {
+    } else if (timeLeft <= 0) {
       setCardStyle("campaignCardRedCard");
       setCardstatus("campagne terminée");
     }
   }
 
+  useEffect(() => {
+    checkDate();
+  }, [timeDiff, dateDiff]);
+
   return (
     <div className={`${cardStyle} related self`}>
-      <Link to={`/campaign/${campaignInfo.id}`}>
+      <Link to={`/campaigns/${id}`}>
         <div className="firstContainer">
-          <img
-            className="campaignImg"
-            src={campaignInfo.img}
-            alt={campaignInfo.name}
-          ></img>
+          <img className="campaignImg" src={img} alt={name}></img>
           <div className="timer">
             <p className="timeValue">{timeValue}</p>
             <p className="cardStatus">{cardStatus}</p>
@@ -56,9 +63,9 @@ function CampaignCard({ campaignInfo }) {
         </div>
 
         <div className="secondContainer">
-          <h2 className="campaignTitle">{campaignInfo.name} </h2>
+          <h2 className="campaignTitle">{name} </h2>
 
-          <p className="fondationName">{campaignInfo.associationName}</p>
+          <p className="fondationName">{associationName}</p>
 
           <div className="moreInfo">
             <p className="moreInfoText">En savoir plus</p>
@@ -73,5 +80,3 @@ function CampaignCard({ campaignInfo }) {
     </div>
   );
 }
-
-export default CampaignCard;

@@ -1,6 +1,18 @@
-@import url("https://fonts.googleapis.com/css?family=Varela+Round&display=swap");
+@font-face {
+  font-family: "Varela Round";
+  src: url("./fonts/VarelaRound-Regular.ttf");
+}
+@font-face {
+  font-family: "BebasNeue";
+  src: url("./fonts/BebasNeue-Regular.ttf");
+}
 
-$basicFont: "Varela Round", sans-serif;
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+
+$roundedFont: "Varela Round", sans-serif;
+$heroFont: "BebasNeue";
+
+$mainFont: "Roboto";
 
 $darkFontColor: black;
 $lightFontColor: white;
@@ -47,10 +59,10 @@ $boxShadow: 2px 6px 14px 1px rgba(0, 0, 0, 0.35);
 
 // LearnMore components color Vars
 $meexColor: #04b4d3;
-$meexGradient: linear-gradient(180deg, #00e0ee 20%, #02adcf 100%);
+$meexBg: #00cbee;
 
-$chartColor: #ff5b56;
-$chartGradient: linear-gradient(180deg, #ff8e75 20%, #ff534d 100%);
+$chartColor: #02a49a;
+$chartBg: #00dccf;
 
 $foundsColor: #01a177;
-$foundsGradient: linear-gradient(180deg, #00bd88 20%, #00bdb2 100%);
+$foundsBg: #00d89b;

@@ -27,7 +27,7 @@
 
           a {
             color: $lightFontColor;
-            font-family: $basicFont;
+            font-family: $roundedFont;
           }
         }
       }
@@ -50,7 +50,7 @@
       align-items: center;
       justify-content: center;
       color: $lightFontColor;
-      font-family: $basicFont;
+      font-family: $roundedFont;
 
       ul {
         display: flex;
