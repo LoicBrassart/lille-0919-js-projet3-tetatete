@@ -39,13 +39,13 @@
       }
     }
   }
-  .campaignSlides {
-    width: 100%;
-    padding: 20px 10px;
-    background: $cardBlueGradient;
-    margin-bottom: 60px;
+  hr {
+    width: 80%;
+    margin-bottom: 40px;
   }
-  .campaignDonation {
+
+  .campaignDonation,
+  .resolvedDonation {
     background: $cardBlueGradient;
     padding: 40px 20px;
     margin-bottom: 80px;
@@ -71,6 +71,13 @@
           cursor: pointer;
         }
       }
+    }
+  }
+  .resolvedDonation {
+    background: $cardRedGradient;
+    p {
+      font-size: 1.8rem;
+      margin-bottom: 0;
     }
   }
 }
