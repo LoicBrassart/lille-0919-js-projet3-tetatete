@@ -16,7 +16,9 @@ export default function FormLoginBO() {
     axios
       .post(`${apiCall}/auth/login`, user)
       .then(res => {
-        dispatch({ type: "JWT", value: res.data });
+        dispatch({ type: "JWT", value: res.data.token });
+        dispatch({ type: "SUPERADMIN", value: res.data.user[0].canAdmin });
+        dispatch({ type: "ADMIN", value: res.data.user[0].canCreateContent });
       })
       .catch(err => {
         updateCredentialsState(false);
@@ -29,7 +31,7 @@ export default function FormLoginBO() {
       <form
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
       >
         {!credentialsState && (
