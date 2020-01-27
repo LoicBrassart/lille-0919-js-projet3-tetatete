@@ -88,10 +88,7 @@ function AmbassadorInfos(props) {
             {relatedCampaigns.map(relatedCampaign => {
               return (
                 <div>
-                  <CampaignCard
-                    key={relatedCampaign.id}
-                    campaignInfo={relatedCampaign}
-                  />
+                  <CampaignCard key={relatedCampaign.id} {...relatedCampaign} />
                 </div>
               );
             })}
@@ -101,10 +98,7 @@ function AmbassadorInfos(props) {
             {relatedCampaigns.map(relatedCampaign => {
               return (
                 <div>
-                  <CampaignCard
-                    key={relatedCampaign.id}
-                    campaignInfo={relatedCampaign}
-                  />
+                  <CampaignCard key={relatedCampaign.id} {...relatedCampaign} />
                 </div>
               );
             })}

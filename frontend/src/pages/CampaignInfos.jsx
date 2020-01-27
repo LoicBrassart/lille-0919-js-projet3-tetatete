@@ -52,7 +52,7 @@ export default function CampaignInfos(props) {
     <div className="CampaignInfos">
       <div className="campaignPresentation">
         <div className="campaignCard">
-          <CampaignCard campaignInfo={campaignInfo} />​
+          <CampaignCard key={campaignInfo.id} {...campaignInfo} />​
         </div>
         <div className="campaignInfos">
           <h3>{campaignInfo.name}</h3>
