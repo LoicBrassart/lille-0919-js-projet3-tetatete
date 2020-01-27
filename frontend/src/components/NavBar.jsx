@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { scaleRotate as BurgerMenu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -6,6 +6,11 @@ import "./styles/NavBar.scss";
 
 function NavBar() {
   const dispatch = useDispatch();
+  const [isBurgerOpen, isBurgerOpenUpdate] = useState(false);
+  const isMenuOpen = state => {
+    isBurgerOpenUpdate(state.isOpen);
+    return state.isOpen;
+  };
 
   return (
     <header className="NavBar">
@@ -62,7 +67,7 @@ function NavBar() {
         </ul>
       </nav>
 
-      <BurgerMenu width={320}>
+      <BurgerMenu width={320} isOpen={isBurgerOpen} onStateChange={isMenuOpen}>
         <NavLink
           id="meetings"
           className="menu-item"
@@ -70,7 +75,10 @@ function NavBar() {
           to="/campaigns"
           onClick={
             (() => dispatch({ type: "AMB_ALL" })) &&
-            (() => dispatch({ type: "ASS_ALL" }))
+            (() => dispatch({ type: "ASS_ALL" })) &&
+            (() => {
+              isBurgerOpenUpdate(false);
+            })
           }
         >
           Campagnes
@@ -83,7 +91,10 @@ function NavBar() {
           to="/ambassadors"
           onClick={
             (() => dispatch({ type: "AMB_ALL" })) &&
-            (() => dispatch({ type: "ASS_ALL" }))
+            (() => dispatch({ type: "ASS_ALL" })) &&
+            (() => {
+              isBurgerOpenUpdate(false);
+            })
           }
         >
           Ambassadeurs
@@ -96,7 +107,10 @@ function NavBar() {
           to="/causes"
           onClick={
             (() => dispatch({ type: "AMB_ALL" })) &&
-            (() => dispatch({ type: "ASS_ALL" }))
+            (() => dispatch({ type: "ASS_ALL" })) &&
+            (() => {
+              isBurgerOpenUpdate(false);
+            })
           }
         >
           Causes soutenues
