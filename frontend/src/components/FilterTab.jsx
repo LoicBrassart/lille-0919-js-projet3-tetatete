@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles/FilterTab.scss";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -10,72 +10,68 @@ function FilterTab(props) {
   );
   const dispatch = useDispatch();
 
+  const tagsList = [
+    {
+      id: 1,
+      tagName: "Santé",
+      reducerAction: "SANTE"
+    },
+    {
+      id: 2,
+      tagName: "Humanitaire",
+      reducerAction: "HUMANITAIRE"
+    },
+    {
+      id: 3,
+      tagName: "Culture",
+      reducerAction: "CULTURE"
+    },
+    {
+      id: 4,
+      tagName: "Sport",
+      reducerAction: "SPORT"
+    },
+    {
+      id: 5,
+      tagName: "Écologie",
+      reducerAction: "ECOLOGIE"
+    },
+    {
+      id: 6,
+      tagName: "Éducation",
+      reducerAction: "EDUCATION"
+    },
+    {
+      id: 7,
+      tagName: "Tous",
+      reducerAction: "ALL"
+    }
+  ];
+
   return (
     <div className="FilterTab">
       <div className="center">
         <p>Filtrer parmis les tags :</p>
         <nav className="FiltersNav">
           <ul>
-            <li>
-              <span
-                className={filterType === 1 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}SANTE` })}
-              >
-                <img src="/img/1.png" alt="Santé" title="Santé" />
-              </span>
-            </li>
-            <li>
-              <span
-                className={filterType === 2 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}HUMANITAIRE` })}
-              >
-                <img src="/img/2.png" alt="Humanitaire" title="Humanitaire" />
-              </span>
-            </li>
-            <li>
-              <span
-                className={filterType === 3 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}CULTURE` })}
-              >
-                <img src="/img/3.png" alt="Culture" title="Culture" />
-              </span>
-            </li>
-            <li>
-              <span
-                className={filterType === 4 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}SPORT` })}
-              >
-                <img src="/img/4.png" alt="Sport" title="Sport" />
-              </span>
-            </li>
-            <li>
-              <span
-                className={filterType === 5 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}ECOLOGIE` })}
-              >
-                <img src="/img/5.png" alt="Écologie" title="Écologie" />
-              </span>
-            </li>
-            <li>
-              <span
-                className={filterType === 6 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}EDUCATION` })}
-              >
-                <img src="/img/6.png" alt="Éducation" title="Éducation" />
-              </span>
-            </li>
-            <li>
-              <span
-                className={filterType === null ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}ALL` })}
-              >
-                <img
-                  src="/img/filterReset.png"
-                  alt="Reset"
-                  title="Reset filtres"
-                />
-              </span>
-            </li>
+            {tagsList.map(tag => {
+              return (
+                <li>
+                  <span
+                    className={filterType === `${tag.id}` ? "isActive" : ""}
+                    onClick={() =>
+                      dispatch({ type: `${props.type}${tag.reducerAction}` })
+                    }
+                  >
+                    <img
+                      src={`/img/${tag.id}.png`}
+                      alt={tag.tagName}
+                      title={tag.tagName}
+                    />
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>
