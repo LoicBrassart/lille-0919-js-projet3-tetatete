@@ -39,8 +39,6 @@ function Causes() {
                 url="causes"
                 img={association.img}
                 name={association.name}
-                contentStyle="yellowContent"
-                mainStyle="ProfileCardYellow"
               />
             );
           })}
