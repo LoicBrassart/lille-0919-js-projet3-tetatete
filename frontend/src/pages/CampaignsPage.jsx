@@ -32,7 +32,11 @@ export default function CampaignPage() {
   return (
     <div className="campaignsPage">
       <div className="campaignHero">
-        <img className="CampaignBanner" src="./img/campaignBanner.png"></img>
+        <img
+          className="CampaignBanner"
+          src="./img/campaignBanner.png"
+          alt="banner"
+        ></img>
         <h2 className="campaignHerotagline">Participe à un monde meilleur</h2>
       </div>
 
