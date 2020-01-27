@@ -33,7 +33,7 @@ export default function CampaignPage() {
     <div className="campaignsPage">
       <div className="campaignHero">
         <img className="CampaignBanner" src="./img/campaignBanner.png"></img>
-        <h2 className="campaignHerotagline">Lorem pour donner envie</h2>
+        <h2 className="campaignHerotagline">Participe à un monde meilleur</h2>
       </div>
 
       <div className="topContent">
@@ -44,9 +44,6 @@ export default function CampaignPage() {
               toggleShowOngoing(true);
             }}
           >
-            <div
-              className={showOngoing ? "inProgressStatus" : "unselected"}
-            ></div>
             <p id="inProgress"> Rencontres en cours</p>
           </div>
           <div
@@ -55,7 +52,6 @@ export default function CampaignPage() {
               toggleShowOngoing(false);
             }}
           >
-            <div className={showOngoing ? "unselected" : "doneStatus"}></div>
             <p id="done">Rencontres terminées</p>
           </div>
         </div>
