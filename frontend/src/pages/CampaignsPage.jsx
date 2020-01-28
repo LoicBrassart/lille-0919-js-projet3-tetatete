@@ -24,16 +24,24 @@ export default function CampaignPage() {
   }, [showOngoing]);
 
   useEffect(() => {
-    axios.get(`${apiCall}/campaign`).then(({ data }) => {
-      dispatch({ type: "GET_CAMPAIGNS_INFO", data });
-    });
-  }, [dispatch]);
+    axios
+      .get(
+        `${apiCall}/campaign${showOngoing ? "?inProgress=true" : "?done=true"}`
+      )
+      .then(({ data }) => {
+        dispatch({ type: "GET_CAMPAIGNS_INFO", data });
+      });
+  }, [dispatch, showOngoing]);
 
   return (
     <div className="campaignsPage">
       <div className="campaignHero">
-        <img className="CampaignBanner" src="./img/campaignBanner.png"></img>
-        <h2 className="campaignHerotagline">Lorem pour donner envie</h2>
+        <img
+          className="CampaignBanner"
+          src="./img/campaignBanner.png"
+          alt="banner"
+        ></img>
+        <h2 className="campaignHerotagline">Participe à un monde meilleur</h2>
       </div>
 
       <div className="topContent">
@@ -44,9 +52,6 @@ export default function CampaignPage() {
               toggleShowOngoing(true);
             }}
           >
-            <div
-              className={showOngoing ? "inProgressStatus" : "unselected"}
-            ></div>
             <p id="inProgress"> Rencontres en cours</p>
           </div>
           <div
@@ -55,7 +60,6 @@ export default function CampaignPage() {
               toggleShowOngoing(false);
             }}
           >
-            <div className={showOngoing ? "unselected" : "doneStatus"}></div>
             <p id="done">Rencontres terminées</p>
           </div>
         </div>
