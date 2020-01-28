@@ -5,11 +5,20 @@
     display: flex;
     flex-wrap: nowrap;
     padding: 100px 0;
+    min-height: calc(100vh - 200px);
     .photo {
       width: 50%;
       text-align: center;
       .ProfileCardBlue {
         margin: 0 auto;
+        width: calc(450px - 20px);
+        a {
+          figure {
+            img {
+              width: 100%;
+            }
+          }
+        }
       }
     }
     .content {
