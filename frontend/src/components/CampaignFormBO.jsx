@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/CampaignFormBO.scss";
 import axios from "axios";
 const { apiCall } = require("../conf");
@@ -18,6 +18,21 @@ export default function CampaingFormBO() {
     id_ambassador: null,
     id_association: null
   });
+
+  const [ambassadorsInfosBO, setAmbassadorsInfosBO] = useState([]);
+  const [associationInfosBO, setAssociationInfosBO] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${apiCall}/ambassador`).then(res => {
+      setAmbassadorsInfosBO(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`${apiCall}/association`).then(res => {
+      setAssociationInfosBO(res.data);
+    });
+  }, []);
 
   const handleSubmit = () => {
     const data = newCampaign;
@@ -39,13 +54,14 @@ export default function CampaingFormBO() {
         enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
         id="form"
       >
         <div className="container">
-          <label>Name of campaign :</label>
+          <label htmlFor="name">Name of campaign :</label>
           <input
+            id="name"
             type="text"
             value={newCampaign.name}
             onChange={event => {
@@ -59,8 +75,9 @@ export default function CampaingFormBO() {
         </div>
 
         <div className="container">
-          <label>Picture of campaign :</label>
+          <label htmlFor="img">Picture of campaign :</label>
           <input
+            id="img"
             type="file"
             value={newCampaign.img}
             onChange={event => {
@@ -74,8 +91,9 @@ export default function CampaingFormBO() {
         </div>
 
         <div className="container">
-          <label>Resume :</label>
+          <label htmlFor="resume">Resume :</label>
           <textarea
+            id="resume"
             type="textarea"
             value={newCampaign.resume}
             onChange={event => {
@@ -89,10 +107,11 @@ export default function CampaingFormBO() {
         </div>
 
         <div className="container">
-          <label>Campaign start date :</label>
+          <label htmlFor="startDate">Campaign start date :</label>
           <p>Please enter strict syntax</p>
           <span>ex: "2020-03-29 00:00:00"</span>
           <input
+            id="startDate"
             type="datetime"
             placeholder="YYYY-MM-DD 00:00:00"
             value={newCampaign.time_start}
@@ -107,10 +126,11 @@ export default function CampaingFormBO() {
         </div>
 
         <div className="container">
-          <label>Campaign end date :</label>
+          <label htmlFor="endDate">Campaign end date :</label>
           <p>Please enter strict syntax</p>
           <span>ex: "2020-03-29 00:00:00"</span>
           <input
+            id="endDate"
             type="datetime"
             placeholder="YYYY-MM-DD 00:00:00"
             value={newCampaign.time_end}
@@ -125,9 +145,13 @@ export default function CampaingFormBO() {
         </div>
 
         <div className="container">
-          <label>Campaign event date :</label>
+          <label htmlFor="eventDate">Campaign event date :</label>
+          <p>Please enter strict syntax</p>
+          <span>ex: "2020-03-29 00:00:00"</span>
           <input
-            type="date"
+            id="eventDate"
+            type="datetime"
+            placeholder="YYYY-MM-DD 00:00:00"
             value={newCampaign.date_event}
             onChange={event => {
               setNewCampaign({
@@ -140,8 +164,9 @@ export default function CampaingFormBO() {
         </div>
 
         <div className="container">
-          <label>First donation value :</label>
+          <label htmlFor="don1">First donation value :</label>
           <input
+            id="don1"
             type="number"
             value={newCampaign.value1}
             onChange={event => {
@@ -155,8 +180,9 @@ export default function CampaingFormBO() {
         </div>
 
         <div className="container">
-          <label>Second donation value :</label>
+          <label htmlFor="don2">Second donation value :</label>
           <input
+            id="don2"
             type="number"
             value={newCampaign.value2}
             onChange={event => {
@@ -170,8 +196,9 @@ export default function CampaingFormBO() {
         </div>
 
         <div className="container">
-          <label>Third donation value :</label>
-          <input
+          <label htmlFor="don3">Third donation value :</label>
+          <input7
+            id="don3"
             type="number"
             value={newCampaign.value3}
             onChange={event => {
@@ -185,26 +212,9 @@ export default function CampaingFormBO() {
         </div>
 
         <div className="container">
-          <label>Id user :</label>
-          <input
-            type="number"
-            value={newCampaign.id_user}
-            maxLength="2"
-            onChange={event => {
-              setNewCampaign({
-                ...newCampaign,
-                id_user: parseInt(event.target.value)
-              });
-            }}
-          />
-        </div>
-
-        <div className="container">
-          <label>Id ambassador :</label>
-          <input
-            type="number"
-            value={newCampaign.id_ambassador}
-            maxLength="2"
+          <label htmlFor="ambassadors">Id ambassador :</label>
+          <select
+            id="ambassadors"
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -212,15 +222,24 @@ export default function CampaingFormBO() {
               });
             }}
             required
-          />
+          >
+            <option value="">
+              ***********************Select Ambassadeur***********************
+            </option>
+            {ambassadorsInfosBO.map(ambassadors => {
+              return (
+                <option value={ambassadors.id}>
+                  {ambassadors.firstname} {ambassadors.lastname}
+                </option>
+              );
+            })}
+          </select>
         </div>
 
         <div className="container">
-          <label>Id association :</label>
-          <input
-            type="number"
-            value={newCampaign.id_association}
-            maxLength="2"
+          <label htmlFor="association">Id association :</label>
+          <select
+            id="association"
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -228,7 +247,14 @@ export default function CampaingFormBO() {
               });
             }}
             required
-          />
+          >
+            <option value="">
+              ***********************Select Association***********************
+            </option>
+            {associationInfosBO.map(association => {
+              return <option value={association.id}>{association.name}</option>;
+            })}
+          </select>
         </div>
 
         <input type="submit" />
