@@ -19,6 +19,7 @@ export default function FormLoginBO() {
         dispatch({ type: "JWT", value: res.data.token });
         dispatch({ type: "SUPERADMIN", value: res.data.user[0].canAdmin });
         dispatch({ type: "ADMIN", value: res.data.user[0].canCreateContent });
+        dispatch({ type: "USERID", value: res.data.user[0].id });
       })
       .catch(err => {
         updateCredentialsState(false);
