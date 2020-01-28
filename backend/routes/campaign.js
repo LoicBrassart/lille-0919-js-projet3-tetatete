@@ -131,7 +131,7 @@ router.get("/:id", (req, res) => {
 router.use((req, res, next) => {
   passport.authenticate("jwt", { session: false }, (err, user) => {
     if (err) return res.status(500).send(err, info);
-    if (!user) return res.status(401).send("Unauthorized !");
+    if (!user) return res.status(401).send("Merci de vous connecter.");
     next();
   })(req, res);
 });
@@ -145,7 +145,7 @@ router.post("/", upload.single("img"), (req, res) => {
       if (err)
         return res
           .status(500)
-          .send("Error has occured during the upload of the image !");
+          .send("Erreur lors de la création de la campagne.");
       req.body.img = result.url;
       connection.query(
         "INSERT INTO campaign SET ?",
@@ -154,11 +154,8 @@ router.post("/", upload.single("img"), (req, res) => {
           if (err)
             return res
               .status(500)
-              .send(
-                "Error has occured during the creation of the new campaign !" +
-                  err
-              );
-          return res.sendStatus(201);
+              .send("Erreur lors de la création de la campagne." + err);
+          return res.status(201).send("Campagne créée");
         }
       );
     }
@@ -175,7 +172,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
         if (err)
           return res
             .status(500)
-            .send("Error has occured during the upload of the image !");
+            .send("Erreur lors de la modification de la campagne.");
         req.body.img = result.url;
       }
     );
@@ -185,8 +182,11 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
     "UPDATE campaign SET ? WHERE id = ?",
     [req.body, id],
     (err, results) => {
-      if (err) return res.status(500).send("Error in modifying the campaign.");
-      return res.sendStatus(200);
+      if (err)
+        return res
+          .status(500)
+          .send("Erreur lors de la modification de la campagne.");
+      return res.status(200).send("Campagne modifiée");
     }
   );
 });
@@ -198,8 +198,11 @@ router.delete("/:id", (req, res) => {
     "DELETE FROM campaign WHERE id = ?",
     [id],
     (err, results) => {
-      if (err) return res.status(500).send("Error in deleting the campaign.");
-      return res.status(200);
+      if (err)
+        return res
+          .status(500)
+          .send("Erreur lors de la suppression de la campagne.");
+      return res.status(200).send("Campagne supprimée");
     }
   );
 });

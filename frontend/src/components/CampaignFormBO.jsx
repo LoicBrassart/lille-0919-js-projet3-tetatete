@@ -28,7 +28,7 @@ export default function CampaingFormBO() {
         alert(res.data);
       })
       .catch(err => {
-        alert(err);
+        alert(err.response.data);
       });
   };
 

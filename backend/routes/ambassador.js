@@ -86,7 +86,7 @@ router.get("/:id", (req, res) => {
 router.use((req, res, next) => {
   passport.authenticate("jwt", { session: false }, (err, user) => {
     if (err) return res.status(500).send(err, info);
-    if (!user) return res.status(401).send("Unauthorized !");
+    if (!user) return res.status(401).send("Merci de vous connecter.");
     next();
   })(req, res);
 });
@@ -100,7 +100,7 @@ router.post("/", upload.single("img"), (req, res) => {
       if (err)
         return res
           .status(500)
-          .send("Error has occured during the upload of the image !");
+          .send("Erreur lors de la création de l'ambassadeur.");
       req.body.img = result.url;
       const id_tag = req.body.id_tag;
       delete req.body.id_tag;
@@ -111,9 +111,7 @@ router.post("/", upload.single("img"), (req, res) => {
           if (err)
             return res
               .status(500)
-              .send(
-                "Error has occured during the creation of the new ambassador !"
-              );
+              .send("Erreur lors de la création de l'ambassadeur.");
           const { insertId } = results;
           const tagData = id_tag.map(tag => {
             return [insertId, tag];
@@ -125,10 +123,8 @@ router.post("/", upload.single("img"), (req, res) => {
               if (err)
                 return res
                   .status(500)
-                  .send(
-                    "Error has occured during the attribution of the tag !"
-                  );
-              return res.status(201).send("Ambassador created.");
+                  .send("Erreur lors de la création de l'ambassadeur.");
+              return res.status(201).send("Ambassadeur créé.");
             }
           );
         }
@@ -147,7 +143,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
         if (err)
           return res
             .status(500)
-            .send("Error has occured during the upload of the image !");
+            .send("Erreur lors de la modification de l'ambassadeur.");
         req.body.img = result.url;
       }
     );
@@ -163,14 +159,18 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
     [req.body, id],
     (err, results) => {
       if (err)
-        return res.status(500).send("Error in modifying the ambassador.");
+        return res
+          .status(500)
+          .send("Erreur lors de la modification de l'ambassadeur.");
       if (id_tag) {
         connection.query(
           "DELETE FROM ambassador_has_tag WHERE id_ambassador = ?",
           [id],
           (err, results) => {
             if (err)
-              return res.status(500).send("Error in modifying the ambassador.");
+              return res
+                .status(500)
+                .send("Erreur lors de la modification de l'ambassadeur.");
             const tagData = id_tag.map(tag => {
               return [id, tag];
             });
@@ -182,8 +182,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
                   return res
                     .status(500)
                     .send(
-                      "Error has occured during the attribution of the tag !" +
-                        err
+                      "Erreur lors de la modification de l'ambassadeur." + err
                     );
                 return res.sendStatus(200);
               }
@@ -191,7 +190,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
           }
         );
       } else {
-        return res.sendStatus(200);
+        return res.status(200).send("Ambassadeur modifié");
       }
     }
   );
@@ -204,14 +203,19 @@ router.delete("/:id", (req, res) => {
     "DELETE FROM ambassador_has_tag WHERE id_ambassador = ?",
     [id],
     (err, results) => {
-      if (err) return res.status(500).send("Error in deleting the ambassador.");
+      if (err)
+        return res
+          .status(500)
+          .send("Erreur lors de la suppression de l'ambassadeur.");
       connection.query(
         "DELETE FROM ambassador WHERE id = ?",
         [id],
         (err, results) => {
           if (err)
-            return res.status(500).send("Error in deleting the ambassador.");
-          return res.sendStatus(200);
+            return res
+              .status(500)
+              .send("Erreur lors de la suppression de l'ambassadeur.");
+          return res.status(200).send("Ambassadeur supprimé");
         }
       );
     }

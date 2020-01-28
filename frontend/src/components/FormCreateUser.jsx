@@ -20,7 +20,7 @@ export default function FormCreateUser() {
         alert(res.data);
       })
       .catch(err => {
-        alert(err);
+        alert(err.response.data);
       });
   };
 

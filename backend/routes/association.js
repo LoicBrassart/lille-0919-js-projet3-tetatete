@@ -86,7 +86,7 @@ router.get("/:id", (req, res) => {
 router.use((req, res, next) => {
   passport.authenticate("jwt", { session: false }, (err, user) => {
     if (err) return res.status(500).send(err, info);
-    if (!user) return res.status(401).send("Unauthorized !");
+    if (!user) return res.status(401).send("Merci de vous connecter.");
     next();
   })(req, res);
 });
@@ -100,7 +100,7 @@ router.post("/", upload.single("img"), (req, res) => {
       if (err)
         return res
           .status(500)
-          .send("Error has occured during the upload of the image !");
+          .send("Erreur lors de la création de l'association.");
       req.body.img = result.url;
       const id_tag = req.body.id_tag;
       delete req.body.id_tag;
@@ -111,9 +111,7 @@ router.post("/", upload.single("img"), (req, res) => {
           if (err)
             return res
               .status(500)
-              .send(
-                "Error has occured during the creation of the new association !"
-              );
+              .send("Erreur lors de la création de l'association.");
           const { insertId } = results;
           const tagData = id_tag.map(tag => {
             return [insertId, tag];
@@ -125,10 +123,8 @@ router.post("/", upload.single("img"), (req, res) => {
               if (err)
                 return res
                   .status(500)
-                  .send(
-                    "Error has occured during the attribution of the tag !"
-                  );
-              return res.status(201).send("Association created.");
+                  .send("Erreur lors de la création de l'association.");
+              return res.status(201).send("Association créée.");
             }
           );
         }
@@ -147,7 +143,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
         if (err)
           return res
             .status(500)
-            .send("Error has occured during the upload of the image !");
+            .send("Erreur lors de la modification de l'association.");
         req.body.img = result.url;
       }
     );
@@ -163,7 +159,9 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
     [req.body, id],
     (err, results) => {
       if (err)
-        return res.status(500).send("Error in modifying the association.");
+        return res
+          .status(500)
+          .send("Erreur lors de la modification de l'association.");
       if (id_tag) {
         connection.query(
           "DELETE FROM association_has_tag WHERE id_association = ?",
@@ -172,7 +170,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
             if (err)
               return res
                 .status(500)
-                .send("Error in modifying the association.");
+                .send("Erreur lors de la modification de l'association.");
             const tagData = id_tag.map(tag => {
               return [id, tag];
             });
@@ -184,8 +182,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
                   return res
                     .status(500)
                     .send(
-                      "Error has occured during the attribution of the tag !" +
-                        err
+                      "Erreur lors de la modification de l'association." + err
                     );
                 return res.sendStatus(200);
               }
@@ -193,7 +190,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
           }
         );
       } else {
-        return res.sendStatus(200);
+        return res.status(200).send("Association modifiée");
       }
     }
   );
@@ -207,14 +204,18 @@ router.delete("/:id", (req, res) => {
     [id],
     (err, results) => {
       if (err)
-        return res.status(500).send("Error in deleting the association.");
+        return res
+          .status(500)
+          .send("Erreur lors de suppression de l'association.");
       connection.query(
         "DELETE FROM association WHERE id = ?",
         [id],
         (err, results) => {
           if (err)
-            return res.status(500).send("Error in deleting the association.");
-          return res.sendStatus(200);
+            return res
+              .status(500)
+              .send("Erreur lors de suppression de l'association.");
+          return res.status(200).send("Association supprimée");
         }
       );
     }

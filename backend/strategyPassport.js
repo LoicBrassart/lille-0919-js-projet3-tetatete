@@ -15,11 +15,12 @@ passport.use(
         "SELECT * FROM user WHERE email = ? LIMIT 1",
         [email],
         (err, user) => {
-          if (!user) return done(null, false, { message: "User not found !" });
+          if (!user)
+            return done(null, false, { message: "Utilisateur inexistant." });
           if (err) return done(err);
           const isPasswordOk = bcrypt.compareSync(password, user[0].password);
           if (!isPasswordOk)
-            return done(null, false, { message: "Wrong password !" });
+            return done(null, false, { message: "Mot de passe inexistant." });
           return done(null, user);
         }
       );
