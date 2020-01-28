@@ -3,35 +3,17 @@ const initialState = {
   filterCauses: null,
   campaignsInfo: [],
   campaignInfoById: [],
-  jwt: null,
-  isSuperAdmin: null,
-  isAdmin: null,
-  isLogged: false,
-  userId: null
+  dataJWT: null,
+  isLogged: false
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SUPERADMIN":
+    case "DATAJWT":
       return {
         ...state,
-        isSuperAdmin: action.value
-      };
-    case "ADMIN":
-      return {
-        ...state,
-        isAdmin: action.value
-      };
-    case "JWT":
-      return {
-        ...state,
-        jwt: action.value,
+        dataJWT: action.value,
         isLogged: true
-      };
-    case "USERID":
-      return {
-        ...state,
-        userId: action.value
       };
     case "GET_CAMPAIGNS_INFO":
       return {
