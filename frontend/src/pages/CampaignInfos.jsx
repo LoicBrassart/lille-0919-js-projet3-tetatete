@@ -52,7 +52,7 @@ export default function CampaignInfos(props) {
     <div className="CampaignInfos">
       <div className="campaignPresentation">
         <div className="campaignCard">
-          <CampaignCard campaignInfo={campaignInfo} />​
+          <CampaignCard key={campaignInfo.id} {...campaignInfo} />​
         </div>
         <div className="campaignInfos">
           <h3>{campaignInfo.name}</h3>
@@ -61,6 +61,15 @@ export default function CampaignInfos(props) {
             <strong>{campaignInfo.associationName}</strong>.
           </p>
           <p>{campaignInfo.resume}</p>
+          <p>
+            Montant récolté:{" "}
+            <strong>
+              {campaignInfo.totalDonation === null
+                ? "0"
+                : campaignInfo.totalDonation}{" "}
+              €
+            </strong>
+          </p>
         </div>
       </div>
       <div className="campaignSlides"></div>
