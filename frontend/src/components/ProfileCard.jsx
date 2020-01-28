@@ -4,12 +4,12 @@ import "./styles/ProfileCard.scss";
 
 function ProfileCard(props) {
   return (
-    <article className={props.mainStyle}>
+    <article className="ProfileCardBlue">
       <Link to={`/${props.url}/${props.id}`}>
         <figure>
           <img src={props.img} alt={props.name} />
         </figure>
-        <div className={props.contentStyle}>
+        <div className="blueContent">
           <div className="titleBorder"></div>
           <div className="titleLayout">
             <h3>{props.name}</h3>

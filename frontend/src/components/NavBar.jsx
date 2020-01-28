@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { scaleRotate as BurgerMenu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -6,12 +6,17 @@ import "./styles/NavBar.scss";
 
 function NavBar() {
   const dispatch = useDispatch();
+  const [isBurgerOpen, isBurgerOpenUpdate] = useState(false);
+  const isMenuOpen = state => {
+    isBurgerOpenUpdate(state.isOpen);
+    return state.isOpen;
+  };
 
   return (
     <header className="NavBar">
       <nav className="desktopNav">
         <NavLink className="logo" activeClassName="active" exact to="/">
-          <img className="meexLogo" src="./img/meexLogo.png" alt="" />
+          <img className="meexLogo" src="/img/meexLogo.png" alt="" />
         </NavLink>
 
         <ul className="desktopMenu">
@@ -21,10 +26,7 @@ function NavBar() {
               className="menu-item"
               activeClassName="active"
               to="/campaigns"
-              onClick={
-                (() => dispatch({ type: "AMB_ALL" })) &&
-                (() => dispatch({ type: "ASS_ALL" }))
-              }
+              onClick={() => dispatch({ type: "SWITCH" })}
             >
               Campagnes
             </NavLink>
@@ -36,10 +38,7 @@ function NavBar() {
               className="menu-item"
               activeClassName="active"
               to="/ambassadors"
-              onClick={
-                (() => dispatch({ type: "AMB_ALL" })) &&
-                (() => dispatch({ type: "ASS_ALL" }))
-              }
+              onClick={() => dispatch({ type: "SWITCH" })}
             >
               Ambassadeurs
             </NavLink>
@@ -51,10 +50,7 @@ function NavBar() {
               className="menu-item"
               activeClassName="active"
               to="/causes"
-              onClick={
-                (() => dispatch({ type: "AMB_ALL" })) &&
-                (() => dispatch({ type: "ASS_ALL" }))
-              }
+              onClick={() => dispatch({ type: "SWITCH" })}
             >
               Causes soutenues
             </NavLink>
@@ -62,15 +58,17 @@ function NavBar() {
         </ul>
       </nav>
 
-      <BurgerMenu width={320}>
+      <BurgerMenu width={320} isOpen={isBurgerOpen} onStateChange={isMenuOpen}>
         <NavLink
           id="meetings"
           className="menu-item"
           activeClassName="bm-active"
           to="/campaigns"
           onClick={
-            (() => dispatch({ type: "AMB_ALL" })) &&
-            (() => dispatch({ type: "ASS_ALL" }))
+            (() => dispatch({ type: "SWITCH" })) &&
+            (() => {
+              isBurgerOpenUpdate(false);
+            })
           }
         >
           Campagnes
@@ -82,8 +80,10 @@ function NavBar() {
           activeClassName="bm-active"
           to="/ambassadors"
           onClick={
-            (() => dispatch({ type: "AMB_ALL" })) &&
-            (() => dispatch({ type: "ASS_ALL" }))
+            (() => dispatch({ type: "SWITCH" })) &&
+            (() => {
+              isBurgerOpenUpdate(false);
+            })
           }
         >
           Ambassadeurs
@@ -95,8 +95,10 @@ function NavBar() {
           activeClassName="bm-active"
           to="/causes"
           onClick={
-            (() => dispatch({ type: "AMB_ALL" })) &&
-            (() => dispatch({ type: "ASS_ALL" }))
+            (() => dispatch({ type: "SWITCH" })) &&
+            (() => {
+              isBurgerOpenUpdate(false);
+            })
           }
         >
           Causes soutenues

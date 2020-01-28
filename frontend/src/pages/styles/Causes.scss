@@ -13,5 +13,13 @@
     justify-content: space-around;
     align-items: center;
     align-content: space-around;
+    .ProfileCardBlue {
+      transform: scale(0.95);
+      transition: ease 0.2s;
+      &:hover {
+        box-shadow: $boxShadow;
+        transform: scale(1);
+      }
+    }
   }
 }

@@ -21,6 +21,7 @@ import "./App.scss";
 const { siteTitle } = require("./conf");
 
 export default function App(props) {
+
   document.title = siteTitle;
   const location = useLocation();
 

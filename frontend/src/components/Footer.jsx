@@ -9,13 +9,13 @@ function Footer() {
         <li className="footerInfos">
           <ul>
             <li>
-              <a>Comment ça marche ?</a>
+              <Link to="/">Comment ça marche ?</Link>
             </li>
             <li>
-              <a>La charte éthique</a>
+              <Link to="/">La charte éthique</Link>
             </li>
             <li>
-              <a>Les mentions légales et CGU</a>
+              <Link to="/">Les mentions légales et CGU</Link>
             </li>
             <li>
               <Link to="/admin">Admin</Link>
@@ -24,7 +24,7 @@ function Footer() {
         </li>
         <li className="footerLogo">
           <Link to="/">
-            <img src="./img/meexLogo.png" alt="site icon" />
+            <img src="/img/meexLogo.png" alt="site icon" />
           </Link>
         </li>
         <li className="socialMed">
