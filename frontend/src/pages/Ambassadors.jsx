@@ -21,7 +21,7 @@ function Ambassadors() {
       <div className="ambassadorsHero">
         <img src="img/monthAmbassador.jpg" alt="month ambassador" />
       </div>
-      <FilterTab type="AMB_" />
+      <FilterTab type="AMBASSADORS" />
       <div className="center containerProfile">
         {ambassadors
           .filter(ambassador => {
