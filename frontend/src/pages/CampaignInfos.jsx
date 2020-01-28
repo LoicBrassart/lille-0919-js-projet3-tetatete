@@ -107,7 +107,20 @@ export default function CampaignInfos(props) {
               );
             })}
             <li>
-              <button onClick={toggleModalDonation}>
+              <button
+                onClick={() => {
+                  setDonor({
+                    ...donor,
+                    date: moment()
+                      .format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS)
+                      .replace("T", " "),
+                    donation_value: 0,
+                    campaign_id: idCampaign,
+                    associationName: nameAssociation
+                  });
+                  toggleModalDonation();
+                }}
+              >
                 Je ne veux pas donner
               </button>
             </li>
