@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "./components/NavBar";
 import { Switch, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
-import CampaignsPage from "./pages/CampaignsPage"
+import CampaignsPage from "./pages/CampaignsPage";
 import CampaignInfos from "./pages/CampaignInfos";
 import Ambassadors from "./pages/Ambassadors";
 import AmbassadorInfos from "./pages/AmbassadorInfos";
@@ -13,12 +13,10 @@ import HomeBO from "./pages/HomeBO";
 import CampaignsPageBO from "./pages/CampaignsPageBO";
 import AmbassadorsPageBO from "./pages/AmbassadorsPageBO";
 import CausesPageBO from "./pages/CausesPageBO";
-import CampaignPage from "./pages/CampaignPage";
 import NavBarBO from "./components/NavBarBO";
 import "./App.scss";
 
 const { siteTitle } = require("./conf");
-
 
 function App() {
   document.title = siteTitle;
