@@ -68,7 +68,7 @@
   width: 36px;
   height: 30px;
   right: 20px;
-  top: 7px;
+  top: 27px;
   display: none;
 }
 
@@ -80,6 +80,7 @@
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
+  display: none;
   height: 24px;
   width: 24px;
 }
@@ -96,7 +97,7 @@
 .bm-menu-wrap {
   display: none;
   position: fixed;
-  top: 45px;
+  top: 86px;
   height: 100%;
   width: 320px;
   &:after {
@@ -156,7 +157,7 @@
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
-  top: 45px;
+  top: 86px;
 }
 
 /* ---------- MEDIA QUERIES ---------- */

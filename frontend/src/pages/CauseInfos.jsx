@@ -90,10 +90,7 @@ function CauseInfos(props) {
             {relatedCampaigns.map(relatedCampaign => {
               return (
                 <div>
-                  <CampaignCard
-                    key={relatedCampaign.id}
-                    campaignInfo={relatedCampaign}
-                  />
+                  <CampaignCard key={relatedCampaign.id} {...relatedCampaign} />
                 </div>
               );
             })}
@@ -103,10 +100,7 @@ function CauseInfos(props) {
             {relatedCampaigns.map(relatedCampaign => {
               return (
                 <div>
-                  <CampaignCard
-                    key={relatedCampaign.id}
-                    campaignInfo={relatedCampaign}
-                  />
+                  <CampaignCard key={relatedCampaign.id} {...relatedCampaign} />
                 </div>
               );
             })}
