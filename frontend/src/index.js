@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import ScrollToTop from "./components/ScrollToTop";
 import * as serviceWorker from "./serviceWorker";
 import "./reset.scss";
 import { BrowserRouter } from "react-router-dom";
@@ -13,10 +14,10 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
+      <ScrollToTop />
       <App />
     </BrowserRouter>
   </Provider>,
