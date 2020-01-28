@@ -19,8 +19,8 @@ const reducer = (state = initialState, action) => {
     case "SWITCH":
       return {
         ...newState,
-        filterAmbassadors: action.payload,
-        filterCauses: action.payload
+        filterAmbassadors: null,
+        filterCauses: null
       };
     default:
       return newState;
