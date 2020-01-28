@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { scaleRotate as BurgerMenu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -26,10 +26,7 @@ function NavBar() {
               className="menu-item"
               activeClassName="active"
               to="/campaigns"
-              onClick={
-                (() => dispatch({ type: "AMB_ALL" })) &&
-                (() => dispatch({ type: "ASS_ALL" }))
-              }
+              onClick={() => dispatch({ type: "SWITCH" })}
             >
               Campagnes
             </NavLink>
@@ -41,10 +38,7 @@ function NavBar() {
               className="menu-item"
               activeClassName="active"
               to="/ambassadors"
-              onClick={
-                (() => dispatch({ type: "AMB_ALL" })) &&
-                (() => dispatch({ type: "ASS_ALL" }))
-              }
+              onClick={() => dispatch({ type: "SWITCH" })}
             >
               Ambassadeurs
             </NavLink>
@@ -56,10 +50,7 @@ function NavBar() {
               className="menu-item"
               activeClassName="active"
               to="/causes"
-              onClick={
-                (() => dispatch({ type: "AMB_ALL" })) &&
-                (() => dispatch({ type: "ASS_ALL" }))
-              }
+              onClick={() => dispatch({ type: "SWITCH" })}
             >
               Causes soutenues
             </NavLink>
@@ -74,8 +65,7 @@ function NavBar() {
           activeClassName="bm-active"
           to="/campaigns"
           onClick={
-            (() => dispatch({ type: "AMB_ALL" })) &&
-            (() => dispatch({ type: "ASS_ALL" })) &&
+            (() => dispatch({ type: "SWITCH" })) &&
             (() => {
               isBurgerOpenUpdate(false);
             })
@@ -90,8 +80,7 @@ function NavBar() {
           activeClassName="bm-active"
           to="/ambassadors"
           onClick={
-            (() => dispatch({ type: "AMB_ALL" })) &&
-            (() => dispatch({ type: "ASS_ALL" })) &&
+            (() => dispatch({ type: "SWITCH" })) &&
             (() => {
               isBurgerOpenUpdate(false);
             })
@@ -106,8 +95,7 @@ function NavBar() {
           activeClassName="bm-active"
           to="/causes"
           onClick={
-            (() => dispatch({ type: "AMB_ALL" })) &&
-            (() => dispatch({ type: "ASS_ALL" })) &&
+            (() => dispatch({ type: "SWITCH" })) &&
             (() => {
               isBurgerOpenUpdate(false);
             })
