@@ -19,7 +19,9 @@ function FilterTab(props) {
             <li>
               <span
                 className={filterType === 1 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}SANTE` })}
+                onClick={() =>
+                  dispatch({ type: `${props.type}_FILTER`, payload: 1 })
+                }
               >
                 <img src="/img/1.png" alt="Santé" title="Santé" />
               </span>
@@ -27,7 +29,9 @@ function FilterTab(props) {
             <li>
               <span
                 className={filterType === 2 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}HUMANITAIRE` })}
+                onClick={() =>
+                  dispatch({ type: `${props.type}_FILTER`, payload: 2 })
+                }
               >
                 <img src="/img/2.png" alt="Humanitaire" title="Humanitaire" />
               </span>
@@ -35,7 +39,9 @@ function FilterTab(props) {
             <li>
               <span
                 className={filterType === 3 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}CULTURE` })}
+                onClick={() =>
+                  dispatch({ type: `${props.type}_FILTER`, payload: 3 })
+                }
               >
                 <img src="/img/3.png" alt="Culture" title="Culture" />
               </span>
@@ -43,7 +49,9 @@ function FilterTab(props) {
             <li>
               <span
                 className={filterType === 4 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}SPORT` })}
+                onClick={() =>
+                  dispatch({ type: `${props.type}_FILTER`, payload: 4 })
+                }
               >
                 <img src="/img/4.png" alt="Sport" title="Sport" />
               </span>
@@ -51,7 +59,9 @@ function FilterTab(props) {
             <li>
               <span
                 className={filterType === 5 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}ECOLOGIE` })}
+                onClick={() =>
+                  dispatch({ type: `${props.type}_FILTER`, payload: 5 })
+                }
               >
                 <img src="/img/5.png" alt="Écologie" title="Écologie" />
               </span>
@@ -59,7 +69,9 @@ function FilterTab(props) {
             <li>
               <span
                 className={filterType === 6 ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}EDUCATION` })}
+                onClick={() =>
+                  dispatch({ type: `${props.type}_FILTER`, payload: 6 })
+                }
               >
                 <img src="/img/6.png" alt="Éducation" title="Éducation" />
               </span>
@@ -67,7 +79,9 @@ function FilterTab(props) {
             <li>
               <span
                 className={filterType === null ? "isActive" : ""}
-                onClick={() => dispatch({ type: `${props.type}ALL` })}
+                onClick={() =>
+                  dispatch({ type: `${props.type}_FILTER`, payload: null })
+                }
               >
                 <img
                   src="/img/filterReset.png"
