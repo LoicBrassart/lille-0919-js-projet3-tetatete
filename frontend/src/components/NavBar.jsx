@@ -26,7 +26,7 @@ function NavBar() {
               className="menu-item"
               activeClassName="active"
               to="/campaigns"
-              onClick={() => dispatch({ type: "SWITCH" })}
+              onClick={() => dispatch({ type: "SWITCH", payload: null })}
             >
               Campagnes
             </NavLink>
@@ -38,7 +38,7 @@ function NavBar() {
               className="menu-item"
               activeClassName="active"
               to="/ambassadors"
-              onClick={() => dispatch({ type: "SWITCH" })}
+              onClick={() => dispatch({ type: "SWITCH", payload: null })}
             >
               Ambassadeurs
             </NavLink>
@@ -50,7 +50,7 @@ function NavBar() {
               className="menu-item"
               activeClassName="active"
               to="/causes"
-              onClick={() => dispatch({ type: "SWITCH" })}
+              onClick={() => dispatch({ type: "SWITCH", payload: null })}
             >
               Causes soutenues
             </NavLink>
@@ -65,7 +65,7 @@ function NavBar() {
           activeClassName="bm-active"
           to="/campaigns"
           onClick={
-            (() => dispatch({ type: "SWITCH" })) &&
+            (() => dispatch({ type: "SWITCH", payload: null })) &&
             (() => {
               isBurgerOpenUpdate(false);
             })
@@ -80,7 +80,7 @@ function NavBar() {
           activeClassName="bm-active"
           to="/ambassadors"
           onClick={
-            (() => dispatch({ type: "SWITCH" })) &&
+            (() => dispatch({ type: "SWITCH", payload: null })) &&
             (() => {
               isBurgerOpenUpdate(false);
             })
@@ -95,7 +95,7 @@ function NavBar() {
           activeClassName="bm-active"
           to="/causes"
           onClick={
-            (() => dispatch({ type: "SWITCH" })) &&
+            (() => dispatch({ type: "SWITCH", payload: null })) &&
             (() => {
               isBurgerOpenUpdate(false);
             })
