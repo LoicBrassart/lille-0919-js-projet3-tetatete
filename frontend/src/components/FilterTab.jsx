@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function FilterTab(props) {
   const filterType = useSelector(
-    props.type === "AMB_"
+    props.type === "AMBASSADORS"
       ? state => state.filterAmbassadors
       : state => state.filterCauses
   );
