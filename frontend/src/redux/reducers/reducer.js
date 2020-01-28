@@ -6,7 +6,8 @@ const initialState = {
   jwt: null,
   isSuperAdmin: null,
   isAdmin: null,
-  isLogged: false
+  isLogged: false,
+  userId: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -26,6 +27,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         jwt: action.value,
         isLogged: true
+      };
+    case "USERID":
+      return {
+        ...state,
+        userId: action.value
       };
     case "GET_CAMPAIGNS_INFO":
       return {
