@@ -24,10 +24,14 @@ export default function CampaignPage() {
   }, [showOngoing]);
 
   useEffect(() => {
-    axios.get(`${apiCall}/campaign`).then(({ data }) => {
-      dispatch({ type: "GET_CAMPAIGNS_INFO", data });
-    });
-  }, [dispatch]);
+    axios
+      .get(
+        `${apiCall}/campaign${showOngoing ? "?inProgress=true" : "?done=true"}`
+      )
+      .then(({ data }) => {
+        dispatch({ type: "GET_CAMPAIGNS_INFO", data });
+      });
+  }, [dispatch, showOngoing]);
 
   return (
     <div className="campaignsPage">
