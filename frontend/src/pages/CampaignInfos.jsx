@@ -134,12 +134,9 @@ export default function CampaignInfos(props) {
             Veuillez remplir tout les champs ci-dessous afin de confirmer votre
             participation à la campagne <span>{campaignInfo.name} !</span>
           </p>
-          {donor.donation_value < 1 ? (
-            ""
-          ) : (
+          {donor.donation_value > 0 && (
             <p>
-              {" "}
-              À hauteur de <span>{donor.donation_value} €</span> !
+              A hauteur de <span>{donor.donation_value} €</span> !
             </p>
           )}
           <form
