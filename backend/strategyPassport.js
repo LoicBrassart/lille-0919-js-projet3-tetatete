@@ -15,7 +15,7 @@ passport.use(
         "SELECT * FROM user WHERE email = ? LIMIT 1",
         [email],
         (err, user) => {
-          if (!user)
+          if (!user.length)
             return done(null, false, { message: "Utilisateur inexistant." });
           if (err) return done(err);
           const isPasswordOk = bcrypt.compareSync(password, user[0].password);
