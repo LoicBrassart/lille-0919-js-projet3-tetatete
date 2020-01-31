@@ -18,7 +18,7 @@ export default function FormLoginBO() {
       .then(res => {
         dispatch({ type: "DATAJWT", value: res.data });
       })
-      .catch(err => {
+      .catch(() => {
         updateCredentialsState(false);
       });
   };
