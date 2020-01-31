@@ -2,28 +2,35 @@ const initialState = {
   filterAmbassadors: null,
   filterCauses: null,
   campaignsInfo: [],
-  campaignInfoById: []
+  campaignInfoById: [],
+  dataJWT: null,
+  isLogged: false
 };
 
 const reducer = (state = initialState, action) => {
-  const newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
+    case "DATAJWT":
+      return {
+        ...state,
+        dataJWT: action.value,
+        isLogged: true
+      };
     case "GET_CAMPAIGNS_INFO":
-      return { ...newState, campaignsInfo: action.data };
+      return { ...state, campaignsInfo: action.data };
     case "GET_CAMPAIGN_BY_ID":
-      return { ...newState, campaignInfoById: action.data };
+      return { ...state, campaignInfoById: action.data };
     case "AMBASSADORS_FILTER":
-      return { ...newState, filterAmbassadors: action.payload };
+      return { ...state, filterAmbassadors: action.payload };
     case "CAUSES_FILTER":
-      return { ...newState, filterCauses: action.payload };
+      return { ...state, filterCauses: action.payload };
     case "SWITCH":
       return {
-        ...newState,
+        ...state,
         filterAmbassadors: null,
         filterCauses: null
       };
     default:
-      return newState;
+      return state;
   }
 };
 

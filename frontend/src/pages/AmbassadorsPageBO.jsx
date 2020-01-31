@@ -1,5 +1,10 @@
 import React from "react";
+import FormCreateAmbassador from "../components/FormCreateAmbassador";
 
 export default function AmbassadorsPageBO() {
-  return <div></div>;
+  return (
+    <div>
+      <FormCreateAmbassador />
+    </div>
+  );
 }
