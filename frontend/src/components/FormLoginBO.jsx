@@ -16,7 +16,7 @@ export default function FormLoginBO() {
     axios
       .post(`${apiCall}/auth/login`, user)
       .then(res => {
-        dispatch({ type: "JWT", value: res.data });
+        dispatch({ type: "DATAJWT", value: res.data });
       })
       .catch(err => {
         updateCredentialsState(false);
@@ -29,7 +29,7 @@ export default function FormLoginBO() {
       <form
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
       >
         {!credentialsState && (

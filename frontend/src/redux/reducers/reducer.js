@@ -2,54 +2,59 @@ const initialState = {
   filterAmbassadors: null,
   filterCauses: null,
   campaignsInfo: [],
-  campaignInfoById: []
+  campaignInfoById: [],
+  dataJWT: null,
+  isLogged: false
 };
 
 const reducer = (state = initialState, action) => {
-  const newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
+    case "DATAJWT":
+      return {
+        ...state,
+        dataJWT: action.value,
+        isLogged: true
+      };
     case "GET_CAMPAIGNS_INFO":
       return {
-        ...newState,
+        ...state,
         campaignsInfo: action.data
       };
     case "GET_CAMPAIGN_BY_ID":
       return {
-        ...newState,
+        ...state,
         campaignInfoById: action.data
       };
     case "AMB_SANTE":
-      return { ...newState, filterAmbassadors: 1, filterCauses: null };
+      return { ...state, filterAmbassadors: 1, filterCauses: null };
     case "AMB_HUMANITAIRE":
-      return { ...newState, filterAmbassadors: 2, filterCauses: null };
+      return { ...state, filterAmbassadors: 2, filterCauses: null };
     case "AMB_CULTURE":
-      return { ...newState, filterAmbassadors: 3, filterCauses: null };
+      return { ...state, filterAmbassadors: 3, filterCauses: null };
     case "AMB_SPORT":
-      return { ...newState, filterAmbassadors: 4, filterCauses: null };
+      return { ...state, filterAmbassadors: 4, filterCauses: null };
     case "AMB_ECOLOGIE":
-      return { ...newState, filterAmbassadors: 5, filterCauses: null };
+      return { ...state, filterAmbassadors: 5, filterCauses: null };
     case "AMB_EDUCATION":
-      return { ...newState, filterAmbassadors: 6, filterCauses: null };
+      return { ...state, filterAmbassadors: 6, filterCauses: null };
     case "AMB_ALL":
-      return { ...newState, filterAmbassadors: null, filterCauses: null };
+      return { ...state, filterAmbassadors: null, filterCauses: null };
     case "ASS_SANTE":
-      return { ...newState, filterCauses: 1, filterAmbassadors: null };
+      return { ...state, filterCauses: 1, filterAmbassadors: null };
     case "ASS_HUMANITAIRE":
-      return { ...newState, filterCauses: 2, filterAmbassadors: null };
+      return { ...state, filterCauses: 2, filterAmbassadors: null };
     case "ASS_CULTURE":
-      return { ...newState, filterCauses: 3, filterAmbassadors: null };
+      return { ...state, filterCauses: 3, filterAmbassadors: null };
     case "ASS_SPORT":
-      return { ...newState, filterCauses: 4, filterAmbassadors: null };
+      return { ...state, filterCauses: 4, filterAmbassadors: null };
     case "ASS_ECOLOGIE":
-      return { ...newState, filterCauses: 5, filterAmbassadors: null };
+      return { ...state, filterCauses: 5, filterAmbassadors: null };
     case "ASS_EDUCATION":
-      return { ...newState, filterCauses: 6, filterAmbassadors: null };
+      return { ...state, filterCauses: 6, filterAmbassadors: null };
     case "ASS_ALL":
-      return { ...newState, filterAmbassadors: null, filterCauses: null };
-    case "SWITCH":
-      return { ...newState, filterCauses: null, filterAmbassadors: null };
+      return { ...state, filterCauses: null, filterAmbassadors: null };
     default:
-      return newState;
+      return state;
   }
 };
 
