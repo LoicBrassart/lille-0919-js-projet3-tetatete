@@ -31,17 +31,17 @@ function Footer() {
           <p>Rejoignez-nous sur :</p>
           <ul>
             <li>
-              <a href="https://fr-fr.facebook.com/">
+              <a href="https://fr-fr.facebook.com/" target="_blank">
                 <img src="img/fcbLogo.svg" alt="Fcb" />
               </a>
             </li>
             <li>
-              <a href="https://twitter.com/?lang=fr">
+              <a href="https://twitter.com/?lang=fr" target="_blank">
                 <img src="img/twitterLogo.svg" alt="Twit" />
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/">
+              <a href="https://www.instagram.com/" target="_blank">
                 <img src="img/instaLogo.svg" alt="Instg" />
               </a>
             </li>
