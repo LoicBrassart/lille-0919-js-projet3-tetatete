@@ -22,7 +22,7 @@ export default function FormCreateCause() {
         alert(res.data);
       })
       .catch(err => {
-        alert(err);
+        alert(err.response.data);
       });
   };
 

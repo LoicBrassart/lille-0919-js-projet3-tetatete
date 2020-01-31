@@ -22,7 +22,7 @@ export default function FormCreateAmbassador() {
         alert(res.data);
       })
       .catch(err => {
-        alert(err);
+        alert(err.response.data);
       });
   };
 

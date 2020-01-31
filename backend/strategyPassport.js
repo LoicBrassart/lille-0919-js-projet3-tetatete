@@ -16,11 +16,11 @@ passport.use(
         [email],
         (err, user) => {
           if (!user.length)
-            return done(null, false, { message: "User not found !" });
+            return done(null, false, { message: "Utilisateur inexistant." });
           if (err) return done(err);
           const isPasswordOk = bcrypt.compareSync(password, user[0].password);
           if (!isPasswordOk)
-            return done(null, false, { message: "Wrong password !" });
+            return done(null, false, { message: "Mot de passe inexistant." });
           return done(null, user);
         }
       );

@@ -53,11 +53,13 @@ router.post("/", (req, res) => {
       if (err)
         return res
           .status(500)
-          .send("Error has occured during the creation of the new user !");
+          .send(
+            "Erreur lors de la création de l'utilisateur, merci de réessayer ultérieurement."
+          );
       if (results.length)
         return res
           .status(409)
-          .send("Somebody has already donate using these informations !");
+          .send("Vous avez déja donné lors de cette campagne.");
       //Check if this user already donate to an another campaign
       connection.query(
         "SELECT id, phone_number, email FROM user WHERE phone_number = ? AND email = ?",
@@ -66,7 +68,9 @@ router.post("/", (req, res) => {
           if (err)
             return res
               .status(500)
-              .send("Error has occured during the creation of the new user !");
+              .send(
+                "Erreur lors de la création de l'utilisateur, merci de réessayer ultérieurement."
+              );
           //If no, create a new user and a new donation
           if (!results.length) {
             connection.query(
@@ -77,7 +81,7 @@ router.post("/", (req, res) => {
                   return res
                     .status(500)
                     .send(
-                      "Error has occured during the creation of the new user !"
+                      "Erreur lors de l'enregistrement de la donation, merci de réessayer ultérieurement."
                     );
                 const { insertId } = results;
                 const newDonation = {
@@ -94,7 +98,7 @@ router.post("/", (req, res) => {
                       return res
                         .status(500)
                         .send(
-                          "Error has occured during the post of the new donation !"
+                          "Erreur lors de l'enregistrement de la donation, merci de réessayer ultérieurement."
                         );
                     const userInfo = {
                       email: email,
@@ -104,9 +108,7 @@ router.post("/", (req, res) => {
                       associationName: associationName
                     };
                     generatePdf({ ...userInfo });
-                    return res
-                      .status(201)
-                      .send("Donation posted successfully !");
+                    return res.status(201).send("Donation effectuée. Merci !");
                   }
                 );
               }
@@ -128,7 +130,7 @@ router.post("/", (req, res) => {
                   return res
                     .status(500)
                     .send(
-                      "Error has occured during the post of the new donation !"
+                      "Erreur lors de la création de l'utilisateur, merci de réessayer ultérieurement."
                     );
                 const userInfo = {
                   email: email,
@@ -138,7 +140,7 @@ router.post("/", (req, res) => {
                   associationName: associationName
                 };
                 generatePdf({ ...userInfo });
-                return res.status(201).send("Donation posted successfully !");
+                return res.status(201).send("Donation effectuée. Merci !");
               }
             );
           }

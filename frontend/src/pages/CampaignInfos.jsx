@@ -29,7 +29,7 @@ export default function CampaignInfos(props) {
         alert(res.donor);
       })
       .catch(err => {
-        alert(err);
+        alert(err.response.data);
       });
   };
 
