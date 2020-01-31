@@ -1,18 +1,24 @@
 import React from "react";
 import { scaleRotate as BurgerMenu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import "./styles/NavBar.scss";
 
 function NavBar() {
+  const isLogged = useSelector(state => state.isLogged);
+  const dispatch = useDispatch();
+
   return (
     <header className="NavBar NavBarBO">
       <nav className="desktopNav">
-        <NavLink className="logo" activeClassName="active" exact to="/admin">
+        <NavLink className="logo" activeClassName="active" exact to="/">
           <img className="meexLogo" src="./img/meexAdminLogo.png" alt="" />
         </NavLink>
 
+        {isLogged ? <button>Se Déconnecter</button> : ""}
+
         <ul className="desktopMenu">
-          <li>
+          {/* <li>
             <NavLink
               id="meetings"
               className="menu-item"
@@ -43,11 +49,11 @@ function NavBar() {
             >
               Causes soutenues
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
 
-      <BurgerMenu width={320} className="BurgerMenuBO">
+      {/* <BurgerMenu width={320} className="BurgerMenuBO">
         <NavLink
           id="meetings"
           className="menu-item"
@@ -74,7 +80,7 @@ function NavBar() {
         >
           Causes soutenues
         </NavLink>
-      </BurgerMenu>
+      </BurgerMenu> */}
     </header>
   );
 }

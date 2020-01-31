@@ -1,1 +1,36 @@
+@import "../../index.scss";
 
+.HomeBO {
+  padding: 20px;
+  p {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+  .modalButtons {
+    display: flex;
+    justify-content: space-around;
+    button {
+      font-weight: 700;
+      padding: 5px 15px;
+      border: solid 2px $mainBrandColorBO;
+      border-radius: 5px;
+    }
+  }
+}
+.modali-size-regular {
+  border-top: solid 6px $mainBrandColorBO;
+  border-bottom: solid 6px $mainBrandColorBO;
+  max-width: 600px;
+  padding-bottom: 20px;
+}
+.modali-header {
+  align-items: center;
+}
+.modali-close-button {
+  transition: all 0.7s;
+  color: $mainBrandColorBO;
+  span {
+    font-size: 2.2rem;
+  }
+}

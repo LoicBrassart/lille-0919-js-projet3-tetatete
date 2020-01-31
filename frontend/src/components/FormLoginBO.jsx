@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./styles/FormLoginBO.scss";
 const { apiCall } = require("../conf");
 
 export default function FormLoginBO() {
+  let history = useHistory();
+  const isLogged = useSelector(state => state.dataJWT);
   const dispatch = useDispatch();
   const [credentialsState, updateCredentialsState] = useState(true);
   const [user, setUser] = useState({
@@ -22,6 +26,10 @@ export default function FormLoginBO() {
         updateCredentialsState(false);
       });
   };
+
+  function handleClick() {
+    history.push("/admin");
+  }
 
   return (
     <div className="FormLoginBO">
@@ -73,6 +81,7 @@ export default function FormLoginBO() {
           />
         </div>
         <input type="submit" />
+        <button type="submit" onClick={isLogged ? handleClick() : ""}></button>
       </form>
     </div>
   );
