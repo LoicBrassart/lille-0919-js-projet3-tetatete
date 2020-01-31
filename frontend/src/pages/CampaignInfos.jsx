@@ -107,7 +107,20 @@ export default function CampaignInfos(props) {
               );
             })}
             <li>
-              <button onClick={toggleModalDonation}>
+              <button
+                onClick={() => {
+                  setDonor({
+                    ...donor,
+                    date: moment()
+                      .format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS)
+                      .replace("T", " "),
+                    donation_value: 0,
+                    campaign_id: idCampaign,
+                    associationName: nameAssociation
+                  });
+                  toggleModalDonation();
+                }}
+              >
                 Je ne veux pas donner
               </button>
             </li>
@@ -119,8 +132,13 @@ export default function CampaignInfos(props) {
         <div>
           <p>
             Veuillez remplir tout les champs ci-dessous afin de confirmer votre
-            participation à la campagne <span>"{campaignInfo.name}"</span> !
+            participation à la campagne <span>{campaignInfo.name} !</span>
           </p>
+          {donor.donation_value > 0 && (
+            <p>
+              A hauteur de <span>{donor.donation_value} €</span> !
+            </p>
+          )}
           <form
             onSubmit={e => {
               e.preventDefault();
