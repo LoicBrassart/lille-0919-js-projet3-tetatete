@@ -21,7 +21,7 @@ function Causes() {
       <div className="causesHero">
         <img src="img/monthCause.jpg" alt="month cause" />
       </div>
-      <FilterTab type="ASS_" />
+      <FilterTab type="CAUSES" />
       <div className="center containerCauses">
         {associations
           .filter(association => {
