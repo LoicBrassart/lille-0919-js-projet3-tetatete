@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
 
 router.post("/login", (req, res) => {
   passport.authenticate("local", { session: false }, (err, user, info) => {
-    if (err) return res.status(500).send("Erreur lors de la connection.");
+    if (err) return res.status(500).send("Erreur lors de la connexion.");
     if (!user) return res.status(401).send(info);
     const token = jwt.sign(JSON.parse(JSON.stringify(user[0])), JWTSecret);
     return res.status(200).json({ user, token });

@@ -181,9 +181,7 @@ router.patch("/:id", upload.single("img"), async (req, res) => {
                 if (err)
                   return res
                     .status(500)
-                    .send(
-                      "Erreur lors de la modification de l'association." + err
-                    );
+                    .send("Erreur lors de la modification de l'association.");
                 return res.sendStatus(200);
               }
             );

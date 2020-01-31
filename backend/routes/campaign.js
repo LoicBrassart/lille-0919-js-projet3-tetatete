@@ -154,7 +154,7 @@ router.post("/", upload.single("img"), (req, res) => {
           if (err)
             return res
               .status(500)
-              .send("Erreur lors de la création de la campagne." + err);
+              .send("Erreur lors de la création de la campagne.");
           return res.status(201).send("Campagne créée");
         }
       );
