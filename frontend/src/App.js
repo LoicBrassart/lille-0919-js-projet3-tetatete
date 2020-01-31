@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, useLocation, Redirect } from "react-router-dom";
-import { connect, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import CampaignsPage from "./pages/CampaignsPage";
@@ -20,8 +20,7 @@ import "./App.scss";
 
 const { siteTitle } = require("./conf");
 
-export default function App(props) {
-
+export default function App() {
   document.title = siteTitle;
   const location = useLocation();
 
