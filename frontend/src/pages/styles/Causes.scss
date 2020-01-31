@@ -1,10 +1,16 @@
 @import "../../index.scss";
 
 .Causes {
+  min-height: calc(100vh - 86px);
   .causesHero {
     img {
       width: 100%;
     }
+  }
+  .FilterTab {
+    position: sticky;
+    top: 86px;
+    z-index: 2;
   }
   .containerCauses {
     display: flex;

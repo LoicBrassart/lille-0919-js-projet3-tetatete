@@ -1,6 +1,7 @@
 @import "./../../index.scss";
 
 .campaignsPage {
+  min-height: calc(100vh - 86px);
   .campaignHero {
     position: relative;
 

@@ -1,6 +1,7 @@
 @import "../../index.scss";
 
 .CampaignInfos {
+  min-height: calc(100vh - 86px);
   .campaignPresentation {
     display: flex;
     flex-wrap: nowrap;

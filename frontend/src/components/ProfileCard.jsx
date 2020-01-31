@@ -10,10 +10,7 @@ function ProfileCard(props) {
           <img src={props.img} alt={props.name} />
         </figure>
         <div className="blueContent">
-          <div className="titleBorder"></div>
-          <div className="titleLayout">
-            <h3>{props.name}</h3>
-          </div>
+          <h3>{props.name}</h3>
         </div>
       </Link>
     </article>
