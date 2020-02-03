@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import "./styles/CampaignFormBO.scss";
 import axios from "axios";
 const { apiCall } = require("../conf");
 
 export default function CampaingFormBO() {
+  const userId = useSelector(state => state.dataJWT.user[0].id);
+  const token = useSelector(state => state.dataJWT.token);
+
   const [newCampaign, setNewCampaign] = useState({
     name: "",
     img: null,
@@ -19,11 +23,26 @@ export default function CampaingFormBO() {
     id_association: null
   });
 
+  const [ambassadors, setAmbassadors] = useState([]);
+
+  const [associations, setAssociations] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${apiCall}/ambassador`).then(res => {
+      setAmbassadors(res.data);
+    }, []);
+    axios.get(`${apiCall}/association`).then(res => {
+      setAssociations(res.data);
+    });
+  }, []);
+
   const handleSubmit = () => {
     const data = newCampaign;
 
     axios
-      .post(`${apiCall}/campaign`, data)
+      .post(`${apiCall}/campaign`, data, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       .then(res => {
         alert(res.data);
       })
@@ -39,7 +58,7 @@ export default function CampaingFormBO() {
         enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
         id="form"
       >
@@ -51,7 +70,8 @@ export default function CampaingFormBO() {
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
-                name: event.target.value
+                name: event.target.value,
+                id_user: userId
               });
             }}
             required
@@ -126,8 +146,11 @@ export default function CampaingFormBO() {
 
         <div className="container">
           <label>Campaign event date :</label>
+          <p>Please enter strict syntax</p>
+          <span>ex: "2020-03-29 00:00:00"</span>
           <input
-            type="date"
+            type="datetime"
+            placeholder="YYYY-MM-DD 00:00:00"
             value={newCampaign.date_event}
             onChange={event => {
               setNewCampaign({
@@ -185,42 +208,10 @@ export default function CampaingFormBO() {
         </div>
 
         <div className="container">
-          <label>Id user :</label>
-          <input
-            type="number"
-            value={newCampaign.id_user}
-            maxLength="2"
-            onChange={event => {
-              setNewCampaign({
-                ...newCampaign,
-                id_user: parseInt(event.target.value)
-              });
-            }}
-          />
-        </div>
-
-        <div className="container">
-          <label>Id ambassador :</label>
-          <input
-            type="number"
-            value={newCampaign.id_ambassador}
-            maxLength="2"
-            onChange={event => {
-              setNewCampaign({
-                ...newCampaign,
-                id_ambassador: parseInt(event.target.value)
-              });
-            }}
-            required
-          />
-        </div>
-
-        <div className="container">
-          <label>Id association :</label>
-          <input
-            type="number"
-            value={newCampaign.id_association}
-            maxLength="2"
+          <label htmlFor="ambassadors">Id ambassador :</label>
+          <select
+            name="ambassadors"
+            id="ambassadors"
             onChange={event => {
               setNewCampaign({
                 ...newCampaign,
@@ -228,7 +219,40 @@ export default function CampaingFormBO() {
               });
             }}
             required
-          />
+          >
+            <option value="">
+              **********Selectionne l'Ambassadeur**************
+            </option>
+            {ambassadors.map(ambassador => {
+              return (
+                <option value={ambassador.id}>
+                  {`${ambassador.firstname} ${ambassador.lastname}`}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
+        <div className="container">
+          <label htmlFor="association">Id association :</label>
+          <select
+            name="association"
+            id="association"
+            onChange={event => {
+              setNewCampaign({
+                ...newCampaign,
+                id_association: parseInt(event.target.value)
+              });
+            }}
+            required
+          >
+            <option value="">
+              **********Selectionne l'Association**************
+            </option>
+            {associations.map(association => {
+              return <option value={association.id}>{association.name}</option>;
+            })}
+          </select>
         </div>
 
         <input type="submit" />
