@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./styles/FormCreateCause.scss";
 import axios from "axios";
 import CheckboxList from "../CheckboxList";
 const { apiCall } = require("../conf");
 
 export default function FormCreateCause() {
+  const token = useSelector(state => state.dataJWT.token);
+
   const [asso, setAsso] = useState({
     name: "",
     img: null,
@@ -17,7 +20,9 @@ export default function FormCreateCause() {
 
   const handleSubmit = () => {
     axios
-      .post(`${apiCall}/association`, data)
+      .post(`${apiCall}/association`, data, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       .then(res => {
         alert(res.data);
       })
@@ -33,7 +38,7 @@ export default function FormCreateCause() {
         enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
       >
         <div className="container">
