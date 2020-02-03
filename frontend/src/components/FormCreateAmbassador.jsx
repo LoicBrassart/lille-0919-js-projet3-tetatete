@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./styles/FormCreateAmbassador.scss";
 import axios from "axios";
 import CheckboxList from "../CheckboxList";
 const { apiCall } = require("../conf");
 
 export default function FormCreateAmbassador() {
+  const token = useSelector(state => state.dataJWT.token);
+
   const [ambass, setAmbass] = useState({
     firstname: "",
     lastname: "",
@@ -17,7 +20,9 @@ export default function FormCreateAmbassador() {
 
   const handleSubmit = () => {
     axios
-      .post(`${apiCall}/ambassador`, data)
+      .post(`${apiCall}/ambassador`, data, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       .then(res => {
         alert(res.data);
       })
@@ -33,7 +38,7 @@ export default function FormCreateAmbassador() {
         enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
       >
         <div className="container">
