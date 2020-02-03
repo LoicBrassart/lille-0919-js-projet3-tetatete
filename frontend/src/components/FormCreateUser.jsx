@@ -4,6 +4,8 @@ import axios from "axios";
 const { apiCall } = require("../conf");
 
 export default function FormCreateUser() {
+  const token = useSelector(state => state.dataJWT.token);
+
   const [user, setUser] = useState({
     phone_number: "",
     password: "",
@@ -15,7 +17,9 @@ export default function FormCreateUser() {
   const handleSubmit = () => {
     const data = user;
     axios
-      .post(`${apiCall}/auth`, data)
+      .post(`${apiCall}/auth`, data, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
       .then(res => {
         alert(res.data);
       })
@@ -30,12 +34,13 @@ export default function FormCreateUser() {
       <form
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
       >
         <div className="container">
-          <label>Phone number :</label>
+          <label htmlFor="tel">Phone number :</label>
           <input
+            id="tel"
             type="tel"
             value={user.phone_number}
             onChange={event => {
@@ -49,8 +54,9 @@ export default function FormCreateUser() {
         </div>
 
         <div className="container">
-          <label>Password :</label>
+          <label htmlFor="password">Password :</label>
           <input
+            id="password"
             type="text"
             value={user.password}
             onChange={event => {
@@ -64,8 +70,9 @@ export default function FormCreateUser() {
         </div>
 
         <div className="container">
-          <label>Email :</label>
+          <label htmlFor="email">Email :</label>
           <input
+            id="email"
             type="email"
             value={user.email}
             onChange={event => {
@@ -79,8 +86,9 @@ export default function FormCreateUser() {
         </div>
 
         <div className="container">
-          <label>Law Admin :</label>
+          <label htmlFor="superAdmin">Peut tout créer (Admin)</label>
           <input
+            id="superAdmin"
             type="checkbox"
             value={user.canAdmin}
             onChange={event => {
@@ -93,11 +101,15 @@ export default function FormCreateUser() {
         </div>
 
         <div className="container">
-          <label>Law Create Content :</label>
+          <label htmlFor="admin">
+            Peut créer des campaignes et ambassadeurs uniquement
+            (Entreprises/Associations)
+          </label>
           <input
+            id="admin"
             type="checkbox"
             value={user.canCreateContent}
-            onChange={event => {
+            onChange={() => {
               setUser({
                 ...user,
                 canCreateContent: !user.canCreateContent
