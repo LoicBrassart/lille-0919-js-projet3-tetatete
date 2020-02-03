@@ -17,9 +17,6 @@ function Footer() {
             <li>
               <Link to="/">Les mentions légales et CGU</Link>
             </li>
-            <li>
-              <Link to="/admin">Admin</Link>
-            </li>
           </ul>
         </li>
         <li className="footerLogo">
