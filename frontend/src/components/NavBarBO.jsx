@@ -1,88 +1,42 @@
 import React from "react";
-import { scaleRotate as BurgerMenu } from "react-burger-menu";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Modali, { useModali } from "modali";
+
 import "./styles/NavBar.scss";
 
-function NavBar() {
+function NavBarBO() {
   const isLogged = useSelector(state => state.isLogged);
+  const [deconnectionModal, toggleDeconnectionModal] = useModali();
   const dispatch = useDispatch();
 
   return (
     <header className="NavBar NavBarBO">
       <nav className="desktopNav">
         <NavLink className="logo" activeClassName="active" exact to="/">
-          <img className="meexLogo" src="./img/meexAdminLogo.png" alt="" />
+          <img className="meexLogo" src="/img/meexAdminLogo.png" alt="" />
         </NavLink>
 
-        {isLogged ? <button>Se Déconnecter</button> : ""}
-
-        <ul className="desktopMenu">
-          {/* <li>
-            <NavLink
-              id="meetings"
-              className="menu-item"
-              activeClassName="active"
-              to="/admin/campaigns"
-            >
-              Campagnes
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              id="ambassadors"
-              className="menu-item"
-              activeClassName="active"
-              to="/admin/ambassadors"
-            >
-              Ambassadeurs
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              id="causes"
-              className="menu-item"
-              activeClassName="active"
-              to="/admin/causes"
-            >
-              Causes soutenues
-            </NavLink>
-          </li> */}
-        </ul>
+        {isLogged ? (
+          <React.Fragment>
+            <button onClick={toggleDeconnectionModal}>Se Déconnecter</button>
+            <Modali.Modal {...deconnectionModal}>
+              <h3>Deconnexion: </h3>
+              <p>Êtes-vous sûr ?</p>
+              <a
+                href="/"
+                onClick={() => dispatch({ type: "DATAJWT", value: [] })}
+              >
+                Oui, se deconnecter.
+              </a>
+            </Modali.Modal>
+          </React.Fragment>
+        ) : (
+          ""
+        )}
       </nav>
-
-      {/* <BurgerMenu width={320} className="BurgerMenuBO">
-        <NavLink
-          id="meetings"
-          className="menu-item"
-          activeClassName="bm-active"
-          to="/campaigns"
-        >
-          Campagnes
-        </NavLink>
-
-        <NavLink
-          id="ambassadors"
-          className="menu-item"
-          activeClassName="bm-active"
-          to="/ambassadors"
-        >
-          Ambassadeurs
-        </NavLink>
-
-        <NavLink
-          id="causes"
-          className="menu-item"
-          activeClassName="bm-active"
-          to="/causes"
-        >
-          Causes soutenues
-        </NavLink>
-      </BurgerMenu> */}
     </header>
   );
 }
 
-export default NavBar;
+export default NavBarBO;

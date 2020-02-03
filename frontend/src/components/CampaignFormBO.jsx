@@ -39,27 +39,29 @@ export default function CampaingFormBO() {
         enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
         id="form"
       >
-        <div className="container">
-          <label>Name of campaign :</label>
-          <input
-            type="text"
-            value={newCampaign.name}
-            onChange={event => {
-              setNewCampaign({
-                ...newCampaign,
-                name: event.target.value
-              });
-            }}
-            required
-          />
+        <div id="camp_name" className="container">
+          <label>
+            <input
+              type="text"
+              value={newCampaign.name}
+              placeholder="Intutilé de la campagne"
+              onChange={event => {
+                setNewCampaign({
+                  ...newCampaign,
+                  name: event.target.value
+                });
+              }}
+              required
+            />
+          </label>
         </div>
 
-        <div className="container">
-          <label>Picture of campaign :</label>
+        <div id="camp_pic" className="container">
+          <label>Illustration de la campagne :</label>
           <input
             type="file"
             value={newCampaign.img}
@@ -73,40 +75,43 @@ export default function CampaingFormBO() {
           />
         </div>
 
-        <div className="container">
-          <label>Resume :</label>
-          <textarea
-            type="textarea"
-            value={newCampaign.resume}
-            onChange={event => {
-              setNewCampaign({
-                ...newCampaign,
-                resume: event.target.value
-              });
-            }}
-            required
-          />
+        <div id="camp_resume" className="container">
+          <label>
+            <textarea
+              type="textarea"
+              value={newCampaign.resume}
+              placeholder="Description de la campagne"
+              onChange={event => {
+                setNewCampaign({
+                  ...newCampaign,
+                  resume: event.target.value
+                });
+              }}
+              required
+            />
+          </label>
         </div>
 
-        <div className="container">
-          <label>Campaign start date :</label>
-          <p>Please enter strict syntax</p>
-          <span>ex: "2020-03-29 00:00:00"</span>
-          <input
-            type="datetime"
-            placeholder="YYYY-MM-DD 00:00:00"
-            value={newCampaign.time_start}
-            onChange={event => {
-              setNewCampaign({
-                ...newCampaign,
-                time_start: event.target.value
-              });
-            }}
-            required
-          />
+        <div id="camp_start" className="container">
+          <label>
+            Début de la campagne :<p>Please enter strict syntax</p>
+            <span>ex: "2020-03-29 00:00:00"</span>
+            <input
+              type="datetime"
+              placeholder="YYYY-MM-DD 00:00:00"
+              value={newCampaign.time_start}
+              onChange={event => {
+                setNewCampaign({
+                  ...newCampaign,
+                  time_start: event.target.value
+                });
+              }}
+              required
+            />
+          </label>
         </div>
 
-        <div className="container">
+        <div id="camp_end" className="container">
           <label>Campaign end date :</label>
           <p>Please enter strict syntax</p>
           <span>ex: "2020-03-29 00:00:00"</span>
@@ -124,7 +129,7 @@ export default function CampaingFormBO() {
           />
         </div>
 
-        <div className="container">
+        <div id="camp_date" className="container">
           <label>Campaign event date :</label>
           <input
             type="date"
@@ -139,7 +144,7 @@ export default function CampaingFormBO() {
           />
         </div>
 
-        <div className="container">
+        <div id="camp_value_1" className="container">
           <label>First donation value :</label>
           <input
             type="number"
@@ -154,7 +159,7 @@ export default function CampaingFormBO() {
           />
         </div>
 
-        <div className="container">
+        <div id="camp_value_2" className="container">
           <label>Second donation value :</label>
           <input
             type="number"
@@ -169,7 +174,7 @@ export default function CampaingFormBO() {
           />
         </div>
 
-        <div className="container">
+        <div id="camp_value_3" className="container">
           <label>Third donation value :</label>
           <input
             type="number"
@@ -184,7 +189,7 @@ export default function CampaingFormBO() {
           />
         </div>
 
-        <div className="container">
+        <div id="camp_user_id" className="container">
           <label>Id user :</label>
           <input
             type="number"
@@ -199,7 +204,7 @@ export default function CampaingFormBO() {
           />
         </div>
 
-        <div className="container">
+        <div id="camp_amb_id" className="container">
           <label>Id ambassador :</label>
           <input
             type="number"
@@ -215,7 +220,7 @@ export default function CampaingFormBO() {
           />
         </div>
 
-        <div className="container">
+        <div id="camp_ass_id" className="container">
           <label>Id association :</label>
           <input
             type="number"

@@ -28,78 +28,86 @@ export default function FormCreateAmbassador() {
 
   return (
     <div className="FormCreateAmbassador">
-      <h1>Create new ambass</h1>
+      <h1>Créer un nouvel Aambassadeur :</h1>
       <form
         enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
       >
         <div className="container">
-          <label htmlFor="firstname">Firstname :</label>
-          <input
-            type="text"
-            id="firstname"
-            value={ambass.firstname}
-            onChange={event => {
-              setAmbass({
-                ...ambass,
-                firstname: event.target.value
-              });
-            }}
-            required
-          />
+          <label htmlFor="firstname">
+            <input
+              type="text"
+              id="firstname"
+              value={ambass.firstname}
+              placeholder="Prénom"
+              onChange={event => {
+                setAmbass({
+                  ...ambass,
+                  firstname: event.target.value
+                });
+              }}
+              required
+            />
+          </label>
         </div>
 
         <div className="container">
-          <label htmlFor="lastname">Lastname :</label>
-          <input
-            type="text"
-            id="lastname"
-            value={ambass.lastname}
-            onChange={event => {
-              setAmbass({
-                ...ambass,
-                lastname: event.target.value
-              });
-            }}
-            required
-          />
+          <label htmlFor="lastname">
+            <input
+              type="text"
+              id="lastname"
+              placeholder="Nom de famille"
+              value={ambass.lastname}
+              onChange={event => {
+                setAmbass({
+                  ...ambass,
+                  lastname: event.target.value
+                });
+              }}
+              required
+            />
+          </label>
         </div>
 
         <div className="container">
-          <label htmlFor="resume">Resume :</label>
-          <textarea
-            type="textarea"
-            name="resume"
-            value={ambass.resume}
-            onChange={event => {
-              setAmbass({
-                ...ambass,
-                resume: event.target.value
-              });
-            }}
-          />
+          <label htmlFor="resume">
+            <textarea
+              type="textarea"
+              name="resume"
+              value={ambass.resume}
+              placeholder="Description"
+              onChange={event => {
+                setAmbass({
+                  ...ambass,
+                  resume: event.target.value
+                });
+              }}
+            />
+          </label>
         </div>
 
         <div className="container">
-          <label htmlFor="img">Picture :</label>
-          <input
-            type="file"
-            name="img"
-            value={ambass.img}
-            onChange={event => {
-              setAmbass({
-                ...ambass,
-                img: event.target.value
-              });
-            }}
-          />
+          <label htmlFor="img">
+            Avatar :
+            <input
+              type="file"
+              name="img"
+              value={ambass.img}
+              onChange={event => {
+                setAmbass({
+                  ...ambass,
+                  img: event.target.value
+                });
+              }}
+            />
+          </label>
         </div>
 
         <div className="container">
-          <p>Select tags of campaign :</p>
+          <p>Tags associés :</p>
 
           <div className="allCheckbox">
             {CheckboxList.map(({ id, value, label }) => {
@@ -129,7 +137,7 @@ export default function FormCreateAmbassador() {
             })}
           </div>
         </div>
-        <input type="submit" />
+        <button type="submit">Créer l'ambassadeur !</button>
       </form>
     </div>
   );

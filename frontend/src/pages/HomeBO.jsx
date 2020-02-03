@@ -1,22 +1,13 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import "./styles/HomeBO.scss";
-import { Redirect } from "react-router-dom";
-import Modali, { useModali } from "modali";
-import FormCreateUser from "../components/FormCreateUser";
-import FormCreateAmbassador from "../components/FormCreateAmbassador";
-import FormCreateCause from "../components/FormCreateCause";
-import CampaignFormBO from "../components/CampaignFormBO";
+import { Redirect, Link } from "react-router-dom";
 
-export default function HomeBO() {
+export default function HomeBO(props) {
   const isAdmin = useSelector(state => state.dataJWT.user[0].canAdmin);
   const isAssociation = useSelector(
     state => state.dataJWT.user[0].canCreateContent
   );
-  const [campaignModal, toggleCampaignModal] = useModali();
-  const [ambassadorModal, toggleAmbassadorModal] = useModali();
-  const [causeModal, toggleCauseModal] = useModali();
-  const [userModal, toggleUserModal] = useModali();
 
   return (
     <div className="HomeBO">
@@ -28,38 +19,11 @@ export default function HomeBO() {
             qu'un nouvel utilisateur.
           </p>
 
-          <div className="modalButtons">
-            <button onClick={toggleCampaignModal}>Campagne</button>
-            <Modali.Modal {...campaignModal}>
-              <div>
-                <p>CREER CAMPAGNE</p>
-                <CampaignFormBO />
-              </div>
-            </Modali.Modal>
-
-            <button onClick={toggleAmbassadorModal}>Ambassadeur</button>
-            <Modali.Modal {...ambassadorModal}>
-              <div>
-                <p>CREER AMBASSADEUR</p>
-                <FormCreateAmbassador />
-              </div>
-            </Modali.Modal>
-
-            <button onClick={toggleCauseModal}>Cause</button>
-            <Modali.Modal {...causeModal}>
-              <div>
-                <p>CREER CAUSE</p>
-                <FormCreateCause />
-              </div>
-            </Modali.Modal>
-
-            <button onClick={toggleUserModal}>Utilisateur</button>
-            <Modali.Modal {...userModal}>
-              <div>
-                <p>CREER UTILISATEUR</p>
-                <FormCreateUser />
-              </div>
-            </Modali.Modal>
+          <div className="formsSelector">
+            <Link to="/admin/campaigns">Campagnes</Link>
+            <Link to="/admin/ambassadors">Ambassadeurs</Link>
+            <Link to="/admin/causes">Causes</Link>
+            <Link to="/admin/users">Utilisateurs</Link>
           </div>
         </React.Fragment>
       ) : isAdmin === 0 && isAssociation === 1 ? (
@@ -68,22 +32,9 @@ export default function HomeBO() {
             Vous êtes bien connecté. Vous pouvez ajouter un/des ambassadeurs et
             créer des campagnes.
           </p>
-          <div className="modalButtons">
-            <button onClick={toggleCampaignModal}>Campagne</button>
-            <Modali.Modal {...campaignModal}>
-              <div>
-                <p>CREER CAMPAGNE</p>
-                <CampaignFormBO />
-              </div>
-            </Modali.Modal>
-
-            <button onClick={toggleAmbassadorModal}>Ambassadeur</button>
-            <Modali.Modal {...ambassadorModal}>
-              <div>
-                <p>CREER AMBASSADEUR</p>
-                <FormCreateAmbassador />
-              </div>
-            </Modali.Modal>
+          <div className="formsSelector">
+            <Link to="/admin/campaigns">Campagnes</Link>
+            <Link to="/admin/ambassadors">Ambassadeurs</Link>
           </div>
         </React.Fragment>
       ) : (
