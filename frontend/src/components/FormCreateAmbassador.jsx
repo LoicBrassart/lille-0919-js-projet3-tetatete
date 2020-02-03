@@ -33,7 +33,7 @@ export default function FormCreateAmbassador() {
         enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
       >
         <div className="container">

@@ -26,7 +26,7 @@ export default function CampaignInfos(props) {
     axios
       .post(`${apiCall}/donation`, donor)
       .then(res => {
-        alert(res.donor);
+        alert(res.data);
       })
       .catch(err => {
         alert(err.response.data);

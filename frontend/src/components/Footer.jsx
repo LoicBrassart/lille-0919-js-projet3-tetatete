@@ -32,17 +32,17 @@ function Footer() {
           <ul>
             <li>
               <a href="https://fr-fr.facebook.com/">
-                <img src="img/fcbLogo.svg" alt="Fcb" />
+                <img src="/img/fcbLogo.svg" alt="Fcb" />
               </a>
             </li>
             <li>
               <a href="https://twitter.com/?lang=fr">
-                <img src="img/twitterLogo.svg" alt="Twit" />
+                <img src="/img/twitterLogo.svg" alt="Twit" />
               </a>
             </li>
             <li>
               <a href="https://www.instagram.com/">
-                <img src="img/instaLogo.svg" alt="Instg" />
+                <img src="/img/instaLogo.svg" alt="Instg" />
               </a>
             </li>
           </ul>

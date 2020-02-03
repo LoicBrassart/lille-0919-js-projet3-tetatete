@@ -8,7 +8,7 @@ function NavBar() {
     <header className="NavBar NavBarBO">
       <nav className="desktopNav">
         <NavLink className="logo" activeClassName="active" exact to="/admin">
-          <img className="meexLogo" src="./img/meexAdminLogo.png" alt="" />
+          <img className="meexLogo" src="/img/meexAdminLogo.png" alt="" />
         </NavLink>
 
         <ul className="desktopMenu">

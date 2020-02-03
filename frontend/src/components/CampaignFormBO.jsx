@@ -39,7 +39,7 @@ export default function CampaingFormBO() {
         enctype="multipart/form-data"
         onSubmit={e => {
           e.preventDefault();
-          e.handleSubmit();
+          handleSubmit();
         }}
         id="form"
       >
