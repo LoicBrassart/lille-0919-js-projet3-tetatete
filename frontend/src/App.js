@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  Switch,
-  Route,
-  useLocation,
-  Redirect,
-  useHistory
-} from "react-router-dom";
+import React from "react";
+import { Switch, Route, useLocation, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
@@ -47,43 +41,13 @@ export default function App() {
         <Route path="/admin/login" component={FormLoginBO}></Route>
 
         {isLogged ? (
-          <Route path="/admin" component={HomeBO} />
-        ) : (
-          <Redirect to="/admin/login" />
-        )}
-
-        {isLogged ? (
           <React.Fragment>
-            <Route
-              path="/admin/creator/campaigns"
-              component={CampaignsPageBO}
-            />
+            <Route path="/admin" component={HomeBO} />
             <Route path="/admin/campaigns" component={CampaignsPageBO} />
-          </React.Fragment>
-        ) : (
-          <Redirect to="/admin/login" />
-        )}
-
-        {isLogged ? (
-          <React.Fragment>
-            <Route
-              path="/admin/creator/ambassadors"
-              component={AmbassadorsPageBO}
-            />
             <Route path="/admin/ambassadors" component={AmbassadorsPageBO} />
+            <Route path="/admin/causes" component={CausesPageBO} />
+            <Route path="/admin/users" component={UserPageBO} />
           </React.Fragment>
-        ) : (
-          <Redirect to="/admin/login" />
-        )}
-
-        {isLogged ? (
-          <Route path="/admin/causes" component={CausesPageBO} />
-        ) : (
-          <Redirect to="/admin/login" />
-        )}
-
-        {isLogged ? (
-          <Route path="/admin/user" component={UserPageBO} />
         ) : (
           <Redirect to="/admin/login" />
         )}
