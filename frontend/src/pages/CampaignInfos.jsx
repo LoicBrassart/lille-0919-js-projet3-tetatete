@@ -84,9 +84,9 @@ export default function CampaignInfos(props) {
         <div className="campaignDonation center">
           <p>Je participe en donnant</p>
           <ul>
-            {allVal.map(value => {
+            {allVal.map((value, key) => {
               return (
-                <li>
+                <li key={key}>
                   <button
                     onClick={() => {
                       setDonor({
