@@ -24,7 +24,7 @@ function CauseInfos(props) {
     axios
       .get(`${apiCall}/campaign?associationId=${props.match.params.id}`)
       .then(res => {
-        if (res.data != []) {
+        if (res.data !== []) {
           setRelatedCampaigns(res.data);
           setRelatedDatas(true);
         } else {
@@ -85,7 +85,7 @@ function CauseInfos(props) {
       <div className="CausesRelated">
         {relatedCampaigns.length === 0 ? (
           <p className="emptyCards">Pas de liens disponibles.</p>
-        ) : relatedCampaigns.length <= 3 && relatedCampaigns.length != 0 ? (
+        ) : relatedCampaigns.length <= 3 && relatedCampaigns.length !== 0 ? (
           <Carousel itemWidth={400}>
             {relatedCampaigns.map(relatedCampaign => {
               return (
