@@ -54,9 +54,9 @@ function CauseInfos(props) {
                   <p className="emptyTag">Pas de tags associés.</p>
                 </li>
               ) : (
-                tags.map(tag => {
+                tags.map((tag, key) => {
                   return (
-                    <li>
+                    <li key={key}>
                       <img src={`/img/${tag}.png`} alt="" />
                     </li>
                   );
@@ -87,9 +87,9 @@ function CauseInfos(props) {
           <p className="emptyCards">Pas de liens disponibles.</p>
         ) : relatedCampaigns.length <= 3 && relatedCampaigns.length !== 0 ? (
           <Carousel itemWidth={400}>
-            {relatedCampaigns.map(relatedCampaign => {
+            {relatedCampaigns.map((relatedCampaign, key) => {
               return (
-                <div>
+                <div key={key}>
                   <CampaignCard key={relatedCampaign.id} {...relatedCampaign} />
                 </div>
               );
@@ -97,9 +97,9 @@ function CauseInfos(props) {
           </Carousel>
         ) : (
           <Carousel arrows itemWidth={400}>
-            {relatedCampaigns.map(relatedCampaign => {
+            {relatedCampaigns.map((relatedCampaign, key) => {
               return (
-                <div>
+                <div key={key}>
                   <CampaignCard key={relatedCampaign.id} {...relatedCampaign} />
                 </div>
               );
