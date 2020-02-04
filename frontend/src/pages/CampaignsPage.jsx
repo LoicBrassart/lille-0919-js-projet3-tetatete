@@ -79,7 +79,7 @@ export default function CampaignPage() {
       <div className="cardContainer">
         {campaigns
           .filter(campaign => {
-            return showOngoing === campaign.dateDiff > 0;
+            return showOngoing === campaign.dateDiff && campaign.dateDiff > 0;
           })
           .map((campaign, key) => {
             return (
