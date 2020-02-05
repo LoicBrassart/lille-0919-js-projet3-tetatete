@@ -131,7 +131,7 @@ export default function CampaignInfos(props) {
       <Modali.Modal {...modalDonation}>
         <div>
           <p>
-            Veuillez remplir tout les champs ci-dessous afin de confirmer votre
+            Veuillez remplir tous les champs ci-dessous afin de confirmer votre
             participation à la campagne <span>{campaignInfo.name} !</span>
           </p>
           {donor.donation_value > 0 && (
@@ -181,7 +181,7 @@ export default function CampaignInfos(props) {
                 />
               </label>
             </div>
-            <input type="submit" value="Partciper !" />
+            <input type="submit" value="Participer !" />
           </form>
         </div>
       </Modali.Modal>
