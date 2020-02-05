@@ -101,7 +101,7 @@ export default function CampaignInfos(props) {
                       toggleModalDonation();
                     }}
                   >
-                    {value}
+                    {value} €
                   </button>
                 </li>
               );
