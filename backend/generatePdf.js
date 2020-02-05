@@ -19,18 +19,18 @@ function generatePdf(userInfo) {
         alignment: "left"
       },
       {
-        text: "1 rue Wild Code School",
+        text: "270 rue des Arts",
         alignment: "right",
         fontSize: 14,
         margin: [0, -35, 0, 0]
       },
       {
-        text: "LILLE",
+        text: "Paris",
         alignment: "right",
         fontSize: 14
       },
       {
-        text: "59000",
+        text: "75000",
         alignment: "right",
         fontSize: 14
       },
@@ -112,8 +112,8 @@ function generatePdf(userInfo) {
     ? sendMail({
         from: "NoReply@meex.com",
         to: userInfo.email,
-        subject: "Thank you for your donation !",
-        html: `Thank you! You just donated ${userInfo.donation_value}€ and by doing this you participated to have a better world !  Meex Team`,
+        subject: "Merci pour votre don !",
+        html: `Vous venez de donner ${userInfo.donation_value}€ et en faisant cela, vous avez participé à un monde meilleur ! Merci beaucoup ! L'équipe Meex`,
         attachments: [
           {
             filename: "recuDeDon.pdf",
@@ -124,8 +124,8 @@ function generatePdf(userInfo) {
     : sendMail({
         from: "NoReply@meex.com",
         to: userInfo.email,
-        subject: "Thank you for your donation !",
-        html: "Thank you for your participation ! Meex Team"
+        subject: "Merci pour votre don !",
+        html: "Merci pour votre participation ! L'équipe Meex"
       });
   pdfDoc.end();
   return;
