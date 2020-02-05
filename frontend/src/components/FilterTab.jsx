@@ -13,7 +13,7 @@ function FilterTab(props) {
   return (
     <div className="FilterTab">
       <div className="center">
-        <p>Filtrer parmis les tags :</p>
+        <p>Filtrer parmi les tags :</p>
         <nav className="FiltersNav">
           <ul>
             <li>
