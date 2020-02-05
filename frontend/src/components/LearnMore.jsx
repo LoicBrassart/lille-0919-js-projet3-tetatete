@@ -24,7 +24,7 @@ export default function LearnMore() {
             <p>
               c'est aider les <big>organisations à but non lucratif.</big>
             </p>
-            <p>Grace à sa</p>
+            <p>Grâce à sa</p>
             <big>méthode innovante,</big>
             <p>
               impactez <big>plus fort</big> et <big>plus largement</big> le don
@@ -52,12 +52,12 @@ export default function LearnMore() {
             <p>
               Nous n'allons pas révolutionner le monde,
               <br />
-              mais aporter un <big>soutien financer</big> est primordial pour
+              mais apporter un <big>soutien financier</big> est primordial pour
               les <big>associations caritatives.</big>
             </p>
             <p>
-              En tant que donnateur, vivez une expérience{" "}
-              <big>exeptionelle</big> et <big>unique !</big>
+              En tant que donateur, vivez une expérience{" "}
+              <big>exceptionelle</big> et <big>unique !</big>
             </p>
           </span>
           <figure>
