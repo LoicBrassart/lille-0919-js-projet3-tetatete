@@ -17,9 +17,6 @@ function Footer() {
             <li>
               <Link to="/">Les mentions légales et CGU</Link>
             </li>
-            <li>
-              <Link to="/admin">Admin</Link>
-            </li>
           </ul>
         </li>
         <li className="footerLogo">
@@ -31,18 +28,30 @@ function Footer() {
           <p>Rejoignez-nous sur :</p>
           <ul>
             <li>
-              <a href="https://fr-fr.facebook.com/" target="_blank">
-                <img src="img/fcbLogo.svg" alt="Fcb" />
+              <a
+                href="https://fr-fr.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/img/fcbLogo.svg" alt="Fcb" />
               </a>
             </li>
             <li>
-              <a href="https://twitter.com/?lang=fr" target="_blank">
-                <img src="img/twitterLogo.svg" alt="Twit" />
+              <a
+                href="https://twitter.com/?lang=fr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/img/twitterLogo.svg" alt="Twit" />
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/" target="_blank">
-                <img src="img/instaLogo.svg" alt="Instg" />
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/img/instaLogo.svg" alt="Instg" />
               </a>
             </li>
           </ul>
