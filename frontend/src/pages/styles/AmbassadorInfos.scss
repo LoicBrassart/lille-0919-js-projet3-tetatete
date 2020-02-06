@@ -1,0 +1,382 @@
+@import "../../index.scss";
+
+.AmbassadorsWrapper {
+  .AmbassadorInfos {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 100px 0;
+    min-height: calc(100vh - 200px);
+    .photo {
+      width: 50%;
+      text-align: center;
+      .ProfileCardBlue {
+        margin: 0 auto;
+        width: calc(450px - 20px);
+        a {
+          figure {
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    .content {
+      width: 50%;
+      padding: 0 0 20px 0;
+      .tags {
+        background: $cardBlueGradient;
+        margin-bottom: 30px;
+        padding: 10px;
+        height: 70px;
+        ul {
+          li {
+            display: inline-block;
+            img {
+              margin-left: 5px;
+              width: 50px;
+              border-radius: 25px;
+            }
+          }
+        }
+      }
+      .resume {
+        margin-bottom: 20px;
+        padding-left: 20px;
+        width: 80%;
+      }
+    }
+  }
+  .relatedTitle {
+    font-size: $bigFontSize;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .AmbassadorsRelated {
+    width: 100%;
+    background: $cardBlueGradient;
+    margin-bottom: 60px;
+    padding: 0px 10px;
+    .emptyCards {
+      padding: 20px 10px;
+      text-align: center;
+      color: $lightFontColor;
+    }
+    .campaignCardBlueCard.related {
+      margin: 23px 0;
+      box-sizing: border-box;
+      position: relative;
+      width: 400px;
+      border-width: 4px;
+      border-style: solid;
+      border-image: $cardBlueBorder;
+      background: $cardBlueGradient;
+      transform: scale(0.95);
+      transition: ease 0.2s;
+
+      &:hover {
+        box-shadow: $boxShadow;
+        transform: scale(1);
+      }
+
+      .firstContainer {
+        display: flex;
+        flex-direction: row;
+        height: 200px;
+
+        .whiteLine {
+          background-color: white;
+          height: 200px;
+          width: 5px;
+          position: absolute;
+          left: 197px;
+          transform: skew(-15deg);
+        }
+
+        .campaignImg {
+          width: 267px;
+          height: 200px;
+          clip-path: polygon(0 0, 85% 0%, 65% 100%, 0% 100%);
+        }
+
+        .timer {
+          color: white;
+          font-weight: bold;
+          text-align: center;
+          position: absolute;
+          right: 33px;
+          top: 33px;
+          z-index: 1;
+
+          .timeValue {
+            font-size: 100px;
+            height: 100px;
+          }
+          .cardStatus {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .secondContainer {
+        background: white;
+        height: 100px;
+        padding-top: 7px;
+
+        .campaignTitle {
+          font-weight: bold;
+          font-size: 24px;
+          text-align: left;
+          margin: 7px;
+          margin-top: 0;
+          color: $cardTitleFontColor;
+        }
+
+        .fondationName {
+          font-size: 16px;
+          color: $fondationFontColor;
+          margin-left: 7px;
+          text-align: left;
+        }
+        .moreInfo {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          position: absolute;
+          bottom: 7px;
+          right: 7px;
+
+          .moreInfoText {
+            font-size: 16px;
+            color: $moreInfoFontColor;
+          }
+
+          .moreInfoButton {
+            width: 3.33%;
+            height: auto;
+            margin: 7px;
+          }
+        }
+      }
+    }
+    .campaignCardRedCard.related {
+      margin: 23px 0;
+      box-sizing: border-box;
+      position: relative;
+      width: 400px;
+      border-width: 4px;
+      border-style: solid;
+      border-image: $cardRedBorder;
+      background: $cardRedGradient;
+      transform: scale(0.95);
+      transition: ease 0.2s;
+
+      &:hover {
+        box-shadow: $boxShadow;
+        transform: scale(1);
+      }
+
+      .firstContainer {
+        display: flex;
+        flex-direction: row;
+        height: 200px;
+
+        .whiteLine {
+          background-color: white;
+          height: 200px;
+          width: 5px;
+          position: absolute;
+          left: 197px;
+          transform: skew(-15deg);
+        }
+
+        .campaignImg {
+          width: 267px;
+          height: 200px;
+          clip-path: polygon(0 0, 85% 0%, 65% 100%, 0% 100%);
+        }
+
+        .timer {
+          color: white;
+          font-weight: bold;
+          text-align: center;
+          position: absolute;
+          right: 10px;
+          top: 100px;
+          z-index: 1;
+
+          .timeValue {
+            display: none;
+          }
+          .cardStatus {
+            font-size: 32px;
+            width: 180px;
+          }
+        }
+      }
+
+      .secondContainer {
+        background: white;
+        height: 100px;
+        padding-top: 7px;
+
+        .campaignTitle {
+          font-weight: bold;
+          font-size: 24px;
+          text-align: left;
+          margin: 7px;
+          margin-top: 0;
+          color: $cardTitleFontColor;
+        }
+
+        .fondationName {
+          font-size: 16px;
+          color: $fondationFontColor;
+          margin-left: 7px;
+          text-align: left;
+        }
+        .moreInfo {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          position: absolute;
+          bottom: 7px;
+          right: 7px;
+
+          .moreInfoText {
+            font-size: 16px;
+            color: $moreInfoFontColor;
+          }
+
+          .moreInfoButton {
+            width: 3.33%;
+            height: auto;
+            margin: 7px;
+          }
+        }
+      }
+    }
+    .campaignCardVioletCard.related {
+      margin: 23px 0;
+      box-sizing: border-box;
+      position: relative;
+      width: 400px;
+      border-width: 4px;
+      border-style: solid;
+      border-image: $cardVioletBorder;
+      background: $cardVioletGradient;
+      transform: scale(0.95);
+      transition: ease 0.2s;
+
+      &:hover {
+        box-shadow: $boxShadow;
+        transform: scale(1);
+      }
+
+      .firstContainer {
+        display: flex;
+        flex-direction: row;
+        height: 200px;
+
+        .whiteLine {
+          background-color: white;
+          height: 200px;
+          width: 5px;
+          position: absolute;
+          left: 197px;
+          transform: skew(-15deg);
+        }
+
+        .campaignImg {
+          width: 267px;
+          height: 200px;
+          clip-path: polygon(0 0, 85% 0%, 65% 100%, 0% 100%);
+        }
+
+        .timer {
+          color: white;
+          font-weight: bold;
+          text-align: center;
+          position: absolute;
+          right: 33px;
+          top: 33px;
+          z-index: 1;
+
+          .timeValue {
+            font-size: 100px;
+            height: 100px;
+          }
+          .cardStatus {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .secondContainer {
+        background: white;
+        height: 100px;
+        padding-top: 7px;
+
+        .campaignTitle {
+          font-weight: bold;
+          font-size: 24px;
+          text-align: left;
+          margin: 7px;
+          margin-top: 0;
+          color: $cardTitleFontColor;
+        }
+
+        .fondationName {
+          font-size: 16px;
+          color: $fondationFontColor;
+          margin-left: 7px;
+          text-align: left;
+        }
+        .moreInfo {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          position: absolute;
+          bottom: 7px;
+          right: 7px;
+
+          .moreInfoText {
+            font-size: 16px;
+            color: $moreInfoFontColor;
+          }
+
+          .moreInfoButton {
+            width: 3.33%;
+            height: auto;
+            margin: 7px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.BrainhubCarousel .BrainhubCarousel__trackContainer {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .AmbassadorsWrapper {
+    .AmbassadorInfos {
+      padding: 40px 0;
+      flex-wrap: wrap;
+      .photo {
+        margin-bottom: 20px;
+      }
+      .photo,
+      .content {
+        width: 100%;
+        p {
+          width: 100%;
+          padding: 0 20px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,151 @@
+@import "../../index.scss";
+
+.LearnMore {
+  padding: 70px 0;
+  background-color: $lightGray;
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .learnCard {
+      position: relative;
+      width: calc(320px - 20px);
+      height: 360px;
+      margin: 0 10px 10px 10px;
+      box-shadow: $boxShadow;
+      overflow: hidden;
+      cursor: pointer;
+      transform: scale(0.98);
+      transition: ease 0.2s;
+
+      &:hover {
+        transform: scale(1);
+      }
+
+      &:nth-child(1) .content .titleBorder {
+        background-color: $meexColor;
+      }
+      &:nth-child(1) .content .titleLayout {
+        background: $meexBg;
+      }
+      &:nth-child(1) span {
+        border: solid 4px $meexColor;
+        padding: 20px;
+        p {
+          color: $mainFontColor;
+          margin: 10px 0;
+        }
+        big {
+          margin-bottom: 10px;
+          font-size: 1.4rem;
+          color: $meexColor;
+        }
+      }
+
+      &:nth-child(2) .content .titleBorder {
+        background-color: $chartColor;
+      }
+      &:nth-child(2) .content .titleLayout {
+        background: $chartBg;
+      }
+      &:nth-child(2) span {
+        border: solid 4px $chartColor;
+        padding: 20px;
+        big {
+          font-size: 1.4rem;
+          color: $chartColor;
+        }
+        p {
+          color: $mainFontColor;
+          margin: 0 0 20px 0;
+        }
+      }
+
+      &:nth-child(3) .content .titleBorder {
+        background-color: $foundsColor;
+      }
+      &:nth-child(3) .content .titleLayout {
+        background: $foundsBg;
+      }
+      &:nth-child(3) span {
+        border: solid 4px $foundsColor;
+        color: $foundsColor;
+        padding: 20px;
+        p,
+        small,
+        big {
+          display: block;
+          width: 100%;
+          text-align: center;
+        }
+        p {
+          font-size: 2rem;
+          margin-bottom: 20px;
+        }
+        big {
+          font-size: 3rem;
+        }
+        .stats {
+          margin-bottom: 30px;
+        }
+      }
+
+      span {
+        transition: all 0.3s;
+        position: absolute;
+        z-index: 2;
+        top: -100%;
+        width: 100%;
+        height: 360px;
+        font-family: $mainFont;
+        background-color: $backgroundColor;
+        &.shown {
+          top: 0;
+        }
+      }
+
+      .content {
+        margin-top: -60px;
+
+        .titleBorder {
+          display: block;
+          height: 220px;
+          z-index: 1;
+          clip-path: polygon(50% 55px, 100% 0, 100% 100%, 0 100%, 0 0);
+        }
+
+        .titleLayout {
+          margin-top: -215px;
+          height: 220px;
+          clip-path: polygon(50% 55px, 100% 0, 100% 100%, 0 100%, 0 0);
+          h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: $lightFontColor;
+            font-family: $mainFont;
+            font-size: $bigFontSize;
+            text-transform: uppercase;
+          }
+          p {
+            color: $lightFontColor;
+            font-family: $mainFont;
+            display: block;
+            position: relative;
+            bottom: 35px;
+            right: 10px;
+            text-align: right;
+            img {
+              display: inline-block;
+              vertical-align: middle;
+              width: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

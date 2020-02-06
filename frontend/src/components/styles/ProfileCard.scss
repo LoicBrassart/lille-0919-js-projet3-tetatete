@@ -1,0 +1,24 @@
+@import "./../../index.scss";
+
+.ProfileCardBlue {
+  border: solid 4px $darkFontColor;
+  border-image: $cardBlueBorder;
+  background: $cardBlueGradient;
+  width: calc(320px - 20px);
+  margin-bottom: 20px;
+  a {
+    figure {
+      img {
+        clip-path: polygon(0 0, 100% 0, 100% 92%, 50% 100%, 0 92%);
+      }
+    }
+  }
+  .blueContent {
+    width: 100%;
+    h3 {
+      text-align: center;
+      padding: 15px 0;
+      color: $lightFontColor;
+    }
+  }
+}

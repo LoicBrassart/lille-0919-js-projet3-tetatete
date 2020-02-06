@@ -1,0 +1,123 @@
+@import "./../../index.scss";
+
+.campaignsPage {
+  min-height: calc(100vh - 86px);
+  .campaignHero {
+    position: relative;
+
+    .CampaignBanner {
+      width: 100%;
+    }
+
+    .campaignHerotagline {
+      width: 100%;
+      text-align: center;
+      font-family: $heroFont;
+      text-transform: uppercase;
+      font-weight: 100;
+      font-size: 100px;
+      color: $lightFontColor;
+      position: absolute;
+      bottom: 50px;
+    }
+  }
+
+  .topContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 85px;
+
+    .selectContent {
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      font-size: 32px;
+      font-family: $mainFont;
+
+      .inProgressStatus {
+        width: 340px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: white;
+        border: 3px solid #00bd88;
+        box-shadow: inset 340px 0 0 0 #00bd88;
+        cursor: pointer;
+      }
+      .doneStatus {
+        width: 340px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: white;
+        border: 3px solid #ff7975;
+        box-shadow: inset 340px 0 0 0 #ff7975;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .totalInprogressCampaign {
+    margin: 50px auto 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    color: #00bd88;
+    font-family: $mainFont;
+    font-weight: bold;
+  }
+
+  .totalDoneCampaign {
+    margin: 50px auto 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    color: #ff7975;
+    font-family: $mainFont;
+    font-weight: bold;
+  }
+
+  .totalCamp {
+    height: 120px;
+    margin-right: 50px;
+    font-size: 130px;
+    font-family: $mainFont;
+    letter-spacing: -20px;
+  }
+  .campaignStatus {
+    height: 120px;
+    font-size: 64px;
+    line-height: 70px;
+  }
+}
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.unselected {
+  padding: 10px;
+  width: 340px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: rgba(56, 73, 85, 0.4);
+  border: 3px solid rgba(56, 73, 85, 0.4);
+  box-shadow: 1px 1px 25px 10px rgba(56, 73, 85, 0.4);
+  box-shadow: inset 0 0 0 0;
+  transition: ease-in-out 0.1s;
+
+  &:hover {
+    color: white;
+    border: 3px solid rgba(56, 73, 85, 0.4);
+    box-shadow: inset 340px 0 0 0 rgba(56, 73, 85, 0.4);
+    transition: ease-in-out 0.3s;
+  }
+}

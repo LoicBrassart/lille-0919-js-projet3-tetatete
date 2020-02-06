@@ -1,0 +1,165 @@
+@import "../../index.scss";
+
+.CampaignInfos {
+  min-height: calc(100vh - 86px);
+  .campaignPresentation {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    padding: 40px 20px;
+    .campaignCard {
+      width: 50%;
+      .self {
+        margin: 0 auto;
+        transform: scale(1);
+        &:hover {
+          box-shadow: none;
+        }
+        a {
+          pointer-events: none;
+          .secondContainer {
+            display: none;
+          }
+        }
+      }
+    }
+    .campaignInfos {
+      width: 50%;
+      h3 {
+        font-size: $biggestFontSize;
+      }
+      p {
+        margin-bottom: 40px;
+        strong {
+          color: $mainBrandColor;
+        }
+      }
+
+      p {
+        padding: 0 4% 0 0;
+      }
+    }
+  }
+  hr {
+    width: 80%;
+    margin-bottom: 80px;
+  }
+
+  .campaignDonation,
+  .resolvedDonation {
+    background: $cardBlueGradient;
+    padding: 40px 20px;
+    margin-bottom: 80px;
+    p {
+      font-size: 3rem;
+      text-align: center;
+      color: $lightFontColor;
+      margin-bottom: 40px;
+    }
+    ul {
+      margin: 0 auto;
+      width: 450px;
+      font-size: 0;
+      display: flex;
+      justify-content: space-around;
+      li {
+        display: inline-block;
+        button {
+          padding: 15px 20px;
+          background-color: $donationButtonColor;
+          color: $lightFontColor;
+          font-size: 16px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .resolvedDonation {
+    background: $cardRedGradient;
+    p {
+      font-size: 1.8rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.modali-body {
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    p {
+      width: 70%;
+      margin-bottom: 30px;
+      span {
+        color: $mainBrandColor;
+        font-weight: bold;
+      }
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      width: 30%;
+      .container {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        label {
+          input[type="email"],
+          input[type="tel"] {
+            padding: 4px 10px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: solid 2px $mainBrandColor;
+            box-shadow: none;
+          }
+          input:invalid {
+            box-shadow: 0 0 0 0 transparent;
+            border-bottom: solid 2px rgb(196, 15, 15);
+          }
+        }
+      }
+      input[type="submit"] {
+        margin-top: 20px;
+        border: solid 1px $mainBrandColor;
+        background: none;
+        background-color: $lightFontColor;
+        padding: 8px 15px;
+        color: $mainBrandColor;
+        border-radius: 5px;
+        cursor: pointer;
+        font-style: 24px;
+        transition: all 0.7s;
+        outline: transparent;
+        &:hover {
+          color: $lightFontColor;
+          background-color: $mainBrandColor;
+        }
+      }
+      button {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+.modali-size-regular {
+  border-top: solid 6px $mainBrandColor;
+  border-bottom: solid 6px $mainBrandColor;
+  max-width: 600px;
+  padding-bottom: 20px;
+}
+.modali-header {
+  align-items: center;
+}
+.modali-close-button {
+  transition: all 0.7s;
+  color: $mainBrandColor;
+  span {
+    font-size: 2.2rem;
+  }
+}

@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "Varela Round";
+  src: url("./fonts/VarelaRound-Regular.ttf");
+}
+@font-face {
+  font-family: "BebasNeue";
+  src: url("./fonts/BebasNeue-Regular.ttf");
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+
+$roundedFont: "Varela Round", sans-serif;
+$heroFont: "BebasNeue";
+
+$mainFont: "Roboto";
+
+$mainFontColor: #384955;
+$darkFontColor: black;
+$lightFontColor: white;
+$backgroundColor: white;
+$mainBrandColor: rgba(0, 176, 240, 1);
+$mainBrandColorBO: #41e300;
+$lightGray: #f7f7f7;
+$mainBrandGradient: linear-gradient(
+  rgba(145, 226, 255, 1) 24%,
+  rgba(0, 176, 240, 1) 90%
+);
+
+$donationButtonColor: #ff9f32;
+
+//variables for blue campaign cards
+$cardBlueBorder: linear-gradient(235deg, #00bd88 10%, #009bbd 100%) 1;
+$cardBlueGradient: linear-gradient(235deg, #00bd88 10%, #009bbd 100%);
+// variables for red campaign cards
+$cardRedBorder: linear-gradient(235.76deg, #ff7975 10%, #ff75af 100%) 1;
+$cardRedGradient: linear-gradient(235.76deg, #ff7975 10%, #ff75af 100%);
+//variables for yellow associations cards
+$cardYellowBorder: linear-gradient(252.93deg, #ea9a28 0%, #ea5728 100%) 1;
+$cardYellowGradient: linear-gradient(252.93deg, #ea9a28 0%, #ea5728 100%);
+// variables for violet campaign cards
+$cardVioletBorder: linear-gradient(235deg, #3970cb 10%, #ab2572 100%) 1;
+$cardVioletGradient: linear-gradient(235deg, #3970cb 10%, #ab2572 100%);
+
+$cardTitleFontColor: #384955;
+
+$fondationFontColor: #00e0ff;
+$moreInfoFontColor: #00b0f0;
+
+$normalFontSize: 1rem;
+$mediumFontSize: 1.2rem;
+$bigFontSize: 1.4rem;
+$biggestFontSize: 4rem;
+$smallerFontSize: 0.8rem;
+$h1FontSize: 1.8rem;
+$h2FontSize: 1.6rem;
+$h3FontSize: 1.4rem;
+$h4FontSize: 1.2rem;
+
+$boxShadow: 2px 6px 14px 1px rgba(0, 0, 0, 0.35);
+
+// LearnMore components color Vars
+$meexColor: #04b4d3;
+$meexBg: #00cbee;
+
+$chartColor: #02a49a;
+$chartBg: #00dccf;
+
+$foundsColor: #01a177;
+$foundsBg: #00d89b;

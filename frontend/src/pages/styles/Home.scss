@@ -1,0 +1,8 @@
+.Home {
+  min-height: calc(100vh - 86px);
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}

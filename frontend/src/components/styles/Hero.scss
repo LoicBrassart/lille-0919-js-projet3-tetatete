@@ -1,0 +1,67 @@
+@import "./../../index.scss";
+
+.Hero {
+  .desktopHero {
+    position: relative;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+    h2 {
+      width: 100%;
+      font-family: $heroFont;
+      text-transform: uppercase;
+      font-weight: 100;
+      font-size: 90px;
+      color: $lightFontColor;
+      position: absolute;
+      padding: 0 5%;
+      bottom: 5%;
+    }
+  }
+}
+
+// Media queries ------------------------
+@media screen and (max-width: 960px) {
+  .Hero {
+    .desktopHero {
+      h2 {
+        top: 5vh;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .Hero {
+    .desktopHero {
+      h2 {
+        top: 60px;
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .Hero {
+    .desktopHero {
+      h2 {
+        top: 50px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .Hero {
+    .desktopHero {
+      h2 {
+        top: 40px;
+      }
+    }
+  }
+}

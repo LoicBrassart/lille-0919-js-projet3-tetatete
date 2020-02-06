@@ -1,0 +1,31 @@
+@import "../../index.scss";
+
+.Ambassadors {
+  min-height: calc(100vh - 86px);
+  .ambassadorsHero {
+    img {
+      width: 100%;
+    }
+  }
+  .FilterTab {
+    position: sticky;
+    top: 86px;
+    z-index: 2;
+  }
+  .containerProfile {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    .ProfileCardBlue {
+      transform: scale(0.95);
+      transition: ease 0.2s;
+      &:hover {
+        box-shadow: $boxShadow;
+        transform: scale(1);
+      }
+    }
+  }
+}

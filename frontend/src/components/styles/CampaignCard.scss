@@ -1,0 +1,305 @@
+@import "./../../index.scss";
+
+// CAMPAIGN CARD +1H========================
+.campaignCardBlueCard {
+  margin: 35px 0;
+  box-sizing: border-box;
+  position: relative;
+  width: 600px;
+  border-width: 6px;
+  border-style: solid;
+  border-image: $cardBlueBorder;
+  background: $cardBlueGradient;
+  transform: scale(0.95);
+  transition: ease 0.2s;
+
+  &:hover {
+    box-shadow: $boxShadow;
+    transform: scale(1);
+  }
+
+  .firstContainer {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+
+    .whiteLine {
+      background-color: white;
+      height: 300px;
+      width: 8px;
+      position: absolute;
+      left: 295px;
+      transform: skew(-15deg);
+    }
+
+    .campaignImg {
+      width: 400px;
+      height: 300px;
+      clip-path: polygon(0 0, 85% 0%, 65% 100%, 0% 100%);
+    }
+
+    .timer {
+      color: white;
+      font-family: $mainFont;
+      font-weight: bold;
+      text-align: center;
+      position: absolute;
+      right: 50px;
+      top: 50px;
+      z-index: 1;
+
+      .timeValue {
+        font-size: 150px;
+        height: 150px;
+      }
+      .cardStatus {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .secondContainer {
+    background: white;
+    height: 150px;
+    padding-top: 10px;
+
+    .campaignTitle {
+      font-weight: bold;
+      font-size: 36px;
+      text-align: left;
+      margin: 10px;
+      margin-top: 0;
+      color: $cardTitleFontColor;
+    }
+
+    .fondationName {
+      font-family: $mainFont;
+      font-size: 24px;
+      color: $fondationFontColor;
+      margin-left: 10px;
+    }
+    .moreInfo {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+
+      .moreInfoText {
+        font-family: $mainFont;
+        font-size: 24px;
+        color: $moreInfoFontColor;
+      }
+
+      .moreInfoButton {
+        width: 5%;
+        height: auto;
+        margin: 10px;
+      }
+    }
+  }
+}
+
+//CAMPAIGN CARD DONE========================
+.campaignCardRedCard {
+  margin: 35px 0;
+  box-sizing: border-box;
+  position: relative;
+  width: 600px;
+  border-width: 6px;
+  border-style: solid;
+  border-image: $cardRedBorder;
+  background: $cardRedGradient;
+  transform: scale(0.95);
+  transition: ease 0.2s;
+
+  &:hover {
+    box-shadow: $boxShadow;
+    transform: scale(1);
+  }
+
+  .firstContainer {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+
+    .whiteLine {
+      background-color: white;
+      height: 300px;
+      width: 8px;
+      position: absolute;
+      left: 295px;
+      transform: skew(-15deg);
+    }
+
+    .campaignImg {
+      width: 400px;
+      height: 300px;
+      clip-path: polygon(0 0, 85% 0%, 65% 100%, 0% 100%);
+    }
+
+    .timer {
+      color: white;
+      font-family: $mainFont;
+      font-weight: bold;
+      text-align: center;
+      position: absolute;
+      right: 15px;
+      top: 150px;
+      z-index: 1;
+
+      .timeValue {
+        display: none;
+      }
+      .cardStatus {
+        font-size: 48px;
+        width: 270px;
+      }
+    }
+  }
+
+  .secondContainer {
+    background: white;
+    height: 150px;
+    padding-top: 10px;
+
+    .campaignTitle {
+      font-family: $mainFont;
+      font-weight: bold;
+      font-size: 36px;
+      text-align: left;
+      margin: 10px;
+      margin-top: 0;
+      color: $cardTitleFontColor;
+    }
+
+    .fondationName {
+      font-family: $mainFont;
+      font-size: 24px;
+      color: $fondationFontColor;
+      margin-left: 10px;
+    }
+    .moreInfo {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+
+      .moreInfoText {
+        font-family: $mainFont;
+        font-size: 24px;
+        color: $moreInfoFontColor;
+      }
+
+      .moreInfoButton {
+        width: 5%;
+        height: auto;
+        margin: 10px;
+      }
+    }
+  }
+}
+// CAMPAIGN CARD -1H========================
+.campaignCardVioletCard {
+  margin: 35px 0;
+  box-sizing: border-box;
+  position: relative;
+  width: 600px;
+  border-width: 6px;
+  border-style: solid;
+  border-image: $cardVioletBorder;
+  background: $cardVioletGradient;
+  transform: scale(0.95);
+  transition: ease 0.2s;
+
+  &:hover {
+    box-shadow: $boxShadow;
+    transform: scale(1);
+  }
+
+  .firstContainer {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+
+    .whiteLine {
+      background-color: white;
+      height: 300px;
+      width: 8px;
+      position: absolute;
+      left: 295px;
+      transform: skew(-15deg);
+    }
+
+    .campaignImg {
+      width: 400px;
+      height: 300px;
+      clip-path: polygon(0 0, 85% 0%, 65% 100%, 0% 100%);
+    }
+
+    .timer {
+      color: white;
+      font-family: $mainFont;
+      font-weight: bold;
+      text-align: center;
+      position: absolute;
+      right: 50px;
+      top: 50px;
+      z-index: 1;
+
+      .timeValue {
+        font-size: 150px;
+        height: 150px;
+      }
+      .cardStatus {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .secondContainer {
+    background: white;
+    height: 150px;
+    padding-top: 10px;
+
+    .campaignTitle {
+      font-family: $mainFont;
+      font-weight: bold;
+      font-size: 36px;
+      text-align: left;
+      margin: 10px;
+      margin-top: 0;
+      color: $cardTitleFontColor;
+    }
+
+    .fondationName {
+      font-family: $mainFont;
+      font-size: 24px;
+      color: $fondationFontColor;
+      margin-left: 10px;
+    }
+    .moreInfo {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+
+      .moreInfoText {
+        font-family: $mainFont;
+        font-size: 24px;
+        color: $moreInfoFontColor;
+      }
+
+      .moreInfoButton {
+        width: 5%;
+        height: auto;
+        margin: 10px;
+      }
+    }
+  }
+}
